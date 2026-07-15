@@ -13,7 +13,7 @@
     .cat-hero::before{content:'';position:absolute;top:-50%;right:-20%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,255,255,0.06) 0%,transparent 70%);border-radius:50%}
     .cat-hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,0.04) 0%,transparent 70%);border-radius:50%}
     .hero-inner{display:flex;align-items:center;gap:48px;position:relative;z-index:1}
-    .hero-img{width:180px;height:180px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,0.25);box-shadow:0 8px 32px rgba(0,0,0,0.3);flex-shrink:0}
+    .hero-img{width:200px;height:200px;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(0,0,0,0.25));flex-shrink:0}
     .hero-text{text-align:left}
     .hero-text h1{font-size:2.6rem;margin:0 0 12px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.2)}
     .hero-text p{font-size:1.05rem;color:rgba(255,255,255,0.9);max-width:500px;margin:0 0 24px;line-height:1.7}
@@ -33,7 +33,7 @@
     .article-card .read-link{color:#4a7c59;font-size:0.85rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:gap 0.2s}
     .article-card:hover .read-link{gap:8px}
     .back-nav{text-align:center;padding:0 20px 60px}
-    @media(max-width:768px){.nav-logo .logo-img{height:60px}.cat-hero{padding:30px 20px 40px}.hero-inner{flex-direction:column;text-align:center;gap:24px}.hero-text{text-align:center}.hero-img{width:140px;height:140px}.hero-text h1{font-size:1.8rem}.cat-stats{justify-content:center;gap:12px}.cat-stats .stat{padding:10px 14px;min-width:70px}.articles-grid{grid-template-columns:1fr;padding:40px 16px}}
+    @media(max-width:768px){.nav-logo .logo-img{height:60px}.cat-hero{padding:30px 20px 40px}.hero-inner{flex-direction:column;text-align:center;gap:24px}.hero-text{text-align:center}.hero-img{width:160px;height:160px}.hero-text h1{font-size:1.8rem}.cat-stats{justify-content:center;gap:12px}.cat-stats .stat{padding:10px 14px;min-width:70px}.articles-grid{grid-template-columns:1fr;padding:40px 16px}}
     @media(max-width:480px){.nav-logo .logo-img{height:50px}.cat-hero{padding:24px 16px 32px}.hero-text h1{font-size:1.5rem}}
   </style>
   <meta property="og:title" content="Hatha Yoga — Mây Yoga">
