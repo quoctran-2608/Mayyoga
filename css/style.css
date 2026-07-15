@@ -864,8 +864,8 @@ p { color: var(--gray-600); }
   display: flex;
   gap: 40px;
   align-items: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-  border-top: 4px solid #d4af37;
+  box-shadow: 0 20px 60px rgba(45,106,79,0.25), 0 0 0 1px rgba(212,175,55,0.15);
+  border-top: 5px solid #d4af37;
   margin-bottom: 48px;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   position: relative;
@@ -875,11 +875,11 @@ p { color: var(--gray-600); }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(26,36,25,0.88) 0%, rgba(46,59,45,0.75) 60%, rgba(61,90,58,0.65) 100%);
+  background: linear-gradient(135deg, rgba(26,60,42,0.72) 0%, rgba(40,90,65,0.55) 50%, rgba(50,110,78,0.45) 100%);
 }
 .ytt-banner:hover {
   transform: translateY(-4px);
-  box-shadow: 0 24px 72px rgba(0,0,0,0.28);
+  box-shadow: 0 24px 72px rgba(45,106,79,0.35), 0 0 0 1px rgba(212,175,55,0.25);
 }
 .ytt-content {
   flex: 1;
@@ -889,31 +889,32 @@ p { color: var(--gray-600); }
 }
 .ytt-badge {
   display: inline-block;
-  padding: 6px 18px;
-  border: 1.5px solid rgba(212,175,55,0.5);
-  color: #d4af37;
+  padding: 7px 20px;
+  border: 1.5px solid rgba(212,175,55,0.45);
+  color: #e8c84a;
   border-radius: 30px;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  background: rgba(212,175,55,0.08);
+  background: rgba(212,175,55,0.1);
 }
 .ytt-title {
   color: #fff;
-  font-size: 1.9rem;
+  font-size: 2rem;
   margin-bottom: 14px;
   line-height: 1.3;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 .ytt-gold {
-  color: #d4af37;
+  color: #e8c84a;
 }
 .ytt-desc {
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.88);
   line-height: 1.75;
   margin-bottom: 28px;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   max-width: 520px;
 }
 .ytt-features {
@@ -931,12 +932,13 @@ p { color: var(--gray-600); }
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: rgba(212,175,55,0.12);
-  border: 1px solid rgba(212,175,55,0.25);
+  background: rgba(255,255,255,0.15);
+  border: 1.5px solid rgba(212,175,55,0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 .ytt-feature span {
   color: #fff;
@@ -971,55 +973,62 @@ p { color: var(--gray-600); }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.12);
   color: #fff;
   padding: 14px 28px;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.92rem;
-  border: 1.5px solid rgba(255,255,255,0.2);
+  border: 1.5px solid rgba(255,255,255,0.3);
   transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
 }
 .ytt-btn-secondary:hover {
-  background: rgba(255,255,255,0.18);
-  border-color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.25);
+  border-color: rgba(212,175,55,0.5);
+  color: #e8c84a;
 }
 .ytt-visual {
   flex-shrink: 0;
   position: relative;
   z-index: 1;
+  width: 350px;
+  align-self: stretch;
+  margin: -56px -48px -56px 0;
 }
 .ytt-img {
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border: 4px solid rgba(212,175,55,0.3);
-  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+  border-radius: 0 20px 20px 0;
   transition: transform 0.4s ease;
 }
 .ytt-banner:hover .ytt-img {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 @media (max-width: 768px) {
   .ytt-banner {
     flex-direction: column;
-    padding: 36px 24px;
+    padding: 32px 24px 0;
     text-align: center;
-    gap: 28px;
+    gap: 0;
+    overflow: hidden;
   }
+  .ytt-banner::before { border-radius: 24px; }
   .ytt-title { font-size: 1.5rem; }
-  .ytt-desc { max-width: 100%; }
-  .ytt-features { align-items: center; }
-  .ytt-buttons { justify-content: center; }
-  .ytt-img { width: 180px; height: 180px; }
+  .ytt-desc { max-width: 100%; margin-bottom: 24px; }
+  .ytt-features { align-items: center; margin-bottom: 24px; }
+  .ytt-buttons { justify-content: center; margin-bottom: 28px; }
+  .ytt-visual { width: calc(100% + 48px); margin: 0 -24px; align-self: auto; }
+  .ytt-img { height: 220px; border-radius: 0; }
 }
 @media (max-width: 480px) {
-  .ytt-banner { padding: 28px 18px; }
+  .ytt-banner { padding: 24px 18px 0; }
   .ytt-title { font-size: 1.3rem; }
-  .ytt-img { width: 150px; height: 150px; }
+  .ytt-visual { width: calc(100% + 36px); margin: 0 -18px; }
+  .ytt-img { height: 180px; }
   .ytt-btn-primary, .ytt-btn-secondary { padding: 12px 22px; font-size: 0.85rem; }
 }
 
@@ -2788,7 +2797,6 @@ p { color: var(--gray-600); }
 .floating-contact .fc-zalo svg {
   width: 28px;
   height: 28px;
-  fill: white;
 }
 
 .floating-contact .fc-whatsapp {
