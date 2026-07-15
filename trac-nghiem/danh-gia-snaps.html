@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đánh giá SNAPS — Yoga Trị Liệu — Mây Yoga</title>
+  <meta name="description" content="Bài đánh giá toàn diện 5 chiều cho học viên Yoga Trị Liệu: cơ thể, giấc ngủ, ăn uống, tâm trạng, niềm vui.">
+  <link rel="stylesheet" href="../css/style.css?v=4">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <meta property="og:title" content="Đánh giá SNAPS — Yoga Trị Liệu — Mây Yoga">
+  <meta property="og:description" content="Bài đánh giá toàn diện 5 chiều cho học viên Yoga Trị Liệu.">
+  <meta property="og:url" content="https://mayyoga.health/trac-nghiem/danh-gia-snaps.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://mayyoga.health/assets/images/hero.webp">
+  <meta property="og:site_name" content="Mây Yoga">
+  <meta property="og:locale" content="vi_VN">
+  <link rel="canonical" href="https://mayyoga.health/trac-nghiem/danh-gia-snaps.html">
+  <style>
+  :root {
+    --snaps-bg: #FEFDF8;
+    --snaps-card: #FFFFFF;
+    --snaps-glass: #F2F5F0;
+    --snaps-border: #E1E8DD;
+    --snaps-text: #374151;
+    --snaps-muted: #6B7280;
+    --snaps-s: #E11D48;
+    --snaps-n: #5A7A56;
+    --snaps-a: #059669;
+    --snaps-p: #D97706;
+    --snaps-sp: #7C3AED;
+    --snaps-radius: 16px;
+  }
+  .snaps-container { max-width: 800px; margin: 0 auto; padding: 0 16px; }
+  .snaps-intro { text-align: center; margin-bottom: 32px; }
+  .snaps-intro h2 { font-size: 1.3rem; color: #3D5A3A; margin-bottom: 8px; }
+  .snaps-intro p { color: var(--snaps-muted); font-size: 0.95rem; line-height: 1.7; }
+
+  .client-info { background: var(--snaps-card); border: 2px solid var(--snaps-border); border-radius: var(--snaps-radius); padding: 24px; margin-bottom: 24px; }
+  .client-info h2 { font-size: 1rem; font-weight: 600; margin-bottom: 16px; color: #3D5A3A; }
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .info-grid label { font-size: 0.8rem; color: var(--snaps-muted); display: block; margin-bottom: 4px; }
+  .info-grid input, .info-grid select { width: 100%; padding: 10px 14px; background: var(--snaps-glass); border: 1.5px solid var(--snaps-border); border-radius: 10px; color: var(--snaps-text); font-size: 0.9rem; font-family: inherit; transition: border-color .3s; }
+  .info-grid input:focus, .info-grid select:focus { outline: none; border-color: #5A7A56; }
+
+  .section { background: var(--snaps-card); border: 2px solid var(--snaps-border); border-radius: var(--snaps-radius); margin-bottom: 16px; overflow: hidden; transition: all .3s; }
+  .section-header { padding: 18px 22px; cursor: pointer; display: flex; align-items: center; gap: 14px; user-select: none; transition: background .3s; }
+  .section-header:hover { background: var(--snaps-glass); }
+  .section-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+  .section-icon.s { background: #FEE2E2; }
+  .section-icon.n { background: #E1E8DD; }
+  .section-icon.a { background: #D1FAE5; }
+  .section-icon.p { background: #FEF3C7; }
+  .section-icon.sp { background: #EDE9FE; }
+  .section-title { flex: 1; }
+  .section-title h3 { font-size: 1rem; font-weight: 600; color: #3D5A3A; }
+  .section-title small { color: var(--snaps-muted); font-size: 0.8rem; }
+  .chevron { color: var(--snaps-muted); transition: transform .3s; font-size: 1rem; }
+  .section.open .chevron { transform: rotate(180deg); }
+  .section-body { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+  .section.open .section-body { max-height: 2000px; }
+  .section-content { padding: 0 22px 22px; }
+
+  .q-group { margin-bottom: 18px; }
+  .q-group label { font-size: 0.88rem; font-weight: 500; display: block; margin-bottom: 8px; color: var(--snaps-text); }
+  .rating { display: flex; gap: 5px; margin-bottom: 6px; }
+  .rating button { width: 36px; height: 36px; border-radius: 8px; border: 1.5px solid var(--snaps-border); background: var(--snaps-glass); color: var(--snaps-muted); font-weight: 600; cursor: pointer; transition: all .25s; font-size: 0.85rem; }
+  .rating button:hover { border-color: #5A7A56; transform: scale(1.08); }
+  .rating button.active { color: #fff; border-color: transparent; transform: scale(1.08); }
+  .rating-labels { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--snaps-muted); padding: 0 4px; }
+
+  textarea { width: 100%; padding: 10px 14px; background: var(--snaps-glass); border: 1.5px solid var(--snaps-border); border-radius: 10px; color: var(--snaps-text); font-size: 0.85rem; font-family: inherit; resize: vertical; min-height: 60px; transition: border-color .3s; }
+  textarea:focus { outline: none; border-color: #5A7A56; }
+  textarea::placeholder { color: var(--snaps-muted); }
+
+  .score-bar { height: 6px; background: var(--snaps-glass); border-radius: 3px; margin-top: 4px; overflow: hidden; }
+  .score-fill { height: 100%; border-radius: 3px; transition: width .5s ease; width: 0; }
+
+  .actions { display: flex; gap: 12px; justify-content: center; margin: 28px 0; flex-wrap: wrap; }
+
+  .result-panel { background: var(--snaps-card); border: 2px solid var(--snaps-border); border-radius: var(--snaps-radius); padding: 28px; margin: 24px 0; display: none; }
+  .result-panel.show { display: block; animation: fadeUp .5s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  .radar-wrap { text-align: center; margin-bottom: 24px; }
+  .radar-wrap canvas { max-width: 340px; }
+  .summary-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 24px; }
+  .summary-item { text-align: center; padding: 14px 8px; background: var(--snaps-glass); border-radius: 12px; }
+  .summary-item .score { font-size: 1.6rem; font-weight: 700; }
+  .summary-item .label { font-size: 0.7rem; color: var(--snaps-muted); margin-top: 4px; }
+  .notes-output { background: var(--snaps-glass); border-radius: 12px; padding: 20px; margin-top: 16px; font-size: 0.85rem; line-height: 1.7; white-space: pre-wrap; color: var(--snaps-text); }
+  .total-score { text-align: center; margin-bottom: 20px; }
+  .total-score .big { font-size: 2.5rem; font-weight: 700; color: #3D5A3A; }
+  .total-score p { color: var(--snaps-muted); font-size: 0.85rem; }
+
+  .send-section { background: var(--snaps-glass); border: 2px solid var(--snaps-border); border-radius: var(--snaps-radius); padding: 24px; margin-top: 24px; text-align: center; }
+  .send-section h4 { color: #3D5A3A; margin-bottom: 16px; font-size: 1.05rem; }
+  .send-btns { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .send-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-size: 0.92rem; font-weight: 600; cursor: pointer; border: 2px solid transparent; transition: all 0.3s; text-decoration: none; }
+  .send-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .send-btn-copy { background: #F3F4F6; color: #374151; border-color: #E5E7EB; }
+  .send-btn-zalo { background: #0068FF; color: #fff; }
+  .send-btn-print { background: var(--snaps-glass); color: #3D5A3A; border-color: var(--snaps-border); }
+
+  @media(max-width:600px) {
+    .info-grid { grid-template-columns: 1fr; }
+    .summary-grid { grid-template-columns: repeat(3, 1fr); }
+    .rating button { width: 32px; height: 32px; font-size: 0.8rem; }
+    .actions { flex-direction: column; }
+    .actions button { width: 100%; }
+    .send-btns { flex-direction: column; }
+    .send-btn { width: 100%; justify-content: center; }
+  }
+  @media print {
+    .navbar, .footer, .floating-contact, .actions, .chevron, .send-section { display: none !important; }
+    .section-body { max-height: none !important; }
+    .section, .client-info, .result-panel { border: 1px solid #ddd; break-inside: avoid; }
+    .result-panel { display: block !important; }
+  }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo"><img src="../assets/images/logo.webp" alt="Mây Yoga" class="logo-img"></a>
+            <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Trang chủ</a></li>
+        <li><a href="../ve-may-yoga.html">Về Mây Yoga</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="dropdown-toggle" style="color:#d4af37; font-weight:600;">Các khoá học <span class="chevron">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../hoc-yoga-online.html">🌿 Yoga Online 1:1</a></li>
+            <li><a href="../goc-huan-luyen-vien.html">🦉 Đào tạo YTT 200H</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href="#" class="dropdown-toggle">Kiến thức Yoga <span class="chevron">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../bai-viet/yoga-cho-nguoi-moi.html">🌱 Yoga cho người mới</a></li>
+            <li><a href="../tu-the-yoga.html">🧘 90 Tư thế Yoga</a></li>
+            <li><a href="../bai-viet/pranayama-ky-thuat-tho.html">🌬️ Pranayama</a></li>
+            <li><a href="../bai-viet/thien-cho-nguoi-moi.html">🕊️ Thiền định</a></li>
+            <li><a href="../giai-phau-yoga.html">🫀 Giải phẫu Yoga</a></li>
+            <li style="border-top:1px solid rgba(61,90,58,0.1); margin-top:4px; padding-top:4px;"><a href="../tu-tap-tai-nha.html">🏠 Tự tập tại nhà</a></li>
+          </ul>
+        </li>
+        <li><a href="../trac-nghiem.html">Trắc nghiệm</a></li>
+      </ul>
+      <div class="nav-search" id="navSearch">
+        <input type="text" id="globalSearch" placeholder="🔍 Tìm tư thế, bài viết..." autocomplete="off">
+        <div class="search-dropdown" id="searchDropdown"></div>
+      </div>
+      <div class="nav-cta"><a href="../index.html#blog" class="btn btn-primary btn-sm">Khám phá ngay</a></div>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="article-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="../index.html">Trang chủ</a><span class="sep">›</span>
+        <a href="../trac-nghiem.html">Trắc nghiệm</a><span class="sep">›</span>
+        <span>Đánh giá SNAPS</span>
+      </div>
+      <span class="article-tag">🧘 Yoga Trị Liệu</span>
+      <h1>Đánh Giá Toàn Diện SNAPS</h1>
+      <div class="article-meta">
+        <span class="meta-item">📋 25 câu hỏi</span>
+        <span class="meta-item">⏱ ~8 phút</span>
+        <span class="meta-item">🏷️ Học viên trị liệu</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="article-body" style="padding: 40px 0 60px;">
+    <div class="snaps-container">
+      <div class="snaps-intro">
+        <p>Bài đánh giá này giúp Mây hiểu <strong>tổng thể tình trạng</strong> của bạn — không chỉ cơ thể, mà cả giấc ngủ, ăn uống, tâm trạng và niềm vui sống.<br>
+        Hãy chấm điểm theo <strong>cảm nhận thật</strong> của bạn, không có đúng sai!</p>
+      </div>
+
+      <div class="client-info">
+        <h2>📋 Thông Tin Học Viên</h2>
+        <div class="info-grid">
+          <div><label>Họ và tên</label><input type="text" id="clientName" placeholder="Nhập họ tên"></div>
+          <div><label>Ngày đánh giá</label><input type="date" id="assessDate"></div>
+          <div><label>Tuổi</label><input type="number" id="clientAge" placeholder="VD: 35"></div>
+          <div><label>Giới tính</label><select id="clientGender"><option value="">-- Chọn --</option><option>Nữ</option><option>Nam</option><option>Khác</option></select></div>
+          <div><label>Mục tiêu chính</label><input type="text" id="clientGoal" placeholder="VD: Giảm đau lưng, ngủ ngon hơn"></div>
+          <div><label>Lần đánh giá</label><select id="sessionNum"><option>Lần 1 - Khởi đầu</option><option>Lần 2 - Theo dõi</option><option>Lần 3 - Tái đánh giá</option></select></div>
+        </div>
+      </div>
+
+      <div id="sections"></div>
+
+      <div class="actions">
+        <button class="btn btn-primary" onclick="generateResult()">📊 Tạo Kết Quả Đánh Giá</button>
+        <button class="btn btn-secondary" onclick="resetForm()">🔄 Làm mới</button>
+      </div>
+
+      <div class="result-panel" id="resultPanel">
+        <h2 style="text-align:center;margin-bottom:20px;font-size:1.3rem;color:#3D5A3A">📊 Kết Quả Đánh Giá SNAPS</h2>
+        <div class="total-score"><div class="big" id="totalScore">0</div><p>Điểm tổng / 50</p></div>
+        <div class="radar-wrap"><canvas id="radarChart" width="340" height="340"></canvas></div>
+        <div class="summary-grid" id="summaryGrid"></div>
+        <div id="interpretation"></div>
+        <div class="notes-output" id="notesOutput"></div>
+
+        <div class="send-section">
+          <h4>📨 Chia sẻ kết quả</h4>
+          <div class="send-btns">
+            <button class="send-btn send-btn-zalo" onclick="shareZalo()">💬 Gửi qua Zalo</button>
+            <button class="send-btn send-btn-copy" onclick="copyResult()">📋 Copy kết quả</button>
+            <button class="send-btn send-btn-print" onclick="window.print()">🖨️ In báo cáo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="text-align:center; padding: 40px 0 20px;">
+      <a href="../index.html" class="nav-logo" style="display:inline-flex; justify-content:center; margin-bottom:12px;">
+        <img src="../assets/images/logo.webp" alt="Mây Yoga" class="logo-img" style="height:48px; border-radius:10px; padding:4px; background:rgba(255,255,255,0.12); backdrop-filter:blur(6px);">
+      </a>
+      
+      <p style="color:rgba(255,255,255,0.9); margin:0 auto 16px; font-size:0.9rem;">
+        Nền tảng kiến thức Hatha Yoga cho mọi người.<br>
+      </p>
+
+      <div style="display:flex; gap:12px; justify-content:center; align-items:center; margin-bottom:20px;">
+        <a href="mailto:phanthumay.yoga500@gmail.com" aria-label="Email" style="display:inline-flex; width:34px; height:34px; background:rgba(255,255,255,0.12); border-radius:50%; align-items:center; justify-content:center; transition:all 0.3s; text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></a>
+        <a href="https://zalo.me/0326808864" target="_blank" aria-label="Zalo" style="display:inline-flex; width:34px; height:34px; background:rgba(255,255,255,0.12); border-radius:50%; align-items:center; justify-content:center; transition:all 0.3s; text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=61573065832463" target="_blank" aria-label="Facebook" style="display:inline-flex; width:34px; height:34px; background:rgba(255,255,255,0.12); border-radius:50%; align-items:center; justify-content:center; transition:all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://www.instagram.com/thumay2808" target="_blank" aria-label="Instagram" style="display:inline-flex; width:34px; height:34px; background:rgba(255,255,255,0.12); border-radius:50%; align-items:center; justify-content:center; transition:all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        <a href="https://www.tiktok.com/@my.v.yoga" target="_blank" aria-label="TikTok" style="display:inline-flex; width:34px; height:34px; background:rgba(255,255,255,0.12); border-radius:50%; align-items:center; justify-content:center; transition:all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+      </div>
+      
+      <p style="color:rgba(255,255,255,0.7); font-size: 0.82rem; line-height: 1.6; margin: 0 auto 16px; max-width: 600px;">
+        <strong>Chủ quản:</strong> Phan Thu Mây &nbsp;|&nbsp; <strong>MST:</strong> 066195013103<br>
+      </p>
+
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:20px; font-size:0.8rem;">
+        <a href="../chinh-sach-bao-mat.html" style="color:rgba(255,255,255,0.7); text-decoration:none;">Bảo mật thông tin</a>
+        <a href="../dieu-khoan-su-dung.html" style="color:rgba(255,255,255,0.7); text-decoration:none;">Điều khoản sử dụng</a>
+        <a href="../chinh-sach-thanh-toan.html" style="color:rgba(255,255,255,0.7); text-decoration:none;">Thanh toán</a>
+        <a href="../chinh-sach-doi-tra.html" style="color:rgba(255,255,255,0.7); text-decoration:none;">Khiếu nại & Hoàn tiền</a>
+      </div>
+
+      <div style="border-top:1px solid rgba(255,255,255,0.15); padding-top:16px; max-width:300px; margin:0 auto;">
+        <p style="color:rgba(255,255,255,0.6); font-size:0.8rem; margin:0;">© 2026 MâyYoga.health 🍀</p>
+      </div>
+    </div>
+</footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+
+const DATA = [
+  {key:'s', letter:'S', title:'Cơ Thể — Đau, Dẻo, Khỏe', icon:'🦴', cls:'s', color:'#E11D48',
+   questions:[
+    {id:'s1',label:'Tư thế hằng ngày (ngồi, đứng, đi bộ có thẳng không?)',low:'Hay khom, lệch',high:'Thẳng, cân đối'},
+    {id:'s2',label:'Độ dẻo dai (có chạm được ngón chân, xoay vai dễ không?)',low:'Rất cứng',high:'Dẻo, thoải mái'},
+    {id:'s3',label:'Sức khỏe cơ bắp (giữ plank, đứng 1 chân có vững không?)',low:'Rất yếu',high:'Khỏe, vững'},
+    {id:'s4',label:'Mức đau trong cơ thể hiện tại',low:'Đau nhiều, liên tục',high:'Không đau'},
+    {id:'s5',label:'Giữ thăng bằng (đứng 1 chân, nhắm mắt giữ được không?)',low:'Rất khó',high:'Dễ dàng'}
+   ],noteLabel:'Ghi chú: Chỗ nào đau? Đau bao lâu rồi? Có giới hạn gì đặc biệt?'
+  },
+  {key:'n', letter:'N', title:'Giấc Ngủ — Hơi Thở — Năng Lượng', icon:'🧠', cls:'n', color:'#5A7A56',
+   questions:[
+    {id:'n1',label:'Cơ thể có hay căng, giật mình, tim đập nhanh không?',low:'Rất hay bị',high:'Hiếm khi'},
+    {id:'n2',label:'Hơi thở bình thường (nông ở ngực hay sâu xuống bụng?)',low:'Nông, hay thở dốc',high:'Sâu, đều, chậm'},
+    {id:'n3',label:'Giấc ngủ (ngủ có sâu không, hay thức giấc giữa đêm?)',low:'Mất ngủ, ngủ kém',high:'Ngủ ngon, sâu giấc'},
+    {id:'n4',label:'Năng lượng trong ngày (có đủ sức làm việc cả ngày không?)',low:'Mệt mỏi suốt',high:'Khỏe khoắn cả ngày'},
+    {id:'n5',label:'Khả năng thư giãn (nằm yên 5 phút có được không?)',low:'Không thể nằm yên',high:'Thư giãn dễ dàng'}
+   ],noteLabel:'Ghi chú: Có hay mất ngủ? Hay lo lắng? Có uống cafe/thuốc gì không?'
+  },
+  {key:'a', letter:'A', title:'Ăn Uống — Sinh Hoạt — Tiêu Hóa', icon:'🌿', cls:'a', color:'#059669',
+   questions:[
+    {id:'a1',label:'Tiêu hóa (có hay đầy bụng, táo bón, khó tiêu không?)',low:'Rất hay gặp',high:'Tiêu hóa tốt'},
+    {id:'a2',label:'Ăn uống có đều bữa, đủ chất không?',low:'Rất bừa bộn',high:'Đều đặn, đủ chất'},
+    {id:'a3',label:'Giờ giấc sinh hoạt (ngủ-dậy-ăn có đều không?)',low:'Rất thất thường',high:'Đều đặn mỗi ngày'},
+    {id:'a4',label:'Cơ thể thích nghi thời tiết (trời nóng/lạnh có bị ốm không?)',low:'Rất hay bị ốm',high:'Thích nghi tốt'},
+    {id:'a5',label:'Cảm nhận chung về sức khỏe tổng thể',low:'Hay ốm vặt, mệt',high:'Khỏe mạnh, ít bệnh'}
+   ],noteLabel:'Ghi chú: Có dị ứng gì? Ăn kiêng? Đang uống thuốc gì không?'
+  },
+  {key:'p', letter:'P', title:'Tâm Trạng — Cảm Xúc — Suy Nghĩ', icon:'💛', cls:'p', color:'#D97706',
+   questions:[
+    {id:'p1',label:'Mức độ lo lắng, căng thẳng hằng ngày',low:'Lo lắng rất nhiều',high:'Thoải mái, bình an'},
+    {id:'p2',label:'Tâm trạng chung (vui vẻ hay hay buồn, cáu?)',low:'Hay buồn, dễ cáu',high:'Vui vẻ, ổn định'},
+    {id:'p3',label:'Có dễ tập trung không? (đọc sách, làm việc bị phân tâm?)',low:'Rất khó tập trung',high:'Tập trung tốt'},
+    {id:'p4',label:'Các mối quan hệ (gia đình, bạn bè, đồng nghiệp)',low:'Hay mâu thuẫn',high:'Hòa hợp, vui'},
+    {id:'p5',label:'Hiểu bản thân (biết mình cần gì, muốn gì không?)',low:'Rất mơ hồ',high:'Hiểu rõ bản thân'}
+   ],noteLabel:'Ghi chú: Có điều gì đang khiến bạn suy nghĩ nhiều? Cảm xúc hay lặp lại?'
+  },
+  {key:'sp', letter:'S', title:'Niềm Vui — Mục Đích — Bình An', icon:'✨', cls:'sp', color:'#7C3AED',
+   questions:[
+    {id:'sp1',label:'Bạn có cảm thấy cuộc sống đang đi đúng hướng không?',low:'Rất lạc lõng',high:'Rõ ràng, có hướng'},
+    {id:'sp2',label:'Có hài lòng với cuộc sống hiện tại không?',low:'Rất không hài lòng',high:'Hài lòng, biết ơn'},
+    {id:'sp3',label:'Có dành thời gian cho bản thân không? (đi dạo, thiên nhiên...)',low:'Hầu như không',high:'Thường xuyên'},
+    {id:'sp4',label:'Có thói quen tĩnh lặng không? (thiền, ngồi yên, viết nhật ký...)',low:'Chưa bao giờ',high:'Đều đặn mỗi ngày'},
+    {id:'sp5',label:'Có hay cảm thấy vui, nhẹ nhõm từ bên trong không?',low:'Rất hiếm',high:'Thường xuyên'}
+   ],noteLabel:'Ghi chú: Điều gì khiến bạn thấy bình an? Bạn mong muốn gì từ yoga?'
+  }
+];
+
+const container = document.getElementById('sections');
+DATA.forEach((sec, i) => {
+  const div = document.createElement('div');
+  div.className = 'section' + (i===0?' open':'');
+  div.innerHTML = `
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-icon ${sec.cls}">${sec.icon}</div>
+      <div class="section-title"><h3>${sec.letter} – ${sec.title}</h3><small>5 tiêu chí · Thang điểm 1-10</small></div>
+      <div class="chevron">▼</div>
+    </div>
+    <div class="section-body"><div class="section-content">
+      ${sec.questions.map(q => `
+        <div class="q-group">
+          <label>${q.label}</label>
+          <div class="rating" data-id="${q.id}">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<button onclick="rate('${q.id}',${n},this,'${sec.color}')">${n}</button>`).join('')}</div>
+          <div class="rating-labels"><span>${q.low}</span><span>${q.high}</span></div>
+        </div>
+      `).join('')}
+      <div class="q-group"><label>${sec.noteLabel}</label><textarea id="note_${sec.key}" placeholder="Nhập ghi chú..."></textarea></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-top:8px">
+        <span style="font-size:.8rem;color:var(--muted)">Trung bình:</span>
+        <span id="avg_${sec.key}" style="font-weight:700;color:${sec.color}">0.0</span>
+        <div class="score-bar" style="flex:1"><div class="score-fill" id="bar_${sec.key}" style="background:${sec.color}"></div></div>
+      </div>
+    </div></div>`;
+  container.appendChild(div);
+});
+
+document.getElementById('assessDate').valueAsDate = new Date();
+
+const scores = {};
+
+function toggleSection(el){el.closest('.section').classList.toggle('open')}
+
+function rate(id, val, btn, color){
+  scores[id] = val;
+  btn.parentElement.querySelectorAll('button').forEach(b => {b.classList.remove('active');b.style.background='';b.style.borderColor=''});
+  btn.classList.add('active');
+  btn.style.background = color;
+  btn.style.borderColor = color;
+  updateAvg(id.replace(/\d/,''));
+}
+
+function updateAvg(key){
+  const sec = DATA.find(d=>d.key===key);
+  const vals = sec.questions.map(q=>scores[q.id]||0).filter(v=>v>0);
+  const avg = vals.length ? (vals.reduce((a,b)=>a+b,0)/vals.length) : 0;
+  document.getElementById('avg_'+key).textContent = avg.toFixed(1);
+  document.getElementById('bar_'+key).style.width = (avg*10)+'%';
+}
+
+function getAvg(key){
+  const sec = DATA.find(d=>d.key===key);
+  const vals = sec.questions.map(q=>scores[q.id]||0).filter(v=>v>0);
+  return vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : 0;
+}
+
+function generateResult(){
+  const panel = document.getElementById('resultPanel');
+  panel.classList.add('show');
+  panel.scrollIntoView({behavior:'smooth',block:'start'});
+
+  const avgs = DATA.map(d=>({key:d.key, title:d.title.split('–')[0].trim(), avg:getAvg(d.key), color:d.color, icon:d.icon}));
+  const total = avgs.reduce((s,a)=>s+a.avg,0);
+  document.getElementById('totalScore').textContent = total.toFixed(1);
+
+  const grid = document.getElementById('summaryGrid');
+  grid.innerHTML = avgs.map(a=>`<div class="summary-item"><div class="score" style="color:${a.color}">${a.avg.toFixed(1)}</div><div class="label">${a.icon} ${a.title}</div></div>`).join('');
+
+  drawRadar(avgs);
+
+  // Interpretation
+  let interp = '<div style="margin-top:16px">';
+  const level = total/5;
+  if(level >= 8) interp += '<p style="color:#059669;font-weight:600">✅ Tổng thể: Tốt – Học viên trong trạng thái cân bằng tốt.</p>';
+  else if(level >= 5) interp += '<p style="color:#D97706;font-weight:600">⚠️ Tổng thể: Trung bình – Cần can thiệp có mục tiêu ở một số lĩnh vực.</p>';
+  else interp += '<p style="color:#E11D48;font-weight:600">🔴 Tổng thể: Cần chú ý – Ưu tiên can thiệp tích cực đa chiều.</p>';
+
+  const weakest = [...avgs].sort((a,b)=>a.avg-b.avg);
+  interp += `<p style="margin-top:10px;font-size:.85rem;color:var(--muted)"><strong>Lĩnh vực cần ưu tiên:</strong> ${weakest[0].icon} ${weakest[0].title} (${weakest[0].avg.toFixed(1)}/10)</p>`;
+  interp += `<p style="font-size:.85rem;color:var(--muted)"><strong>Thế mạnh:</strong> ${weakest[4].icon} ${weakest[4].title} (${weakest[4].avg.toFixed(1)}/10)</p>`;
+  interp += '</div>';
+  document.getElementById('interpretation').innerHTML = interp;
+
+  // Notes
+  let notes = `═══ BÁO CÁO ĐÁNH GIÁ SNAPS ═══\nHọc viên: ${document.getElementById('clientName').value||'—'}\nNgày: ${document.getElementById('assessDate').value}\nLần: ${document.getElementById('sessionNum').value}\nMục tiêu: ${document.getElementById('clientGoal').value||'—'}\n`;
+  DATA.forEach(d=>{
+    const n = document.getElementById('note_'+d.key).value;
+    if(n) notes += `\n${d.icon} ${d.title}:\n${n}\n`;
+  });
+  document.getElementById('notesOutput').textContent = notes;
+}
+
+function drawRadar(avgs){
+  const c = document.getElementById('radarChart');
+  const ctx = c.getContext('2d');
+  const W = c.width, H = c.height, cx = W/2, cy = H/2, R = 140;
+  ctx.clearRect(0,0,W,H);
+  const n = avgs.length;
+  const angleStep = (Math.PI*2)/n;
+  const startAngle = -Math.PI/2;
+
+  // Grid circles
+  for(let r = 1; r <= 5; r++){
+    ctx.beginPath();
+    const cr = R * (r/5);
+    for(let i=0;i<=n;i++){
+      const a = startAngle + i*angleStep;
+      const x = cx + cr*Math.cos(a), y = cy + cr*Math.sin(a);
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle = 'rgba(61,90,58,0.1)';
+    ctx.stroke();
+  }
+
+  // Axes + labels
+  avgs.forEach((a,i)=>{
+    const angle = startAngle + i*angleStep;
+    ctx.beginPath();
+    ctx.moveTo(cx,cy);
+    ctx.lineTo(cx+R*Math.cos(angle), cy+R*Math.sin(angle));
+    ctx.strokeStyle='rgba(61,90,58,0.08)';
+    ctx.stroke();
+    const lx = cx+(R+24)*Math.cos(angle), ly = cy+(R+24)*Math.sin(angle);
+    ctx.fillStyle = a.color;
+    ctx.font = '600 12px Inter';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(a.icon+' '+a.title, lx, ly);
+  });
+
+  // Data polygon
+  ctx.beginPath();
+  avgs.forEach((a,i)=>{
+    const angle = startAngle + i*angleStep;
+    const r = R*(a.avg/10);
+    const x = cx+r*Math.cos(angle), y = cy+r*Math.sin(angle);
+    i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+  });
+  ctx.closePath();
+  const grad = ctx.createLinearGradient(cx-R,cy-R,cx+R,cy+R);
+  grad.addColorStop(0,'rgba(90,122,86,0.2)');
+  grad.addColorStop(1,'rgba(61,90,58,0.15)');
+  ctx.fillStyle = grad;
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(90,122,86,0.8)';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Data points
+  avgs.forEach((a,i)=>{
+    const angle = startAngle + i*angleStep;
+    const r = R*(a.avg/10);
+    ctx.beginPath();
+    ctx.arc(cx+r*Math.cos(angle), cy+r*Math.sin(angle), 5, 0, Math.PI*2);
+    ctx.fillStyle = a.color;
+    ctx.fill();
+  });
+}
+
+function resetForm(){
+  if(!confirm('Bạn có chắc muốn xóa tất cả dữ liệu?')) return;
+  Object.keys(scores).forEach(k=>delete scores[k]);
+  document.querySelectorAll('.rating button').forEach(b=>{b.classList.remove('active');b.style.background='';b.style.borderColor=''});
+  document.querySelectorAll('textarea').forEach(t=>t.value='');
+  document.querySelectorAll('input').forEach(i=>{if(i.type!=='date')i.value=''});
+  DATA.forEach(d=>{document.getElementById('avg_'+d.key).textContent='0.0';document.getElementById('bar_'+d.key).style.width='0%'});
+  document.getElementById('resultPanel').classList.remove('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+
+function shareZalo() {
+  const text = document.getElementById('notesOutput').textContent;
+  const encoded = encodeURIComponent(text);
+  window.open('https://zalo.me/0326808864?text=' + encoded, '_blank');
+}
+
+function copyResult() {
+  const text = document.getElementById('notesOutput').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    btn.textContent = '✅ Đã copy!';
+    setTimeout(() => btn.textContent = '📋 Copy kết quả', 2000);
+  });
+}
+  </script>
+  <script src="../js/search-index.js"></script>
+  <script src="../js/search.js"></script>
+  
+</body>
+</html>

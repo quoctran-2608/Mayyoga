@@ -1,0 +1,36 @@
+User-agent: *
+Allow: /
+
+# Block internal/private directories
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /.gemini/
+
+# Sitemap location
+Sitemap: https://mayyoga.health/sitemap.xml
+
+# === AI / Generative Engine Crawlers ===
+# Allow AI bots to index for GEO (Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /

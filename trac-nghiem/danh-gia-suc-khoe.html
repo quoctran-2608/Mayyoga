@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đánh giá sức khỏe trước khi tập Yoga — Mây Yoga</title>
+  <meta name="description" content="Bài đánh giá sức khỏe giúp giáo viên hiểu tình trạng của bạn trước khi bắt đầu lớp Yoga. Hoàn toàn miễn phí.">
+  <link rel="stylesheet" href="../css/style.css?v=4">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <meta property="og:title" content="Đánh giá sức khỏe trước khi tập Yoga — Mây Yoga">
+  <meta property="og:description" content="Bài đánh giá sức khỏe giúp giáo viên hiểu tình trạng của bạn trước khi bắt đầu lớp Yoga.">
+  <meta property="og:url" content="https://mayyoga.health/trac-nghiem/danh-gia-suc-khoe.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://mayyoga.health/assets/images/hero.webp">
+  <meta property="og:site_name" content="Mây Yoga">
+  <meta property="og:locale" content="vi_VN">
+  <link rel="canonical" href="https://mayyoga.health/trac-nghiem/danh-gia-suc-khoe.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Đánh giá sức khỏe trước khi tập Yoga — Mây Yoga">
+  <meta name="twitter:description" content="Bài đánh giá sức khỏe giúp giáo viên hiểu tình trạng của bạn trước khi bắt đầu lớp Yoga.">
+  <meta name="twitter:image" content="https://mayyoga.health/assets/images/hero.webp">
+  <style>
+  .ha-section { display:none; }
+  .ha-section.active { display:block; }
+  .ha-section-header { text-align:center; margin-bottom:32px; }
+  .ha-sec-icon { font-size:2.5rem; display:block; margin-bottom:8px; }
+  .ha-section-header h2 { font-size:1.3rem; color:#3D5A3A; margin-bottom:6px; }
+  .ha-section-header p { color:#6B7280; font-size:0.95rem; }
+  .ha-question { background:#fff; border-radius:16px; padding:24px 28px; margin-bottom:20px; border:2px solid #e8ede8; transition:all 0.3s; }
+  .ha-question h3 { font-size:1.05rem; color:#3D5A3A; margin-bottom:16px; line-height:1.5; }
+  .ha-question h3 small { color:#9CA3AF; font-weight:400; }
+  .ha-question.ha-error { border-color:#FCA5A5; background:#FEF2F2; animation:shake 0.4s; }
+  .ha-nav { display:flex; gap:12px; justify-content:center; margin-top:32px; }
+  .ha-textarea { width:100%; padding:14px 18px; border:2px solid #e5e7eb; border-radius:12px; font-size:0.95rem; font-family:inherit; resize:vertical; transition:border-color 0.3s; }
+  .ha-textarea:focus { outline:none; border-color:#6B8E6B; }
+  .profile-card { background:#fff; border-radius:16px; padding:24px 28px; margin-bottom:16px; border:2px solid #e8ede8; text-align:left; }
+  .profile-card h4 { color:#3D5A3A; font-size:1.05rem; margin-bottom:12px; }
+  .profile-card ul { padding-left:20px; margin:0; }
+  .profile-card li { margin-bottom:6px; color:#374151; }
+  .profile-card p { color:#374151; line-height:1.7; margin:0; }
+  .profile-warning { border-color:#FCD34D; background:#FFFBEB; }
+  .profile-warning h4 { color:#92400E; }
+  .profile-ok { border-color:#A7F3D0; background:#ECFDF5; }
+  .profile-ok h4 { color:#065F46; }
+  .profile-rec { border-color:#c4d4c0; background:#f0f5ef; }
+  .profile-note { font-size:0.88rem; color:#92400E; margin-top:12px !important; font-style:italic; }
+  .profile-tags { display:flex; flex-wrap:wrap; gap:8px; }
+  .ptag { background:#f0f5ef; color:#3D5A3A; padding:6px 14px; border-radius:20px; font-size:0.88rem; font-weight:500; }
+  .ptag-goal { background:#EEF2FF; color:#4338CA; }
+  .send-section { background:#fff; border:2px solid #d4e4d0; border-radius:16px; padding:24px 28px; margin-top:24px; text-align:center; }
+  .send-section h4 { color:#3D5A3A; margin-bottom:16px; font-size:1.05rem; }
+  .send-btns { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+  .send-btn { display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius:12px; font-size:0.92rem; font-weight:600; cursor:pointer; border:2px solid transparent; transition:all 0.3s; text-decoration:none; }
+  .send-btn:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.15); }
+  .send-btn-email { background:#f0f5ef; color:#3D5A3A; border-color:#d4e4d0; }
+  .send-btn-zalo { background:#0068FF; color:#fff; }
+  .send-btn-fb { background:#1877F2; color:#fff; }
+  .send-btn-whatsapp { background:#25D366; color:#fff; }
+  .send-btn-copy { background:#F3F4F6; color:#374151; border-color:#E5E7EB; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+  
+  /* Mobile Optimizations */
+  @media (max-width: 600px) {
+    .ha-question { padding: 20px 16px; }
+    .profile-card { padding: 20px 16px; }
+    .send-section { padding: 20px 16px; }
+    .ha-textarea { font-size: 16px; /* Prevent iOS Safari auto-zoom */ }
+    .ha-nav { flex-direction: column; width: 100%; gap: 10px; }
+    .ha-nav button { width: 100%; }
+    .send-btns { flex-direction: column; }
+    .send-btn { width: 100%; justify-content: center; }
+  }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo"><img src="../assets/images/logo.webp" alt="Mây Yoga" class="logo-img"></a>
+            <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Trang chủ</a></li>
+        <li><a href="../ve-may-yoga.html">Về Mây Yoga</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="dropdown-toggle" style="color:#d4af37; font-weight:600;">Các khoá học <span class="chevron">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../hoc-yoga-online.html">🌿 Yoga Online 1:1</a></li>
+            <li><a href="../goc-huan-luyen-vien.html">🦉 Đào tạo YTT 200H</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href="#" class="dropdown-toggle">Kiến thức Yoga <span class="chevron">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../bai-viet/yoga-cho-nguoi-moi.html">🌱 Yoga cho người mới</a></li>
+            <li><a href="../tu-the-yoga.html">🧘 90 Tư thế Yoga</a></li>
+            <li><a href="../bai-viet/pranayama-ky-thuat-tho.html">🌬️ Pranayama</a></li>
+            <li><a href="../bai-viet/thien-cho-nguoi-moi.html">🕊️ Thiền định</a></li>
+            <li><a href="../giai-phau-yoga.html">🫀 Giải phẫu Yoga</a></li>
+            <li style="border-top:1px solid rgba(61,90,58,0.1); margin-top:4px; padding-top:4px;"><a href="../tu-tap-tai-nha.html">🏠 Tự tập tại nhà</a></li>
+          </ul>
+        </li>
+        <li><a href="../trac-nghiem.html">Trắc nghiệm</a></li>
+      </ul>
+      <div class="nav-search" id="navSearch">
+        <input type="text" id="globalSearch" placeholder="🔍 Tìm tư thế, bài viết..." autocomplete="off">
+        <div class="search-dropdown" id="searchDropdown"></div>
+      </div>
+      <div class="nav-cta"><a href="../index.html#blog" class="btn btn-primary btn-sm">Khám phá ngay</a></div>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="article-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="../index.html">Trang chủ</a><span class="sep">›</span>
+        <a href="../trac-nghiem.html">Trắc nghiệm</a><span class="sep">›</span>
+        <span>Đánh giá sức khỏe</span>
+      </div>
+      <span class="article-tag">🏥 Đánh giá đầu vào</span>
+      <h1>Đánh giá sức khỏe trước khi tập Yoga</h1>
+      <div class="article-meta">
+        <span class="meta-item">📋 15 câu hỏi</span>
+        <span class="meta-item">⏱ ~5 phút</span>
+        <span class="meta-item">🏷️ Dành cho học viên mới</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="article-body" style="padding: 40px 0 60px;">
+    <div class="quiz-container">
+      <p style="text-align:center;font-size:1.05rem;color:#4B5563;margin-bottom:32px;line-height:1.8;">
+        Bài đánh giá này giúp giáo viên <strong>hiểu tình trạng sức khỏe</strong> của bạn<br>
+        để thiết kế bài tập <strong>an toàn và phù hợp nhất</strong>. Thông tin hoàn toàn bảo mật.
+      </p>
+      <div class="quiz-progress">
+        <div class="progress-bar"><div class="progress-fill" style="width:33%"></div></div>
+        <span class="progress-text">1/3</span>
+      </div>
+<div class="ha-section" data-section="1">
+<div class="ha-section-header"><span class="ha-sec-icon">🏥</span><h2>Phần 1: Tình trạng sức khỏe</h2><p>Giúp giáo viên hiểu các vấn đề sức khỏe cần lưu ý</p></div>
+<div class="ha-question" data-qid="injury" data-type="checkbox">
+<h3>Bạn có chấn thương nào không? <small>(chọn nhiều)</small></h3>
+<div class="quiz-options">
+<div class="quiz-option" data-value="none"><span class="option-radio"></span>Không có chấn thương</div>
+<div class="quiz-option" data-value="back"><span class="option-radio"></span>Đau lưng / cột sống</div>
+<div class="quiz-option" data-value="knee"><span class="option-radio"></span>Chấn thương đầu gối</div>
+<div class="quiz-option" data-value="shoulder"><span class="option-radio"></span>Đau vai / cổ</div>
+<div class="quiz-option" data-value="wrist"><span class="option-radio"></span>Cổ tay / khuỷu tay</div>
+<div class="quiz-option" data-value="ankle"><span class="option-radio"></span>Mắt cá / bàn chân</div>
+<div class="quiz-option" data-value="other"><span class="option-radio"></span>Chấn thương khác</div>
+</div></div>
+<div class="ha-question" data-qid="chronic" data-type="checkbox">
+<h3>Bạn có bệnh lý mãn tính nào? <small>(chọn nhiều)</small></h3>
+<div class="quiz-options">
+<div class="quiz-option" data-value="none"><span class="option-radio"></span>Không có</div>
+<div class="quiz-option" data-value="hypertension"><span class="option-radio"></span>Huyết áp cao</div>
+<div class="quiz-option" data-value="diabetes"><span class="option-radio"></span>Tiểu đường</div>
+<div class="quiz-option" data-value="heart"><span class="option-radio"></span>Tim mạch</div>
+<div class="quiz-option" data-value="asthma"><span class="option-radio"></span>Hen suyễn</div>
+<div class="quiz-option" data-value="thyroid"><span class="option-radio"></span>Tuyến giáp</div>
+<div class="quiz-option" data-value="arthritis"><span class="option-radio"></span>Viêm khớp</div>
+<div class="quiz-option" data-value="other"><span class="option-radio"></span>Khác</div>
+</div></div>
+<div class="ha-question" data-qid="pregnant" data-type="radio">
+<h3>Bạn có đang mang thai không?</h3>
+<div class="quiz-options">
+<div class="quiz-option" data-value="no"><span class="option-radio"></span>Không</div>
+<div class="quiz-option" data-value="yes"><span class="option-radio"></span>Có</div>
+</div></div>
+<div class="ha-question" data-qid="surgery" data-type="radio">
+<h3>Bạn có phẫu thuật trong 6 tháng gần đây?</h3>
+<div class="quiz-options">
+<div class="quiz-option" data-value="no"><span class="option-radio"></span>Không</div>
+<div class="quiz-option" data-value="yes"><span class="option-radio"></span>Có</div>
+</div></div>
+<div class="ha-nav"><button class="btn btn-primary ha-next">Tiếp theo →</button></div>
+</div>
+<div class="ha-section" data-section="2">
+<div class="ha-section-header"><span class="ha-sec-icon">💪</span><h2>Phần 2: Thể lực & Vận động</h2><p>Đánh giá mức độ vận động và thể lực hiện tại</p></div>
+<div class="ha-question" data-qid="experience" data-type="radio">
+<h3>Kinh nghiệm tập Yoga của bạn?</h3>
+<div class="quiz-options">
+<div class="quiz-option" data-value="none"><span class="option-radio"></span>Chưa từng tập</div>
+<div class="quiz-option" data-value="beginner"><span class="option-radio"></span>Dưới 6 tháng</div>
+<div class="quiz-option" data-value="intermediate"><span class="option-radio"></span>6 tháng – 2 năm</div>
+<div class="quiz-option" data-value="advanced"><span class="option-radio"></span>Trên 2 năm</div>
+</div></div>
+<div class="ha-question" data-qid="flexibility" data-type="radio">
+<h3>Độ dẻo dai của bạn?</h3>
+<div class="quiz-options">
+<div class="quiz-option" data-value="low"><span class="option-radio"></span>Cứng — khó chạm ngón chân</div>
+<div class="quiz-option" data-value="medium"><span class="option-radio"></span>Trung bình — chạm được ngón chân</div>
+<div class="quiz-option" data-value="high"><span class="option-radio"></span>Dẻo dai — dễ dàng gập người</div>
+</div></div>
+<div class="ha-question" data-qid="activity" data-type="radio">
+<h3>Mức vận động hàng ngày?</h3>
+<div class="quiz-options">
+<div class="quiz-option" data-value="sedentary"><span class="option-radio"></span>Ít vận động (ngồi nhiều)</div>
+<div class="quiz-option" data-value="light"><span class="option-radio"></span>Nhẹ (đi bộ, việc nhà)</div>
+<div class="quiz-option" data-value="moderate"><span class="option-radio"></span>Trung bình (tập 2-3 lần/tuần)</div>
+<div class="quiz-option" data-value="active"><span class="option-radio"></span>Năng động (tập mỗi ngày)</div>
+</div></div>
+<div class="ha-question" data-qid="pain" data-type="checkbox">
+<h3>Vùng nào hay đau/khó chịu? <small>(chọn nhiều)</small></h3>
+<div class="quiz-options">
+<div class="quiz-option" data-value="none"><span class="option-radio"></span>Không đau</div>
+<div class="quiz-option" data-value="neck"><span class="option-radio"></span>Cổ / vai gáy</div>
+<div class="quiz-option" data-value="upper_back"><span class="option-radio"></span>Lưng trên</div>
+<div class="quiz-option" data-value="lower_back"><span class="option-radio"></span>Thắt lưng</div>
+<div class="quiz-option" data-value="hip"><span class="option-radio"></span>Hông / xương chậu</div>
+<div class="quiz-option" data-value="knee"><span class="option-radio"></span>Đầu gối</div>
+<div class="quiz-option" data-value="wrist"><span class="option-radio"></span>Cổ tay</div>
+</div></div>
+<div class="ha-nav"><button class="btn btn-secondary ha-prev">← Quay lại</button><button class="btn btn-primary ha-next">Tiếp theo →</button></div>
+</div>
+<div class="ha-section" data-section="3">
+<div class="ha-section-header"><span class="ha-sec-icon">🎯</span><h2>Phần 3: Mục tiêu & Lối sống</h2><p>Để gợi ý lớp học phù hợp nhất với bạn</p></div>
+<div class="ha-question" data-qid="goals" data-type="checkbox" data-required="false">
+<h3>Mục tiêu tập Yoga? <small>(chọn nhiều, không bắt buộc)</small></h3>
+<div class="quiz-options">
+<div class="quiz-option" data-value="flexibility"><span class="option-radio"></span>Tăng dẻo dai</div>
+<div class="quiz-option" data-value="strength"><span class="option-radio"></span>Tăng sức mạnh cơ</div>
+<div class="quiz-option" data-value="stress"><span class="option-radio"></span>Giảm căng thẳng</div>
+<div class="quiz-option" data-value="pain"><span class="option-radio"></span>Giảm đau nhức</div>
+<div class="quiz-option" data-value="weight"><span class="option-radio"></span>Giảm cân</div>
+<div class="quiz-option" data-value="sleep"><span class="option-radio"></span>Ngủ ngon hơn</div>
+<div class="quiz-option" data-value="mindfulness"><span class="option-radio"></span>Chánh niệm / thiền</div>
+<div class="quiz-option" data-value="posture"><span class="option-radio"></span>Cải thiện tư thế</div>
+</div></div>
+<div class="ha-question" data-qid="stress" data-type="radio">
+<h3>Mức độ căng thẳng hiện tại?</h3>
+<div class="quiz-options">
+<div class="quiz-option" data-value="low"><span class="option-radio"></span>Thấp — thoải mái</div>
+<div class="quiz-option" data-value="medium"><span class="option-radio"></span>Trung bình</div>
+<div class="quiz-option" data-value="high"><span class="option-radio"></span>Cao — hay lo lắng</div>
+<div class="quiz-option" data-value="very_high"><span class="option-radio"></span>Rất cao — ảnh hưởng sức khỏe</div>
+</div></div>
+<div class="ha-question" data-qid="sleep" data-type="radio">
+<h3>Chất lượng giấc ngủ?</h3>
+<div class="quiz-options">
+<div class="quiz-option" data-value="good"><span class="option-radio"></span>Tốt — ngủ đủ, sâu giấc</div>
+<div class="quiz-option" data-value="fair"><span class="option-radio"></span>Bình thường</div>
+<div class="quiz-option" data-value="poor"><span class="option-radio"></span>Kém — hay thức giấc</div>
+<div class="quiz-option" data-value="insomnia"><span class="option-radio"></span>Mất ngủ thường xuyên</div>
+</div></div>
+<div class="ha-question" data-qid="notes" data-type="text">
+<h3>Bạn muốn chia sẻ thêm điều gì với giáo viên?</h3>
+<textarea class="ha-textarea" placeholder="Ví dụ: đang uống thuốc, dị ứng, mục tiêu cụ thể..." rows="3"></textarea>
+</div>
+<div class="ha-nav"><button class="btn btn-secondary ha-prev">← Quay lại</button><button class="btn btn-primary" id="haSubmit">Xem kết quả đánh giá →</button></div>
+</div>
+<div class="quiz-result personality-result" id="haResult" style="display:none;">
+<h2>📋 Hồ sơ sức khỏe Yoga của bạn</h2>
+<p style="text-align:center;color:#6B7280;margin-bottom:28px;">Kết quả đánh giá giúp giáo viên hiểu và thiết kế bài tập phù hợp nhất</p>
+<div id="profileContent"></div>
+<div class="send-section">
+<h4>📨 Gửi kết quả cho Mây để được tư vấn</h4>
+<div class="send-btns">
+<button class="send-btn send-btn-zalo" data-send="zalo">💬 Gửi qua Zalo</button>
+<button class="send-btn send-btn-fb" data-send="facebook">💙 Gửi qua Facebook</button>
+<button class="send-btn send-btn-whatsapp" data-send="whatsapp">💚 Gửi qua WhatsApp</button>
+</div>
+</div>
+<div style="margin-top:32px;text-align:center;">
+<button id="haRetry" class="btn btn-secondary">Làm lại →</button>
+<a href="../trac-nghiem.html" style="display:inline-block;margin-left:12px;" class="btn btn-primary">Trắc nghiệm khác →</a>
+</div>
+</div>
+    </div>
+  </main>
+
+<footer class="footer">
+    <div class="container" style="text-align:center; padding: 40px 0 20px;">
+      <a href="../index.html" class="nav-logo" style="display:inline-flex; justify-content:center; margin-bottom:12px;">
+        <img src="../assets/images/logo.webp" alt="Mây Yoga" class="logo-img" style="height:48px; border-radius:10px; padding:4px; background:rgba(255,255,255,0.12); backdrop-filter:blur(6px);">
+      </a>
+      
+      <p style="color:rgba(255,255,255,0.9); margin:0 auto 16px; font-size:0.9rem;">
+        Nền tảng kiến thức Hatha Yoga cho mọi người.<br>
+      </p>
+
+      <div style="display:flex; gap:12px; justify-content:center; align-items:center; margin-bottom:20px;">
+        <a href="mailto:phanthumay.yoga500@gmail.com" aria-label="Email" style="display:inline-flex; width:34px; height:34px; background:rgba(255,255,255,0.12); border-radius:50%; align-items:center; justify-content:center; transition:all 0.3s; text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></a>
+        <a href="https://zalo.me/0326808864" target="_blank" aria-label="Zalo" style="display:inline-flex; width:34px; height:34px; background:rgba(255,255,255,0.12); border-radius:50%; align-items:center; justify-content:center; transition:all 0.3s; text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=61573065832463" target="_blank" aria-label="Facebook" style="display:inline-flex; width:34px; height:34px; background:rgba(255,255,255,0.12); border-radius:50%; align-items:center; justify-content:center; transition:all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://www.instagram.com/thumay2808" target="_blank" aria-label="Instagram" style="display:inline-flex; width:34px; height:34px; background:rgba(255,255,255,0.12); border-radius:50%; align-items:center; justify-content:center; transition:all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        <a href="https://www.tiktok.com/@my.v.yoga" target="_blank" aria-label="TikTok" style="display:inline-flex; width:34px; height:34px; background:rgba(255,255,255,0.12); border-radius:50%; align-items:center; justify-content:center; transition:all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+      </div>
+      
+      <p style="color:rgba(255,255,255,0.7); font-size: 0.82rem; line-height: 1.6; margin: 0 auto 16px; max-width: 600px;">
+        <strong>Chủ quản:</strong> Phan Thu Mây &nbsp;|&nbsp; <strong>MST:</strong> 066195013103<br>
+      </p>
+
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:20px; font-size:0.8rem;">
+        <a href="../chinh-sach-bao-mat.html" style="color:rgba(255,255,255,0.7); text-decoration:none;">Bảo mật thông tin</a>
+        <a href="../dieu-khoan-su-dung.html" style="color:rgba(255,255,255,0.7); text-decoration:none;">Điều khoản sử dụng</a>
+        <a href="../chinh-sach-thanh-toan.html" style="color:rgba(255,255,255,0.7); text-decoration:none;">Thanh toán</a>
+        <a href="../chinh-sach-doi-tra.html" style="color:rgba(255,255,255,0.7); text-decoration:none;">Khiếu nại & Hoàn tiền</a>
+      </div>
+
+      <div style="border-top:1px solid rgba(255,255,255,0.15); padding-top:16px; max-width:300px; margin:0 auto;">
+        <p style="color:rgba(255,255,255,0.6); font-size:0.8rem; margin:0;">© 2026 MâyYoga.health 🍀</p>
+      </div>
+    </div>
+</footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/quiz-health.js"></script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Đánh giá sức khỏe trước khi tập Yoga — Mây Yoga",
+    "description": "Bài đánh giá sức khỏe giúp giáo viên hiểu tình trạng của bạn trước khi bắt đầu lớp Yoga.",
+    "url": "https://mayyoga.health/trac-nghiem/danh-gia-suc-khoe.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mây Yoga",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://mayyoga.health/assets/images/logo.webp"
+      }
+    }
+  }
+  </script>
+  <script src="../js/search-index.js"></script>
+  <script src="../js/search.js"></script>
+  <!-- ===== FLOATING CONTACT BUTTONS ===== -->
+  <div class="floating-contact" id="floatingContact">
+    <a href="https://zalo.me/0326808864" target="_blank" class="fc-zalo" data-tooltip="Chat Zalo" aria-label="Liên hệ Zalo">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 4C12.954 4 4 12.954 4 24s8.954 20 20 20 20-8.954 20-20S35.046 4 24 4zm-2.2 28.8h-2.6c-3.8 0-6.8-1.2-9-3.4l.6-2.4c2 2.2 4.8 3.4 8.4 3.4h2.6v2.4zm10.6-4.8c-.6 1-1.6 1.6-2.8 1.6H27v-2.4h2.6c.4 0 .8-.2 1-.6.2-.4.2-.8 0-1.2l-3.4-6.8c-.4-.8-.2-1.8.4-2.4.6-.6 1.6-.8 2.4-.4l5 2.8c.8.4 1.2 1.2 1.2 2.2 0 0-.2 5.2-2.8 7.2z"/></svg>
+    </a>
+    <a href="https://wa.me/84326808864" target="_blank" class="fc-whatsapp" data-tooltip="Chat WhatsApp" aria-label="Liên hệ WhatsApp">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+
+</body>
+</html>

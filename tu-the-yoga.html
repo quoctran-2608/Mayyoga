@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>90 Tư thế Yoga — Mây Yoga</title>
+  <meta name="description" content="Thư viện 90 tư thế Yoga chi tiết với tên Sanskrit, lợi ích, chống chỉ định và hướng dẫn thực hành. Minh họa 3D Pixar.">
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <style>
+    .poses-hero { background: linear-gradient(165deg, var(--mint-50) 0%, var(--cream) 40%, var(--white) 100%); padding: 140px 0 60px; text-align: center; }
+    .poses-hero h1 { font-family: var(--font-heading); font-size: 2.8rem; color: var(--sage-700); margin-bottom: 12px; }
+    .poses-hero p { color: var(--gray-600); font-size: 1.15rem; max-width: 600px; margin: 0 auto 32px; }
+    .poses-hero .stat-row { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .poses-hero .stat { text-align: center; }
+    .poses-hero .stat-num { font-size: 2rem; font-weight: 700; color: var(--mint-500); }
+    .poses-hero .stat-label { font-size: 0.85rem; color: var(--gray-500); }
+
+    .cat-nav { background: white; border-bottom: 1px solid var(--gray-200); padding: 12px 0; position: sticky; top: 117px; z-index: 90; box-shadow: 0 -40px 0 0 white; }
+    .cat-nav-inner { display: flex; gap: 8px; overflow-x: auto; padding: 4px 40px; scrollbar-width: thin; scrollbar-color: rgba(61,90,58,0.2) transparent; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+    .cat-nav-inner::-webkit-scrollbar { height: 3px; }
+    .cat-nav-inner::-webkit-scrollbar-track { background: transparent; }
+    .cat-nav-inner::-webkit-scrollbar-thumb { background: rgba(61,90,58,0.2); border-radius: 3px; }
+    .cat-btn { padding: 6px 14px 6px 6px; border: 1.5px solid var(--mint-200); border-radius: 50px; background: white; color: var(--gray-600); font-size: 0.82rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all 0.3s; font-family: var(--font-body); flex-shrink: 0; display: inline-flex; align-items: center; gap: 6px; }
+    .cat-btn:hover, .cat-btn.active { background: var(--mint-500); color: white; border-color: var(--mint-500); }
+    .cat-btn .cat-icon-img { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; background: var(--mint-50); flex-shrink: 0; border: 1.5px solid var(--mint-200); }
+    .cat-btn:hover .cat-icon-img, .cat-btn.active .cat-icon-img { border-color: rgba(255,255,255,0.4); }
+    .cat-scroll-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; border: none; background: rgba(255,255,255,0.95); box-shadow: 0 2px 8px rgba(0,0,0,0.15); color: var(--sage-700); font-size: 1.2rem; font-weight: 700; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+    .cat-scroll-btn:hover { background: var(--mint-100); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+    .cat-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+    .cat-scroll-left { left: 0; }
+    .cat-scroll-right { right: 0; }
+
+    .category-section { padding: 60px 0 40px; }
+    .category-section:nth-child(even) { background: var(--mint-50); }
+    .cat-header { display: flex; align-items: center; gap: 32px; margin-bottom: 40px; flex-wrap: wrap; }
+    .cat-header > img { width: 200px; height: 200px; border-radius: 20px; object-fit: cover; box-shadow: 0 8px 32px rgba(61,90,58,0.15); }
+    .cat-header-text h2 { font-family: var(--font-heading); font-size: 2rem; color: var(--sage-700); margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+    .cat-header-text h2 .cat-h2-icon { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; background: var(--mint-50); flex-shrink: 0; border: 2px solid var(--mint-200); }
+    .cat-header-text p { color: var(--gray-600); font-size: 1.05rem; }
+
+    .poses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .pose-card-full { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05); transition: transform 0.35s cubic-bezier(.4,0,.2,1), box-shadow 0.35s; border: 1px solid var(--gray-200); cursor: pointer; text-decoration: none; display: block; color: inherit; position: relative; }
+    .pose-card-full:hover { transform: translateY(-6px); box-shadow: 0 12px 36px rgba(61,90,58,0.14); border-color: var(--mint-300); }
+    .pose-card-full:hover .pose-img-wrap { background: var(--mint-100); }
+    .pose-card-full:hover .pose-img-wrap img { transform: scale(1.05); }
+    .pose-img-wrap { background: var(--mint-50); display: flex; align-items: center; justify-content: center; height: 200px; overflow: hidden; padding: 16px; transition: background 0.3s; }
+    .pose-img-wrap img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.4s cubic-bezier(.4,0,.2,1); }
+    .pose-card-body { padding: 18px 20px 20px; }
+    .pose-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+    .pose-name { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--sage-700); margin-bottom: 2px; line-height: 1.3; }
+    .pose-sanskrit { font-style: italic; color: var(--mint-500); font-size: 0.82rem; margin-bottom: 0; }
+    .pose-level { padding: 3px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; white-space: nowrap; flex-shrink: 0; margin-left: 8px; }
+    .pose-level.basic { background: #DCFCE7; color: #166534; }
+    .pose-level.intermediate { background: #FEF3C7; color: #92400E; }
+    .pose-level.advanced { background: #FEE2E2; color: #991B1B; }
+    .pose-summary { font-size: 0.85rem; color: var(--gray-500); line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .pose-card-arrow { display: flex; align-items: center; gap: 4px; margin-top: 12px; font-family: var(--font-heading); font-size: 0.82rem; font-weight: 600; color: var(--mint-600); transition: all 0.3s; }
+    .pose-card-full:hover .pose-card-arrow { color: var(--sage-700); transform: translateX(4px); }
+
+    .back-top { position: fixed; bottom: 32px; right: 32px; width: 48px; height: 48px; background: var(--mint-500); color: white; border: none; border-radius: 50%; font-size: 1.4rem; cursor: pointer; box-shadow: 0 4px 16px rgba(61,90,58,0.3); display: none; z-index: 100; transition: opacity 0.3s; }
+    .back-top:hover { background: var(--sage-700); }
+
+    @media (max-width: 768px) {
+      .cat-nav { top: 0; }
+      .nav-logo .logo-img { height: 60px; }
+      .poses-hero { padding: 30px 0 40px; }
+      .poses-hero h1 { font-size: 2rem; }
+      .cat-header { flex-direction: column; text-align: center; }
+      .cat-header img { width: 150px; height: 150px; }
+      .poses-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .pose-img-wrap { height: 160px; }
+    }
+    @media (max-width: 480px) {
+      .cat-nav { top: 0; }
+      .nav-logo .logo-img { height: 50px; }
+      .poses-hero { padding: 24px 0 32px; }
+      .poses-hero h1 { font-size: 1.6rem; }
+      .poses-grid { grid-template-columns: 1fr; }
+      .pose-img-wrap { height: 180px; }
+    }
+  </style>
+  <meta property="og:title" content="90 Tư thế Yoga — Mây Yoga">
+  <meta property="og:description" content="Thư viện 90 tư thế Yoga chi tiết với tên Sanskrit, lợi ích, chống chỉ định và hướng dẫn thực hành. Minh họa 3D Pixar.">
+  <meta property="og:url" content="https://mayyoga.health/tu-the-yoga.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://mayyoga.health/assets/images/hero.webp">
+  <meta property="og:site_name" content="Mây Yoga">
+  <meta property="og:locale" content="vi_VN">
+  <link rel="canonical" href="https://mayyoga.health/tu-the-yoga.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="90 Tư thế Yoga — Mây Yoga">
+  <meta name="twitter:description" content="Thư viện 90 tư thế Yoga chi tiết với tên Sanskrit, lợi ích, chống chỉ định và hướng dẫn thực hành. Minh họa 3D Pixar.">
+  <meta name="twitter:image" content="https://mayyoga.health/assets/images/hero.webp">
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/images/logo.webp" alt="Mây Yoga" class="logo-img"></a>
+            <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="ve-may-yoga.html">Về Mây Yoga</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="dropdown-toggle" style="color:#d4af37; font-weight:600;">Các khoá học <span class="chevron">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="hoc-yoga-online.html">🌿 Yoga Online 1:1</a></li>
+            <li><a href="goc-huan-luyen-vien.html">🦉 Đào tạo YTT 200H</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href="#" class="dropdown-toggle">Kiến thức Yoga <span class="chevron">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="bai-viet/yoga-cho-nguoi-moi.html">🌱 Yoga cho người mới</a></li>
+            <li><a href="tu-the-yoga.html">🧘 90 Tư thế Yoga</a></li>
+            <li><a href="bai-viet/pranayama-ky-thuat-tho.html">🌬️ Pranayama</a></li>
+            <li><a href="bai-viet/thien-cho-nguoi-moi.html">🕊️ Thiền định</a></li>
+            <li><a href="giai-phau-yoga.html">🫀 Giải phẫu Yoga</a></li>
+            <li style="border-top:1px solid rgba(61,90,58,0.1); margin-top:4px; padding-top:4px;"><a href="tu-tap-tai-nha.html">🏠 Tự tập tại nhà</a></li>
+          </ul>
+        </li>
+        <li><a href="trac-nghiem.html">Trắc nghiệm</a></li>
+      </ul>
+      <div class="nav-search" id="navSearch">
+        <input type="text" id="globalSearch" placeholder="🔍 Tìm tư thế, bài viết..." autocomplete="off">
+        <div class="search-dropdown" id="searchDropdown"></div>
+      </div>
+      <div class="nav-cta"><a href="index.html#blog" class="btn btn-primary btn-sm">Khám phá ngay</a></div>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+
+  <section class="poses-hero">
+    <div class="container">
+      <span class="section-badge">🧘 Thư viện tư thế</span>
+      <h1>90 Tư thế Yoga chi tiết</h1>
+      <p>Hướng dẫn từng tư thế với tên Sanskrit, lợi ích sức khỏe, chống chỉ định và cách thực hiện — phù hợp mọi cấp độ.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="stat-num">90</div><div class="stat-label">Tư thế</div></div>
+        <div class="stat"><div class="stat-num">9</div><div class="stat-label">Nhóm</div></div>
+        <div class="stat"><div class="stat-num">3</div><div class="stat-label">Cấp độ</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cat-nav">
+    <div class="container" style="position:relative;">
+      <button class="cat-scroll-btn cat-scroll-left" id="catScrollLeft" aria-label="Cuộn trái">‹</button>
+      <div class="cat-nav-inner" id="catNav"></div>
+      <button class="cat-scroll-btn cat-scroll-right" id="catScrollRight" aria-label="Cuộn phải">›</button>
+    </div>
+  </div>
+
+  <main id="posesMain"></main>
+
+  <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <footer class="footer">
+    <div class="container" style="text-align:center; padding: 40px 0 20px;">
+      <a href="index.html" class="nav-logo" style="display:inline-flex; justify-content:center; margin-bottom:12px;">
+        <img src="assets/images/logo.webp" alt="Mây Yoga" class="logo-img" style="height:48px; border-radius:10px; padding:4px; background:rgba(255,255,255,0.12); backdrop-filter:blur(6px);">
+      </a>
+      
+      <p style="color:rgba(255,255,255,0.9); margin:0 auto 16px; font-size:0.9rem;">
+        Nền tảng kiến thức Hatha Yoga cho mọi người.<br>
+      </p>
+
+      <div style="display:flex; gap:12px; justify-content:center; align-items:center; margin-bottom:20px;">
+        <a href="mailto:phanthumay.yoga500@gmail.com" aria-label="Email" style="display:inline-flex; width:34px; height:34px; background:rgba(255,255,255,0.12); border-radius:50%; align-items:center; justify-content:center; transition:all 0.3s; text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></a>
+        <a href="https://zalo.me/0326808864" target="_blank" aria-label="Zalo" style="display:inline-flex; width:34px; height:34px; background:rgba(255,255,255,0.12); border-radius:50%; align-items:center; justify-content:center; transition:all 0.3s; text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=61573065832463" target="_blank" aria-label="Facebook" style="display:inline-flex; width:34px; height:34px; background:rgba(255,255,255,0.12); border-radius:50%; align-items:center; justify-content:center; transition:all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://www.instagram.com/thumay2808" target="_blank" aria-label="Instagram" style="display:inline-flex; width:34px; height:34px; background:rgba(255,255,255,0.12); border-radius:50%; align-items:center; justify-content:center; transition:all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        <a href="https://www.tiktok.com/@my.v.yoga" target="_blank" aria-label="TikTok" style="display:inline-flex; width:34px; height:34px; background:rgba(255,255,255,0.12); border-radius:50%; align-items:center; justify-content:center; transition:all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+      </div>
+      
+      <p style="color:rgba(255,255,255,0.7); font-size: 0.82rem; line-height: 1.6; margin: 0 auto 16px; max-width: 600px;">
+        <strong>Chủ quản:</strong> Phan Thu Mây &nbsp;|&nbsp; <strong>MST:</strong> 066195013103<br>
+      </p>
+
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:20px; font-size:0.8rem;">
+        <a href="chinh-sach-bao-mat.html" style="color:rgba(255,255,255,0.7); text-decoration:none;">Bảo mật thông tin</a>
+        <a href="dieu-khoan-su-dung.html" style="color:rgba(255,255,255,0.7); text-decoration:none;">Điều khoản sử dụng</a>
+        <a href="chinh-sach-thanh-toan.html" style="color:rgba(255,255,255,0.7); text-decoration:none;">Thanh toán</a>
+        <a href="chinh-sach-doi-tra.html" style="color:rgba(255,255,255,0.7); text-decoration:none;">Khiếu nại & Hoàn tiền</a>
+      </div>
+
+      <div style="border-top:1px solid rgba(255,255,255,0.15); padding-top:16px; max-width:300px; margin:0 auto;">
+        <p style="color:rgba(255,255,255,0.6); font-size:0.8rem; margin:0;">© 2026 MâyYoga.health 🍀</p>
+      </div>
+    </div>
+</footer>
+
+
+  <script src="js/poses-data.js"></script>
+  <script>
+    // Build category nav
+    const catNav = document.getElementById('catNav');
+    POSE_CATEGORIES.forEach((cat, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'cat-btn' + (i === 0 ? ' active' : '');
+      btn.innerHTML = '<img class="cat-icon-img" src="' + cat.iconImg + '" alt="" loading="lazy"> ' + cat.name;
+      btn.onclick = () => {
+        document.getElementById('cat-' + cat.id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // Scroll the active pill into view in the slider
+        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      };
+      catNav.appendChild(btn);
+    });
+
+    // Scroll arrow buttons for category nav
+    (function() {
+      const inner = document.getElementById('catNav');
+      const leftBtn = document.getElementById('catScrollLeft');
+      const rightBtn = document.getElementById('catScrollRight');
+      if (!inner || !leftBtn || !rightBtn) return;
+
+      function updateArrows() {
+        leftBtn.classList.toggle('hidden', inner.scrollLeft <= 8);
+        rightBtn.classList.toggle('hidden', inner.scrollLeft >= inner.scrollWidth - inner.clientWidth - 8);
+      }
+      leftBtn.onclick = () => { inner.scrollBy({ left: -200, behavior: 'smooth' }); };
+      rightBtn.onclick = () => { inner.scrollBy({ left: 200, behavior: 'smooth' }); };
+      inner.addEventListener('scroll', updateArrows);
+      updateArrows();
+    })();
+
+    // Vietnamese slug converter
+    const SLUG_OVERRIDES = {'Tư thế Cày':'tu-the-cay-halasana'};
+    function vnSlug(t){
+      t=t.toLowerCase();
+      const M={'đ':'d','ă':'a','â':'a','ê':'e','ô':'o','ơ':'o','ư':'u','á':'a','à':'a','ả':'a','ã':'a','ạ':'a','ắ':'a','ằ':'a','ẳ':'a','ẵ':'a','ặ':'a','ấ':'a','ầ':'a','ẩ':'a','ẫ':'a','ậ':'a','é':'e','è':'e','ẻ':'e','ẽ':'e','ẹ':'e','ế':'e','ề':'e','ể':'e','ễ':'e','ệ':'e','í':'i','ì':'i','ỉ':'i','ĩ':'i','ị':'i','ó':'o','ò':'o','ỏ':'o','õ':'o','ọ':'o','ố':'o','ồ':'o','ổ':'o','ỗ':'o','ộ':'o','ớ':'o','ờ':'o','ở':'o','ỡ':'o','ợ':'o','ú':'u','ù':'u','ủ':'u','ũ':'u','ụ':'u','ứ':'u','ừ':'u','ử':'u','ữ':'u','ự':'u','ý':'y','ỳ':'y','ỷ':'y','ỹ':'y','ỵ':'y'};
+      t=[...t].map(c=>M[c]||c).join('');
+      return t.replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').trim();
+    }
+    function getSlug(vn){return SLUG_OVERRIDES[vn]||vnSlug(vn);}
+
+    // Build pose sections
+    const main = document.getElementById('posesMain');
+    POSE_CATEGORIES.forEach(cat => {
+      const poses = POSES.filter(p => p.cat === cat.id);
+      const levelClass = l => l === 'Cơ bản' ? 'basic' : l === 'Trung cấp' ? 'intermediate' : 'advanced';
+      const section = document.createElement('section');
+      section.className = 'category-section';
+      section.id = 'cat-' + cat.id;
+      section.innerHTML = `
+        <div class="container">
+          <div class="cat-header">
+            <img src="${cat.img}" alt="${cat.name}" loading="lazy">
+            <div class="cat-header-text">
+              <h2><img class="cat-h2-icon" src="${cat.iconImg}" alt="" loading="lazy"> ${cat.name}</h2>
+              <p>${cat.desc}</p>
+              <p style="margin-top:8px;color:var(--mint-500);font-weight:600">${poses.length} tư thế</p>
+            </div>
+          </div>
+          <div class="poses-grid">
+            ${poses.map((p, i) => `
+              <a href="tu-the/${getSlug(p.vn)}.html" class="pose-card-full">
+                <div class="pose-img-wrap">
+                  <img src="${p.img}" alt="${p.vn}" loading="lazy">
+                </div>
+                <div class="pose-card-body">
+                  <div class="pose-top">
+                    <div>
+                      <div class="pose-name">${p.vn}</div>
+                      <p class="pose-sanskrit">${p.san}</p>
+                    </div>
+                    <span class="pose-level ${levelClass(p.level)}">${p.level}</span>
+                  </div>
+                  <p class="pose-summary">${p.benefits.split('.')[0]}.</p>
+                  <div class="pose-card-arrow">Xem chi tiết <span>→</span></div>
+                </div>
+              </a>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      main.appendChild(section);
+    });
+
+    // Back to top
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => { backTop.style.display = window.scrollY > 600 ? 'block' : 'none'; });
+
+    // Dynamically sync .cat-nav sticky top with actual navbar height
+    (function() {
+      const navbar = document.getElementById('navbar');
+      const catNavEl = document.querySelector('.cat-nav');
+      if (!navbar || !catNavEl) return;
+      function syncTop() {
+        const h = navbar.getBoundingClientRect().height;
+        catNavEl.style.top = h + 'px';
+      }
+      syncTop();
+      window.addEventListener('resize', syncTop);
+      window.addEventListener('scroll', syncTop);
+    })();
+
+    // Scroll to hash after render (support links from homepage)
+    if (location.hash) {
+      const target = document.querySelector(location.hash);
+      if (target) {
+        setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      }
+    }
+
+
+    // Sticky nav highlight
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('.category-section');
+      const btns = document.querySelectorAll('.cat-btn');
+      let current = 0;
+      sections.forEach((s, i) => { if (window.scrollY >= s.offsetTop - 200) current = i; });
+      btns.forEach(b => b.classList.remove('active'));
+      if (btns[current]) btns[current].classList.add('active');
+    });
+
+    // Mobile toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (mobileToggle) mobileToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); mobileToggle.classList.toggle('active'); });
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50); });
+  </script>
+  <script src="js/search-index.js"></script>
+  <script src="js/search.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "88 Tư thế Yoga chi tiết — Mây Yoga",
+    "description": "Thư viện 88 tư thế Yoga chi tiết với tên Sanskrit, lợi ích sức khỏe, chống chỉ định và hướng dẫn thực hành.",
+    "url": "https://mayyoga.health/tu-the-yoga.html",
+    "inLanguage": "vi",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Mây Yoga",
+      "url": "https://mayyoga.health"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Yoga Poses",
+      "description": "Hướng dẫn tư thế Hatha Yoga cho mọi cấp độ"
+    },
+    "numberOfItems": 88,
+    "mainEntity": {
+      "@type": "ItemList",
+      "name": "Danh sách tư thế Yoga",
+      "numberOfItems": 88,
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Uttanasana — Đứng cúi người"},
+        {"@type": "ListItem", "position": 2, "name": "Paschimottanasana — Ngồi cúi gập"},
+        {"@type": "ListItem", "position": 3, "name": "Bhujangasana — Tư thế Rắn hổ mang"},
+        {"@type": "ListItem", "position": 4, "name": "Trikonasana — Tư thế Tam giác"},
+        {"@type": "ListItem", "position": 5, "name": "Ardha Matsyendrasana — Vặn xoắn ngồi"},
+        {"@type": "ListItem", "position": 6, "name": "Navasana — Tư thế Thuyền"},
+        {"@type": "ListItem", "position": 7, "name": "Baddha Konasana — Tư thế Bướm"},
+        {"@type": "ListItem", "position": 8, "name": "Vrksasana — Tư thế Cây"},
+        {"@type": "ListItem", "position": 9, "name": "Sarvangasana — Đứng bằng vai"},
+        {"@type": "ListItem", "position": 10, "name": "Savasana — Tư thế Xác"}
+      ]
+    }
+  }
+  </script>
+  <!-- ===== FLOATING CONTACT BUTTONS ===== -->
+  <div class="floating-contact" id="floatingContact">
+    <a href="https://zalo.me/0326808864" target="_blank" class="fc-zalo" data-tooltip="Chat Zalo" aria-label="Liên hệ Zalo">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 4C12.954 4 4 12.954 4 24s8.954 20 20 20 20-8.954 20-20S35.046 4 24 4zm-2.2 28.8h-2.6c-3.8 0-6.8-1.2-9-3.4l.6-2.4c2 2.2 4.8 3.4 8.4 3.4h2.6v2.4zm10.6-4.8c-.6 1-1.6 1.6-2.8 1.6H27v-2.4h2.6c.4 0 .8-.2 1-.6.2-.4.2-.8 0-1.2l-3.4-6.8c-.4-.8-.2-1.8.4-2.4.6-.6 1.6-.8 2.4-.4l5 2.8c.8.4 1.2 1.2 1.2 2.2 0 0-.2 5.2-2.8 7.2z"/></svg>
+    </a>
+    <a href="https://wa.me/84326808864" target="_blank" class="fc-whatsapp" data-tooltip="Chat WhatsApp" aria-label="Liên hệ WhatsApp">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+
+</body>
+</html>
