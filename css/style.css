@@ -2074,6 +2074,9 @@ p { color: var(--gray-600); }
     grid-template-columns: 1fr;
     gap: 32px;
   }
+  .footer-brand-col {
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 480px) {
