@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
@@ -541,12 +541,92 @@
         </div>
       </div>
 
-      <!-- Bài viết nổi bật -->
-      <div style="text-align:center; margin-bottom:32px;">
-        <h3 style="color:#2e3b2d; font-size:1.3rem;">📖 Bài viết nổi bật</h3>
+      <!-- Bài viết nổi bật — Premium Redesign -->
+      <div class="featured-blog-header reveal">
+        <span class="featured-blog-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Bài viết nổi bật
+        </span>
+        <h3 class="featured-blog-title">Kiến thức Yoga chọn lọc</h3>
+        <p class="featured-blog-subtitle">Những bài viết chuyên sâu giúp bạn hiểu đúng, tập đúng và tiến bộ mỗi ngày</p>
       </div>
-      <div class="blog-grid" id="randomBlogGrid">
-        <!-- Filled by JS -->
+
+      <div class="featured-blog-grid reveal">
+        <!-- Card 1 -->
+        <a href="bai-viet/yoga-cho-nguoi-moi.html" class="fb-card">
+          <div class="fb-card-image">
+            <img loading="lazy" src="assets/images/articles/blog-featured/yoga-beginner.jpg" alt="Yoga cho người mới bắt đầu">
+            <div class="fb-card-overlay"></div>
+            <span class="fb-card-category">Người mới</span>
+            <span class="fb-card-readtime">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              5 phút đọc
+            </span>
+          </div>
+          <div class="fb-card-body">
+            <h4 class="fb-card-title">Hướng dẫn Yoga cho người mới — Toàn tập A đến Z</h4>
+            <p class="fb-card-desc">Bắt đầu hành trình yoga từ con số 0. Tổng hợp kiến thức nền tảng, lộ trình, và tư thế cơ bản để bạn tự tin bước lên thảm.</p>
+            <div class="fb-card-meta">
+              <div class="fb-card-author">
+                <div class="fb-card-avatar">M</div>
+                <span>Mây Yoga</span>
+              </div>
+              <span class="fb-card-arrow">Đọc tiếp →</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="bai-viet/thien-cho-nguoi-moi.html" class="fb-card">
+          <div class="fb-card-image">
+            <img loading="lazy" src="assets/images/articles/blog-featured/meditation.jpg" alt="Thiền định cho người mới">
+            <div class="fb-card-overlay"></div>
+            <span class="fb-card-category">Thiền định</span>
+            <span class="fb-card-readtime">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              8 phút đọc
+            </span>
+          </div>
+          <div class="fb-card-body">
+            <h4 class="fb-card-title">Thiền định cho người mới — Hướng dẫn từ A đến Z</h4>
+            <p class="fb-card-desc">Thiền không phải ngồi yên, không suy nghĩ. Hiểu đúng bản chất thiền, các kỹ thuật phổ biến và cách bắt đầu chỉ 5 phút mỗi ngày.</p>
+            <div class="fb-card-meta">
+              <div class="fb-card-author">
+                <div class="fb-card-avatar">M</div>
+                <span>Mây Yoga</span>
+              </div>
+              <span class="fb-card-arrow">Đọc tiếp →</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="bai-viet/pranayama-ky-thuat-tho.html" class="fb-card">
+          <div class="fb-card-image">
+            <img loading="lazy" src="assets/images/articles/blog-featured/breathing.jpg" alt="Pranayama kỹ thuật thở">
+            <div class="fb-card-overlay"></div>
+            <span class="fb-card-category">Pranayama</span>
+            <span class="fb-card-readtime">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              10 phút đọc
+            </span>
+          </div>
+          <div class="fb-card-body">
+            <h4 class="fb-card-title">Pranayama — Kỹ thuật thở trong Yoga bạn cần biết</h4>
+            <p class="fb-card-desc">Hơi thở là cầu nối giữa cơ thể và tâm trí. Khám phá các kỹ thuật Pranayama từ cơ bản đến nâng cao và lợi ích khoa học.</p>
+            <div class="fb-card-meta">
+              <div class="fb-card-author">
+                <div class="fb-card-avatar">M</div>
+                <span>Mây Yoga</span>
+              </div>
+              <span class="fb-card-arrow">Đọc tiếp →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Fallback random grid (hidden, kept for SEO/JS) -->
+      <div class="blog-grid" id="randomBlogGrid" style="display:none;">
       </div>
 
     </div>
