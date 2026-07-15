@@ -1,5 +1,5 @@
 /* ===== DESIGN SYSTEM - MayYoga.health ===== */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
   /* Colors — matched to Mây Yoga logo (#6B8E6B sage green) */
@@ -28,8 +28,8 @@
   --gray-900: #111827;
 
   /* Typography */
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Spacing */
   --section-padding: 100px 0;
@@ -95,15 +95,16 @@ ul { list-style: none; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: 700;
-  line-height: 1.3;
+  font-weight: 600;
+  line-height: 1.25;
   color: var(--sage-700);
+  letter-spacing: -0.01em;
 }
 
-h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
-h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
-h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
-h4 { font-size: 1.1rem; }
+h1 { font-size: clamp(2.6rem, 5.5vw, 4rem); }
+h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); }
+h3 { font-size: clamp(1.3rem, 2.8vw, 1.7rem); }
+h4 { font-size: 1.2rem; }
 
 p { color: var(--gray-600); }
 
@@ -121,9 +122,9 @@ p { color: var(--gray-600); }
   gap: 8px;
   padding: 14px 32px;
   border-radius: var(--radius-full);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.95rem;
   border: none;
   cursor: pointer;
   transition: var(--transition);
@@ -184,11 +185,11 @@ p { color: var(--gray-600); }
   background: var(--mint-100);
   color: var(--mint-600);
   border-radius: var(--radius-full);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   margin-bottom: 16px;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
 }
 
 .section-header h2 {
@@ -253,12 +254,13 @@ p { color: var(--gray-600); }
 }
 
 .nav-links a {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--gray-700);
   position: relative;
   padding: 4px 0;
+  letter-spacing: 0.01em;
 }
 
 .nav-links a::after {
@@ -384,7 +386,7 @@ p { color: var(--gray-600); }
   color: var(--mint-600);
   background: var(--mint-50);
   border-bottom: 1px solid rgba(107,142,107,0.1);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
 }
 .search-result-item {
   display: flex;
@@ -423,7 +425,7 @@ p { color: var(--gray-600); }
   color: var(--mint-600);
   font-weight: 600;
   margin-bottom: 4px;
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
 }
 .search-result-title {
   font-weight: 600;
@@ -534,8 +536,8 @@ p { color: var(--gray-600); }
   padding: 8px 20px;
   background: var(--mint-200);
   border-radius: var(--radius-full);
-  font-family: var(--font-heading);
-  font-weight: 700;
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: 0.85rem;
   color: var(--sage-700);
   margin-bottom: 24px;
@@ -598,8 +600,8 @@ p { color: var(--gray-600); }
 
 .hero-stat .number {
   font-family: var(--font-heading);
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-size: 2.2rem;
+  font-weight: 600;
   color: var(--sage-700);
 }
 
@@ -656,7 +658,7 @@ p { color: var(--gray-600); }
 .floating-card .card-icon.coral { background: #FFE4E8; }
 
 .floating-card .card-text .card-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.85rem;
   color: var(--gray-800);
@@ -837,7 +839,7 @@ p { color: var(--gray-600); }
   left: 16px;
   padding: 6px 14px;
   border-radius: var(--radius-full);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.75rem;
   color: var(--white);
@@ -2469,7 +2471,7 @@ p { color: var(--gray-600); }
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
 }
 
 .floating-contact a:hover::before {
