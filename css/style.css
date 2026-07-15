@@ -1677,13 +1677,16 @@ p { color: var(--gray-600); }
 }
 
 /* Column 1: Brand */
-.footer-brand-col {}
+.footer-brand-col {
+  max-width: 280px;
+  text-align: center;
+}
 .footer-logo-link {
   display: inline-block;
   margin-bottom: 16px;
 }
 .footer-logo-img {
-  height: 56px;
+  height: 80px;
   border-radius: 12px;
   padding: 4px;
   background: rgba(255,255,255,0.12);
@@ -1694,11 +1697,11 @@ p { color: var(--gray-600); }
   font-size: 0.88rem;
   line-height: 1.75;
   margin-bottom: 20px;
-  max-width: 280px;
 }
 .footer-social-icons {
   display: flex;
   gap: 10px;
+  justify-content: center;
 }
 .social-icon {
   display: inline-flex;
