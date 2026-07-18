@@ -9,19 +9,16 @@
     var searchDropdown = document.getElementById('searchDropdown');
     if (!searchInput || !searchDropdown || typeof SEARCH_INDEX === 'undefined') return;
 
-    // Detect base path (are we in a subfolder like bai-viet/ or trac-nghiem/?)
     var basePath = '';
     var path = window.location.pathname;
     if (path.indexOf('/bai-viet/') !== -1 || path.indexOf('/trac-nghiem/') !== -1) {
       basePath = '../';
     }
 
-    // Remove diacritics for fuzzy Vietnamese search
     function removeDiacritics(str) {
       return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
     }
 
-    // Search function
     function performSearch(query) {
       if (!query || query.length < 2) {
         searchDropdown.innerHTML = '';
@@ -40,34 +37,28 @@
         var titleNorm = removeDiacritics(titleLower);
         var tagNorm = removeDiacritics(tagLower);
         var contentNorm = removeDiacritics(contentLower);
-
         var score = 0;
         var snippet = '';
 
-        // Score: title match (highest priority)
         if (titleLower.indexOf(q) !== -1 || titleNorm.indexOf(qNorm) !== -1) {
           score += 100;
           snippet = item.title;
         }
 
-        // Score: tag match
         if (tagLower.indexOf(q) !== -1 || tagNorm.indexOf(qNorm) !== -1) {
           score += 50;
         }
 
-        // Score: content match (full-text!)
         var contentIdx = contentLower.indexOf(q);
         if (contentIdx === -1) contentIdx = contentNorm.indexOf(qNorm);
 
         if (contentIdx !== -1) {
           score += 30;
-          // Extract snippet around the match
           var start = Math.max(0, contentIdx - 40);
           var end = Math.min(item.content.length, contentIdx + q.length + 60);
           snippet = (start > 0 ? '...' : '') + item.content.substring(start, end) + (end < item.content.length ? '...' : '');
         }
 
-        // Word-level matching for multi-word queries
         var words = q.split(/\s+/);
         if (words.length > 1) {
           var wordMatches = 0;
@@ -93,23 +84,17 @@
         }
       });
 
-      // Sort by relevance score
       results.sort(function(a, b) { return b.score - a.score; });
-
-      // Limit to top 6 results
       results = results.slice(0, 6);
-
       renderResults(results, q);
     }
 
-    // Highlight matched text
     function highlightMatch(text, query) {
       if (!query || query.length < 2) return text;
       var regex = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
       return text.replace(regex, '<mark>$1</mark>');
     }
 
-    // Render results
     function renderResults(results, query) {
       if (results.length === 0) {
         searchDropdown.innerHTML = '<div class="search-no-result">🔍 Không tìm thấy kết quả cho "<strong>' + query + '</strong>"</div>';
@@ -118,7 +103,6 @@
       }
 
       var html = '<div class="search-results-header">📖 Tìm thấy ' + results.length + ' kết quả</div>';
-
       results.forEach(function(r) {
         html += '<a href="' + r.url + '" class="search-result-item">' +
           '<div class="search-result-img"><img src="' + r.img + '" alt="" loading="lazy"></div>' +
@@ -133,39 +117,26 @@
       searchDropdown.style.display = 'block';
     }
 
-    // Debounce for performance
     var debounceTimer;
     searchInput.addEventListener('input', function() {
       clearTimeout(debounceTimer);
       var val = this.value;
-      debounceTimer = setTimeout(function() {
-        performSearch(val);
-      }, 200);
+      debounceTimer = setTimeout(function() { performSearch(val); }, 200);
     });
 
-    // Close dropdown on click outside
     document.addEventListener('click', function(e) {
-      if (!e.target.closest('#navSearch')) {
-        searchDropdown.style.display = 'none';
-      }
+      if (!e.target.closest('#navSearch')) searchDropdown.style.display = 'none';
     });
 
-    // Show dropdown on focus if has value
     searchInput.addEventListener('focus', function() {
-      if (this.value.length >= 2) {
-        performSearch(this.value);
-      }
+      if (this.value.length >= 2) performSearch(this.value);
     });
 
-    // Keyboard navigation
     searchInput.addEventListener('keydown', function(e) {
       var items = searchDropdown.querySelectorAll('.search-result-item');
       var active = searchDropdown.querySelector('.search-result-item.active');
       var idx = -1;
-
-      if (active) {
-        items.forEach(function(item, i) { if (item === active) idx = i; });
-      }
+      if (active) items.forEach(function(item, i) { if (item === active) idx = i; });
 
       if (e.key === 'ArrowDown') {
         e.preventDefault();
@@ -189,7 +160,6 @@
     });
   }
 
-  // Initialize when DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initSearch);
   } else {
@@ -197,7 +167,7 @@
   }
 })();
 
-// ===== HOMEPAGE HERO — approved reference redesign =====
+// ===== HOMEPAGE HERO — approved reference redesign (v3) =====
 (function initHomeHeroRedesign() {
   var hero = document.getElementById('hero');
   if (!hero) return;
@@ -207,8 +177,16 @@
   if (!document.querySelector('link[data-home-hero-redesign]')) {
     var link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/hero-redesign.css?v=20260718';
+    link.href = 'css/hero-redesign-v2.css?v=20260718d';
     link.setAttribute('data-home-hero-redesign', 'true');
     document.head.appendChild(link);
+  }
+
+  if (!document.querySelector('script[data-home-hero-visual]')) {
+    var script = document.createElement('script');
+    script.src = 'js/home-hero-visual.js?v=20260718d';
+    script.defer = true;
+    script.setAttribute('data-home-hero-visual', 'true');
+    document.head.appendChild(script);
   }
 })();
