@@ -1,0 +1,159 @@
+/* Mây Yoga — hero visual polish v4 */
+body.home-hero-redesign .hero .container{
+  grid-template-columns:minmax(500px,43%) minmax(620px,57%);
+  gap:0;
+  padding-left:clamp(54px,5.2vw,88px);
+  padding-right:0;
+}
+
+body.home-hero-redesign .hero-content{
+  align-self:center;
+  padding-top:18px;
+  padding-right:clamp(20px,2.5vw,44px);
+  padding-bottom:34px;
+}
+
+body.home-hero-redesign .hero h1{
+  max-width:620px;
+  font-size:clamp(52px,4.05vw,66px);
+  line-height:.99;
+}
+
+body.home-hero-redesign .hero h1 .highlight{
+  font-size:1.37em;
+}
+
+body.home-hero-redesign .hero p{
+  max-width:590px;
+}
+
+body.home-hero-redesign .hero-image{
+  align-self:stretch;
+  height:calc(100svh - 118px);
+  min-height:650px;
+  overflow:visible;
+}
+
+body.home-hero-redesign .hero-image > img{
+  position:absolute;
+  z-index:1;
+  right:clamp(-82px,-4vw,-46px);
+  bottom:-8px;
+  width:min(118%,900px);
+  height:auto;
+  max-width:none;
+  max-height:none;
+  object-fit:contain;
+  object-position:right bottom;
+  filter:none;
+  clip-path:none;
+  -webkit-clip-path:none;
+  border-radius:0;
+  box-shadow:none;
+}
+
+body.home-hero-redesign .hero-image .floating-card.card-1{
+  z-index:8;
+  top:54px;
+  right:clamp(46px,5vw,88px);
+}
+
+body.home-hero-redesign .hero-image .floating-card.card-2{
+  z-index:8;
+  right:clamp(30px,4vw,72px);
+  bottom:clamp(42px,6vh,72px);
+  width:min(88%,390px);
+}
+
+/* Deterministic stat values: these also act as a CSS fallback if JS is cached. */
+body.home-hero-redesign .hero-stat .number,
+body.home-hero-redesign .hero-stat .label{
+  font-size:0;
+}
+body.home-hero-redesign .hero-stat .number::after{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:clamp(28px,2vw,34px);
+  font-weight:600;
+  line-height:.95;
+  color:#143f32;
+  white-space:nowrap;
+}
+body.home-hero-redesign .hero-stat .label::after{
+  font-family:'DM Sans',Arial,sans-serif;
+  font-size:.78rem;
+  line-height:1.2;
+  color:#25476d;
+  white-space:nowrap;
+}
+body.home-hero-redesign .hero-stat:nth-child(1) .number::after{content:'16+'}
+body.home-hero-redesign .hero-stat:nth-child(1) .label::after{content:'Tư thế Yoga'}
+body.home-hero-redesign .hero-stat:nth-child(2) .number::after{content:'1K+'}
+body.home-hero-redesign .hero-stat:nth-child(2) .label::after{content:'Học viên'}
+body.home-hero-redesign .hero-stat:nth-child(3) .number::after{content:'5+'}
+body.home-hero-redesign .hero-stat:nth-child(3) .label::after{content:'Năm kinh nghiệm'}
+
+@media (max-width:1450px){
+  body.home-hero-redesign .hero .container{
+    grid-template-columns:minmax(455px,44%) minmax(560px,56%);
+    padding-left:48px;
+  }
+  body.home-hero-redesign .hero-image > img{
+    right:-48px;
+    width:min(116%,830px);
+  }
+}
+
+@media (max-width:1180px){
+  body.home-hero-redesign .hero .container{
+    grid-template-columns:minmax(405px,46%) minmax(500px,54%);
+    padding-left:34px;
+  }
+  body.home-hero-redesign .hero-image > img{
+    right:-34px;
+    width:116%;
+  }
+  body.home-hero-redesign .hero-image .floating-card.card-1{right:18px}
+  body.home-hero-redesign .hero-image .floating-card.card-2{right:10px}
+}
+
+@media (max-width:980px){
+  body.home-hero-redesign .hero .container{
+    display:flex;
+    padding:0 24px 24px;
+  }
+  body.home-hero-redesign .hero-content{
+    padding-right:0;
+  }
+  body.home-hero-redesign .hero-image{
+    height:min(92vw,700px);
+    min-height:480px;
+  }
+  body.home-hero-redesign .hero-image > img{
+    left:50%;
+    right:auto;
+    bottom:0;
+    width:min(108%,760px);
+    transform:translateX(-50%);
+  }
+}
+
+@media (max-width:640px){
+  body.home-hero-redesign .hero .container{padding:0 18px 18px}
+  body.home-hero-redesign .hero-image{
+    height:min(112vw,570px);
+    min-height:400px;
+  }
+  body.home-hero-redesign .hero-image > img{
+    width:112%;
+  }
+  body.home-hero-redesign .hero-image .floating-card.card-1{
+    top:16px;
+    right:4px;
+  }
+  body.home-hero-redesign .hero-image .floating-card.card-2{
+    right:4px;
+    bottom:14px;
+  }
+  body.home-hero-redesign .hero-stat .number::after{font-size:24px}
+  body.home-hero-redesign .hero-stat .label::after{font-size:.66rem;white-space:normal}
+}
