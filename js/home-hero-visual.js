@@ -12,7 +12,6 @@
     document.head.appendChild(fixCss);
   }
 
-  // Keep hero numbers/text deterministic even when the image is still loading.
   var statData = [
     ['16+', 'Tư thế Yoga'],
     ['1K+', 'Học viên'],
@@ -37,8 +36,7 @@
   image.loading = 'eager';
   image.decoding = 'async';
 
-  // Rebuild the supplied transparent WebP from compact repository text parts.
-  // This avoids the binary truncation that caused the previous blank visual.
+  var fallbackSrc = 'assets/images/hero-real.jpg';
   var partUrls = [
     'assets/hero-data/hero600.part1?v=20260718h',
     'assets/hero-data/hero600.part2?v=20260718h',
@@ -52,13 +50,24 @@
       return response.text();
     });
   })).then(function (parts) {
-    image.src = 'data:image/webp;base64,' + parts.join('');
-    image.width = 600;
-    image.height = 600;
-    image.classList.add('hero-visual-ready');
+    var dataUri = 'data:image/webp;base64,' + parts.join('');
+
+    // Decode off-DOM first. Only replace the visible fallback after the new
+    // image has actually decoded, so the hero can never become blank again.
+    var preloader = new Image();
+    preloader.onload = function () {
+      image.src = dataUri;
+      image.width = 600;
+      image.height = 600;
+      image.classList.add('hero-visual-ready');
+    };
+    preloader.onerror = function () {
+      console.error('[Mây Yoga hero] Rebuilt visual could not be decoded.');
+      image.src = fallbackSrc;
+    };
+    preloader.src = dataUri;
   }).catch(function (error) {
-    // Never leave the hero blank if a deployment/CDN request fails.
     console.error('[Mây Yoga hero]', error);
-    image.src = 'assets/images/hero-real.jpg';
+    image.src = fallbackSrc;
   });
 })();
