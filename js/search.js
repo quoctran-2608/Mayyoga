@@ -196,3 +196,19 @@
     initSearch();
   }
 })();
+
+// ===== HOMEPAGE HERO — approved reference redesign =====
+(function initHomeHeroRedesign() {
+  var hero = document.getElementById('hero');
+  if (!hero) return;
+
+  document.body.classList.add('home-hero-redesign');
+
+  if (!document.querySelector('link[data-home-hero-redesign]')) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'css/hero-redesign.css?v=20260718';
+    link.setAttribute('data-home-hero-redesign', 'true');
+    document.head.appendChild(link);
+  }
+})();
