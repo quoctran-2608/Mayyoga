@@ -4,7 +4,15 @@
 
   document.body.classList.add('home-hero-redesign');
 
-  // Keep all hero text deterministic even when the image is still loading.
+  if (!document.querySelector('link[data-home-hero-fix]')) {
+    var fixCss = document.createElement('link');
+    fixCss.rel = 'stylesheet';
+    fixCss.href = 'css/hero-fix-v4.css?v=20260718h';
+    fixCss.setAttribute('data-home-hero-fix', 'true');
+    document.head.appendChild(fixCss);
+  }
+
+  // Keep hero numbers/text deterministic even when the image is still loading.
   var statData = [
     ['16+', 'Tư thế Yoga'],
     ['1K+', 'Học viên'],
@@ -29,9 +37,8 @@
   image.loading = 'eager';
   image.decoding = 'async';
 
-  // hero_visual3 was supplied as a transparent WebP. The repository connector
-  // stores its compact base64 payload in four text parts; rebuild it in-browser
-  // so the visual remains lossless and the curved transparent edge is preserved.
+  // Rebuild the supplied transparent WebP from compact repository text parts.
+  // This avoids the binary truncation that caused the previous blank visual.
   var partUrls = [
     'assets/hero-data/hero600.part1?v=20260718h',
     'assets/hero-data/hero600.part2?v=20260718h',
@@ -50,7 +57,7 @@
     image.height = 600;
     image.classList.add('hero-visual-ready');
   }).catch(function (error) {
-    // Never leave a blank hero: keep the original image as a safe fallback.
+    // Never leave the hero blank if a deployment/CDN request fails.
     console.error('[Mây Yoga hero]', error);
     image.src = 'assets/images/hero-real.jpg';
   });
