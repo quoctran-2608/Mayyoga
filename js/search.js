@@ -45,9 +45,7 @@
           snippet = item.title;
         }
 
-        if (tagLower.indexOf(q) !== -1 || tagNorm.indexOf(qNorm) !== -1) {
-          score += 50;
-        }
+        if (tagLower.indexOf(q) !== -1 || tagNorm.indexOf(qNorm) !== -1) score += 50;
 
         var contentIdx = contentLower.indexOf(q);
         if (contentIdx === -1) contentIdx = contentNorm.indexOf(qNorm);
@@ -167,7 +165,7 @@
   }
 })();
 
-// ===== HOMEPAGE HERO — approved reference redesign (v3) =====
+// ===== HOMEPAGE HERO — approved reference redesign (v4) =====
 (function initHomeHeroRedesign() {
   var hero = document.getElementById('hero');
   if (!hero) return;
@@ -177,15 +175,15 @@
   if (!document.querySelector('link[data-home-hero-redesign]')) {
     var link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/hero-redesign-v2.css?v=20260718d';
+    link.href = 'css/hero-redesign-v2.css?v=20260718h';
     link.setAttribute('data-home-hero-redesign', 'true');
     document.head.appendChild(link);
   }
 
   if (!document.querySelector('script[data-home-hero-visual]')) {
     var script = document.createElement('script');
-    script.src = 'js/home-hero-visual.js?v=20260718d';
-    script.defer = true;
+    script.src = 'js/home-hero-visual.js?v=20260718h';
+    script.async = false;
     script.setAttribute('data-home-hero-visual', 'true');
     document.head.appendChild(script);
   }
