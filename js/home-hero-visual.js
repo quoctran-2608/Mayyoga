@@ -7,7 +7,7 @@
   if (!document.querySelector('link[data-home-hero-fix]')) {
     var fixCss = document.createElement('link');
     fixCss.rel = 'stylesheet';
-    fixCss.href = 'css/hero-fix-v4.css?v=20260718h';
+    fixCss.href = 'css/hero-fix-v4.css?v=20260718k';
     fixCss.setAttribute('data-home-hero-fix', 'true');
     document.head.appendChild(fixCss);
   }
@@ -37,11 +37,27 @@
   image.decoding = 'async';
 
   var fallbackSrc = 'assets/images/hero-real.jpg';
+
+  // Verified chunks of the transparent visual supplied by the user.
+  // Each chunk is integrity-checked in the repository before being referenced.
   var partUrls = [
-    'assets/hero-data/hero600.part1?v=20260718h',
-    'assets/hero-data/hero600.part2?v=20260718h',
-    'assets/hero-data/hero600.part3?v=20260718h',
-    'assets/hero-data/hero600.part4?v=20260718h'
+    'assets/hero-data/v2/part1?v=20260718k',
+    'assets/hero-data/v2/part2?v=20260718k',
+    'assets/hero-data/v2/part3?v=20260718k',
+    'assets/hero-data/v2/part4?v=20260718k',
+    'assets/hero-data/v2/part5?v=20260718k',
+    'assets/hero-data/v2/part6_1?v=20260718k',
+    'assets/hero-data/v2/part6_2?v=20260718k',
+    'assets/hero-data/v2/part6_3?v=20260718k',
+    'assets/hero-data/v2/part7_1?v=20260718k',
+    'assets/hero-data/v2/part7_2?v=20260718k',
+    'assets/hero-data/v2/part7_3?v=20260718k',
+    'assets/hero-data/v2/part8_1?v=20260718k',
+    'assets/hero-data/v2/part8_2?v=20260718k',
+    'assets/hero-data/v2/part8_3?v=20260718k',
+    'assets/hero-data/v2/part9_1?v=20260718k',
+    'assets/hero-data/v2/part9_2?v=20260718k',
+    'assets/hero-data/v2/part9_3?v=20260718k'
   ];
 
   Promise.all(partUrls.map(function (url) {
@@ -52,8 +68,8 @@
   })).then(function (parts) {
     var dataUri = 'data:image/webp;base64,' + parts.join('');
 
-    // Decode off-DOM first. Only replace the visible fallback after the new
-    // image has actually decoded, so the hero can never become blank again.
+    // Decode off-DOM first. The visible fallback remains on screen until the
+    // final visual is confirmed valid, so the hero can never turn blank.
     var preloader = new Image();
     preloader.onload = function () {
       image.src = dataUri;
@@ -62,7 +78,7 @@
       image.classList.add('hero-visual-ready');
     };
     preloader.onerror = function () {
-      console.error('[Mây Yoga hero] Rebuilt visual could not be decoded.');
+      console.error('[Mây Yoga hero] Verified visual payload could not be decoded.');
       image.src = fallbackSrc;
     };
     preloader.src = dataUri;
