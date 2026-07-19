@@ -150,7 +150,7 @@
   else initSearch();
 })();
 
-// ===== HOMEPAGE HERO — refined visual/content v10 =====
+// ===== HOMEPAGE HERO — refined visual/content v11 =====
 (function initHomeHeroRedesign() {
   var hero = document.getElementById('hero');
   if (!hero) return;
@@ -159,7 +159,7 @@
   if (!document.querySelector('link[data-home-hero-redesign]')) {
     var link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/hero-redesign-v2.css?v=20260719f';
+    link.href = 'css/hero-redesign-v2.css?v=20260719g';
     link.setAttribute('data-home-hero-redesign', 'true');
     document.head.appendChild(link);
   }
