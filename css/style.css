@@ -2118,7 +2118,7 @@ p { color: var(--gray-600); }
 
 /* ===== ARTICLE PAGE ===== */
 .article-header {
-  padding: 140px 0 60px;
+  padding: 140px 0 44px;
   background: linear-gradient(165deg, var(--mint-50) 0%, var(--cream) 50%, var(--white) 100%);
   position: relative;
 }
@@ -2182,7 +2182,7 @@ p { color: var(--gray-600); }
 }
 
 .article-body {
-  padding: 60px 0 80px;
+  padding: 44px 0 80px;
   background: var(--white);
 }
 
