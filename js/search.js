@@ -150,7 +150,7 @@
   else initSearch();
 })();
 
-// ===== HOMEPAGE HERO — exact uploaded visual v7 =====
+// ===== HOMEPAGE HERO — exact uploaded visual v8 =====
 (function initHomeHeroRedesign() {
   var hero = document.getElementById('hero');
   if (!hero) return;
@@ -159,14 +159,14 @@
   if (!document.querySelector('link[data-home-hero-redesign]')) {
     var link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/hero-redesign-v2.css?v=20260719c';
+    link.href = 'css/hero-redesign-v2.css?v=20260719d';
     link.setAttribute('data-home-hero-redesign', 'true');
     document.head.appendChild(link);
   }
 
   if (!document.querySelector('script[data-home-hero-visual]')) {
     var script = document.createElement('script');
-    script.src = 'js/home-hero-visual.js?v=20260719c';
+    script.src = 'js/home-hero-visual.js?v=20260719d';
     script.async = false;
     script.setAttribute('data-home-hero-visual', 'true');
     document.head.appendChild(script);
