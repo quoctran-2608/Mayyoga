@@ -4,13 +4,11 @@
 
   document.body.classList.add('home-hero-redesign');
 
-  // Load the final geometry overrides after the base hero stylesheet.
-  // This removes the desktop right gutter and makes the visual fill the
-  // entire right column from the very top to the viewport edge.
+  // Load the final geometry/content overrides after the base hero stylesheet.
   if (!document.querySelector('link[data-home-hero-fix]')) {
     var fixLink = document.createElement('link');
     fixLink.rel = 'stylesheet';
-    fixLink.href = 'css/hero-fix-v4.css?v=20260719d';
+    fixLink.href = 'css/hero-fix-v4.css?v=20260719e';
     fixLink.setAttribute('data-home-hero-fix', 'true');
     document.head.appendChild(fixLink);
   }
@@ -24,17 +22,16 @@
   image.removeAttribute('width');
   image.removeAttribute('height');
 
-  // Use the real repository asset directly. The old loader rebuilt an older
-  // visual from multiple base64 text fragments and could overwrite the newer
-  // hero-visual.webp after the page had already rendered.
-  var visualSrc = 'assets/images/hero-visual.webp?v=20260719d';
+  // Use the real repository asset directly so no legacy payload can overwrite it.
+  var visualSrc = 'assets/images/hero-visual.webp?v=20260719e';
   if (image.getAttribute('src') !== visualSrc) image.src = visualSrc;
   image.classList.add('hero-visual-ready');
 
+  // Honest, non-numeric value propositions for a newly launched website.
   var statData = [
-    ['16+', 'Tư thế Yoga'],
-    ['1K+', 'Học viên'],
-    ['5+', 'Năm kinh nghiệm']
+    ['Tư thế chuẩn', 'Định tuyến rõ ràng'],
+    ['Hơi thở đúng', 'Thực hành có nền tảng'],
+    ['Hiểu cơ thể', 'An toàn & bền vững']
   ];
 
   hero.querySelectorAll('.hero-stat').forEach(function (item, index) {
@@ -45,6 +42,14 @@
     if (label) label.textContent = statData[index][1];
   });
 
-  var ratingSub = hero.querySelector('.card-2 .card-sub');
-  if (ratingSub) ratingSub.textContent = 'Từ 2.000+ học viên';
+  // Replace unverifiable rating/student claims with a compact learning promise.
+  var trustCard = hero.querySelector('.floating-card.card-2');
+  if (trustCard) {
+    var trustIcon = trustCard.querySelector('.card-icon');
+    var trustTitle = trustCard.querySelector('.card-title');
+    var trustSub = trustCard.querySelector('.card-sub');
+    if (trustIcon) trustIcon.textContent = '✓';
+    if (trustTitle) trustTitle.textContent = 'Học đúng từ nền tảng';
+    if (trustSub) trustSub.textContent = 'Tư thế • Hơi thở • Định tuyến';
+  }
 })();
