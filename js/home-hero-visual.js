@@ -8,7 +8,7 @@
   if (!document.querySelector('link[data-home-hero-fix]')) {
     var fixLink = document.createElement('link');
     fixLink.rel = 'stylesheet';
-    fixLink.href = 'css/hero-fix-v4.css?v=20260719e';
+    fixLink.href = 'css/hero-fix-v4.css?v=20260719f';
     fixLink.setAttribute('data-home-hero-fix', 'true');
     document.head.appendChild(fixLink);
   }
@@ -23,13 +23,13 @@
   image.removeAttribute('height');
 
   // Use the real repository asset directly so no legacy payload can overwrite it.
-  var visualSrc = 'assets/images/hero-visual.webp?v=20260719e';
+  var visualSrc = 'assets/images/hero-visual.webp?v=20260719f';
   if (image.getAttribute('src') !== visualSrc) image.src = visualSrc;
   image.classList.add('hero-visual-ready');
 
-  // Honest, non-numeric value propositions for a newly launched website.
+  // Friendly, non-technical value propositions for both new and experienced learners.
   var statData = [
-    ['Tư thế chuẩn', 'Định tuyến rõ ràng'],
+    ['Tư thế đúng', 'Căn chỉnh an toàn'],
     ['Hơi thở đúng', 'Thực hành có nền tảng'],
     ['Hiểu cơ thể', 'An toàn & bền vững']
   ];
@@ -42,7 +42,7 @@
     if (label) label.textContent = statData[index][1];
   });
 
-  // Replace unverifiable rating/student claims with a compact learning promise.
+  // Keep the trust badge concise and easy to understand for first-time visitors.
   var trustCard = hero.querySelector('.floating-card.card-2');
   if (trustCard) {
     var trustIcon = trustCard.querySelector('.card-icon');
@@ -50,6 +50,6 @@
     var trustSub = trustCard.querySelector('.card-sub');
     if (trustIcon) trustIcon.textContent = '✓';
     if (trustTitle) trustTitle.textContent = 'Học đúng từ nền tảng';
-    if (trustSub) trustSub.textContent = 'Tư thế • Hơi thở • Định tuyến';
+    if (trustSub) trustSub.textContent = 'Tư thế • Hơi thở • Hiểu cơ thể';
   }
 })();
