@@ -1,6 +1,4 @@
 // ===== MâyYoga — Full-text Search Engine =====
-// Tìm kiếm toàn văn: quét cả tiêu đề, tag, mô tả VÀ nội dung bài viết
-
 (function() {
   'use strict';
 
@@ -11,9 +9,7 @@
 
     var basePath = '';
     var path = window.location.pathname;
-    if (path.indexOf('/bai-viet/') !== -1 || path.indexOf('/trac-nghiem/') !== -1) {
-      basePath = '../';
-    }
+    if (path.indexOf('/bai-viet/') !== -1 || path.indexOf('/trac-nghiem/') !== -1) basePath = '../';
 
     function removeDiacritics(str) {
       return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
@@ -44,12 +40,10 @@
           score += 100;
           snippet = item.title;
         }
-
         if (tagLower.indexOf(q) !== -1 || tagNorm.indexOf(qNorm) !== -1) score += 50;
 
         var contentIdx = contentLower.indexOf(q);
         if (contentIdx === -1) contentIdx = contentNorm.indexOf(qNorm);
-
         if (contentIdx !== -1) {
           score += 30;
           var start = Math.max(0, contentIdx - 40);
@@ -83,8 +77,7 @@
       });
 
       results.sort(function(a, b) { return b.score - a.score; });
-      results = results.slice(0, 6);
-      renderResults(results, q);
+      renderResults(results.slice(0, 6), q);
     }
 
     function highlightMatch(text, query) {
@@ -104,13 +97,10 @@
       results.forEach(function(r) {
         html += '<a href="' + r.url + '" class="search-result-item">' +
           '<div class="search-result-img"><img src="' + r.img + '" alt="" loading="lazy"></div>' +
-          '<div class="search-result-info">' +
-          '<span class="search-result-tag">' + r.tag + '</span>' +
+          '<div class="search-result-info"><span class="search-result-tag">' + r.tag + '</span>' +
           '<div class="search-result-title">' + highlightMatch(r.title, query) + '</div>' +
-          '<div class="search-result-snippet">' + highlightMatch(r.snippet, query) + '</div>' +
-          '</div></a>';
+          '<div class="search-result-snippet">' + highlightMatch(r.snippet, query) + '</div></div></a>';
       });
-
       searchDropdown.innerHTML = html;
       searchDropdown.style.display = 'block';
     }
@@ -146,11 +136,9 @@
         if (active) active.classList.remove('active');
         idx = idx <= 0 ? items.length - 1 : idx - 1;
         if (items[idx]) items[idx].classList.add('active');
-      } else if (e.key === 'Enter') {
-        if (active) {
-          e.preventDefault();
-          active.click();
-        }
+      } else if (e.key === 'Enter' && active) {
+        e.preventDefault();
+        active.click();
       } else if (e.key === 'Escape') {
         searchDropdown.style.display = 'none';
         searchInput.blur();
@@ -158,31 +146,27 @@
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSearch);
-  } else {
-    initSearch();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSearch);
+  else initSearch();
 })();
 
-// ===== HOMEPAGE HERO — approved reference redesign (v6) =====
+// ===== HOMEPAGE HERO — exact uploaded visual v7 =====
 (function initHomeHeroRedesign() {
   var hero = document.getElementById('hero');
   if (!hero) return;
-
   document.body.classList.add('home-hero-redesign');
 
   if (!document.querySelector('link[data-home-hero-redesign]')) {
     var link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/hero-redesign-v2.css?v=20260719a';
+    link.href = 'css/hero-redesign-v2.css?v=20260719c';
     link.setAttribute('data-home-hero-redesign', 'true');
     document.head.appendChild(link);
   }
 
   if (!document.querySelector('script[data-home-hero-visual]')) {
     var script = document.createElement('script');
-    script.src = 'js/home-hero-visual.js?v=20260719a';
+    script.src = 'js/home-hero-visual.js?v=20260719c';
     script.async = false;
     script.setAttribute('data-home-hero-visual', 'true');
     document.head.appendChild(script);
