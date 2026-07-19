@@ -4,12 +4,32 @@
 
   document.body.classList.add('home-hero-redesign');
 
+  // Load the final geometry overrides after the base hero stylesheet.
+  // This removes the desktop right gutter and makes the visual fill the
+  // entire right column from the very top to the viewport edge.
+  if (!document.querySelector('link[data-home-hero-fix]')) {
+    var fixLink = document.createElement('link');
+    fixLink.rel = 'stylesheet';
+    fixLink.href = 'css/hero-fix-v4.css?v=20260719d';
+    fixLink.setAttribute('data-home-hero-fix', 'true');
+    document.head.appendChild(fixLink);
+  }
+
   var image = hero.querySelector('.hero-image > img');
   if (!image) return;
 
   image.alt = 'Mây Yoga - Hatha Yoga';
   image.loading = 'eager';
   image.decoding = 'async';
+  image.removeAttribute('width');
+  image.removeAttribute('height');
+
+  // Use the real repository asset directly. The old loader rebuilt an older
+  // visual from multiple base64 text fragments and could overwrite the newer
+  // hero-visual.webp after the page had already rendered.
+  var visualSrc = 'assets/images/hero-visual.webp?v=20260719d';
+  if (image.getAttribute('src') !== visualSrc) image.src = visualSrc;
+  image.classList.add('hero-visual-ready');
 
   var statData = [
     ['16+', 'Tư thế Yoga'],
@@ -27,42 +47,4 @@
 
   var ratingSub = hero.querySelector('.card-2 .card-sub');
   if (ratingSub) ratingSub.textContent = 'Từ 2.000+ học viên';
-
-  var partUrls = [
-    'assets/hero-data/v4/part1.txt?v=20260719c',
-    'assets/hero-data/v4/part2.txt?v=20260719c',
-    'assets/hero-data/v4/part3a.txt?v=20260719c',
-    'assets/hero-data/v4/part3b.txt?v=20260719c',
-    'assets/hero-data/v4/part3c.txt?v=20260719c',
-    'assets/hero-data/v4/part3d.txt?v=20260719c',
-    'assets/hero-data/v4/part4a.txt?v=20260719c',
-    'assets/hero-data/v4/part4b.txt?v=20260719c',
-    'assets/hero-data/v4/part4c.txt?v=20260719c',
-    'assets/hero-data/v4/part4d.txt?v=20260719c'
-  ];
-
-  Promise.all(partUrls.map(function (url) {
-    return fetch(url, { cache: 'force-cache' }).then(function (response) {
-      if (!response.ok) throw new Error('Cannot load ' + url);
-      return response.text();
-    });
-  })).then(function (parts) {
-    var dataUri = 'data:image/webp;base64,' + parts.join('');
-    var preloader = new Image();
-
-    preloader.onload = function () {
-      image.removeAttribute('width');
-      image.removeAttribute('height');
-      image.src = dataUri;
-      image.classList.add('hero-visual-ready');
-    };
-
-    preloader.onerror = function () {
-      console.error('[Mây Yoga hero] Exact uploaded hero_visual4 payload could not be decoded.');
-    };
-
-    preloader.src = dataUri;
-  }).catch(function (error) {
-    console.error('[Mây Yoga hero]', error);
-  });
 })();
