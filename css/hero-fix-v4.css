@@ -108,7 +108,7 @@ body.home-hero-redesign .hero-image .floating-card.card-2 .card-sub{
   white-space:nowrap;
 }
 
-/* Replace exaggerated social-proof counters with honest editorial pillars. */
+/* Honest, easy-to-understand learning pillars for a newly launched website. */
 body.home-hero-redesign .hero-stats{
   width:min(100%,690px);
 }
@@ -142,8 +142,8 @@ body.home-hero-redesign .hero-stat .label::after{
   color:#25476d;
   white-space:nowrap;
 }
-body.home-hero-redesign .hero-stat:nth-child(1) .number::after{content:'Tư thế chuẩn'}
-body.home-hero-redesign .hero-stat:nth-child(1) .label::after{content:'Định tuyến rõ ràng'}
+body.home-hero-redesign .hero-stat:nth-child(1) .number::after{content:'Tư thế đúng'}
+body.home-hero-redesign .hero-stat:nth-child(1) .label::after{content:'Căn chỉnh an toàn'}
 body.home-hero-redesign .hero-stat:nth-child(2) .number::after{content:'Hơi thở đúng'}
 body.home-hero-redesign .hero-stat:nth-child(2) .label::after{content:'Thực hành có nền tảng'}
 body.home-hero-redesign .hero-stat:nth-child(3) .number::after{content:'Hiểu cơ thể'}
