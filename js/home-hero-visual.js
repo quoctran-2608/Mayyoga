@@ -130,10 +130,13 @@
   // Force visible floating motion with requestAnimationFrame. This does not use the
   // CSS animation property and does not touch transform, so legacy rules cannot cancel it.
   function startHeroBadgeMotion() {
+    if (window.__mayYogaHeroBadgeMotionStarted) return;
+
     var topBadge = hero.querySelector('.hero-image .floating-card.card-1');
     var trustBadge = hero.querySelector('.hero-image .hero-trust-card, .hero-image .floating-card.card-2');
     if (!topBadge && !trustBadge) return;
 
+    window.__mayYogaHeroBadgeMotionStarted = true;
     var startTime = performance.now();
     if (topBadge) topBadge.setAttribute('data-hero-motion', 'raf');
     if (trustBadge) trustBadge.setAttribute('data-hero-motion', 'raf');
@@ -141,11 +144,11 @@
     function frame(now) {
       var seconds = (now - startTime) / 1000;
       var mobile = window.innerWidth <= 768;
-      var topAmplitude = mobile ? 4 : 9;
-      var trustAmplitude = mobile ? 4 : 7;
-      var topY = -topAmplitude * (0.5 - 0.5 * Math.cos((seconds / 4.6) * Math.PI * 2));
-      var trustPhase = seconds + 1.35;
-      var trustY = -trustAmplitude * (0.5 - 0.5 * Math.cos((trustPhase / 5.3) * Math.PI * 2));
+      var topAmplitude = mobile ? 6 : 14;
+      var trustAmplitude = mobile ? 5 : 11;
+      var topY = -topAmplitude * (0.5 - 0.5 * Math.cos((seconds / 3.8) * Math.PI * 2));
+      var trustPhase = seconds + 1.15;
+      var trustY = -trustAmplitude * (0.5 - 0.5 * Math.cos((trustPhase / 4.5) * Math.PI * 2));
 
       if (topBadge && topBadge.isConnected) {
         topBadge.style.setProperty('translate', '0 ' + topY.toFixed(2) + 'px', 'important');
