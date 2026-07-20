@@ -150,6 +150,26 @@
   else initSearch();
 })();
 
+// ===== HOMEPAGE HERO LAYOUT SAFETY BOOTSTRAP =====
+// search.js is loaded directly by index.html. It no longer owns the Hero, but it ensures
+// the approved base stylesheet exists before the final fix layer if a cached helper missed it.
+(function ensureHeroLayoutFoundation() {
+  if (!document.getElementById('hero')) return;
+  if (document.querySelector('link[data-home-hero-redesign]')) return;
+
+  var baseLink = document.createElement('link');
+  baseLink.rel = 'stylesheet';
+  baseLink.href = 'css/hero-redesign-v2.css?v=20260720n';
+  baseLink.setAttribute('data-home-hero-redesign', 'true');
+
+  var fixLink = document.querySelector('link[data-home-hero-fix]');
+  if (fixLink && fixLink.parentNode) {
+    fixLink.parentNode.insertBefore(baseLink, fixLink);
+  } else {
+    document.head.appendChild(baseLink);
+  }
+})();
+
 // ===== HOMEPAGE HERO BADGE MOTION FALLBACK =====
 // Kept here because search.js is loaded directly by index.html. This guarantees badge
 // motion even if a dynamically loaded hero helper is stale or delayed by CDN caching.
