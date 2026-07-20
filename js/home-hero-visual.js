@@ -62,6 +62,9 @@
     finalStyle.textContent = [
       'body.home-hero-redesign .hero-content { padding-top: 0 !important; padding-bottom: 50px !important; }',
       'body.home-hero-redesign .hero { margin-bottom: 0 !important; }',
+      '@media (min-width: 1181px) {',
+      '  body.home-hero-redesign .hero .container { grid-template-columns: 45% 55% !important; }',
+      '}',
       '@media (min-width: 1025px) {',
       '  body.home-hero-redesign .hero { padding-bottom: 52px !important; }',
       '  body.home-hero-redesign .hero-image > img {',
