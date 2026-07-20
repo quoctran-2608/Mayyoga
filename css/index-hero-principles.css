@@ -1,14 +1,12 @@
 /* ===== INDEX HERO PRINCIPLES =====
    Real selectable text that replaces the retired numeric stats row.
    Desktop placement follows the approved hero demo: the three principles sit
-   at the bottom of the LEFT content column, just above the hero baseline. */
+   at the bottom of the LEFT content column, clearly below the CTA buttons. */
 
 #hero .hero-stats {
   display: none !important;
 }
 
-/* The principles are injected inside .hero-image by main.js. On wide screens
-   we visually place them back into the matching left-column content area. */
 #hero .hero-image {
   isolation: isolate;
 }
@@ -31,20 +29,20 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 12px;
+  gap: 11px;
   box-sizing: border-box;
 }
 
 #hero .hero-principle:first-child {
-  padding-right: 18px;
+  padding-right: 16px;
 }
 
 #hero .hero-principle:nth-child(2) {
-  padding: 0 18px;
+  padding: 0 16px;
 }
 
 #hero .hero-principle:last-child {
-  padding-left: 18px;
+  padding-left: 16px;
 }
 
 #hero .hero-principle:not(:last-child)::after {
@@ -53,16 +51,16 @@
   top: 50%;
   right: 0;
   width: 1px;
-  height: 54px;
-  background: rgba(70, 96, 67, 0.25);
+  height: 50px;
+  background: rgba(70, 96, 67, 0.24);
   transform: translateY(-50%);
   pointer-events: none;
 }
 
 #hero .hero-principle-icon {
-  width: 52px;
-  height: 52px;
-  flex: 0 0 52px;
+  width: 50px;
+  height: 50px;
+  flex: 0 0 50px;
   display: grid;
   place-items: center;
   border-radius: 50%;
@@ -87,7 +85,7 @@
 #hero .hero-principle-title {
   margin: 0 0 3px;
   font-family: var(--font-heading);
-  font-size: clamp(20px, 1.32vw, 25px);
+  font-size: clamp(18px, 1.15vw, 22px);
   font-weight: 500;
   line-height: 1.05;
   letter-spacing: -0.012em;
@@ -100,7 +98,7 @@
 #hero .hero-principle-subtitle {
   margin: 0;
   font-family: var(--font-body);
-  font-size: clamp(11.5px, 0.72vw, 13.5px);
+  font-size: clamp(11px, 0.68vw, 13px);
   font-weight: 400;
   line-height: 1.3;
   color: #31576d;
@@ -115,8 +113,9 @@
   color: #143b2c;
 }
 
-/* Desktop: match the demo position at the lower-left of the hero.
-   The left/width formulas mirror .hero-content's desktop container alignment. */
+/* Desktop: anchor the row to the bottom of the hero instead of the CTA area.
+   Because .hero-image stretches to the same grid-row height as .hero-content,
+   using a small bottom offset keeps the principles reliably below both buttons. */
 @media (min-width: 1025px) {
   #hero .hero-image {
     overflow: visible !important;
@@ -125,39 +124,40 @@
   #hero .hero-principles {
     position: absolute;
     left: calc(-100% + max(20px, (100vw - 1200px) / 2 + 20px));
-    bottom: clamp(46px, 4.2vw, 68px);
-    width: calc(100% - max(20px, (100vw - 1200px) / 2 + 20px) - 12px);
-    max-width: 620px;
+    bottom: 14px;
+    width: calc(100% - max(20px, (100vw - 1200px) / 2 + 20px) + 54px);
+    max-width: 700px;
     padding: 0;
   }
 }
 
-/* Tablet: keep the row readable below the hero image instead of forcing a
-   desktop absolute offset into the single-column layout. */
+/* Tablet: keep the principles as a clean strip after the visual. */
 @media (min-width: 769px) and (max-width: 1024px) {
   #hero .hero-principles {
     position: static;
     width: calc(100% - 64px);
     max-width: 700px;
-    margin: 26px auto 8px;
+    margin: 28px auto 10px;
     padding: 0;
   }
 
   #hero .hero-principle-title {
-    font-size: 20px;
+    font-size: 19px;
   }
 
   #hero .hero-principle-subtitle {
-    font-size: 12px;
+    font-size: 11.5px;
   }
 }
 
-/* Mobile: preserve the same three ideas while reducing visual density. */
+/* Mobile: keep text fully readable. On regular phones the row remains compact;
+   on narrow phones it becomes three horizontal rows instead of crushing six lines
+   into three tiny columns. */
 @media (max-width: 768px) {
   #hero .hero-principles {
     position: static;
     width: calc(100% - 24px);
-    margin: 22px auto 6px;
+    margin: 22px auto 8px;
     padding: 0 2px;
   }
 
@@ -170,7 +170,7 @@
   }
 
   #hero .hero-principle:not(:last-child)::after {
-    height: 58px;
+    height: 56px;
   }
 
   #hero .hero-principle-icon {
@@ -181,42 +181,89 @@
 
   #hero .hero-principle-title {
     margin-bottom: 2px;
-    font-size: clamp(13px, 3.6vw, 16px);
+    font-size: clamp(13px, 3.55vw, 16px);
   }
 
   #hero .hero-principle-subtitle {
-    font-size: clamp(8.5px, 2.35vw, 10.5px);
+    font-size: clamp(8.5px, 2.3vw, 10.5px);
     white-space: normal;
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 560px) {
   #hero .hero-principles {
-    width: calc(100% - 12px);
-    margin-top: 18px;
+    grid-template-columns: 1fr;
+    width: min(calc(100% - 32px), 390px);
+    gap: 0;
+    margin-top: 20px;
+    padding: 10px 14px;
+    border: 1px solid rgba(107, 142, 107, 0.13);
+    border-radius: 18px;
+    background: rgba(247, 249, 244, 0.82);
   }
 
   #hero .hero-principle {
-    gap: 5px;
-    padding: 0 4px !important;
-  }
-
-  #hero .hero-principle-icon {
-    width: 34px;
-    height: 34px;
-    flex-basis: 34px;
-  }
-
-  #hero .hero-principle-title {
-    font-size: clamp(11.5px, 3.45vw, 14px);
-  }
-
-  #hero .hero-principle-subtitle {
-    font-size: clamp(7.5px, 2.25vw, 9px);
-    line-height: 1.2;
+    min-height: 68px;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 10px 2px !important;
+    text-align: left;
   }
 
   #hero .hero-principle:not(:last-child)::after {
-    height: 54px;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    transform: none;
+  }
+
+  #hero .hero-principle-icon {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+  }
+
+  #hero .hero-principle-copy {
+    text-align: left;
+  }
+
+  #hero .hero-principle-title {
+    font-size: 17px;
+  }
+
+  #hero .hero-principle-subtitle {
+    margin-top: 3px;
+    font-size: 11px;
+    line-height: 1.35;
+  }
+}
+
+@media (max-width: 380px) {
+  #hero .hero-principles {
+    width: calc(100% - 24px);
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  #hero .hero-principle {
+    gap: 10px;
+  }
+
+  #hero .hero-principle-icon {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  #hero .hero-principle-title {
+    font-size: 16px;
+  }
+
+  #hero .hero-principle-subtitle {
+    font-size: 10.5px;
   }
 }
