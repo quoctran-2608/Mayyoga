@@ -36,21 +36,20 @@
       'body.home-hero-redesign .hero-content { padding-top: 0 !important; padding-bottom: 50px !important; }',
       'body.home-hero-redesign .hero { margin-bottom: 0 !important; }',
 
-      // Do not change opacity on the whole badge: that would fade text/icons too.
-      // Use a genuinely translucent glass background with only a light blur.
+      // Keep text/icons fully opaque; only the glass surface becomes more transparent.
       'body.home-hero-redesign .hero-image .floating-card.card-1 {',
-      '  background: rgba(255, 255, 255, 0.66) !important;',
-      '  -webkit-backdrop-filter: blur(4px) saturate(106%) !important;',
-      '  backdrop-filter: blur(4px) saturate(106%) !important;',
-      '  border: 1px solid rgba(255, 255, 255, 0.46) !important;',
-      '  box-shadow: 0 10px 28px rgba(34, 61, 43, 0.09) !important;',
+      '  background: rgba(255, 255, 255, 0.56) !important;',
+      '  -webkit-backdrop-filter: blur(3px) saturate(104%) !important;',
+      '  backdrop-filter: blur(3px) saturate(104%) !important;',
+      '  border: 1px solid rgba(255, 255, 255, 0.38) !important;',
+      '  box-shadow: 0 9px 25px rgba(34, 61, 43, 0.075) !important;',
       '}',
       'body.home-hero-redesign .hero-image .hero-trust-card {',
-      '  background: rgba(255, 255, 255, 0.70) !important;',
-      '  -webkit-backdrop-filter: blur(4px) saturate(106%) !important;',
-      '  backdrop-filter: blur(4px) saturate(106%) !important;',
-      '  border: 1px solid rgba(255, 255, 255, 0.50) !important;',
-      '  box-shadow: 0 10px 28px rgba(34, 61, 43, 0.10) !important;',
+      '  background: rgba(255, 255, 255, 0.60) !important;',
+      '  -webkit-backdrop-filter: blur(3px) saturate(104%) !important;',
+      '  backdrop-filter: blur(3px) saturate(104%) !important;',
+      '  border: 1px solid rgba(255, 255, 255, 0.42) !important;',
+      '  box-shadow: 0 9px 25px rgba(34, 61, 43, 0.085) !important;',
       '}',
 
       '@media (min-width: 1181px) {',
