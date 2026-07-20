@@ -4,6 +4,17 @@
 
   document.body.classList.add('home-hero-redesign');
 
+  // Restore the approved base Hero design from one deterministic place.
+  // This stylesheet used to be injected by search.js; removing that legacy loader
+  // accidentally removed the layout foundation for the header and Hero.
+  if (!document.querySelector('link[data-home-hero-redesign]')) {
+    var baseLink = document.createElement('link');
+    baseLink.rel = 'stylesheet';
+    baseLink.href = 'css/hero-redesign-v2.css?v=20260720n';
+    baseLink.setAttribute('data-home-hero-redesign', 'true');
+    document.head.appendChild(baseLink);
+  }
+
   // Load the final geometry/content overrides after the base hero stylesheet.
   if (!document.querySelector('link[data-home-hero-fix]')) {
     var fixLink = document.createElement('link');
