@@ -34,10 +34,10 @@
   });
 
   // Explicitly load the final hero geometry layer for fresh visitors too.
-  // Previously this could depend on a cached loader, which made behavior inconsistent.
+  // Versioned URL avoids stale GitHub Pages/browser cache after hero refinements.
   if (!document.querySelector('script[data-home-hero-visual]')) {
     const script = document.createElement('script');
-    script.src = 'js/home-hero-visual.js?v=20260720h';
+    script.src = 'js/home-hero-visual.js?v=20260720k';
     script.dataset.homeHeroVisual = 'true';
     document.head.appendChild(script);
   }
