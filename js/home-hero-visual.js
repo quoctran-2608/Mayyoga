@@ -100,8 +100,9 @@
       '}',
 
       '@media (min-width: 1181px) {',
-      '  body.home-hero-redesign .hero .container { grid-template-columns: 45% 55% !important; }',
-      '  #hero .hero-principles { left: -81.8181818% !important; }',
+      // Slightly narrower visual column gives the baked curve more safety on ultra-wide/fullscreen viewports.
+      '  body.home-hero-redesign .hero .container { grid-template-columns: 46% 54% !important; }',
+      '  #hero .hero-principles { left: -85.1851852% !important; }',
       '}',
       '@media (min-width: 1025px) and (max-width: 1180px) {',
       '  #hero .hero-principles { left: -85.1851852% !important; }',
@@ -121,7 +122,8 @@
       '    height: calc(100% + 52px) !important;',
       '    max-height: none !important;',
       '    object-fit: cover !important;',
-      '    object-position: right center !important;',
+      // The curve is baked into the source image. Preserve its left edge and let excess crop on the right.
+      '    object-position: left center !important;',
       '  }',
       '  body.home-hero-redesign .hero-image .hero-trust-card { bottom: 44px !important; }',
       '  body.home-hero-redesign .navbar, body.home-hero-redesign .navbar.scrolled {',
