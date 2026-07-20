@@ -52,47 +52,12 @@
       '  box-shadow: 0 9px 25px rgba(34, 61, 43, 0.085) !important;',
       '}',
 
-      // Animate margins instead of transform so motion never fights the legacy
-      // transform/scale animation in shared CSS.
-      '@keyframes heroBadgeFloatTop {',
-      '  0%, 100% { margin-top: 0; }',
-      '  50% { margin-top: -8px; }',
-      '}',
-      '@keyframes heroBadgeFloatTrust {',
-      '  0%, 100% { margin-bottom: 0; }',
-      '  46% { margin-bottom: 7px; }',
-      '  72% { margin-bottom: -1px; }',
-      '}',
-      '@keyframes heroBadgeFloatTopMobile {',
-      '  0%, 100% { margin-top: 0; }',
-      '  50% { margin-top: -4px; }',
-      '}',
-      '@keyframes heroBadgeFloatTrustMobile {',
-      '  0%, 100% { margin-bottom: 0; }',
-      '  50% { margin-bottom: 4px; }',
-      '}',
-      'body.home-hero-redesign .hero-image .floating-card.card-1 {',
-      '  animation: heroBadgeFloatTop 4.8s ease-in-out infinite !important;',
-      '  will-change: margin-top;',
-      '}',
+      // Disable legacy CSS animations. Badge motion is driven directly by JS using
+      // the independent CSS translate property, so it cannot fight transform:scale().
+      'body.home-hero-redesign .hero-image .floating-card.card-1,',
       'body.home-hero-redesign .hero-image .hero-trust-card {',
-      '  animation: heroBadgeFloatTrust 5.4s ease-in-out -1.8s infinite !important;',
-      '  will-change: margin-bottom;',
-      '}',
-      '@media (max-width: 768px) {',
-      '  body.home-hero-redesign .hero-image .floating-card.card-1 {',
-      '    animation: heroBadgeFloatTopMobile 5.2s ease-in-out infinite !important;',
-      '  }',
-      '  body.home-hero-redesign .hero-image .hero-trust-card {',
-      '    animation: heroBadgeFloatTrustMobile 5.8s ease-in-out -2s infinite !important;',
-      '  }',
-      '}',
-      '@media (prefers-reduced-motion: reduce) {',
-      '  body.home-hero-redesign .hero-image .floating-card.card-1,',
-      '  body.home-hero-redesign .hero-image .hero-trust-card {',
-      '    animation: none !important;',
-      '    will-change: auto;',
-      '  }',
+      '  animation: none !important;',
+      '  will-change: translate;',
       '}',
 
       '@media (min-width: 1181px) {',
@@ -161,4 +126,41 @@
     ].join('\n');
     document.head.appendChild(finalStyle);
   }
+
+  // Force visible floating motion with requestAnimationFrame. This does not use the
+  // CSS animation property and does not touch transform, so legacy rules cannot cancel it.
+  function startHeroBadgeMotion() {
+    var topBadge = hero.querySelector('.hero-image .floating-card.card-1');
+    var trustBadge = hero.querySelector('.hero-image .hero-trust-card, .hero-image .floating-card.card-2');
+    if (!topBadge && !trustBadge) return;
+
+    var startTime = performance.now();
+    if (topBadge) topBadge.setAttribute('data-hero-motion', 'raf');
+    if (trustBadge) trustBadge.setAttribute('data-hero-motion', 'raf');
+
+    function frame(now) {
+      var seconds = (now - startTime) / 1000;
+      var mobile = window.innerWidth <= 768;
+      var topAmplitude = mobile ? 4 : 9;
+      var trustAmplitude = mobile ? 4 : 7;
+      var topY = -topAmplitude * (0.5 - 0.5 * Math.cos((seconds / 4.6) * Math.PI * 2));
+      var trustPhase = seconds + 1.35;
+      var trustY = -trustAmplitude * (0.5 - 0.5 * Math.cos((trustPhase / 5.3) * Math.PI * 2));
+
+      if (topBadge && topBadge.isConnected) {
+        topBadge.style.setProperty('translate', '0 ' + topY.toFixed(2) + 'px', 'important');
+      }
+      if (trustBadge && trustBadge.isConnected) {
+        trustBadge.style.setProperty('translate', '0 ' + trustY.toFixed(2) + 'px', 'important');
+      }
+
+      if ((topBadge && topBadge.isConnected) || (trustBadge && trustBadge.isConnected)) {
+        window.requestAnimationFrame(frame);
+      }
+    }
+
+    window.requestAnimationFrame(frame);
+  }
+
+  startHeroBadgeMotion();
 })();
