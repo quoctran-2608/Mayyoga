@@ -1,22 +1,109 @@
 // ===== MayYoga.health — Main JS =====
 
-// Homepage-only responsive layer. Keeping these rules in a separate file prevents
-// legacy homepage overrides from affecting article and course pages that share style.css.
-(function loadHomepageResponsiveStyles() {
+// Homepage-only styles. Keeping these rules separate prevents homepage overrides
+// from affecting article and course pages that share style.css.
+(function loadHomepageStyles() {
   const isHomepage = Boolean(
     document.getElementById('hero') &&
     document.getElementById('hanh-trinh') &&
     document.getElementById('categories')
   );
 
-  if (!isHomepage || document.querySelector('link[data-index-responsive]')) return;
+  if (!isHomepage) return;
 
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = 'css/index-responsive.css?v=1';
-  link.dataset.indexResponsive = 'true';
-  document.head.appendChild(link);
+  const stylesheets = [
+    {
+      href: 'css/index-responsive.css?v=1',
+      selector: 'link[data-index-responsive]',
+      attribute: 'indexResponsive'
+    },
+    {
+      href: 'css/index-hero-principles.css?v=1',
+      selector: 'link[data-index-hero-principles]',
+      attribute: 'indexHeroPrinciples'
+    }
+  ];
+
+  stylesheets.forEach(stylesheet => {
+    if (document.querySelector(stylesheet.selector)) return;
+
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = stylesheet.href;
+    link.dataset[stylesheet.attribute] = 'true';
+    document.head.appendChild(link);
+  });
 })();
+
+// The three principle labels in hero-visual.webp are raster pixels, so users cannot
+// select or copy them. Remove the legacy counter layer and cover the raster strip
+// with equivalent real HTML text instead.
+function initHomepageHeroPrinciples() {
+  const hero = document.getElementById('hero');
+  const heroImage = hero?.querySelector('.hero-image');
+
+  if (!hero || !heroImage) return;
+
+  // Retired design: 90+ / 10K+ / 30+. Remove it from the rendered DOM completely.
+  hero.querySelector('.hero-stats')?.remove();
+
+  if (heroImage.querySelector('.hero-principles')) return;
+
+  const principles = document.createElement('div');
+  principles.className = 'hero-principles';
+  principles.setAttribute('aria-label', 'Ba nguyên tắc nền tảng của Mây Yoga');
+  principles.innerHTML = `
+    <div class="hero-principle">
+      <span class="hero-principle-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="5" r="2"></circle>
+          <path d="M12 7v6"></path>
+          <path d="M8.5 10.5 12 8l3.5 2.5"></path>
+          <path d="m9 21 3-8 3 8"></path>
+          <path d="M8 16h8"></path>
+        </svg>
+      </span>
+      <div class="hero-principle-copy">
+        <div class="hero-principle-title">Tư thế đúng</div>
+        <div class="hero-principle-subtitle">Căn chỉnh an toàn</div>
+      </div>
+    </div>
+
+    <div class="hero-principle">
+      <span class="hero-principle-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m3 8 9-5 9 5-9 5-9-5Z"></path>
+          <path d="M7 10.2V15c0 1.7 2.2 3 5 3s5-1.3 5-3v-4.8"></path>
+          <path d="M21 8v6"></path>
+        </svg>
+      </span>
+      <div class="hero-principle-copy">
+        <div class="hero-principle-title">Hơi thở đúng</div>
+        <div class="hero-principle-subtitle">Thực hành có nền tảng</div>
+      </div>
+    </div>
+
+    <div class="hero-principle">
+      <span class="hero-principle-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+          <path d="m12 2.8 2.78 5.63 6.22.9-4.5 4.39 1.06 6.2L12 17l-5.56 2.92 1.06-6.2L3 9.33l6.22-.9L12 2.8Z"></path>
+        </svg>
+      </span>
+      <div class="hero-principle-copy">
+        <div class="hero-principle-title">Hiểu cơ thể</div>
+        <div class="hero-principle-subtitle">An toàn &amp; bền vững</div>
+      </div>
+    </div>
+  `;
+
+  heroImage.appendChild(principles);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initHomepageHeroPrinciples, { once: true });
+} else {
+  initHomepageHeroPrinciples();
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
@@ -168,59 +255,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     };
 
+    highlightNav();
     window.addEventListener('scroll', highlightNav, { passive: true });
-  }
-
-  // ===== Hero counters =====
-  const heroStats = document.querySelector('.hero-stats');
-
-  if (heroStats) {
-    const animateCounters = () => {
-      document.querySelectorAll('.hero-stat .number').forEach(counter => {
-        const target = counter.textContent;
-        const numMatch = target.match(/[\d.]+/);
-        if (!numMatch) return;
-
-        const number = parseFloat(numMatch[0]);
-        const suffix = target.replace(numMatch[0], '');
-        const duration = 1600;
-        const steps = 48;
-        const increment = number / steps;
-        let current = 0;
-        let step = 0;
-
-        const timer = window.setInterval(() => {
-          step += 1;
-          current += increment;
-
-          if (step >= steps) {
-            counter.textContent = target;
-            window.clearInterval(timer);
-            return;
-          }
-
-          const displayNumber = number >= 1000
-            ? Math.floor(current / 1000) + 'K'
-            : Math.floor(current);
-
-          counter.textContent = displayNumber + suffix;
-        }, duration / steps);
-      });
-    };
-
-    if ('IntersectionObserver' in window) {
-      const heroObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          animateCounters();
-          heroObserver.unobserve(entry.target);
-        });
-      }, { threshold: 0.35 });
-
-      heroObserver.observe(heroStats);
-    } else {
-      animateCounters();
-    }
   }
 
   // ===== Hover performance hint =====
