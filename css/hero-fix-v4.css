@@ -296,19 +296,19 @@ body.home-hero-redesign .hero-stat:nth-child(3) .label::after{content:'An toàn 
 
 /* Very wide/fullscreen layouts get a slightly narrower visual so the composition keeps breathing room. */
 @media (min-width:1500px) and (min-aspect-ratio:17/10){
-  body.home-hero-redesign .hero .container{
+  html body.home-hero-redesign #hero.hero .container{
     grid-template-columns:46% 54%!important;
   }
-  #hero .hero-principles{
+  body.home-hero-redesign #hero .hero-principles{
     left:-85.1851852%!important;
   }
 }
 
 @media (min-width:2200px){
-  body.home-hero-redesign .hero .container{
+  html body.home-hero-redesign #hero.hero .container{
     grid-template-columns:47% 53%!important;
   }
-  #hero .hero-principles{
+  body.home-hero-redesign #hero .hero-principles{
     left:-88.6792453%!important;
   }
 }
