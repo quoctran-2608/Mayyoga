@@ -60,6 +60,8 @@
     var finalStyle = document.createElement('style');
     finalStyle.setAttribute('data-home-hero-final-refinement', 'true');
     finalStyle.textContent = [
+      'body.home-hero-redesign .hero-content { padding-top: 0 !important; }',
+      'body.home-hero-redesign .hero { margin-bottom: 10px !important; }',
       '@media (min-width: 1025px) {',
       '  body.home-hero-redesign .navbar, body.home-hero-redesign .navbar.scrolled {',
       '    height: 96px !important;',
