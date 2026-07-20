@@ -61,9 +61,17 @@
     finalStyle.setAttribute('data-home-hero-final-refinement', 'true');
     finalStyle.textContent = [
       'body.home-hero-redesign .hero-content { padding-top: 0 !important; }',
-      'body.home-hero-redesign .hero { margin-bottom: 10px !important; }',
+      'body.home-hero-redesign .hero { margin-bottom: 0 !important; }',
       '@media (min-width: 1025px) {',
       '  body.home-hero-redesign .hero { padding-bottom: 52px !important; }',
+      '  body.home-hero-redesign .hero-image > img {',
+      '    height: calc(100% + 52px) !important;',
+      '    width: auto !important;',
+      '    max-width: none !important;',
+      '    max-height: none !important;',
+      '    bottom: -52px !important;',
+      '  }',
+      '  body.home-hero-redesign .hero-image .floating-card.card-2 { bottom: -14px !important; }',
       '  body.home-hero-redesign .navbar, body.home-hero-redesign .navbar.scrolled {',
       '    height: 96px !important;',
       '    min-height: 96px !important;',
