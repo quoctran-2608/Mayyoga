@@ -1,0 +1,180 @@
+/* ===== INDEX HERO PRINCIPLES =====
+   The original labels are baked into hero-visual.webp, so they cannot be selected.
+   This layer covers that raster strip with real, accessible HTML text. */
+
+#hero .hero-stats {
+  display: none !important;
+}
+
+#hero .hero-image {
+  isolation: isolate;
+}
+
+#hero .hero-principles {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 777 / 141;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  margin: 0;
+  padding: clamp(8px, 1.05vw, 18px) clamp(10px, 1.55vw, 26px);
+  background: linear-gradient(105deg, #eff1e8 0%, #f7f6ef 35%, #fbf8f2 62%, #f8f6f0 100%);
+  box-sizing: border-box;
+  overflow: hidden;
+  pointer-events: auto;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+#hero .hero-principle {
+  position: relative;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 1vw, 16px);
+  padding: 0 clamp(8px, 1.4vw, 24px);
+  box-sizing: border-box;
+}
+
+#hero .hero-principle:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 18%;
+  right: 0;
+  width: 1px;
+  height: 64%;
+  background: rgba(70, 96, 67, 0.24);
+  pointer-events: none;
+}
+
+#hero .hero-principle-icon {
+  width: clamp(34px, 3.75vw, 58px);
+  height: clamp(34px, 3.75vw, 58px);
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #7db45e;
+  color: #fff;
+  pointer-events: none;
+}
+
+#hero .hero-principle-icon svg {
+  width: 46%;
+  height: 46%;
+  display: block;
+}
+
+#hero .hero-principle-copy {
+  min-width: 0;
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  cursor: text;
+}
+
+#hero .hero-principle-title {
+  margin: 0 0 clamp(1px, 0.25vw, 4px);
+  font-family: var(--font-heading);
+  font-size: clamp(12px, 1.72vw, 27px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: #194936;
+  white-space: nowrap;
+  -webkit-user-select: text !important;
+  user-select: text !important;
+}
+
+#hero .hero-principle-subtitle {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(8px, 0.94vw, 15px);
+  font-weight: 400;
+  line-height: 1.25;
+  color: #31576d;
+  white-space: nowrap;
+  -webkit-user-select: text !important;
+  user-select: text !important;
+}
+
+#hero .hero-principle-title::selection,
+#hero .hero-principle-subtitle::selection {
+  background: rgba(125, 180, 94, 0.34);
+  color: #143b2c;
+}
+
+/* Keep floating badges above the replaced raster strip. */
+#hero .hero-image .floating-card {
+  z-index: 6;
+}
+
+#hero .hero-image .floating-card.card-2 {
+  bottom: calc(18.15% + 18px);
+}
+
+@media (max-width: 768px) {
+  #hero .hero-principles {
+    padding: 6px 8px;
+    border-radius: 0 0 26px 26px;
+  }
+
+  #hero .hero-principle {
+    gap: 6px;
+    padding: 0 7px;
+  }
+
+  #hero .hero-principle-icon {
+    width: clamp(28px, 8vw, 40px);
+    height: clamp(28px, 8vw, 40px);
+  }
+
+  #hero .hero-principle-title {
+    font-size: clamp(10px, 3.15vw, 15px);
+  }
+
+  #hero .hero-principle-subtitle {
+    font-size: clamp(7px, 2.15vw, 10px);
+  }
+
+  #hero .hero-image .floating-card.card-2 {
+    bottom: calc(18.15% + 10px) !important;
+  }
+}
+
+@media (max-width: 430px) {
+  #hero .hero-principles {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  #hero .hero-principle {
+    gap: 4px;
+    padding: 0 4px;
+  }
+
+  #hero .hero-principle-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  #hero .hero-principle-title {
+    font-size: clamp(9px, 2.9vw, 12px);
+  }
+
+  #hero .hero-principle-subtitle {
+    font-size: clamp(6.5px, 1.95vw, 8px);
+  }
+
+  #hero .hero-principle:not(:last-child)::after {
+    top: 15%;
+    height: 70%;
+  }
+}
