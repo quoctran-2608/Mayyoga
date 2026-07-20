@@ -172,3 +172,48 @@
     document.head.appendChild(script);
   }
 })();
+
+// ===== HOMEPAGE HERO PRINCIPLE TITLE REFINEMENT =====
+(function refineHeroPrincipleTitles() {
+  function applyRefinement() {
+    var hero = document.getElementById('hero');
+    if (!hero) return;
+
+    var titles = hero.querySelectorAll('.hero-principle-title');
+    if (!titles.length) return;
+
+    // Updated wording requested for the first principle.
+    titles[0].textContent = 'Tư thế chuẩn';
+
+    if (!document.querySelector('style[data-hero-principle-title-refinement]')) {
+      var style = document.createElement('style');
+      style.setAttribute('data-hero-principle-title-refinement', 'true');
+      style.textContent = [
+        '#hero .hero-principle-title {',
+        '  font-size: clamp(21px, 1.28vw, 25px) !important;',
+        '  font-weight: 550 !important;',
+        '  line-height: 1.04 !important;',
+        '}',
+        '@media (min-width: 769px) and (max-width: 1024px) {',
+        '  #hero .hero-principle-title { font-size: 21px !important; }',
+        '}',
+        '@media (max-width: 768px) {',
+        '  #hero .hero-principle-title { font-size: clamp(15px, 4vw, 18px) !important; }',
+        '}',
+        '@media (max-width: 560px) {',
+        '  #hero .hero-principle-title { font-size: 18px !important; }',
+        '}',
+        '@media (max-width: 380px) {',
+        '  #hero .hero-principle-title { font-size: 17px !important; }',
+        '}'
+      ].join('\n');
+      document.head.appendChild(style);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyRefinement);
+  } else {
+    applyRefinement();
+  }
+})();
