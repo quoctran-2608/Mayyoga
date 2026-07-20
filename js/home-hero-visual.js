@@ -60,7 +60,7 @@
     var finalStyle = document.createElement('style');
     finalStyle.setAttribute('data-home-hero-final-refinement', 'true');
     finalStyle.textContent = [
-      'body.home-hero-redesign .hero-content { padding-top: 0 !important; }',
+      'body.home-hero-redesign .hero-content { padding-top: 0 !important; padding-bottom: 50px !important; }',
       'body.home-hero-redesign .hero { margin-bottom: 0 !important; }',
       '@media (min-width: 1025px) {',
       '  body.home-hero-redesign .hero { padding-bottom: 52px !important; }',
@@ -93,7 +93,7 @@
       '    font-size: clamp(23px, 1.38vw, 27px) !important;',
       '    font-weight: 550 !important;',
       '  }',
-      '  #hero .hero-principles { bottom: -6px !important; }',
+      '  #hero .hero-principles { bottom: 10px !important; }',
       '}',
       '@media (min-width: 769px) and (max-width: 1024px) {',
       '  body.home-hero-redesign .nav-logo .logo-img { height: 62px !important; }',
