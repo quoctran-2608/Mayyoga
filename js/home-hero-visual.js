@@ -27,55 +27,32 @@
   if (image.getAttribute('src') !== visualSrc) image.src = visualSrc;
   image.classList.add('hero-visual-ready');
 
-  // Friendly, non-technical value propositions for both new and experienced learners.
-  var statData = [
-    ['Tư thế chuẩn', 'Căn chỉnh an toàn'],
-    ['Hơi thở đúng', 'Thực hành có nền tảng'],
-    ['Hiểu cơ thể', 'An toàn & bền vững']
-  ];
-
-  hero.querySelectorAll('.hero-stat').forEach(function (item, index) {
-    if (!statData[index]) return;
-    var number = item.querySelector('.number');
-    var label = item.querySelector('.label');
-    if (number) number.textContent = statData[index][0];
-    if (label) label.textContent = statData[index][1];
-  });
-
-  // Keep the trust badge concise and easy to understand for first-time visitors.
-  var trustCard = hero.querySelector('.floating-card.card-2');
-  if (trustCard) {
-    var trustIcon = trustCard.querySelector('.card-icon');
-    var trustTitle = trustCard.querySelector('.card-title');
-    var trustSub = trustCard.querySelector('.card-sub');
-    if (trustIcon) trustIcon.textContent = '✓';
-    if (trustTitle) trustTitle.textContent = 'Học đúng từ nền tảng';
-    if (trustSub) trustSub.textContent = 'Tư thế • Hơi thở • Hiểu cơ thể';
-  }
-
-  // Final homepage-only refinements. These load after the earlier experimental
-  // overrides so the approved logo/search/CTA sizing is restored. Header compactness
-  // comes only from the navbar box itself; child controls keep their intended size.
+  // Final homepage-only refinements. Content creation/removal lives in main.js;
+  // this file is intentionally limited to geometry and visual presentation.
   if (!document.querySelector('style[data-home-hero-final-refinement]')) {
     var finalStyle = document.createElement('style');
     finalStyle.setAttribute('data-home-hero-final-refinement', 'true');
     finalStyle.textContent = [
       'body.home-hero-redesign .hero-content { padding-top: 0 !important; padding-bottom: 50px !important; }',
       'body.home-hero-redesign .hero { margin-bottom: 0 !important; }',
+
+      // Do not change opacity on the whole badge: that would fade text/icons too.
+      // Use a genuinely translucent glass background with only a light blur.
       'body.home-hero-redesign .hero-image .floating-card.card-1 {',
-      '  background: rgba(255, 255, 255, 0.85) !important;',
-      '  -webkit-backdrop-filter: blur(10px) saturate(112%) !important;',
-      '  backdrop-filter: blur(10px) saturate(112%) !important;',
-      '  border: 1px solid rgba(255, 255, 255, 0.58) !important;',
-      '  box-shadow: 0 14px 34px rgba(34, 61, 43, 0.11) !important;',
+      '  background: rgba(255, 255, 255, 0.66) !important;',
+      '  -webkit-backdrop-filter: blur(4px) saturate(106%) !important;',
+      '  backdrop-filter: blur(4px) saturate(106%) !important;',
+      '  border: 1px solid rgba(255, 255, 255, 0.46) !important;',
+      '  box-shadow: 0 10px 28px rgba(34, 61, 43, 0.09) !important;',
       '}',
-      'body.home-hero-redesign .hero-image .floating-card.card-2 {',
-      '  background: rgba(255, 255, 255, 0.88) !important;',
-      '  -webkit-backdrop-filter: blur(10px) saturate(112%) !important;',
-      '  backdrop-filter: blur(10px) saturate(112%) !important;',
-      '  border: 1px solid rgba(255, 255, 255, 0.62) !important;',
-      '  box-shadow: 0 14px 34px rgba(34, 61, 43, 0.12) !important;',
+      'body.home-hero-redesign .hero-image .hero-trust-card {',
+      '  background: rgba(255, 255, 255, 0.70) !important;',
+      '  -webkit-backdrop-filter: blur(4px) saturate(106%) !important;',
+      '  backdrop-filter: blur(4px) saturate(106%) !important;',
+      '  border: 1px solid rgba(255, 255, 255, 0.50) !important;',
+      '  box-shadow: 0 10px 28px rgba(34, 61, 43, 0.10) !important;',
       '}',
+
       '@media (min-width: 1181px) {',
       '  body.home-hero-redesign .hero .container { grid-template-columns: 45% 55% !important; }',
       '  #hero .hero-principles { left: -81.8181818% !important; }',
@@ -97,7 +74,7 @@
       '    object-fit: cover !important;',
       '    object-position: right center !important;',
       '  }',
-      '  body.home-hero-redesign .hero-image .floating-card.card-2 { bottom: 18px !important; }',
+      '  body.home-hero-redesign .hero-image .hero-trust-card { bottom: 44px !important; }',
       '  body.home-hero-redesign .navbar, body.home-hero-redesign .navbar.scrolled {',
       '    height: 96px !important;',
       '    min-height: 96px !important;',
