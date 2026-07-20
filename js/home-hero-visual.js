@@ -29,7 +29,7 @@
 
   // Friendly, non-technical value propositions for both new and experienced learners.
   var statData = [
-    ['Tư thế đúng', 'Căn chỉnh an toàn'],
+    ['Tư thế chuẩn', 'Căn chỉnh an toàn'],
     ['Hơi thở đúng', 'Thực hành có nền tảng'],
     ['Hiểu cơ thể', 'An toàn & bền vững']
   ];
@@ -51,5 +51,53 @@
     if (trustIcon) trustIcon.textContent = '✓';
     if (trustTitle) trustTitle.textContent = 'Học đúng từ nền tảng';
     if (trustSub) trustSub.textContent = 'Tư thế • Hơi thở • Hiểu cơ thể';
+  }
+
+  // Final homepage-only refinements. These load after the earlier experimental
+  // overrides so the approved logo/search/CTA sizing is restored. Header compactness
+  // comes only from the navbar box itself; child controls keep their intended size.
+  if (!document.querySelector('style[data-home-hero-final-refinement]')) {
+    var finalStyle = document.createElement('style');
+    finalStyle.setAttribute('data-home-hero-final-refinement', 'true');
+    finalStyle.textContent = [
+      '@media (min-width: 1025px) {',
+      '  body.home-hero-redesign .navbar, body.home-hero-redesign .navbar.scrolled {',
+      '    height: 96px !important;',
+      '    min-height: 96px !important;',
+      '    margin-bottom: 0 !important;',
+      '    padding-top: 0 !important;',
+      '    padding-bottom: 0 !important;',
+      '  }',
+      '  body.home-hero-redesign .nav-logo .logo-img { height: 84px !important; }',
+      '  body.home-hero-redesign .nav-links { gap: clamp(26px, 2.3vw, 42px) !important; }',
+      '  body.home-hero-redesign .nav-links > li:first-child > a::after { bottom: -18px !important; }',
+      '  body.home-hero-redesign .nav-search input { height: 52px !important; }',
+      '  body.home-hero-redesign .nav-cta .btn { height: 54px !important; min-width: 190px !important; }',
+      '  #hero .hero-principle-title {',
+      '    font-size: clamp(23px, 1.38vw, 27px) !important;',
+      '    font-weight: 550 !important;',
+      '  }',
+      '  #hero .hero-principles { bottom: -6px !important; }',
+      '}',
+      '@media (min-width: 769px) and (max-width: 1024px) {',
+      '  body.home-hero-redesign .nav-logo .logo-img { height: 62px !important; }',
+      '  #hero .hero-principle-title { font-size: 22px !important; font-weight: 550 !important; }',
+      '}',
+      '@media (max-width: 768px) {',
+      '  #hero .hero-principle-title { font-size: clamp(16px, 4.2vw, 19px) !important; font-weight: 550 !important; }',
+      '  #hero .hero-principles { margin-top: 30px !important; }',
+      '}',
+      '@media (max-width: 640px) {',
+      '  body.home-hero-redesign .nav-logo .logo-img { height: 56px !important; }',
+      '}',
+      '@media (max-width: 560px) {',
+      '  #hero .hero-principle-title { font-size: 19px !important; }',
+      '  #hero .hero-principles { margin-top: 28px !important; }',
+      '}',
+      '@media (max-width: 380px) {',
+      '  #hero .hero-principle-title { font-size: 18px !important; }',
+      '}'
+    ].join('\n');
+    document.head.appendChild(finalStyle);
   }
 })();
