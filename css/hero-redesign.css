@@ -21,7 +21,7 @@ body.home-hero-redesign .hero-badge .dot{width:18px;height:18px;flex:0 0 18px;bo
 body.home-hero-redesign .hero h1{margin:0 0 22px;max-width:650px;color:var(--hero-ink);font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(48px,3.65vw,64px);font-style:normal;font-weight:600;line-height:1.02;letter-spacing:-.045em}
 body.home-hero-redesign .hero h1 .highlight{display:inline-block;margin:4px 0 2px;color:#77a65d;font-size:1.48em;font-weight:400;line-height:.92;letter-spacing:-.045em}
 body.home-hero-redesign .hero h1 .highlight::after{display:none}
-body.home-hero-redesign .hero h1::after{content:'';display:block;width:142px;height:17px;margin-top:19px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='142' height='17' viewBox='0 0 142 17' fill='none'%3E%3Cpath d='M25 8.5H142' stroke='%239CB98A' stroke-width='1.2'/%3E%3Cpath d='M7 15C10 10 11 6 11 1' stroke='%2376A65E' stroke-width='1.4'/%3E%3Cpath d='M10 6C5.5 5.8 3.4 3.6 4 .6C7.8 1.2 10.2 3.1 10 6Z' fill='%2376A65E'/%3E%3C/svg%3E") left center/contain no-repeat}
+body.home-hero-redesign .hero h1::after{display:none}
 body.home-hero-redesign .hero p{max-width:590px;margin:0 0 30px;color:var(--hero-copy);font-size:clamp(16px,1.08vw,18px);line-height:1.72;letter-spacing:-.01em}
 body.home-hero-redesign .hero-buttons{display:flex;align-items:center;gap:28px;flex-wrap:nowrap}
 body.home-hero-redesign .hero-buttons .btn{min-width:230px;height:54px;padding:0 28px;border-radius:999px;font-size:.96rem;font-weight:500;letter-spacing:0}
