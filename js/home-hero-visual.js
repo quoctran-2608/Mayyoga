@@ -79,7 +79,10 @@
       '  #hero .hero-principles { left: -85.1851852% !important; }',
       '}',
       '@media (min-width: 1025px) {',
-      '  body.home-hero-redesign .hero { padding-bottom: 52px !important; }',
+      // Navbar is 96px tall; match the Hero top offset exactly so no cream seam remains.
+      '  body.home-hero-redesign .hero { padding-top: 96px !important; padding-bottom: 52px !important; }',
+      '  body.home-hero-redesign .hero .container { min-height: calc(100svh - 96px) !important; }',
+      '  body.home-hero-redesign .hero-image { height: calc(100svh - 96px) !important; }',
       '  body.home-hero-redesign .hero-image > img {',
       '    top: 0 !important;',
       '    right: 0 !important;',
