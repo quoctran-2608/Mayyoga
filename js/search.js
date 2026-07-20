@@ -150,92 +150,52 @@
   else initSearch();
 })();
 
-// ===== HOMEPAGE HERO — refined visual/content v11 =====
-(function initHomeHeroRedesign() {
-  var hero = document.getElementById('hero');
-  if (!hero) return;
-  document.body.classList.add('home-hero-redesign');
-
-  if (!document.querySelector('link[data-home-hero-redesign]')) {
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'css/hero-redesign-v2.css?v=20260719g';
-    link.setAttribute('data-home-hero-redesign', 'true');
-    document.head.appendChild(link);
-  }
-
-  if (!document.querySelector('script[data-home-hero-visual]')) {
-    var script = document.createElement('script');
-    script.src = 'js/home-hero-visual.js?v=20260719f';
-    script.async = false;
-    script.setAttribute('data-home-hero-visual', 'true');
-    document.head.appendChild(script);
-  }
-})();
-
-// ===== HOMEPAGE HERO PRINCIPLE TITLE REFINEMENT =====
-(function refineHeroPrincipleTitles() {
-  function applyRefinement() {
+// ===== HOMEPAGE HERO BADGE MOTION FALLBACK =====
+// Kept here because search.js is loaded directly by index.html. This guarantees badge
+// motion even if a dynamically loaded hero helper is stale or delayed by CDN caching.
+(function ensureHeroBadgeMotion() {
+  function start() {
     var hero = document.getElementById('hero');
-    if (!hero) return;
+    if (!hero || window.__mayYogaHeroBadgeMotionStarted) return;
 
-    var titles = hero.querySelectorAll('.hero-principle-title');
-    if (!titles.length) return;
+    var topBadge = hero.querySelector('.hero-image .floating-card.card-1');
+    var trustBadge = hero.querySelector('.hero-image .hero-trust-card, .hero-image .floating-card.card-2');
+    if (!topBadge && !trustBadge) return;
 
-    // Updated wording requested for the first principle.
-    titles[0].textContent = 'Tư thế chuẩn';
+    window.__mayYogaHeroBadgeMotionStarted = true;
+    var startTime = performance.now();
 
-    if (!document.querySelector('style[data-hero-principle-title-refinement]')) {
-      var style = document.createElement('style');
-      style.setAttribute('data-hero-principle-title-refinement', 'true');
-      style.textContent = [
-        '#hero .hero-principle-title {',
-        '  font-size: clamp(21px, 1.28vw, 25px) !important;',
-        '  font-weight: 550 !important;',
-        '  line-height: 1.04 !important;',
-        '}',
-        '@media (min-width: 1025px) {',
-        '  #hero .hero-principles { bottom: 4px !important; }',
-        '  body.home-hero-redesign .navbar, body.home-hero-redesign .navbar.scrolled {',
-        '    min-height: 94px !important;',
-        '    padding: 4px 0 !important;',
-        '  }',
-        '  body.home-hero-redesign .nav-logo .logo-img { height: 68px !important; }',
-        '  body.home-hero-redesign .nav-links { gap: clamp(22px, 2vw, 36px) !important; }',
-        '  body.home-hero-redesign .nav-links > li:first-child > a::after { bottom: -14px !important; }',
-        '  body.home-hero-redesign .nav-search input { height: 46px !important; }',
-        '  body.home-hero-redesign .nav-cta .btn { height: 48px !important; min-width: 180px !important; }',
-        '  body.home-hero-redesign .hero { padding-top: 94px !important; }',
-        '  body.home-hero-redesign .hero .container { min-height: calc(100svh - 94px) !important; }',
-        '}',
-        '@media (min-width: 769px) and (max-width: 1024px) {',
-        '  #hero .hero-principle-title { font-size: 21px !important; }',
-        '  body.home-hero-redesign .navbar, body.home-hero-redesign .navbar.scrolled { min-height: 72px !important; padding: 3px 0 !important; }',
-        '  body.home-hero-redesign .nav-logo .logo-img { height: 54px !important; }',
-        '}',
-        '@media (max-width: 768px) {',
-        '  #hero .hero-principle-title { font-size: clamp(15px, 4vw, 18px) !important; }',
-        '  #hero .hero-principles { margin-top: 26px !important; }',
-        '}',
-        '@media (max-width: 640px) {',
-        '  body.home-hero-redesign .navbar, body.home-hero-redesign .navbar.scrolled { min-height: 64px !important; padding: 2px 0 !important; }',
-        '  body.home-hero-redesign .nav-logo .logo-img { height: 48px !important; }',
-        '}',
-        '@media (max-width: 560px) {',
-        '  #hero .hero-principle-title { font-size: 18px !important; }',
-        '  #hero .hero-principles { margin-top: 24px !important; }',
-        '}',
-        '@media (max-width: 380px) {',
-        '  #hero .hero-principle-title { font-size: 17px !important; }',
-        '}'
-      ].join('\n');
-      document.head.appendChild(style);
+    [topBadge, trustBadge].forEach(function(badge) {
+      if (!badge) return;
+      badge.style.setProperty('animation', 'none', 'important');
+      badge.style.setProperty('will-change', 'translate', 'important');
+      badge.setAttribute('data-hero-motion', 'direct-raf');
+    });
+
+    function frame(now) {
+      var seconds = (now - startTime) / 1000;
+      var mobile = window.innerWidth <= 768;
+      var topAmplitude = mobile ? 6 : 14;
+      var trustAmplitude = mobile ? 5 : 11;
+      var topY = -topAmplitude * (0.5 - 0.5 * Math.cos((seconds / 3.8) * Math.PI * 2));
+      var trustPhase = seconds + 1.15;
+      var trustY = -trustAmplitude * (0.5 - 0.5 * Math.cos((trustPhase / 4.5) * Math.PI * 2));
+
+      if (topBadge && topBadge.isConnected) {
+        topBadge.style.setProperty('translate', '0 ' + topY.toFixed(2) + 'px', 'important');
+      }
+      if (trustBadge && trustBadge.isConnected) {
+        trustBadge.style.setProperty('translate', '0 ' + trustY.toFixed(2) + 'px', 'important');
+      }
+
+      if ((topBadge && topBadge.isConnected) || (trustBadge && trustBadge.isConnected)) {
+        window.requestAnimationFrame(frame);
+      }
     }
+
+    window.requestAnimationFrame(frame);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyRefinement);
-  } else {
-    applyRefinement();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true });
+  else start();
 })();
