@@ -270,3 +270,45 @@ body.home-hero-redesign .hero-stat:nth-child(3) .label::after{content:'An toàn 
   body.home-hero-redesign .hero-stat .number::after{font-size:18px;white-space:normal}
   body.home-hero-redesign .hero-stat .label::after{font-size:.62rem;white-space:normal}
 }
+
+/* Keep the visual's left silhouette stable even when object-fit:cover crops the source on wide/fullscreen viewports. */
+@media (min-width:1025px){
+  body.home-hero-redesign .hero-image > img{
+    border-radius:31% 0 0 31% / 50% 0 0 50%!important;
+  }
+
+  body.home-hero-redesign .hero-image::after{
+    content:'';
+    display:block!important;
+    position:absolute;
+    z-index:6;
+    top:0;
+    left:0;
+    width:62%;
+    height:calc(100% + 52px);
+    border:1.4px solid rgba(151,180,128,.68);
+    border-radius:50%;
+    clip-path:inset(0 50% 0 0);
+    -webkit-clip-path:inset(0 50% 0 0);
+    pointer-events:none;
+  }
+}
+
+/* Very wide/fullscreen layouts get a slightly narrower visual so the composition keeps breathing room. */
+@media (min-width:1500px) and (min-aspect-ratio:17/10){
+  body.home-hero-redesign .hero .container{
+    grid-template-columns:46% 54%!important;
+  }
+  #hero .hero-principles{
+    left:-85.1851852%!important;
+  }
+}
+
+@media (min-width:2200px){
+  body.home-hero-redesign .hero .container{
+    grid-template-columns:47% 53%!important;
+  }
+  #hero .hero-principles{
+    left:-88.6792453%!important;
+  }
+}
