@@ -635,26 +635,34 @@ p { color: var(--gray-600); }
 
 .hero-image .floating-card {
   position: absolute;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: var(--radius-lg);
-  padding: 16px 20px;
-  box-shadow: var(--shadow-lg);
+  padding: 10px 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   display: flex;
   align-items: center;
-  gap: 12px;
-  animation: float 3s ease-in-out infinite;
+  gap: 8px;
+  transform: scale(0.72);
+  transform-origin: center;
+  animation: badgeUpDown 3.5s ease-in-out infinite;
+}
+
+@keyframes badgeUpDown {
+  0%, 100% { transform: scale(0.72) translateY(0); }
+  50% { transform: scale(0.72) translateY(-10px); }
 }
 
 .hero-image .floating-card.card-1 {
-  top: 24px;
-  right: 40px;
+  top: 8px;
+  right: -16px;
 }
 
 .hero-image .floating-card.card-2 {
-  bottom: 40px;
-  right: 40px;
-  animation-delay: 1.5s;
+  bottom: 24px;
+  right: -16px;
+  animation-delay: 1.8s;
 }
 
 .floating-card .card-icon {
