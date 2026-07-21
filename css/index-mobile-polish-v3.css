@@ -36,6 +36,63 @@
     max-width: 92px !important;
   }
 
+  /* ---------- Mobile visual badge semantics ----------
+     Use the visual badge as a caption for the Yoga style shown in the image.
+     The learning philosophy belongs to the principles panel below. */
+  body.home-hero-redesign #hero .hero-image .floating-card.card-1 {
+    grid-area: 1 / 1 !important;
+    position: relative !important;
+    z-index: 8 !important;
+    display: flex !important;
+    align-self: start !important;
+    justify-self: start !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: auto !important;
+    max-width: min(68%, 226px) !important;
+    min-width: 0 !important;
+    margin: 11px 0 0 11px !important;
+    padding: 8px 11px !important;
+    gap: 8px !important;
+    border-radius: 16px !important;
+    background: rgba(255, 255, 255, 0.62) !important;
+    border: 1px solid rgba(255, 255, 255, 0.46) !important;
+    box-shadow: 0 8px 22px rgba(35, 62, 43, 0.08) !important;
+    -webkit-backdrop-filter: blur(3px) saturate(104%) !important;
+    backdrop-filter: blur(3px) saturate(104%) !important;
+  }
+
+  body.home-hero-redesign #hero .hero-image .floating-card.card-1 .card-icon {
+    width: 32px !important;
+    height: 32px !important;
+    flex: 0 0 32px !important;
+    border-radius: 50% !important;
+    font-size: 14px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-image .floating-card.card-1 .card-title {
+    font-size: 12.5px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+  }
+
+  body.home-hero-redesign #hero .hero-image .floating-card.card-1 .card-sub {
+    margin-top: 3px !important;
+    font-size: 10.5px !important;
+    line-height: 1.25 !important;
+    white-space: nowrap !important;
+  }
+
+  body.home-hero-redesign #hero .hero-image .hero-trust-card {
+    display: none !important;
+  }
+
+  body.home-hero-redesign #hero .hero-principles::before {
+    content: 'Học đúng từ nền tảng tại Mây Yoga' !important;
+  }
+
   /* ---------- Featured blog: never let long Vietnamese copy widen viewport ---------- */
   body.home-hero-redesign #blog,
   body.home-hero-redesign #blog > .container,
@@ -84,6 +141,12 @@
     flex-basis: 82px !important;
     width: 82px !important;
     max-width: 82px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-image .floating-card.card-1 {
+    max-width: min(72%, 218px) !important;
+    margin-top: 8px !important;
+    margin-left: 8px !important;
   }
 
   body.home-hero-redesign #blog .featured-blog-subtitle {
