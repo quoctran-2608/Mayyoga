@@ -17,6 +17,7 @@ permalink: /
   <link rel="stylesheet" href="css/index-mobile-refine-v5.css?v=20260721a" data-home-mobile-refine-v5="true" media="(max-width: 768px)">
   <link rel="stylesheet" href="css/index-hero-principle-icons-v2.css?v=20260721a">
   <link rel="stylesheet" href="css/index-nav-v2.css?v=20260721a" data-index-nav-v2="true">
+  <link rel="stylesheet" href="css/header-index-canonical-v3.css?v=20260721a" data-header-index-canonical="true">
   <link rel="stylesheet" href="css/index-practice-carousel-v2.css?v=20260721a" data-index-practice-carousel-v2="true">
   <link rel="stylesheet" href="css/index-practice-mobile-v3.css?v=20260721b" data-index-practice-mobile-v3="true" media="(max-width: 768px)">
   <link rel="stylesheet" href="css/index-footer-component-compat-v2.css?v=20260721a" data-index-footer-component-compat="true">
@@ -34,6 +35,7 @@ permalink: /
 {% assign page_source = page_source | replace: '<li><a href="index.html">Trang chủ</a></li>', '<li><a href="index.html" aria-current="page">Trang chủ</a></li>' %}
 {% assign page_source = page_source | replace: '<a href="#" class="dropdown-toggle" style="color:#d4af37; font-weight:600;">Các khoá học <span class="chevron">▾</span></a>', '<a href="hoc-yoga-online.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Các khoá học <span class="chevron">▾</span></a>' %}
 {% assign page_source = page_source | replace: '<a href="#" class="dropdown-toggle">Kiến thức Yoga <span class="chevron">▾</span></a>', '<a href="bai-viet/yoga-cho-nguoi-moi.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Kiến thức Yoga <span class="chevron">▾</span></a>' %}
+{% assign page_source = page_source | replace: '<a href="#blog" class="btn btn-primary btn-sm">Khám phá ngay</a>', '<a href="#blog" class="btn btn-primary btn-sm">Khám phá ngay <img class="leaf-icon" src="assets/images/icons/leaf_button.svg?v=20260721a" alt="" aria-hidden="true" width="14" height="18"></a>' %}
 
 <!-- First two practice cards are visible on initial mobile arrival, so their images should be ready too. -->
 {% assign page_source = page_source | replace: '<img loading="lazy" src="assets/images/articles/carousel-beginner.jpg" alt="Lộ trình 30 ngày">', '<img loading="eager" src="assets/images/articles/carousel-beginner.jpg" alt="Lộ trình 30 ngày">' %}
