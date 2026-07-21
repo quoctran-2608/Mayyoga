@@ -1,9 +1,83 @@
 /* ===== MÂY YOGA — MOBILE POLISH V3 =====
    Final homepage-only refinements layered after Mobile Hero V2.
    Keeps the mobile Hero on one clear left alignment axis and prevents
-   long section copy from widening the viewport. */
+   long section copy or decorative overflow from widening the viewport. */
 
 @media (max-width: 768px) {
+  /* ---------- Horizontal overflow hardening ----------
+     The mobile visual itself is narrower than the viewport. Real overflow came from
+     oversized decorative pseudo-elements, inherited desktop min-widths and edge-to-edge
+     scrollers. Clip only page-level overflow while preserving intentional carousel swipe. */
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: clip !important;
+  }
+
+  @supports not (overflow: clip) {
+    html,
+    body {
+      overflow-x: hidden !important;
+    }
+  }
+
+  body.home-hero-redesign,
+  body.home-hero-redesign #hero,
+  body.home-hero-redesign #hanh-trinh,
+  body.home-hero-redesign #categories,
+  body.home-hero-redesign #poses,
+  body.home-hero-redesign #blog,
+  body.home-hero-redesign #faq {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* This transition used left:-8% + right:-8%, creating a ~116%-wide box. */
+  html body.home-hero-redesign #hanh-trinh::before {
+    left: 0 !important;
+    right: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Keep carousel swiping, but contain it inside its own section and hide its native bar. */
+  body.home-hero-redesign #hanh-trinh .practice-carousel {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: clip !important;
+  }
+
+  body.home-hero-redesign #hanh-trinh .carousel-track {
+    max-width: 100% !important;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  body.home-hero-redesign #hanh-trinh .carousel-track::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* Desktop search starts at min-width:420px; reset it on phones. */
+  body.home-hero-redesign .nav-search .search-dropdown {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  body.home-hero-redesign .search-result-item,
+  body.home-hero-redesign .search-result-info,
+  body.home-hero-redesign .search-result-title,
+  body.home-hero-redesign .search-result-snippet {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-wrap: anywhere;
+  }
+
   /* ---------- Hero text rhythm: one consistent left alignment axis ---------- */
   body.home-hero-redesign #hero .hero-content {
     align-items: flex-start !important;
