@@ -155,18 +155,29 @@
 // the approved base stylesheet exists before the final fix layer if a cached helper missed it.
 (function ensureHeroLayoutFoundation() {
   if (!document.getElementById('hero')) return;
-  if (document.querySelector('link[data-home-hero-redesign]')) return;
 
-  var baseLink = document.createElement('link');
-  baseLink.rel = 'stylesheet';
-  baseLink.href = 'css/hero-redesign-v2.css?v=20260720n';
-  baseLink.setAttribute('data-home-hero-redesign', 'true');
+  if (!document.querySelector('link[data-home-hero-redesign]')) {
+    var baseLink = document.createElement('link');
+    baseLink.rel = 'stylesheet';
+    baseLink.href = 'css/hero-redesign-v2.css?v=20260720n';
+    baseLink.setAttribute('data-home-hero-redesign', 'true');
 
-  var fixLink = document.querySelector('link[data-home-hero-fix]');
-  if (fixLink && fixLink.parentNode) {
-    fixLink.parentNode.insertBefore(baseLink, fixLink);
-  } else {
-    document.head.appendChild(baseLink);
+    var fixLink = document.querySelector('link[data-home-hero-fix]');
+    if (fixLink && fixLink.parentNode) {
+      fixLink.parentNode.insertBefore(baseLink, fixLink);
+    } else {
+      document.head.appendChild(baseLink);
+    }
+  }
+
+  // Final mobile polish uses deliberately higher-specificity selectors, so it stays safe
+  // regardless of whether the async Hero V2 stylesheet arrives just before or after it.
+  if (!document.querySelector('link[data-home-mobile-polish-v3]')) {
+    var polishLink = document.createElement('link');
+    polishLink.rel = 'stylesheet';
+    polishLink.href = 'css/index-mobile-polish-v3.css?v=20260721b';
+    polishLink.setAttribute('data-home-mobile-polish-v3', 'true');
+    document.head.appendChild(polishLink);
   }
 })();
 
@@ -195,8 +206,8 @@
     function frame(now) {
       var seconds = (now - startTime) / 1000;
       var mobile = window.innerWidth <= 768;
-      var topAmplitude = mobile ? 6 : 14;
-      var trustAmplitude = mobile ? 5 : 11;
+      var topAmplitude = mobile ? 3 : 14;
+      var trustAmplitude = mobile ? 3 : 11;
       var topY = -topAmplitude * (0.5 - 0.5 * Math.cos((seconds / 3.8) * Math.PI * 2));
       var trustPhase = seconds + 1.15;
       var trustY = -trustAmplitude * (0.5 - 0.5 * Math.cos((trustPhase / 4.5) * Math.PI * 2));
