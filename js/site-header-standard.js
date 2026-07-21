@@ -115,7 +115,7 @@
         box-shadow:0 10px 22px rgba(47,102,43,.2) !important; color:#fff !important;
       }
       html body .navbar.site-header-standard .nav-cta .btn::after { content:none; }
-      html body .navbar.site-header-standard .nav-cta .btn .leaf-icon { display:inline-block; width:18px; height:18px; margin-left:7px; vertical-align:middle; filter:brightness(0) invert(1); }
+      html body .navbar.site-header-standard .nav-cta .btn .leaf-icon { display:inline-block; width:18px; height:18px; margin-left:7px; vertical-align:middle; }
       html body .navbar.site-header-standard .mobile-toggle { display:none !important; }
 
       @media (min-width:981px) {
