@@ -248,3 +248,32 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true });
   else start();
 })();
+
+// ===== SHARED SITE CHROME FALLBACK =====
+// Legacy pages such as tu-the-yoga.html load search.js but not main.js. Ensure those pages
+// still receive the canonical header/menu, footer and floating-contact component. Pages
+// already bootstrapped by main.js or index.html are skipped via the shared marker.
+(function ensureCanonicalSiteChromeFallback() {
+  if (document.querySelector('script[data-site-chrome-standard]')) return;
+
+  var current = document.currentScript;
+  if (!current || !current.src) {
+    var scripts = document.querySelectorAll('script[src]');
+    for (var i = scripts.length - 1; i >= 0; i--) {
+      if (/\/js\/search\.js(?:\?|$)/.test(scripts[i].src)) {
+        current = scripts[i];
+        break;
+      }
+    }
+  }
+
+  var src = current && current.src
+    ? new URL('site-chrome.js?v=20260721c', current.src).href
+    : 'js/site-chrome.js?v=20260721c';
+
+  var script = document.createElement('script');
+  script.src = src;
+  script.defer = true;
+  script.setAttribute('data-site-chrome-standard', 'true');
+  document.head.appendChild(script);
+})();
