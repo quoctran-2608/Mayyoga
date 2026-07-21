@@ -73,9 +73,7 @@
       html body .navbar.site-header-standard .nav-dropdown:focus-within > .dropdown-toggle,
       html body .navbar.site-header-standard .nav-dropdown.active > .dropdown-toggle,
       html body .navbar.site-header-standard .nav-links > li > a[aria-current="page"],
-      html body .navbar.site-header-standard .nav-links > li.has-current-child > .dropdown-toggle {
-        color:#2f6f42 !important;
-      }
+      html body .navbar.site-header-standard .nav-links > li.has-current-child > .dropdown-toggle { color:#2f6f42 !important; }
       html body .navbar.site-header-standard .nav-links > li > a[aria-current="page"],
       html body .navbar.site-header-standard .nav-links > li.has-current-child > .dropdown-toggle { font-weight:650 !important; }
       html body .navbar.site-header-standard .nav-links > li > a:hover::after,
@@ -287,6 +285,128 @@
     ].join('');
   }
 
+  function createSearch() {
+    var search = document.createElement('div');
+    search.className = 'nav-search';
+    search.id = 'navSearch';
+    search.setAttribute('data-site-search-standard', 'true');
+    search.innerHTML = '<input type="text" id="globalSearch" placeholder="🔍 Tìm tư thế, bài viết..." autocomplete="off">' +
+      '<div class="search-dropdown" id="searchDropdown"></div>';
+    return search;
+  }
+
+  function ensureSearchMarkup(navbar) {
+    var container = navbar.querySelector('.container');
+    if (!container) return null;
+
+    var search = navbar.querySelector('#navSearch');
+    if (!search) {
+      search = createSearch();
+      var cta = navbar.querySelector('.nav-cta');
+      var toggle = navbar.querySelector('#mobileToggle');
+      container.insertBefore(search, cta || toggle || null);
+    }
+
+    if (!search.querySelector('#globalSearch')) {
+      var input = document.createElement('input');
+      input.type = 'text';
+      input.id = 'globalSearch';
+      input.placeholder = '🔍 Tìm tư thế, bài viết...';
+      input.autocomplete = 'off';
+      search.insertBefore(input, search.firstChild);
+    }
+
+    if (!search.querySelector('#searchDropdown')) {
+      var dropdown = document.createElement('div');
+      dropdown.className = 'search-dropdown';
+      dropdown.id = 'searchDropdown';
+      search.appendChild(dropdown);
+    }
+
+    search.querySelector('#globalSearch').placeholder = '🔍 Tìm tư thế, bài viết...';
+    return search;
+  }
+
+  function hasScript(filename) {
+    return Array.prototype.some.call(document.querySelectorAll('script[src]'), function(script) {
+      return new RegExp('/js/' + filename.replace('.', '\\.') + '(?:\\?|$)').test(script.src);
+    });
+  }
+
+  function loadSearchScript() {
+    if (hasScript('search.js')) return;
+    var script = document.createElement('script');
+    script.src = siteUrl('js/search.js?v=20260721d');
+    script.setAttribute('data-site-search-engine', 'true');
+    document.head.appendChild(script);
+  }
+
+  function ensureSearchEngine() {
+    if (!document.getElementById('globalSearch') || !document.getElementById('searchDropdown')) return;
+    if (hasScript('search.js')) return;
+
+    if (typeof window.SEARCH_INDEX !== 'undefined') {
+      loadSearchScript();
+      return;
+    }
+
+    var existingIndex = Array.prototype.find.call(document.querySelectorAll('script[src]'), function(script) {
+      return /\/js\/search-index\.js(?:\?|$)/.test(script.src);
+    });
+
+    if (existingIndex) {
+      existingIndex.addEventListener('load', loadSearchScript, { once: true });
+      window.setTimeout(function() {
+        if (typeof window.SEARCH_INDEX !== 'undefined') loadSearchScript();
+      }, 0);
+      return;
+    }
+
+    var indexScript = document.createElement('script');
+    indexScript.src = siteUrl('js/search-index.js?v=20260721a');
+    indexScript.setAttribute('data-site-search-index', 'true');
+    indexScript.addEventListener('load', loadSearchScript, { once: true });
+    document.head.appendChild(indexScript);
+  }
+
+  function ensureCta(navbar) {
+    var container = navbar.querySelector('.container');
+    if (!container) return null;
+    var ctaWrap = navbar.querySelector('.nav-cta');
+    if (!ctaWrap) {
+      ctaWrap = document.createElement('div');
+      ctaWrap.className = 'nav-cta';
+      var toggle = navbar.querySelector('#mobileToggle');
+      container.insertBefore(ctaWrap, toggle || null);
+    }
+    var cta = ctaWrap.querySelector('.btn');
+    if (!cta) {
+      cta = document.createElement('a');
+      cta.className = 'btn btn-primary btn-sm';
+      ctaWrap.appendChild(cta);
+    }
+    cta.href = siteUrl('index.html#blog');
+    cta.textContent = 'Khám phá ngay';
+    return cta;
+  }
+
+  function ensureMobileToggle(navbar) {
+    var container = navbar.querySelector('.container');
+    if (!container) return null;
+    var toggle = navbar.querySelector('#mobileToggle');
+    if (!toggle) {
+      toggle = document.createElement('button');
+      toggle.className = 'mobile-toggle';
+      toggle.id = 'mobileToggle';
+      toggle.type = 'button';
+      toggle.innerHTML = '<span></span><span></span><span></span>';
+      container.appendChild(toggle);
+    }
+    toggle.setAttribute('aria-label', 'Menu');
+    toggle.setAttribute('aria-expanded', 'false');
+    return toggle;
+  }
+
   function isCompactInteraction() {
     return window.matchMedia('(max-width:980px)').matches ||
       window.matchMedia('(hover:none)').matches ||
@@ -367,7 +487,6 @@
       });
     });
 
-    // Capture phase wins over the older shared click-to-toggle handler.
     document.addEventListener('click', function(event) {
       var toggle = event.target.closest('.navbar.site-header-standard #navLinks > .nav-dropdown > .dropdown-toggle');
       if (!toggle) return;
@@ -382,7 +501,6 @@
         toggle.setAttribute('aria-expanded', String(willOpen));
       } else {
         closeDropdown(dropdown);
-        // Do not preventDefault: desktop click follows the parent's first-child URL.
       }
     }, true);
 
@@ -419,30 +537,29 @@
     }
 
     var navLinks = navbar.querySelector('#navLinks');
+    if (!navLinks) {
+      navLinks = document.createElement('ul');
+      navLinks.className = 'nav-links';
+      navLinks.id = 'navLinks';
+      var container = navbar.querySelector('.container');
+      if (container) {
+        var logoNode = navbar.querySelector('.nav-logo');
+        if (logoNode && logoNode.nextSibling) container.insertBefore(navLinks, logoNode.nextSibling);
+        else container.appendChild(navLinks);
+      }
+    }
     if (navLinks) navLinks.innerHTML = navMarkup();
 
-    var search = navbar.querySelector('#navSearch');
-    if (search) {
-      var input = search.querySelector('#globalSearch');
-      if (input) input.placeholder = '🔍 Tìm tư thế, bài viết...';
-    }
-
-    var cta = navbar.querySelector('.nav-cta .btn');
-    if (cta) {
-      cta.href = siteUrl('index.html#blog');
-      cta.textContent = 'Khám phá ngay';
-    }
-
-    var mobileToggle = navbar.querySelector('#mobileToggle');
-    if (mobileToggle) {
-      mobileToggle.setAttribute('aria-label', 'Menu');
-      mobileToggle.setAttribute('aria-expanded', 'false');
-    }
+    ensureSearchMarkup(navbar);
+    ensureCta(navbar);
+    ensureMobileToggle(navbar);
 
     if (navLinks) {
       markActive(navLinks);
       bindNavigation(navbar, navLinks);
     }
+
+    ensureSearchEngine();
   }
 
   if (document.readyState === 'loading') {
