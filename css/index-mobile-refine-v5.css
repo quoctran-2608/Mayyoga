@@ -1,0 +1,176 @@
+/* ===== MÂY YOGA — MOBILE REFINEMENT V5 =====
+   Compact header + improved mobile YTT composition.
+   Loaded after all previous homepage mobile layers. */
+
+@media (max-width: 768px) {
+  /* ---------- Compact mobile header ---------- */
+  body.home-hero-redesign .navbar,
+  body.home-hero-redesign .navbar.scrolled {
+    height: 60px !important;
+    min-height: 60px !important;
+  }
+
+  body.home-hero-redesign .navbar .container {
+    min-height: 60px !important;
+    padding: 0 10px !important;
+    gap: 6px !important;
+  }
+
+  body.home-hero-redesign .nav-logo .logo-img {
+    height: 46px !important;
+    max-width: 82px !important;
+  }
+
+  body.home-hero-redesign .nav-search {
+    width: 36px !important;
+    flex: 0 0 36px !important;
+  }
+
+  body.home-hero-redesign .nav-search input {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    background-size: 16px 16px !important;
+  }
+
+  body.home-hero-redesign .nav-search:focus-within {
+    top: calc(100% + 6px) !important;
+    left: 10px !important;
+    right: 10px !important;
+  }
+
+  body.home-hero-redesign .nav-search:focus-within input {
+    height: 44px !important;
+    padding-left: 42px !important;
+  }
+
+  body.home-hero-redesign .nav-cta .btn {
+    height: 36px !important;
+    min-height: 36px !important;
+    padding: 0 11px !important;
+  }
+
+  body.home-hero-redesign .nav-cta .btn::before {
+    font-size: 11.5px !important;
+  }
+
+  body.home-hero-redesign .mobile-toggle {
+    width: 36px !important;
+    height: 36px !important;
+    flex: 0 0 36px !important;
+    padding: 8px !important;
+  }
+
+  body.home-hero-redesign .mobile-toggle span {
+    width: 18px !important;
+    height: 1.8px !important;
+  }
+
+  body.home-hero-redesign .nav-links.active {
+    max-height: calc(100dvh - 60px) !important;
+  }
+
+  /* ---------- YTT mobile: image belongs to the story, not the footer ---------- */
+  body.home-hero-redesign #blog .ytt-banner {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    padding: 24px 14px 18px !important;
+    gap: 0 !important;
+    border-radius: 20px !important;
+  }
+
+  /* Let the original content children participate directly in the banner grid so
+     the visual can sit naturally after the title without changing desktop markup. */
+  body.home-hero-redesign #blog .ytt-content {
+    display: contents !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-badge,
+  body.home-hero-redesign #blog .ytt-title,
+  body.home-hero-redesign #blog .ytt-desc,
+  body.home-hero-redesign #blog .ytt-features,
+  body.home-hero-redesign #blog .ytt-buttons,
+  body.home-hero-redesign #blog .ytt-visual {
+    position: relative !important;
+    z-index: 1 !important;
+    min-width: 0 !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-badge {
+    grid-row: 1 !important;
+    justify-self: center !important;
+    margin-bottom: 16px !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-title {
+    grid-row: 2 !important;
+    margin-bottom: 16px !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-visual {
+    grid-row: 3 !important;
+    width: min(100%, 340px) !important;
+    max-width: 100% !important;
+    justify-self: center !important;
+    margin: 0 0 18px !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(255,255,255,0.22) !important;
+    box-shadow: 0 10px 24px rgba(18, 54, 37, 0.16) !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 10 !important;
+    object-fit: cover !important;
+    object-position: center 44% !important;
+    border-radius: 16px !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-desc {
+    grid-row: 4 !important;
+    margin: 0 auto 20px !important;
+    max-width: 340px !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-features {
+    grid-row: 5 !important;
+    margin-bottom: 20px !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-buttons {
+    grid-row: 6 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body.home-hero-redesign .navbar,
+  body.home-hero-redesign .navbar.scrolled,
+  body.home-hero-redesign .navbar .container {
+    height: 58px !important;
+    min-height: 58px !important;
+  }
+
+  body.home-hero-redesign .nav-logo .logo-img {
+    height: 44px !important;
+    max-width: 78px !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-banner {
+    padding: 22px 12px 16px !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-visual {
+    width: 100% !important;
+    margin-bottom: 16px !important;
+    border-radius: 15px !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-img {
+    aspect-ratio: 16 / 10.4 !important;
+    border-radius: 15px !important;
+  }
+}
