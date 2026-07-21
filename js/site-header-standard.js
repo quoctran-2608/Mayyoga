@@ -114,7 +114,8 @@
         border-radius:999px !important; background:linear-gradient(180deg,#397334,#2f662b) !important;
         box-shadow:0 10px 22px rgba(47,102,43,.2) !important; color:#fff !important;
       }
-      html body .navbar.site-header-standard .nav-cta .btn::after { content:'❧'; font-size:.95rem; margin-left:7px; }
+      html body .navbar.site-header-standard .nav-cta .btn::after { content:none; }
+      html body .navbar.site-header-standard .nav-cta .btn .leaf-icon { display:inline-block; width:18px; height:18px; margin-left:7px; vertical-align:middle; filter:brightness(0) invert(1); }
       html body .navbar.site-header-standard .mobile-toggle { display:none !important; }
 
       @media (min-width:981px) {
@@ -243,7 +244,8 @@
         html body .navbar.site-header-standard .nav-cta .btn::before {
           content:'Khám phá'; font-family:var(--font-body,'DM Sans',sans-serif); font-size:11.5px; font-weight:600;
         }
-        html body .navbar.site-header-standard .nav-cta .btn::after { font-size:11px !important; margin-left:0 !important; }
+        html body .navbar.site-header-standard .nav-cta .btn::after { content:none !important; }
+        html body .navbar.site-header-standard .nav-cta .btn .leaf-icon { width:14px !important; height:14px !important; margin-left:4px !important; }
         html body .navbar.site-header-standard .mobile-toggle {
           width:36px !important; height:36px !important; flex:0 0 36px !important; padding:8px !important;
         }
@@ -386,7 +388,7 @@
       ctaWrap.appendChild(cta);
     }
     cta.href = siteUrl('index.html#blog');
-    cta.textContent = 'Khám phá ngay';
+    cta.innerHTML = 'Khám phá ngay <img class="leaf-icon" src="' + siteUrl('assets/images/icons/leaf_button.svg') + '" alt="" width="18" height="18">';
     return cta;
   }
 
