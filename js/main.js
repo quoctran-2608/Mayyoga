@@ -37,7 +37,7 @@
   // Versioned URL avoids stale GitHub Pages/browser cache after hero refinements.
   if (!document.querySelector('script[data-home-hero-visual]')) {
     const script = document.createElement('script');
-    script.src = 'js/home-hero-visual.js?v=20260720m';
+    script.src = 'js/home-hero-visual.js?v=20260721a';
     script.dataset.homeHeroVisual = 'true';
     document.head.appendChild(script);
   }
