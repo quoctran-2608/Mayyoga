@@ -1,0 +1,148 @@
+/* ===== MÂY YOGA — PRACTICE CAROUSEL MOBILE DISCOVERY V3 =====
+   Mobile-only: expose the next card + progress affordance so horizontal content is obvious. */
+
+@media (max-width: 768px) {
+  body.home-hero-redesign #hanh-trinh .practice-carousel {
+    position: relative !important;
+    width: calc(100% + 32px) !important;
+    max-width: none !important;
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Native swipe is the primary mobile interaction; desktop arrow buttons only add clutter here. */
+  body.home-hero-redesign #hanh-trinh .practice-carousel .carousel-btn {
+    display: none !important;
+  }
+
+  body.home-hero-redesign #hanh-trinh .carousel-track {
+    display: flex !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 6px 16px 12px !important;
+    scroll-padding-inline: 16px !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: auto;
+    touch-action: pan-x pan-y;
+  }
+
+  body.home-hero-redesign #hanh-trinh .carousel-track::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* About one fifth of the next card remains visible: the strongest natural swipe cue. */
+  body.home-hero-redesign #hanh-trinh .carousel-card {
+    flex: 0 0 min(79vw, 316px) !important;
+    width: min(79vw, 316px) !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    scroll-snap-align: start !important;
+    scroll-snap-stop: normal;
+  }
+
+  /* Soft edge cue without obscuring card content. */
+  body.home-hero-redesign #hanh-trinh .practice-carousel::after {
+    content: '';
+    position: absolute;
+    z-index: 4;
+    top: 6px;
+    right: 0;
+    width: 18px;
+    height: calc(100% - 50px);
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(238,243,235,0), rgba(238,243,235,.72));
+  }
+
+  body.home-hero-redesign #hanh-trinh .practice-mobile-meta {
+    display: grid;
+    grid-template-columns: auto minmax(72px, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    padding: 3px 18px 0 16px;
+    color: #5d6f63;
+    font-size: 11.5px;
+    line-height: 1;
+    user-select: none;
+  }
+
+  body.home-hero-redesign #hanh-trinh .practice-swipe-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    font-weight: 600;
+    letter-spacing: .01em;
+  }
+
+  body.home-hero-redesign #hanh-trinh .practice-swipe-hint .practice-hint-arrow {
+    display: inline-block;
+    font-size: 14px;
+    transform: translateX(0);
+    animation: mayPracticeHint 1.8s ease-in-out infinite;
+  }
+
+  body.home-hero-redesign #hanh-trinh .practice-progress {
+    position: relative;
+    height: 3px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(74, 116, 63, .14);
+  }
+
+  body.home-hero-redesign #hanh-trinh .practice-progress-bar {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: #6f9664;
+    transform-origin: left center;
+    transition: width .16s ease-out;
+  }
+
+  body.home-hero-redesign #hanh-trinh .practice-progress-count {
+    min-width: 34px;
+    text-align: right;
+    color: #718078;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  body.home-hero-redesign #hanh-trinh .practice-carousel.is-scrolled .practice-swipe-hint {
+    opacity: .72;
+  }
+}
+
+@media (max-width: 390px) {
+  body.home-hero-redesign #hanh-trinh .carousel-card {
+    flex-basis: 81vw !important;
+    width: 81vw !important;
+  }
+
+  body.home-hero-redesign #hanh-trinh .practice-mobile-meta {
+    gap: 8px;
+    font-size: 11px;
+  }
+}
+
+@keyframes mayPracticeHint {
+  0%, 100% { transform: translateX(0); opacity: .72; }
+  50% { transform: translateX(4px); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home-hero-redesign #hanh-trinh .practice-swipe-hint .practice-hint-arrow {
+    animation: none !important;
+  }
+  body.home-hero-redesign #hanh-trinh .practice-progress-bar {
+    transition: none !important;
+  }
+}
