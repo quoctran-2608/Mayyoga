@@ -25,7 +25,9 @@
     var style = document.createElement('style');
     style.id = 'may-yoga-site-chrome-standard';
     style.textContent = [
-      'html body .footer{padding:0!important;background:linear-gradient(180deg,#2d3b2d 0%,#243024 100%)!important;color:rgba(255,255,255,.92)!important}',
+      'html{margin:0!important;padding:0!important}',
+      'html body.site-chrome-ready{margin-bottom:0!important;padding-bottom:0!important}',
+      'html body .footer{display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important;background:linear-gradient(180deg,#2d3b2d 0%,#243024 100%)!important;color:rgba(255,255,255,.92)!important}',
       'html body .footer .container{max-width:var(--container-width,1200px)!important}',
       'html body .footer-grid-new{display:grid!important;grid-template-columns:1.3fr 1fr 1.2fr!important;gap:48px!important;padding:56px 0 36px!important;align-items:start!important}',
       'html body .footer-brand-col{max-width:280px!important;text-align:center!important}',
@@ -39,7 +41,8 @@
       'html body .footer-col ul li{margin-bottom:12px!important;font-size:.88rem!important;color:rgba(255,255,255,.65)!important}',
       'html body .footer-col ul li a{color:rgba(255,255,255,.65)!important;text-decoration:none!important}',
       'html body .footer-legal{color:rgba(255,255,255,.45)!important;font-size:.78rem!important;margin-top:16px!important;line-height:1.5!important}',
-      'html body .footer-bottom{border-top:1px solid rgba(255,255,255,.12)!important;padding:20px 0 18px!important;text-align:center!important}',
+      'html body .footer-legal .footer-mst{white-space:nowrap!important}',
+      'html body .footer-bottom{border-top:1px solid rgba(255,255,255,.12)!important;padding:20px 0 18px!important;margin:0!important;text-align:center!important}',
       'html body .footer-bottom p{color:rgba(255,255,255,.45)!important;font-size:.8rem!important;margin:0!important}',
       'html body .floating-contact{position:fixed!important;bottom:28px!important;right:24px!important;display:flex!important;flex-direction:column!important;gap:14px!important;z-index:9999!important}',
       'html body .floating-contact a{display:flex!important;align-items:center!important;justify-content:center!important;width:56px!important;height:56px!important;border-radius:50%!important;box-shadow:0 4px 16px rgba(0,0,0,.18)!important;position:relative!important;text-decoration:none!important}',
@@ -48,8 +51,9 @@
       'html body .floating-contact .fc-whatsapp{background:#25d366!important}',
       'html body .floating-contact .fc-whatsapp svg{width:30px!important;height:30px!important;fill:#fff!important}',
       '@media(max-width:1024px){html body .footer-grid-new{grid-template-columns:repeat(2,1fr)!important}}',
-      '@media(max-width:768px){html body .footer .container{padding:0 16px!important}html body .footer-grid-new{grid-template-columns:1fr!important;gap:32px!important;padding:40px 0 28px!important}html body .footer-brand-col{margin:0 auto!important}html body .footer-logo-img{height:54px!important}html body .floating-contact{bottom:20px!important;right:16px!important;gap:12px!important}html body .floating-contact a{width:44px!important;height:44px!important}html body .floating-contact .fc-zalo svg{width:22px!important;height:22px!important}html body .floating-contact .fc-whatsapp svg{width:24px!important;height:24px!important}html body .floating-contact a::before{display:none!important}}',
-      '@media(max-width:420px){html body .footer-logo-img{height:48px!important}}'
+      '@media(max-width:768px){html body .footer .container{padding:0 16px!important}html body .footer-grid-new{grid-template-columns:1fr!important;gap:32px!important;padding:40px 0 28px!important}html body .footer-brand-col{margin:0 auto!important}html body .footer-logo-img{height:54px!important}html body .footer-legal{max-width:100%!important;white-space:nowrap!important;font-size:clamp(10px,2.75vw,11.5px)!important;line-height:1.45!important;letter-spacing:-.01em!important}html body .floating-contact{bottom:20px!important;right:16px!important;gap:12px!important}html body .floating-contact a{width:44px!important;height:44px!important}html body .floating-contact .fc-zalo svg{width:22px!important;height:22px!important}html body .floating-contact .fc-whatsapp svg{width:24px!important;height:24px!important}html body .floating-contact a::before{display:none!important}}',
+      '@media(max-width:420px){html body .footer-logo-img{height:48px!important}}',
+      '@media(max-width:340px){html body .footer-legal{font-size:9.6px!important;letter-spacing:-.02em!important}}'
     ].join('\n');
     document.head.appendChild(style);
   }
@@ -78,7 +82,7 @@
       if (contactLinks[1]) contactLinks[1].href = 'https://zalo.me/0326808864';
     }
     var legal = footer.querySelector('.footer-legal');
-    if (legal) legal.innerHTML = '<strong>Chủ quản:</strong> Phan Thu Mây&nbsp;|&nbsp;<strong>MST:</strong> 066195013103';
+    if (legal) legal.innerHTML = '<strong>Chủ quản:</strong> Phan Thu Mây&nbsp;|&nbsp;<span class="footer-mst"><strong>MST:</strong>&nbsp;066195013103</span>';
     var copyright = footer.querySelector('.footer-bottom p');
     if (copyright) copyright.textContent = '© 2026 MâyYoga.health — All rights reserved. 🍀';
   }
@@ -119,6 +123,7 @@
   }
 
   function applyStandardChrome() {
+    document.body.classList.add('site-chrome-ready');
     ensureStandardStyles();
     normalizeFooter();
     normalizeFloatingContact();
