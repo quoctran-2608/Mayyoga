@@ -1,5 +1,6 @@
 name: Apply homepage first-paint fix
 
+# Retriggered after the workflow already existed on the default branch.
 on:
   push:
     paths:
