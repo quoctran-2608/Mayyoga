@@ -304,3 +304,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log('🧘 MayYoga.health — Loaded successfully');
 });
+
+// Site-wide footer/contact standard. Loaded from main.js so every page that already
+// uses the shared site script receives the exact homepage/index footer and sticky buttons.
+(function loadCanonicalSiteChrome() {
+  if (document.querySelector('script[data-site-chrome-standard]')) return;
+
+  var current = document.currentScript;
+  if (!current || !current.src) {
+    var scripts = document.querySelectorAll('script[src]');
+    for (var i = scripts.length - 1; i >= 0; i--) {
+      if (/\/js\/main\.js(?:\?|$)/.test(scripts[i].src)) {
+        current = scripts[i];
+        break;
+      }
+    }
+  }
+
+  var src = current && current.src
+    ? new URL('site-chrome.js?v=20260721a', current.src).href
+    : 'js/site-chrome.js?v=20260721a';
+
+  var script = document.createElement('script');
+  script.src = src;
+  script.defer = true;
+  script.setAttribute('data-site-chrome-standard', 'true');
+  document.head.appendChild(script);
+})();
