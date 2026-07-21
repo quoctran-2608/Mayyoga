@@ -1,0 +1,17 @@
+/* ===== MÂY YOGA — MOBILE FOOTER LOGO REFINEMENT =====
+   Slightly strengthens brand presence in the homepage footer without making it bulky. */
+
+@media (max-width: 768px) {
+  body.home-hero-redesign .footer-logo-img {
+    height: 54px !important;
+    width: auto !important;
+    max-width: none !important;
+    object-fit: contain !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body.home-hero-redesign .footer-logo-img {
+    height: 48px !important;
+  }
+}
