@@ -1,0 +1,598 @@
+/* ===== MÂY YOGA — MOBILE HEADER + HERO V2 =====
+   Homepage-only final mobile layer. Loaded after all legacy Hero styles.
+   Desktop/tablet >= 769px remain untouched. */
+
+@media (max-width: 768px) {
+  /* ---------- Mobile header: compact but still useful ---------- */
+  body.home-hero-redesign .navbar,
+  body.home-hero-redesign .navbar.scrolled {
+    position: sticky !important;
+    top: 0 !important;
+    height: 72px !important;
+    min-height: 72px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: rgba(255, 255, 255, 0.97) !important;
+    border-bottom: 1px solid rgba(72, 103, 67, 0.10) !important;
+    box-shadow: 0 6px 22px rgba(42, 72, 46, 0.045) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(112%);
+    backdrop-filter: blur(16px) saturate(112%);
+  }
+
+  body.home-hero-redesign .navbar .container {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 72px !important;
+    padding: 0 12px !important;
+    gap: 7px !important;
+  }
+
+  body.home-hero-redesign .nav-logo {
+    margin-right: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  body.home-hero-redesign .nav-logo .logo-img {
+    width: auto !important;
+    height: 56px !important;
+    max-width: 96px !important;
+  }
+
+  /* Keep search available without spending horizontal space. The existing input
+     behaves like an icon until focused, then becomes a full-width search bar. */
+  body.home-hero-redesign .nav-search {
+    position: relative !important;
+    display: block !important;
+    width: 40px !important;
+    flex: 0 0 40px !important;
+    margin: 0 !important;
+    z-index: 2200 !important;
+  }
+
+  body.home-hero-redesign .nav-search input {
+    display: block !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    padding: 0 !important;
+    border: 1px solid rgba(86, 124, 78, 0.18) !important;
+    border-radius: 999px !important;
+    outline: none !important;
+    font-size: 0 !important;
+    color: transparent !important;
+    caret-color: transparent !important;
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.92) !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23265f49' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='6.5'/%3E%3Cpath d='m16 16 4 4'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 18px 18px !important;
+    box-shadow: none !important;
+    transition: none !important;
+  }
+
+  body.home-hero-redesign .nav-search:focus-within {
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+  }
+
+  body.home-hero-redesign .nav-search:focus-within input {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 46px !important;
+    padding: 0 16px 0 44px !important;
+    font-size: 14px !important;
+    color: #27465f !important;
+    caret-color: #27465f !important;
+    cursor: text;
+    background-position: 14px center !important;
+    background-size: 18px 18px !important;
+    box-shadow: 0 14px 34px rgba(35, 62, 43, 0.14) !important;
+  }
+
+  body.home-hero-redesign .nav-search .search-dropdown {
+    top: calc(100% + 6px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-height: min(62vh, 480px) !important;
+    overflow-y: auto !important;
+    border-radius: 16px !important;
+    box-shadow: 0 18px 42px rgba(35, 62, 43, 0.16) !important;
+  }
+
+  /* Preserve a compact primary CTA in the header. The full desktop label remains
+     in the DOM for accessibility; mobile uses a shorter visual label. */
+  body.home-hero-redesign .nav-cta {
+    display: block !important;
+    flex: 0 0 auto !important;
+  }
+
+  body.home-hero-redesign .nav-cta .btn {
+    width: auto !important;
+    min-width: 0 !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    padding: 0 13px !important;
+    gap: 5px !important;
+    border-radius: 999px !important;
+    font-size: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  body.home-hero-redesign .nav-cta .btn::before {
+    content: 'Khám phá';
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  body.home-hero-redesign .nav-cta .btn::after {
+    font-size: 11px !important;
+    margin-left: 0 !important;
+  }
+
+  body.home-hero-redesign .mobile-toggle {
+    display: flex !important;
+    flex: 0 0 40px !important;
+    width: 40px !important;
+    height: 40px !important;
+    padding: 9px !important;
+    margin: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 1px solid rgba(86, 124, 78, 0.14) !important;
+    border-radius: 999px !important;
+    background: rgba(247, 249, 244, 0.92) !important;
+  }
+
+  body.home-hero-redesign .mobile-toggle span {
+    width: 20px !important;
+    height: 2px !important;
+  }
+
+  body.home-hero-redesign .nav-links {
+    display: none !important;
+  }
+
+  body.home-hero-redesign .nav-links.active {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 2px !important;
+    max-height: calc(100dvh - 72px) !important;
+    overflow-y: auto !important;
+    padding: 10px 14px 16px !important;
+    background: rgba(255,255,255,0.985) !important;
+    border-radius: 0 0 20px 20px !important;
+    box-shadow: 0 20px 42px rgba(35, 62, 43, 0.14) !important;
+    z-index: 2100 !important;
+  }
+
+  body.home-hero-redesign .nav-links.active > li,
+  body.home-hero-redesign .nav-links.active > li > a {
+    width: 100% !important;
+  }
+
+  body.home-hero-redesign .nav-links.active > li > a {
+    min-height: 46px !important;
+    padding: 11px 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    font-size: 14px !important;
+  }
+
+  /* ---------- Mobile Hero: text first, compact visual, principles last ---------- */
+  body.home-hero-redesign #hero.hero {
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    background: linear-gradient(180deg, #fbf8f2 0%, #faf8f3 72%, #f8faf6 100%) !important;
+  }
+
+  body.home-hero-redesign #hero.hero::before,
+  body.home-hero-redesign #hero.hero::after {
+    display: none !important;
+  }
+
+  body.home-hero-redesign #hero .container {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    text-align: left !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content {
+    order: 1 !important;
+    width: 100% !important;
+    padding: 28px 18px 18px !important;
+    margin: 0 !important;
+    text-align: left !important;
+    align-self: auto !important;
+  }
+
+  body.home-hero-redesign #hero .hero-badge {
+    display: inline-flex !important;
+    width: auto !important;
+    margin: 0 0 17px !important;
+    padding: 8px 14px !important;
+    gap: 8px !important;
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+    border-radius: 999px !important;
+    background: rgba(238, 243, 229, 0.88) !important;
+    border: 1px solid rgba(111, 151, 94, 0.15) !important;
+    color: #294b38 !important;
+  }
+
+  body.home-hero-redesign #hero .hero-badge img {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  body.home-hero-redesign #hero h1 {
+    width: 100% !important;
+    max-width: 560px !important;
+    margin: 0 0 15px !important;
+    font-size: clamp(42px, 12.1vw, 54px) !important;
+    line-height: 0.94 !important;
+    letter-spacing: -0.043em !important;
+    text-align: left !important;
+  }
+
+  body.home-hero-redesign #hero h1 .highlight {
+    display: inline-block !important;
+    margin: 5px 0 3px !important;
+    font-size: 1.18em !important;
+    line-height: 0.91 !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content > h1 + div {
+    justify-content: flex-start !important;
+    margin-bottom: 18px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content > h1 + div span {
+    width: 92px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content > p {
+    width: 100% !important;
+    max-width: 540px !important;
+    margin: 0 0 21px !important;
+    font-size: 14.5px !important;
+    line-height: 1.65 !important;
+    color: #294b68 !important;
+    text-align: left !important;
+  }
+
+  body.home-hero-redesign #hero .hero-buttons {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    width: 100% !important;
+    max-width: 540px !important;
+    margin: 0 !important;
+    gap: 9px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-buttons .btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 47px !important;
+    min-height: 47px !important;
+    padding: 0 10px !important;
+    font-size: 0 !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    border-radius: 999px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-buttons .btn:first-child::before {
+    content: 'Đọc kiến thức';
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  body.home-hero-redesign #hero .hero-buttons .btn:first-child::after {
+    content: '→' !important;
+    display: inline-block !important;
+    margin-left: 6px !important;
+    font-size: 14px !important;
+    border: 0 !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  body.home-hero-redesign #hero .hero-buttons .btn:nth-child(2)::before {
+    content: 'Xem tư thế';
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  body.home-hero-redesign #hero .hero-buttons .btn:nth-child(2)::after {
+    margin-left: 7px !important;
+    border-top-width: 5px !important;
+    border-bottom-width: 5px !important;
+    border-left-width: 7px !important;
+  }
+
+  /* The new mobile asset is already art-directed. Do not crop or invent a CSS shape.
+     Grid keeps the trust badge over the image while the principles stay below it. */
+  body.home-hero-redesign #hero .hero-image {
+    order: 2 !important;
+    position: relative !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto auto !important;
+    width: calc(100% - 20px) !important;
+    max-width: 560px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 2px auto 8px !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    align-self: auto !important;
+    transform: none !important;
+    animation: none !important;
+    isolation: isolate !important;
+  }
+
+  body.home-hero-redesign #hero .hero-image > img {
+    grid-area: 1 / 1 !important;
+    position: relative !important;
+    inset: auto !important;
+    z-index: 1 !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    aspect-ratio: 1091 / 768 !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    -webkit-clip-path: none !important;
+    transform: none !important;
+  }
+
+  /* The upper Hatha badge repeats the pill above the headline on mobile. Remove it. */
+  body.home-hero-redesign #hero .hero-image .floating-card.card-1 {
+    display: none !important;
+  }
+
+  body.home-hero-redesign #hero .hero-image .hero-trust-card {
+    grid-area: 1 / 1 !important;
+    position: relative !important;
+    z-index: 8 !important;
+    align-self: end !important;
+    justify-self: end !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: min(72%, 258px) !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    min-height: 58px !important;
+    margin: 0 9px 10px 0 !important;
+    padding: 9px 12px 9px 50px !important;
+    gap: 8px !important;
+    border-radius: 17px !important;
+    background: rgba(255, 255, 255, 0.63) !important;
+    border: 1px solid rgba(255,255,255,0.48) !important;
+    box-shadow: 0 8px 22px rgba(35, 62, 43, 0.09) !important;
+    -webkit-backdrop-filter: blur(3px) saturate(104%) !important;
+    backdrop-filter: blur(3px) saturate(104%) !important;
+  }
+
+  body.home-hero-redesign #hero .hero-image .hero-trust-card .card-icon {
+    position: absolute !important;
+    left: 10px !important;
+    top: 50% !important;
+    width: 32px !important;
+    height: 32px !important;
+    transform: translateY(-50%) !important;
+    border-radius: 50% !important;
+    font-size: 15px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-image .hero-trust-card .card-title {
+    font-size: 12.5px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+  }
+
+  body.home-hero-redesign #hero .hero-image .hero-trust-card .card-sub {
+    margin-top: 3px !important;
+    font-size: 10.5px !important;
+    line-height: 1.25 !important;
+    white-space: nowrap !important;
+  }
+
+  /* ---------- Principles: one informational panel, three readable rows ---------- */
+  body.home-hero-redesign #hero .hero-principles {
+    grid-area: 2 / 1 !important;
+    position: static !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 15px 0 7px !important;
+    padding: 13px 14px 5px !important;
+    border: 1px solid rgba(89, 126, 78, 0.14) !important;
+    border-radius: 20px !important;
+    background: rgba(250, 251, 247, 0.82) !important;
+    box-shadow: 0 8px 26px rgba(53, 79, 53, 0.045) !important;
+    text-align: left !important;
+  }
+
+  body.home-hero-redesign #hero .hero-principles::before {
+    content: '3 nguyên tắc Mây Yoga luôn đề cao';
+    display: block !important;
+    padding: 0 2px 10px !important;
+    font-family: var(--font-body);
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0.01em !important;
+    color: #587252 !important;
+  }
+
+  body.home-hero-redesign #hero .hero-principle {
+    min-height: 62px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    padding: 10px 2px !important;
+    text-align: left !important;
+    cursor: default !important;
+  }
+
+  body.home-hero-redesign #hero .hero-principle:not(:last-child)::after {
+    top: auto !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 1px !important;
+    background: rgba(73, 107, 69, 0.13) !important;
+    transform: none !important;
+  }
+
+  body.home-hero-redesign #hero .hero-principle-icon {
+    width: 40px !important;
+    height: 40px !important;
+    flex: 0 0 40px !important;
+    border-radius: 50% !important;
+    background: #7db45e !important;
+  }
+
+  body.home-hero-redesign #hero .hero-principle-copy {
+    min-width: 0 !important;
+    text-align: left !important;
+    cursor: default !important;
+  }
+
+  body.home-hero-redesign #hero .hero-principle-title {
+    margin: 0 0 3px !important;
+    font-size: 18px !important;
+    font-weight: 550 !important;
+    line-height: 1.05 !important;
+    white-space: normal !important;
+  }
+
+  body.home-hero-redesign #hero .hero-principle-subtitle {
+    margin: 0 !important;
+    font-size: 12.5px !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+  }
+
+  /* Keep the transition into the next section gentle after the compact mobile Hero. */
+  body.home-hero-redesign #hanh-trinh {
+    padding-top: 54px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body.home-hero-redesign .navbar .container {
+    padding: 0 10px !important;
+    gap: 6px !important;
+  }
+
+  body.home-hero-redesign .nav-logo .logo-img {
+    height: 53px !important;
+    max-width: 90px !important;
+  }
+
+  body.home-hero-redesign .nav-cta .btn {
+    padding: 0 11px !important;
+  }
+
+  body.home-hero-redesign .nav-cta .btn::before {
+    font-size: 12px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content {
+    padding: 25px 16px 16px !important;
+  }
+
+  body.home-hero-redesign #hero h1 {
+    font-size: clamp(39px, 11.6vw, 48px) !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content > p {
+    font-size: 14px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-image {
+    width: calc(100% - 16px) !important;
+  }
+
+  body.home-hero-redesign #hero .hero-image .hero-trust-card {
+    width: min(76%, 246px) !important;
+    margin-right: 7px !important;
+    margin-bottom: 8px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  body.home-hero-redesign .nav-cta .btn {
+    padding: 0 9px !important;
+  }
+
+  body.home-hero-redesign .nav-cta .btn::before {
+    content: 'Khám phá';
+    font-size: 11.5px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-buttons {
+    gap: 7px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-buttons .btn:first-child::before,
+  body.home-hero-redesign #hero .hero-buttons .btn:nth-child(2)::before {
+    font-size: 12.5px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-principles {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-principle-title {
+    font-size: 17px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-principle-subtitle {
+    font-size: 12px !important;
+  }
+}
