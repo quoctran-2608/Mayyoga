@@ -305,8 +305,8 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('🧘 MayYoga.health — Loaded successfully');
 });
 
-// Site-wide footer/contact standard. Loaded from main.js so every page that already
-// uses the shared site script receives the exact homepage/index footer and sticky buttons.
+// Site-wide shared chrome bootstrap. It standardizes footer/contact/header and now
+// also loads the canonical article-share component for any page that has .article-share.
 (function loadCanonicalSiteChrome() {
   if (document.querySelector('script[data-site-chrome-standard]')) return;
 
@@ -322,39 +322,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   var src = current && current.src
-    ? new URL('site-chrome.js?v=20260721d', current.src).href
-    : 'js/site-chrome.js?v=20260721d';
+    ? new URL('site-chrome.js?v=20260721e', current.src).href
+    : 'js/site-chrome.js?v=20260721e';
 
   var script = document.createElement('script');
   script.src = src;
   script.defer = true;
   script.setAttribute('data-site-chrome-standard', 'true');
-  document.head.appendChild(script);
-})();
-
-// About-page share controls: keep this isolated from shared header/footer components.
-(function loadAboutShareControls() {
-  if (!/\/ve-may-yoga(?:\.html)?\/?$/.test(window.location.pathname)) return;
-  if (document.querySelector('script[data-about-share-v2]')) return;
-
-  var current = document.currentScript;
-  if (!current || !current.src) {
-    var scripts = document.querySelectorAll('script[src]');
-    for (var i = scripts.length - 1; i >= 0; i--) {
-      if (/\/js\/main\.js(?:\?|$)/.test(scripts[i].src)) {
-        current = scripts[i];
-        break;
-      }
-    }
-  }
-
-  var src = current && current.src
-    ? new URL('about-share-v2.js?v=20260721a', current.src).href
-    : 'js/about-share-v2.js?v=20260721a';
-
-  var script = document.createElement('script');
-  script.src = src;
-  script.defer = true;
-  script.setAttribute('data-about-share-v2', 'true');
   document.head.appendChild(script);
 })();
