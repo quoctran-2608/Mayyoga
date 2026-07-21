@@ -74,7 +74,7 @@ function createHeroPrinciples() {
       </span>
       <div class="hero-principle-copy">
         <div class="hero-principle-title">Hiểu cơ thể</div>
-        <div class="hero-principle-subtitle">An toàn &amp; bền vững</div>
+        <div class="hero-principle-subtitle">An toàn & bền vững</div>
       </div>
     </div>
   `;
@@ -322,8 +322,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   var src = current && current.src
-    ? new URL('site-chrome.js?v=20260721a', current.src).href
-    : 'js/site-chrome.js?v=20260721a';
+    ? new URL('site-chrome.js?v=20260721c', current.src).href
+    : 'js/site-chrome.js?v=20260721c';
 
   var script = document.createElement('script');
   script.src = src;
