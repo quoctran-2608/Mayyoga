@@ -331,3 +331,30 @@ document.addEventListener('DOMContentLoaded', () => {
   script.setAttribute('data-site-chrome-standard', 'true');
   document.head.appendChild(script);
 })();
+
+// About-page share controls: keep this isolated from shared header/footer components.
+(function loadAboutShareControls() {
+  if (!/\/ve-may-yoga(?:\.html)?\/?$/.test(window.location.pathname)) return;
+  if (document.querySelector('script[data-about-share-v2]')) return;
+
+  var current = document.currentScript;
+  if (!current || !current.src) {
+    var scripts = document.querySelectorAll('script[src]');
+    for (var i = scripts.length - 1; i >= 0; i--) {
+      if (/\/js\/main\.js(?:\?|$)/.test(scripts[i].src)) {
+        current = scripts[i];
+        break;
+      }
+    }
+  }
+
+  var src = current && current.src
+    ? new URL('about-share-v2.js?v=20260721a', current.src).href
+    : 'js/about-share-v2.js?v=20260721a';
+
+  var script = document.createElement('script');
+  script.src = src;
+  script.defer = true;
+  script.setAttribute('data-about-share-v2', 'true');
+  document.head.appendChild(script);
+})();
