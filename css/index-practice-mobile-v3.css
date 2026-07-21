@@ -49,6 +49,16 @@
     scroll-snap-stop: normal;
   }
 
+  /* Horizontal carousel cards must never depend on the page's vertical reveal observer.
+     Otherwise card 2 starts opacity-hidden and only appears after the user swipes it farther
+     into the viewport, defeating the intentional next-card peek on first arrival. */
+  body.home-hero-redesign #hanh-trinh .carousel-card.reveal,
+  body.home-hero-redesign #hanh-trinh .carousel-card.reveal.visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
   /* Soft edge cue without obscuring card content. */
   body.home-hero-redesign #hanh-trinh .practice-carousel::after {
     content: '';
