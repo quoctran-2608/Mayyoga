@@ -19,10 +19,12 @@ permalink: /
   <link rel="stylesheet" href="css/index-hero-principle-icons-v2.css?v=20260721a">
   <link rel="stylesheet" href="css/index-nav-v2.css?v=20260721a" data-index-nav-v2="true">
   <link rel="stylesheet" href="css/index-practice-carousel-v2.css?v=20260721a" data-index-practice-carousel-v2="true">
+  <link rel="stylesheet" href="css/index-practice-mobile-v3.css?v=20260721a" data-index-practice-mobile-v3="true" media="(max-width: 768px)">
   <style data-home-hero-final-refinement>/* Marker: final Hero geometry is already loaded above. */</style>
   <link rel="preload" as="image" href="assets/images/hero_visual_mobile.webp?v=20260721a" media="(max-width: 768px)" fetchpriority="high">
   <link rel="preload" as="image" href="assets/images/hero-visual.webp?v=20260719f" media="(min-width: 769px)" fetchpriority="high">
   <script defer src="js/index-nav-v2.js?v=20260721a" data-index-nav-v2-script="true"></script>
+  <script defer src="js/index-practice-mobile-v3.js?v=20260721a" data-index-practice-mobile-v3-script="true"></script>
   <script defer src="js/home-hero-visual.js?v=20260721b" data-home-hero-visual="true"></script>{% endcapture %}
 {% assign page_source = page_source | replace: old_style_link, critical_head %}
 {% assign page_source = page_source | replace: '<body>', '<body class="home-hero-redesign">' %}
