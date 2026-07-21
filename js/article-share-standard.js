@@ -83,10 +83,10 @@
   function bindShare(share, pageData) {
     if (!share || share.dataset.shareStandard === 'true') return;
 
-    share.classList.remove('about-share-v2');
-    share.classList.add('article-share-standard');
+    share.classList.remove('about-share-v2', 'share-buttons', 'article-share-buttons');
+    share.classList.add('article-share', 'article-share-standard');
     share.dataset.shareStandard = 'true';
-    share.dataset.shareV2 = 'true'; // Prevent the retired about-only helper from rebinding.
+    share.dataset.shareV2 = 'true';
     share.setAttribute('aria-label', 'Chia sẻ bài viết');
     share.innerHTML = markup(pageData.url, pageData.title);
 
@@ -147,8 +147,37 @@
     }
   }
 
+  function isArticlePage() {
+    var ogType = document.querySelector('meta[property="og:type"]');
+    if (ogType && String(ogType.content).toLowerCase() === 'article') return true;
+
+    var jsonLd = document.querySelectorAll('script[type="application/ld+json"]');
+    for (var i = 0; i < jsonLd.length; i++) {
+      if (/"@type"\s*:\s*"Article"/i.test(jsonLd[i].textContent || '')) return true;
+    }
+    return false;
+  }
+
+  function findOrCreateShareShells() {
+    var shares = Array.prototype.slice.call(document.querySelectorAll(
+      '.article-share, .article-body .share-buttons, .article-body .article-share-buttons'
+    ));
+    if (shares.length) return shares;
+    if (!isArticlePage()) return shares;
+
+    var articleContainer = document.querySelector('main.article-body > .container, .article-body > .container');
+    if (!articleContainer) return shares;
+
+    var share = document.createElement('div');
+    share.className = 'article-share';
+    share.setAttribute('data-share-generated', 'true');
+    articleContainer.appendChild(share);
+    shares.push(share);
+    return shares;
+  }
+
   function init() {
-    var shares = document.querySelectorAll('.article-share');
+    var shares = findOrCreateShareShells();
     if (!shares.length) return;
     injectStyles();
     var pageData = getPageData();
