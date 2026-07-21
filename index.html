@@ -19,7 +19,7 @@ permalink: /
   <link rel="stylesheet" href="css/index-hero-principle-icons-v2.css?v=20260721a">
   <link rel="stylesheet" href="css/index-nav-v2.css?v=20260721a" data-index-nav-v2="true">
   <link rel="stylesheet" href="css/index-practice-carousel-v2.css?v=20260721a" data-index-practice-carousel-v2="true">
-  <link rel="stylesheet" href="css/index-practice-mobile-v3.css?v=20260721a" data-index-practice-mobile-v3="true" media="(max-width: 768px)">
+  <link rel="stylesheet" href="css/index-practice-mobile-v3.css?v=20260721b" data-index-practice-mobile-v3="true" media="(max-width: 768px)">
   <style data-home-hero-final-refinement>/* Marker: final Hero geometry is already loaded above. */</style>
   <link rel="preload" as="image" href="assets/images/hero_visual_mobile.webp?v=20260721a" media="(max-width: 768px)" fetchpriority="high">
   <link rel="preload" as="image" href="assets/images/hero-visual.webp?v=20260719f" media="(min-width: 769px)" fetchpriority="high">
@@ -32,6 +32,10 @@ permalink: /
 {% assign page_source = page_source | replace: '<li><a href="index.html">Trang chủ</a></li>', '<li><a href="index.html" aria-current="page">Trang chủ</a></li>' %}
 {% assign page_source = page_source | replace: '<a href="#" class="dropdown-toggle" style="color:#d4af37; font-weight:600;">Các khoá học <span class="chevron">▾</span></a>', '<a href="hoc-yoga-online.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Các khoá học <span class="chevron">▾</span></a>' %}
 {% assign page_source = page_source | replace: '<a href="#" class="dropdown-toggle">Kiến thức Yoga <span class="chevron">▾</span></a>', '<a href="bai-viet/yoga-cho-nguoi-moi.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Kiến thức Yoga <span class="chevron">▾</span></a>' %}
+
+<!-- First two practice cards are visible on initial mobile arrival, so their images should be ready too. -->
+{% assign page_source = page_source | replace: '<img loading="lazy" src="assets/images/articles/carousel-beginner.jpg" alt="Lộ trình 30 ngày">', '<img loading="eager" src="assets/images/articles/carousel-beginner.jpg" alt="Lộ trình 30 ngày">' %}
+{% assign page_source = page_source | replace: '<img loading="lazy" src="assets/images/articles/carousel-breathing.jpg" alt="Bài tập thở theo Triết lý">', '<img loading="eager" src="assets/images/articles/carousel-breathing.jpg" alt="Bài tập thở theo Triết lý">' %}
 
 {% capture trust_open %}<div class="floating-card card-2 hero-trust-card" aria-label="Học đúng từ nền tảng: Tư thế, Hơi thở, Hiểu cơ thể">{% endcapture %}
 {% capture trust_with_principles %}<div class="hero-principles" aria-label="Ba nguyên tắc nền tảng của Mây Yoga">
