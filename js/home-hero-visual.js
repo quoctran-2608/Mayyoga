@@ -33,9 +33,23 @@
   image.removeAttribute('width');
   image.removeAttribute('height');
 
-  // Use the real repository asset directly so no legacy payload can overwrite it.
-  var visualSrc = 'assets/images/hero-visual.webp?v=20260719f';
-  if (image.getAttribute('src') !== visualSrc) image.src = visualSrc;
+  // Art-direction: desktop keeps the approved wide visual; phones receive the
+  // dedicated compact visual designed specifically for the mobile composition.
+  var desktopVisualSrc = 'assets/images/hero-visual.webp?v=20260719f';
+  var mobileVisualSrc = 'assets/images/hero_visual_mobile.webp?v=20260721a';
+  var mobileVisualQuery = window.matchMedia('(max-width: 768px)');
+
+  function applyHeroVisualSource() {
+    var nextSrc = mobileVisualQuery.matches ? mobileVisualSrc : desktopVisualSrc;
+    if (image.getAttribute('src') !== nextSrc) image.src = nextSrc;
+  }
+
+  applyHeroVisualSource();
+  if (typeof mobileVisualQuery.addEventListener === 'function') {
+    mobileVisualQuery.addEventListener('change', applyHeroVisualSource);
+  } else if (typeof mobileVisualQuery.addListener === 'function') {
+    mobileVisualQuery.addListener(applyHeroVisualSource);
+  }
   image.classList.add('hero-visual-ready');
 
   // Final homepage-only refinements. Content creation/removal lives in main.js;
@@ -171,6 +185,16 @@
     document.head.appendChild(finalStyle);
   }
 
+  // Load the dedicated mobile layer LAST so it can safely neutralize accumulated
+  // legacy mobile overrides without changing the approved desktop composition.
+  if (!document.querySelector('link[data-home-mobile-hero-v2]')) {
+    var mobileLink = document.createElement('link');
+    mobileLink.rel = 'stylesheet';
+    mobileLink.href = 'css/index-mobile-hero-v2.css?v=20260721a';
+    mobileLink.setAttribute('data-home-mobile-hero-v2', 'true');
+    document.head.appendChild(mobileLink);
+  }
+
   // Force visible floating motion with requestAnimationFrame. This does not use the
   // CSS animation property and does not touch transform, so legacy rules cannot cancel it.
   function startHeroBadgeMotion() {
@@ -188,8 +212,8 @@
     function frame(now) {
       var seconds = (now - startTime) / 1000;
       var mobile = window.innerWidth <= 768;
-      var topAmplitude = mobile ? 6 : 14;
-      var trustAmplitude = mobile ? 5 : 11;
+      var topAmplitude = mobile ? 3 : 14;
+      var trustAmplitude = mobile ? 3 : 11;
       var topY = -topAmplitude * (0.5 - 0.5 * Math.cos((seconds / 3.8) * Math.PI * 2));
       var trustPhase = seconds + 1.15;
       var trustY = -trustAmplitude * (0.5 - 0.5 * Math.cos((trustPhase / 4.5) * Math.PI * 2));
