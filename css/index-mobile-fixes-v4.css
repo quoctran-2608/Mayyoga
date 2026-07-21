@@ -1,0 +1,224 @@
+/* ===== MÂY YOGA — MOBILE FINAL FIXES V4 =====
+   Final mobile-only containment for the YTT banner and Hatha visual badge. */
+
+@media (max-width: 768px) {
+  /* ---------- YTT banner: remove desktop intrinsic widths on phones ---------- */
+  body.home-hero-redesign #blog {
+    overflow-x: clip !important;
+  }
+
+  body.home-hero-redesign #blog > .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-banner {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 28px 18px 0 !important;
+    margin: 0 0 44px !important;
+    gap: 0 !important;
+    text-align: center !important;
+    overflow: hidden !important;
+    border-radius: 22px !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 7px 14px !important;
+    margin: 0 auto 18px !important;
+    font-size: clamp(10px, 2.8vw, 12px) !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0.14em !important;
+    white-space: normal !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-title {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 0 14px !important;
+    font-size: clamp(24px, 7vw, 30px) !important;
+    line-height: 1.16 !important;
+    letter-spacing: -0.02em !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+    text-align: center !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-gold {
+    display: block !important;
+    margin-top: 5px !important;
+    font-size: 0.88em !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-desc {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 0 24px !important;
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    text-align: center !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-features {
+    width: min(100%, 330px) !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 auto 24px !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-feature {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 11px !important;
+    text-align: left !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-check {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    flex: 0 0 34px !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-feature > span {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-buttons {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: min(100%, 330px) !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 auto 24px !important;
+    gap: 10px !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-btn-primary,
+  body.home-hero-redesign #blog .ytt-btn-secondary {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: 48px !important;
+    padding: 12px 16px !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-visual {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    align-self: auto !important;
+    overflow: hidden !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-img {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 190px !important;
+    object-fit: cover !important;
+    border-radius: 0 !important;
+  }
+
+  /* ---------- Hatha visual badge: guarantee the second line remains visible ---------- */
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 .card-text {
+    display: block !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 .card-sub {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 2px 0 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    clip: auto !important;
+    clip-path: none !important;
+    font-size: 8.6px !important;
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body.home-hero-redesign #blog > .container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-banner {
+    padding: 24px 14px 0 !important;
+    border-radius: 20px !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-title {
+    font-size: clamp(22px, 6.8vw, 27px) !important;
+  }
+
+  body.home-hero-redesign #blog .ytt-desc,
+  body.home-hero-redesign #blog .ytt-feature > span {
+    font-size: 13.5px !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 .card-sub {
+    font-size: 8.3px !important;
+  }
+}
