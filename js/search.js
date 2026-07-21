@@ -188,6 +188,15 @@
     fixesLink.setAttribute('data-home-mobile-fixes-v4', 'true');
     document.head.appendChild(fixesLink);
   }
+
+  // Latest mobile refinement: compact header and a better YTT visual/content rhythm.
+  if (!document.querySelector('link[data-home-mobile-refine-v5]')) {
+    var refineLink = document.createElement('link');
+    refineLink.rel = 'stylesheet';
+    refineLink.href = 'css/index-mobile-refine-v5.css?v=20260721a';
+    refineLink.setAttribute('data-home-mobile-refine-v5', 'true');
+    document.head.appendChild(refineLink);
+  }
 })();
 
 // ===== HOMEPAGE HERO BADGE MOTION FALLBACK =====
