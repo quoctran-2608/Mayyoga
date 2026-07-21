@@ -175,7 +175,7 @@
   if (!document.querySelector('link[data-home-mobile-polish-v3]')) {
     var polishLink = document.createElement('link');
     polishLink.rel = 'stylesheet';
-    polishLink.href = 'css/index-mobile-polish-v3.css?v=20260721c';
+    polishLink.href = 'css/index-mobile-polish-v3.css?v=20260721d';
     polishLink.setAttribute('data-home-mobile-polish-v3', 'true');
     document.head.appendChild(polishLink);
   }
