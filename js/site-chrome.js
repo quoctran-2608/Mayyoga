@@ -112,7 +112,7 @@
   function loadCanonicalHeader() {
     if (document.querySelector('script[data-site-header-standard]')) return;
     var script = document.createElement('script');
-    script.src = siteUrl('js/site-header-standard.js?v=20260721b');
+    script.src = siteUrl('js/site-header-standard.js?v=20260721d');
     script.defer = true;
     script.setAttribute('data-site-header-standard', 'true');
     document.head.appendChild(script);
