@@ -179,6 +179,15 @@
     polishLink.setAttribute('data-home-mobile-polish-v3', 'true');
     document.head.appendChild(polishLink);
   }
+
+  // Final mobile-only repairs for YTT containment and the Hatha badge subtitle.
+  if (!document.querySelector('link[data-home-mobile-fixes-v4]')) {
+    var fixesLink = document.createElement('link');
+    fixesLink.rel = 'stylesheet';
+    fixesLink.href = 'css/index-mobile-fixes-v4.css?v=20260721a';
+    fixesLink.setAttribute('data-home-mobile-fixes-v4', 'true');
+    document.head.appendChild(fixesLink);
+  }
 })();
 
 // ===== HOMEPAGE HERO BADGE MOTION FALLBACK =====
