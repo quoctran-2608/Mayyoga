@@ -50,13 +50,7 @@ function createHeroPrinciples() {
   principles.innerHTML = `
     <div class="hero-principle">
       <span class="hero-principle-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="5" r="2"></circle>
-          <path d="M12 7v6"></path>
-          <path d="M8.5 10.5 12 8l3.5 2.5"></path>
-          <path d="m9 21 3-8 3 8"></path>
-          <path d="M8 16h8"></path>
-        </svg>
+        <img src="assets/images/icons/tu_the_chuan_icon.webp" alt="" width="50" height="50">
       </span>
       <div class="hero-principle-copy">
         <div class="hero-principle-title">Tư thế chuẩn</div>
@@ -66,11 +60,7 @@ function createHeroPrinciples() {
 
     <div class="hero-principle">
       <span class="hero-principle-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m3 8 9-5 9 5-9 5-9-5Z"></path>
-          <path d="M7 10.2V15c0 1.7 2.2 3 5 3s5-1.3 5-3v-4.8"></path>
-          <path d="M21 8v6"></path>
-        </svg>
+        <img src="assets/images/icons/hoi_tho_dung_icon.webp" alt="" width="50" height="50">
       </span>
       <div class="hero-principle-copy">
         <div class="hero-principle-title">Hơi thở đúng</div>
@@ -80,9 +70,7 @@ function createHeroPrinciples() {
 
     <div class="hero-principle">
       <span class="hero-principle-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
-          <path d="m12 2.8 2.78 5.63 6.22.9-4.5 4.39 1.06 6.2L12 17l-5.56 2.92 1.06-6.2L3 9.33l6.22-.9L12 2.8Z"></path>
-        </svg>
+        <img src="assets/images/icons/hieu_co_the_icon.webp" alt="" width="50" height="50">
       </span>
       <div class="hero-principle-copy">
         <div class="hero-principle-title">Hiểu cơ thể</div>
