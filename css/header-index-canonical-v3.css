@@ -1,0 +1,229 @@
+/* ===== MÂY YOGA — INDEX HEADER CANONICAL V3 =====
+   The homepage header is the visual source of truth for every page.
+   This layer keeps the index first paint and the shared runtime header on
+   the same geometry, including the Khám phá ngay CTA and leaf_button.svg. */
+
+/* ---------- Desktop shell: exact homepage proportions ---------- */
+body.home-hero-redesign .navbar,
+body.home-hero-redesign .navbar.scrolled,
+html body .navbar.site-header-standard,
+html body .navbar.site-header-standard.scrolled {
+  height: 96px !important;
+  min-height: 96px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+body.home-hero-redesign .navbar .container,
+html body .navbar.site-header-standard .container {
+  min-height: 96px !important;
+  padding-left: clamp(34px, 4.3vw, 74px) !important;
+  padding-right: clamp(34px, 4.3vw, 74px) !important;
+  gap: clamp(18px, 2vw, 34px) !important;
+}
+
+body.home-hero-redesign .nav-logo .logo-img,
+html body .navbar.site-header-standard .nav-logo .logo-img {
+  width: auto !important;
+  height: 84px !important;
+  max-width: none !important;
+  object-fit: contain !important;
+}
+
+body.home-hero-redesign .nav-links,
+html body .navbar.site-header-standard .nav-links {
+  gap: clamp(26px, 2.3vw, 42px) !important;
+}
+
+body.home-hero-redesign .nav-search input,
+html body .navbar.site-header-standard .nav-search input {
+  width: clamp(210px, 15vw, 250px) !important;
+  height: 52px !important;
+}
+
+/* ---------- CTA: preserve the approved index size ---------- */
+body.home-hero-redesign .nav-cta,
+html body .navbar.site-header-standard .nav-cta {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+body.home-hero-redesign .nav-cta a.btn,
+html body .navbar.site-header-standard .nav-cta a.btn {
+  width: auto !important;
+  min-width: 190px !important;
+  height: 54px !important;
+  min-height: 54px !important;
+  padding: 0 30px !important;
+  gap: 8px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  font-size: .9rem !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+body.home-hero-redesign .nav-cta a.btn::after,
+html body .navbar.site-header-standard .nav-cta a.btn::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* leaf_button.svg has a 88:114 portrait ratio. Do not force it into a square. */
+body.home-hero-redesign .nav-cta a.btn > img.leaf-icon,
+html body .navbar.site-header-standard .nav-cta a.btn > img.leaf-icon {
+  display: block !important;
+  width: 14px !important;
+  height: 18px !important;
+  min-width: 14px !important;
+  max-width: 14px !important;
+  flex: 0 0 14px !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  filter: none !important;
+  pointer-events: none;
+}
+
+@media (max-width: 1200px) and (min-width: 981px) {
+  body.home-hero-redesign .nav-search,
+  html body .navbar.site-header-standard .nav-search {
+    display: none !important;
+  }
+}
+
+/* ---------- Tablet: same compact index header ---------- */
+@media (max-width: 980px) {
+  body.home-hero-redesign .navbar,
+  body.home-hero-redesign .navbar.scrolled,
+  html body .navbar.site-header-standard,
+  html body .navbar.site-header-standard.scrolled {
+    position: sticky !important;
+    height: 84px !important;
+    min-height: 84px !important;
+  }
+
+  body.home-hero-redesign .navbar .container,
+  html body .navbar.site-header-standard .container {
+    min-height: 84px !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  body.home-hero-redesign .nav-logo .logo-img,
+  html body .navbar.site-header-standard .nav-logo .logo-img {
+    height: 62px !important;
+  }
+
+  body.home-hero-redesign .nav-links,
+  body.home-hero-redesign .nav-search,
+  body.home-hero-redesign .nav-cta,
+  html body .navbar.site-header-standard .nav-links,
+  html body .navbar.site-header-standard .nav-search,
+  html body .navbar.site-header-standard .nav-cta {
+    display: none !important;
+  }
+
+  body.home-hero-redesign .mobile-toggle,
+  html body .navbar.site-header-standard .mobile-toggle {
+    width: 40px !important;
+    height: 40px !important;
+    flex: 0 0 40px !important;
+  }
+}
+
+/* ---------- Mobile: exact index 60px header rhythm ---------- */
+@media (max-width: 768px) {
+  body.home-hero-redesign .navbar,
+  body.home-hero-redesign .navbar.scrolled,
+  html body .navbar.site-header-standard,
+  html body .navbar.site-header-standard.scrolled {
+    height: 60px !important;
+    min-height: 60px !important;
+  }
+
+  body.home-hero-redesign .navbar .container,
+  html body .navbar.site-header-standard .container {
+    min-height: 60px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    gap: 6px !important;
+  }
+
+  body.home-hero-redesign .nav-logo .logo-img,
+  html body .navbar.site-header-standard .nav-logo .logo-img {
+    height: 46px !important;
+    max-width: 82px !important;
+  }
+
+  body.home-hero-redesign .nav-search,
+  html body .navbar.site-header-standard .nav-search {
+    display: block !important;
+    width: 36px !important;
+    flex: 0 0 36px !important;
+  }
+
+  body.home-hero-redesign .nav-cta,
+  html body .navbar.site-header-standard .nav-cta {
+    display: block !important;
+    flex: 0 0 auto !important;
+  }
+
+  body.home-hero-redesign .nav-cta a.btn,
+  html body .navbar.site-header-standard .nav-cta a.btn {
+    width: auto !important;
+    min-width: 0 !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    padding: 0 11px !important;
+    gap: 5px !important;
+    font-size: 0 !important;
+  }
+
+  body.home-hero-redesign .nav-cta a.btn::before,
+  html body .navbar.site-header-standard .nav-cta a.btn::before {
+    content: 'Khám phá' !important;
+    font-family: var(--font-body, 'DM Sans', sans-serif) !important;
+    font-size: 11.5px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+  }
+
+  body.home-hero-redesign .nav-cta a.btn > img.leaf-icon,
+  html body .navbar.site-header-standard .nav-cta a.btn > img.leaf-icon {
+    width: 11px !important;
+    height: 14px !important;
+    min-width: 11px !important;
+    max-width: 11px !important;
+    flex-basis: 11px !important;
+    margin: 0 !important;
+  }
+
+  body.home-hero-redesign .mobile-toggle,
+  html body .navbar.site-header-standard .mobile-toggle {
+    width: 36px !important;
+    height: 36px !important;
+    flex: 0 0 36px !important;
+    padding: 8px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body.home-hero-redesign .navbar,
+  body.home-hero-redesign .navbar.scrolled,
+  body.home-hero-redesign .navbar .container,
+  html body .navbar.site-header-standard,
+  html body .navbar.site-header-standard.scrolled,
+  html body .navbar.site-header-standard .container {
+    height: 58px !important;
+    min-height: 58px !important;
+  }
+
+  body.home-hero-redesign .nav-logo .logo-img,
+  html body .navbar.site-header-standard .nav-logo .logo-img {
+    height: 44px !important;
+    max-width: 78px !important;
+  }
+}
