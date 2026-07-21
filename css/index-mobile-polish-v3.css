@@ -39,7 +39,7 @@
   /* ---------- Mobile visual badge semantics ----------
      Use the visual badge as a caption for the Yoga style shown in the image.
      The learning philosophy belongs to the principles panel below. */
-  body.home-hero-redesign #hero .hero-image .floating-card.card-1 {
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 {
     grid-area: 1 / 1 !important;
     position: relative !important;
     z-index: 8 !important;
@@ -64,7 +64,7 @@
     backdrop-filter: blur(3px) saturate(104%) !important;
   }
 
-  body.home-hero-redesign #hero .hero-image .floating-card.card-1 .card-icon {
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 .card-icon {
     width: 32px !important;
     height: 32px !important;
     flex: 0 0 32px !important;
@@ -72,24 +72,24 @@
     font-size: 14px !important;
   }
 
-  body.home-hero-redesign #hero .hero-image .floating-card.card-1 .card-title {
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 .card-title {
     font-size: 12.5px !important;
     line-height: 1.2 !important;
     white-space: nowrap !important;
   }
 
-  body.home-hero-redesign #hero .hero-image .floating-card.card-1 .card-sub {
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 .card-sub {
     margin-top: 3px !important;
     font-size: 10.5px !important;
     line-height: 1.25 !important;
     white-space: nowrap !important;
   }
 
-  body.home-hero-redesign #hero .hero-image .hero-trust-card {
+  html body.home-hero-redesign #hero.hero .hero-image .hero-trust-card {
     display: none !important;
   }
 
-  body.home-hero-redesign #hero .hero-principles::before {
+  html body.home-hero-redesign #hero.hero .hero-principles::before {
     content: 'Học đúng từ nền tảng tại Mây Yoga' !important;
   }
 
@@ -143,7 +143,7 @@
     max-width: 82px !important;
   }
 
-  body.home-hero-redesign #hero .hero-image .floating-card.card-1 {
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 {
     max-width: min(72%, 218px) !important;
     margin-top: 8px !important;
     margin-left: 8px !important;
