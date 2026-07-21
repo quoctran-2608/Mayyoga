@@ -1,0 +1,244 @@
+/* ===== MÂY YOGA — HOMEPAGE HERO FINAL STATIC =====
+   Critical geometry formerly injected by home-hero-visual.js.
+   Loaded in <head> so fresh/incognito visitors never see the retired Hero first. */
+
+body.home-hero-redesign .hero-content {
+  padding-top: 0 !important;
+  padding-bottom: 50px !important;
+}
+
+body.home-hero-redesign .hero {
+  margin-bottom: 0 !important;
+}
+
+/* Soft transition from Hero to the practice section. */
+body.home-hero-redesign #hanh-trinh {
+  position: relative !important;
+  z-index: 3 !important;
+  isolation: isolate;
+  background: linear-gradient(180deg, #f8faf6 0, #f4f7f2 92px, #eef3eb 100%) !important;
+}
+
+body.home-hero-redesign #hanh-trinh::before {
+  content: '' !important;
+  position: absolute !important;
+  left: -4% !important;
+  right: -4% !important;
+  top: -64px !important;
+  height: 66px !important;
+  background: linear-gradient(180deg, rgba(248,250,246,0) 0%, rgba(248,250,246,0.46) 34%, rgba(248,250,246,0.88) 72%, #f8faf6 100%) !important;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0 !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+body.home-hero-redesign #hanh-trinh > .container {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+body.home-hero-redesign .hero-image .floating-card.card-1 {
+  background: rgba(255, 255, 255, 0.56) !important;
+  -webkit-backdrop-filter: blur(3px) saturate(104%) !important;
+  backdrop-filter: blur(3px) saturate(104%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.38) !important;
+  box-shadow: 0 9px 25px rgba(34, 61, 43, 0.075) !important;
+}
+
+body.home-hero-redesign .hero-image .hero-trust-card {
+  background: rgba(255, 255, 255, 0.60) !important;
+  -webkit-backdrop-filter: blur(3px) saturate(104%) !important;
+  backdrop-filter: blur(3px) saturate(104%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+  box-shadow: 0 9px 25px rgba(34, 61, 43, 0.085) !important;
+}
+
+body.home-hero-redesign .hero-image .floating-card.card-1,
+body.home-hero-redesign .hero-image .hero-trust-card {
+  animation: none !important;
+  will-change: translate;
+}
+
+@media (max-width: 1024px) {
+  body.home-hero-redesign #hanh-trinh::before {
+    top: -52px !important;
+    height: 54px !important;
+  }
+}
+
+@media (min-width: 1181px) {
+  body.home-hero-redesign .hero .container {
+    grid-template-columns: 46% 54% !important;
+  }
+
+  #hero .hero-principles {
+    left: -85.1851852% !important;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1180px) {
+  #hero .hero-principles {
+    left: -85.1851852% !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  body.home-hero-redesign .hero {
+    padding-top: 96px !important;
+    padding-bottom: 52px !important;
+  }
+
+  body.home-hero-redesign .hero .container {
+    min-height: calc(100svh - 96px) !important;
+  }
+
+  body.home-hero-redesign .hero-image {
+    height: calc(100svh - 96px) !important;
+  }
+
+  body.home-hero-redesign .hero-image > img {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: -52px !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: calc(100% + 52px) !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: left center !important;
+  }
+
+  body.home-hero-redesign .hero-image .hero-trust-card {
+    bottom: 44px !important;
+  }
+
+  body.home-hero-redesign .navbar,
+  body.home-hero-redesign .navbar.scrolled {
+    height: 96px !important;
+    min-height: 96px !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  body.home-hero-redesign .nav-logo .logo-img {
+    height: 84px !important;
+  }
+
+  body.home-hero-redesign .nav-links {
+    gap: clamp(26px, 2.3vw, 42px) !important;
+  }
+
+  body.home-hero-redesign .nav-links > li:first-child > a::after {
+    bottom: -18px !important;
+  }
+
+  body.home-hero-redesign .nav-search input {
+    height: 52px !important;
+  }
+
+  body.home-hero-redesign .nav-cta .btn {
+    height: 54px !important;
+    min-width: 190px !important;
+  }
+
+  #hero .hero-principle-title {
+    font-size: clamp(23px, 1.38vw, 27px) !important;
+    font-weight: 550 !important;
+  }
+
+  #hero .hero-principles {
+    bottom: 10px !important;
+  }
+
+  #hero .hero-principle-icon {
+    width: 46px !important;
+    height: 46px !important;
+    flex-basis: 46px !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  body.home-hero-redesign .nav-logo .logo-img {
+    height: 62px !important;
+  }
+
+  #hero .hero-principle-title {
+    font-size: 22px !important;
+    font-weight: 550 !important;
+  }
+
+  #hero .hero-principle-icon {
+    width: 46px !important;
+    height: 46px !important;
+    flex-basis: 46px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Never expose the desktop visual while JS switches to the mobile art-directed asset. */
+  body.home-hero-redesign #hero .hero-image > img:not(.hero-visual-ready) {
+    visibility: hidden !important;
+  }
+
+  body.home-hero-redesign #hanh-trinh::before {
+    top: -38px !important;
+    height: 40px !important;
+    left: -8% !important;
+    right: -8% !important;
+  }
+
+  body.home-hero-redesign #hanh-trinh {
+    background: linear-gradient(180deg, #f8faf6 0, #f4f7f2 64px, #eef3eb 100%) !important;
+  }
+
+  #hero .hero-principle-title {
+    font-size: clamp(16px, 4.2vw, 19px) !important;
+    font-weight: 550 !important;
+  }
+
+  #hero .hero-principles {
+    margin-top: 30px !important;
+  }
+
+  #hero .hero-principle-icon {
+    width: 36px !important;
+    height: 36px !important;
+    flex-basis: 36px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body.home-hero-redesign .nav-logo .logo-img {
+    height: 56px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  #hero .hero-principle-title {
+    font-size: 19px !important;
+  }
+
+  #hero .hero-principles {
+    margin-top: 28px !important;
+  }
+
+  #hero .hero-principle-icon {
+    width: 38px !important;
+    height: 38px !important;
+    flex-basis: 38px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  #hero .hero-principle-title {
+    font-size: 18px !important;
+  }
+
+  #hero .hero-principle-icon {
+    width: 36px !important;
+    height: 36px !important;
+    flex-basis: 36px !important;
+  }
+}
