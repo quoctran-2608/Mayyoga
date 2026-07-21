@@ -54,6 +54,15 @@
     document.head.appendChild(style);
   }
 
+  function loadIndexCanonicalHeaderGeometry() {
+    if (document.querySelector('link[data-header-index-canonical]')) return;
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = siteUrl('css/header-index-canonical-v3.css?v=20260721a');
+    link.setAttribute('data-header-index-canonical', 'true');
+    document.head.appendChild(link);
+  }
+
   function normalizeFooter() {
     var footer = document.querySelector('footer.footer');
     if (!footer) return;
@@ -112,7 +121,7 @@
   function loadCanonicalHeader() {
     if (document.querySelector('script[data-site-header-standard]')) return;
     var script = document.createElement('script');
-    script.src = siteUrl('js/site-header-standard.js?v=20260721d');
+    script.src = siteUrl('js/site-header-standard.js?v=20260721g');
     script.defer = true;
     script.setAttribute('data-site-header-standard', 'true');
     document.head.appendChild(script);
@@ -129,6 +138,7 @@
 
   function applyStandardChrome() {
     ensureStandardStyles();
+    loadIndexCanonicalHeaderGeometry();
     normalizeFooter();
     normalizeFloatingContact();
     loadCanonicalHeader();
