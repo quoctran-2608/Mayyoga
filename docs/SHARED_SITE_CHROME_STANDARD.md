@@ -21,6 +21,12 @@ js/site-chrome.js
 
 `index.html` và các trang con đều đi qua chuỗi component này.
 
+`index.html` hiện là **standalone static HTML**, không còn là Jekyll/Liquid wrapper. Kiến trúc homepage chi tiết nằm tại:
+
+```text
+docs/HOMEPAGE_STATIC_SOURCE_STANDARD.md
+```
+
 ---
 
 # 2. Header/Menu/Search — một source duy nhất
@@ -57,16 +63,16 @@ css/header-index-canonical-v3.css
 
 ## Quy tắc quan trọng
 
-Homepage là **visual reference** của Header, nhưng không còn là một structural/menu source riêng.
+Homepage là **visual reference** của Header, nhưng không phải structural/menu source riêng.
 
 Khi thêm/xóa/đổi menu item:
 
 ```text
 CHỈ sửa canonical navigation component.
-KHÔNG sửa menu riêng trong index.html hoặc _includes/index-source.html.
+KHÔNG sửa menu riêng trong index.html để tạo một implementation thứ hai.
 ```
 
-Markup Header còn tồn tại trong `_includes/index-source.html` chỉ là fallback/first-source legacy shell. Runtime canonical component là authoritative source.
+`index.html` có thể chứa Header shell/fallback để giảm layout shift và giúp source HTML có cấu trúc đầy đủ, nhưng runtime canonical navigation là authoritative source cho menu structure/behavior.
 
 Không tạo lại `index-nav-*` như một hệ behavior riêng cho homepage.
 
@@ -102,10 +108,10 @@ Khi thay đổi Footer:
 
 ```text
 CHỈ sửa footerMarkup() / shared footer style.
-KHÔNG sửa Footer riêng trong index-source hoặc từng page HTML.
+KHÔNG sửa Footer fallback riêng trong index.html hoặc từng page HTML để đồng bộ site-wide.
 ```
 
-HTML Footer hard-code còn tồn tại ở một số trang chỉ đóng vai trò fallback trước runtime normalization.
+HTML Footer hard-code còn tồn tại ở một số trang chỉ đóng vai trò shell/fallback trước runtime normalization.
 
 ---
 
@@ -171,7 +177,9 @@ Homepage-only có thể giữ:
 - Hero layout;
 - carousel;
 - section homepage;
-- homepage-specific responsive polish.
+- homepage-specific responsive polish;
+- homepage SEO/schema;
+- homepage-specific preload/performance hints.
 
 Homepage **không được** có hệ riêng cho:
 
@@ -185,6 +193,14 @@ Floating Contact
 Breadcrumb standard
 Article Share standard
 ```
+
+Homepage source of truth duy nhất:
+
+```text
+index.html
+```
+
+Không còn `_includes/index-source.html` hoặc Liquid wrapper làm homepage source song song.
 
 ---
 
@@ -213,11 +229,11 @@ Checklist:
 
 # 9. Quy tắc supersede tài liệu cũ
 
-Nếu một đoạn legacy trong tài liệu cũ nói rằng khi sửa menu phải:
+Nếu một đoạn legacy nói rằng khi sửa menu phải:
 
 ```text
 sửa homepage menu
-+ sửa non-homepage navMarkup()
++ sửa non-homepage menu riêng
 ```
 
 thì hướng dẫn đó **đã lỗi thời**.
@@ -232,6 +248,21 @@ một canonical navigation component
 
 Tương tự, Footer không còn được duy trì như các copy độc lập theo từng trang.
 
+Nếu tài liệu cũ nói:
+
+```text
+index.html = Jekyll/Liquid wrapper
+_includes/index-source.html = homepage source
+```
+
+thì hướng dẫn đó cũng **đã lỗi thời**. Chuẩn mới:
+
+```text
+index.html = standalone static homepage source of truth
+```
+
+Xem `docs/HOMEPAGE_STATIC_SOURCE_STANDARD.md`.
+
 ---
 
 # 10. Definition of Done
@@ -242,4 +273,12 @@ Một thay đổi shared chrome chỉ được xem là đúng kiến trúc khi:
 Không cần sửa index riêng để đồng bộ Header/Menu/Footer.
 Không cần sửa từng child page để đồng bộ Header/Menu/Footer.
 Canonical source quyết định runtime output toàn site.
+```
+
+Một thay đổi homepage chỉ được xem là đúng kiến trúc khi:
+
+```text
+index.html vẫn là HTML tĩnh hoàn chỉnh.
+Không táiintroduce Liquid wrapper hoặc homepage source thứ hai.
+Shared chrome vẫn đi qua canonical components.
 ```
