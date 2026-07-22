@@ -5,19 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Về Mây Yoga — Giáo viên Yoga RYT500</title>
   <meta name="description" content="Mây Yoga - Giáo viên Yoga được chứng nhận RYT500 bởi Yoga Alliance với 3 năm kinh nghiệm giảng dạy Hatha Yoga.">
-  <link rel="stylesheet" href="css/style.css?v=4">
-  <style>
-    .h1-break { display: none; }
-    @media (max-width: 900px) {
-      .h1-break { display: inline; }
-    }
-    @media (max-width: 768px) {
-      .about-hero-grid { grid-template-columns: 1fr !important; text-align: center; }
-      .about-hero-grid p { font-size: 1.05rem !important; }
-    }
-  </style>
+
+  <link rel="stylesheet" href="css/style.css?v=20260722a">
+  <link rel="stylesheet" href="css/about-page-polish-v3.css?v=20260722a">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
   <meta property="og:title" content="Về Mây Yoga — Giáo viên Yoga RYT500">
   <meta property="og:description" content="Mây Yoga - Giáo viên Yoga được chứng nhận RYT500 bởi Yoga Alliance với 3 năm kinh nghiệm giảng dạy Hatha Yoga.">
   <meta property="og:url" content="https://mayyoga.health/ve-may-yoga.html">
@@ -31,30 +24,32 @@
   <meta name="twitter:description" content="Mây Yoga - Giáo viên Yoga được chứng nhận RYT500 bởi Yoga Alliance với 3 năm kinh nghiệm giảng dạy Hatha Yoga.">
   <meta name="twitter:image" content="https://mayyoga.health/assets/images/hero.webp">
 </head>
-<body>
-  <!-- ===== NAVBAR ===== -->
+<body class="about-page">
+  <!-- ===== SHARED HEADER SHELL ===== -->
   <nav class="navbar scrolled" id="navbar">
     <div class="container">
-      <a href="index.html" class="nav-logo"><img src="assets/images/logo.webp" alt="Mây Yoga" class="logo-img"></a>
-            <ul class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/logo.webp" alt="Mây Yoga" class="logo-img">
+      </a>
+      <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Trang chủ</a></li>
         <li><a href="ve-may-yoga.html">Về Mây Yoga</a></li>
         <li class="nav-dropdown">
-          <a href="#" class="dropdown-toggle" style="color:#d4af37; font-weight:600;">Các khoá học <span class="chevron">▾</span></a>
+          <a href="hoc-yoga-online.html" class="dropdown-toggle">Các khoá học <span class="chevron">▾</span></a>
           <ul class="dropdown-menu">
             <li><a href="hoc-yoga-online.html">🌿 Yoga Online 1:1</a></li>
             <li><a href="goc-huan-luyen-vien.html">🦉 Đào tạo YTT 200H</a></li>
           </ul>
         </li>
         <li class="nav-dropdown">
-          <a href="#" class="dropdown-toggle">Kiến thức Yoga <span class="chevron">▾</span></a>
+          <a href="bai-viet/yoga-cho-nguoi-moi.html" class="dropdown-toggle">Kiến thức Yoga <span class="chevron">▾</span></a>
           <ul class="dropdown-menu">
             <li><a href="bai-viet/yoga-cho-nguoi-moi.html">🌱 Yoga cho người mới</a></li>
             <li><a href="tu-the-yoga.html">🧘 90 Tư thế Yoga</a></li>
             <li><a href="bai-viet/pranayama-ky-thuat-tho.html">🌬️ Pranayama</a></li>
             <li><a href="bai-viet/thien-cho-nguoi-moi.html">🕊️ Thiền định</a></li>
             <li><a href="giai-phau-yoga.html">🫀 Giải phẫu Yoga</a></li>
-            <li style="border-top:1px solid rgba(61,90,58,0.1); margin-top:4px; padding-top:4px;"><a href="tu-tap-tai-nha.html">🏠 Tự tập tại nhà</a></li>
+            <li><a href="tu-tap-tai-nha.html">🏠 Tự tập tại nhà</a></li>
           </ul>
         </li>
         <li><a href="trac-nghiem.html">Trắc nghiệm</a></li>
@@ -63,12 +58,16 @@
         <input type="text" id="globalSearch" placeholder="🔍 Tìm tư thế, bài viết..." autocomplete="off">
         <div class="search-dropdown" id="searchDropdown"></div>
       </div>
-      <div class="nav-cta"><a href="index.html#blog" class="btn btn-primary btn-sm">Khám phá ngay</a></div>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      <div class="nav-cta">
+        <a href="index.html#blog" class="btn btn-primary btn-sm">Khám phá ngay</a>
+      </div>
+      <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
-
+  <!-- ===== PAGE MASTHEAD ===== -->
   <header class="article-header">
     <div class="container">
       <div class="breadcrumb">
@@ -87,50 +86,44 @@
 
   <main class="article-body">
     <div class="container">
+      <!-- ===== TEACHER + PHILOSOPHY HERO ===== -->
+      <section class="about-hero-grid" aria-label="Giới thiệu giáo viên và triết lý Yoga">
+        <span class="about-quote-mark" aria-hidden="true">❝</span>
 
-      <!-- Teacher Image + Triết lý — 2 Column Layout -->
-      <div class="about-hero-grid" style="display: grid; grid-template-columns: 340px 1fr; gap: 36px; align-items: center; margin-bottom: 48px; background: linear-gradient(135deg, #f0f5ee 0%, #e8ede5 100%); border-radius: 24px; padding: 40px; border: 1px solid rgba(61,90,58,0.08); position: relative; overflow: hidden;">
-        <div style="position: absolute; top: -10px; right: 30px; font-size: 6rem; opacity: 0.06; color: #3d5a3a; font-family: Georgia, serif;">❝</div>
-        <!-- Ảnh giáo viên -->
-        <div style="text-align: center;">
-          <img loading="lazy" src="assets/images/about-teacher.webp" alt="Mây - Giáo viên RYT500" style="width: 100%; border-radius: 16px; box-shadow: 0 12px 40px rgba(61,90,58,0.18); border: 3px solid rgba(61,90,58,0.1);">
-          <div style="margin-top: 16px; display: flex; flex-direction: column; align-items: center; gap: 10px;">
-            <a href="https://app.yogaalliance.org/teacherpublicprofile/003TR00001A7ugoYAB/thu-may-phan" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #2d5a3d, #3d7a4a); color: white; padding: 8px 20px; border-radius: 50px; text-decoration: none; font-size: 0.82rem; font-weight: 600; box-shadow: 0 4px 15px rgba(61,90,58,0.3); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(61,90,58,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 15px rgba(61,90,58,0.3)'">
+        <div class="about-teacher-block">
+          <img class="about-teacher-photo" loading="eager" fetchpriority="high" src="assets/images/about-teacher.webp" alt="Mây - Giáo viên RYT500">
+          <div class="about-credential-links">
+            <a class="about-credential-link primary" href="https://app.yogaalliance.org/teacherpublicprofile/003TR00001A7ugoYAB/thu-may-phan" target="_blank" rel="noopener">
               🎓 RYT 500 — Yoga Alliance ✓
             </a>
-            <a href="https://app.yogaalliance.org/schoolpublicprofile/001TR00000V95eXYAR/giang-metta-yoga-sound-healing-academy" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #8B5E3C, #A0724D); color: white; padding: 8px 20px; border-radius: 50px; text-decoration: none; font-size: 0.82rem; font-weight: 600; box-shadow: 0 4px 15px rgba(139,94,60,0.3); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(139,94,60,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 15px rgba(139,94,60,0.3)'">
+            <a class="about-credential-link secondary" href="https://app.yogaalliance.org/schoolpublicprofile/001TR00000V95eXYAR/giang-metta-yoga-sound-healing-academy" target="_blank" rel="noopener">
               🏫 Giang Metta Yoga Academy — RYS ✓
             </a>
           </div>
         </div>
-        <!-- Triết lý -->
-        <div style="position: relative; z-index: 1;">
-          <p style="font-size: 1.25rem; line-height: 2; color: #2d4a2e; margin: 0; font-style: italic;">"Tôi tin rằng yoga không phải về sự dẻo dai hay những tư thế đẹp.<br>Yoga là về việc <strong style="color:#3d5a3a;">hiểu cơ thể mình</strong> — cách cột sống cử động,<br>cách hơi thở ảnh hưởng hệ thần kinh, cách mỗi tư thế tác động lên từng nhóm cơ.<br><strong style="color:#3d5a3a;">Khi bạn hiểu, bạn sẽ tập đúng — và khi tập đúng, cơ thể sẽ tự thay&nbsp;đổi.</strong>"</p>
-          <p style="margin-top: 20px; font-size: 0.92rem; color: #6b8a6b; font-weight: 600;">— Mây, RYT 500 🍀</p>
+
+        <div class="about-philosophy">
+          <p class="about-philosophy-copy">“Tôi tin rằng yoga không phải về sự dẻo dai hay những tư thế đẹp. Yoga là về việc <strong>hiểu cơ thể mình</strong> — cách cột sống cử động, cách hơi thở ảnh hưởng hệ thần kinh, cách mỗi tư thế tác động lên từng nhóm cơ. <strong>Khi bạn hiểu, bạn sẽ tập đúng — và khi tập đúng, cơ thể sẽ tự thay đổi.</strong>”</p>
+          <p class="about-philosophy-signature">— Mây, RYT 500 🍀</p>
         </div>
-      </div>
+      </section>
 
       <h2>Câu chuyện của mình</h2>
-
       <p>Mình là <strong>Mây</strong> — người sáng lập <strong>Mây Yoga</strong> và giáo viên Hatha Yoga được chứng nhận <strong>RYT500 (Registered Yoga Teacher 500-hour)</strong> bởi <strong>Yoga Alliance</strong> — tổ chức uy tín nhất thế giới trong lĩnh vực đào tạo yoga.</p>
-
       <p>Hành trình yoga của mình bắt đầu từ một giai đoạn khó khăn trong cuộc sống — khi stress, mất ngủ, và đau lưng trở thành bạn đồng hành hàng ngày. Mình tìm đến yoga như một giải pháp tạm thời, nhưng nhanh chóng nhận ra đây là một <strong>hành trình chuyển hoá</strong> thực sự — không chỉ cho cơ thể mà còn cho cả tâm trí.</p>
+      <blockquote><p>“Yoga đã thay đổi cách mình nhìn cuộc sống. Và mình muốn chia sẻ điều đó với mọi người — đặc biệt là các bạn trẻ Việt Nam.”</p></blockquote>
 
-      <blockquote><p>"Yoga đã thay đổi cách mình nhìn cuộc sống. Và mình muốn chia sẻ điều đó với mọi người — đặc biệt là các bạn trẻ Việt Nam."</p></blockquote>
-
-      <h2>Chứng nhận & Đào tạo</h2>
-
+      <h2>Chứng nhận &amp; Đào tạo</h2>
       <div class="callout-box tip">
         <div class="callout-title">🎓 RYT500 — Yoga Alliance</div>
         <p><strong>RYT500 (Registered Yoga Teacher 500-hour)</strong> là chứng nhận giáo viên yoga cấp cao nhất của Yoga Alliance. Để đạt được chứng nhận này, mình đã hoàn thành hơn <strong>500 giờ đào tạo chuyên sâu</strong> bao gồm: giải phẫu học ứng dụng trong yoga, triết lý yoga cổ đại, kỹ thuật định tuyến nâng cao, pranayama, thiền định, và phương pháp giảng dạy.</p>
-        <p style="margin-top: 12px;"><a href="https://app.yogaalliance.org/teacherpublicprofile/003TR00001A7ugoYAB/thu-may-phan" target="_blank" rel="noopener" style="color: #3d5a3a; font-weight: 600;">🔗 Xác minh chứng chỉ trên Yoga Alliance →</a></p>
+        <p><a href="https://app.yogaalliance.org/teacherpublicprofile/003TR00001A7ugoYAB/thu-may-phan" target="_blank" rel="noopener">🔗 Xác minh chứng chỉ trên Yoga Alliance →</a></p>
       </div>
 
-      <!-- ===== TRƯỜNG ĐÀO TẠO — GIANG METTA YOGA ===== -->
-      <div class="callout-box tip" style="margin-top: 24px;">
-        <div class="callout-title">🏫 Giảng viên tại Giang Metta Yoga & Sound Healing Academy</div>
-        <p>Mây hiện là giảng viên chuyên môn thuộc <strong>Giang Metta Yoga & Sound Healing Academy</strong> — trường yoga được <strong>Yoga Alliance</strong> công nhận là <strong>Registered Yoga School (RYS)</strong>. Tại đây, Mây tham gia trực tiếp vào đội ngũ giảng dạy chương trình <strong>Đào tạo Giáo viên Yoga YTT 200h</strong>, hỗ trợ học viên trên hành trình nhận chứng chỉ quốc tế từ Yoga Alliance.</p>
-        <p style="margin-top: 12px;"><a href="https://app.yogaalliance.org/schoolpublicprofile/001TR00000V95eXYAR/giang-metta-yoga-sound-healing-academy" target="_blank" rel="noopener" style="color: #3d5a3a; font-weight: 600;">🔗 Xem hồ sơ trường trên Yoga Alliance →</a></p>
+      <div class="callout-box tip">
+        <div class="callout-title">🏫 Giảng viên tại Giang Metta Yoga &amp; Sound Healing Academy</div>
+        <p>Mây hiện là giảng viên chuyên môn thuộc <strong>Giang Metta Yoga &amp; Sound Healing Academy</strong> — trường yoga được <strong>Yoga Alliance</strong> công nhận là <strong>Registered Yoga School (RYS)</strong>. Tại đây, Mây tham gia trực tiếp vào đội ngũ giảng dạy chương trình <strong>Đào tạo Giáo viên Yoga YTT 200h</strong>, hỗ trợ học viên trên hành trình nhận chứng chỉ quốc tế từ Yoga Alliance.</p>
+        <p><a href="https://app.yogaalliance.org/schoolpublicprofile/001TR00000V95eXYAR/giang-metta-yoga-sound-healing-academy" target="_blank" rel="noopener">🔗 Xem hồ sơ trường trên Yoga Alliance →</a></p>
       </div>
 
       <h3>Quá trình học tập</h3>
@@ -141,99 +134,63 @@
       </ul>
 
       <h2>Kinh nghiệm giảng dạy</h2>
-
-      <div style="margin-bottom: 28px; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(61,90,58,0.1);">
-        <img loading="lazy" src="assets/images/about-teaching.webp" alt="Mây hướng dẫn học viên tập Yoga" style="width: 100%; height: auto; display: block;">
-      </div>
-
+      <figure class="about-media">
+        <img loading="lazy" src="assets/images/about-teaching.webp" alt="Mây hướng dẫn học viên tập Yoga">
+      </figure>
       <p>Với <strong>3 năm kinh nghiệm</strong> giảng dạy Hatha Yoga, mình đã có cơ hội đồng hành cùng hàng trăm học viên trên hành trình yoga của họ. Phong cách giảng dạy của mình tập trung vào:</p>
-
       <ul>
         <li><strong>Định tuyến cơ thể chuẩn xác (Alignment-based):</strong> Mỗi tư thế đều được hướng dẫn chi tiết về cách căn chỉnh xương khớp, giúp người tập an toàn và hiệu quả tối đa.</li>
         <li><strong>Dễ hiểu, phù hợp người Việt:</strong> Sử dụng ngôn ngữ đơn giản, ví dụ thực tế, tránh thuật ngữ quá chuyên môn.</li>
-        <li><strong>Kết hợp khoa học:</strong> Mỗi hướng dẫn đều dựa trên kiến thức giải phẫu học và nghiên cứu khoa học, không chỉ "vì thầy bảo thế."</li>
+        <li><strong>Kết hợp khoa học:</strong> Mỗi hướng dẫn đều dựa trên kiến thức giải phẫu học và nghiên cứu khoa học, không chỉ “vì thầy bảo thế”.</li>
         <li><strong>Tập trung vào hơi thở:</strong> Pranayama (kỹ thuật thở) luôn là phần quan trọng trong mỗi bài hướng dẫn.</li>
       </ul>
 
-      <!-- ===== ĐÀO TẠO GIÁO VIÊN YOGA 200H ===== -->
       <h2>🎓 Đào tạo Giáo viên Yoga — YTT 200h</h2>
-
-      <div style="background: linear-gradient(135deg, #fdf6ee 0%, #f5efe6 100%); border-radius: 20px; padding: 36px; margin-bottom: 36px; border: 1px solid rgba(139,94,60,0.15);">
-        <p style="font-size: 1.1rem; line-height: 1.9; color: #5a3d2b; margin: 0 0 20px;">
-          Với sứ mệnh đào tạo thế hệ giáo viên yoga chất lượng, Mây đồng hành cùng <strong>Giang Metta Yoga & Sound Healing Academy</strong> (trường được <strong>Yoga Alliance</strong> công nhận) tham gia giảng dạy trong chương trình <strong>YTT 200h</strong> (Yoga Teacher Training 200 giờ), giúp học viên đạt được chứng chỉ chuẩn quốc tế.
-        </p>
-        <h3 style="color: #5a3d2b; margin: 0 0 16px;">Chương trình bao gồm:</h3>
-        <ul style="margin: 0; padding-left: 20px; color: #5a3d2b; line-height: 2;">
-          <li>📘 <strong>Asana (Tư thế Yoga)</strong> — Kỹ thuật, định tuyến chuẩn, biến thể & điều chỉnh</li>
-          <li>🌬️ <strong>Pranayama & Thiền định</strong> — Kỹ thuật thở và thiền ứng dụng</li>
+      <section class="about-ytt-card" aria-label="Chương trình đào tạo giáo viên Yoga YTT 200h">
+        <p class="about-ytt-intro">Với sứ mệnh đào tạo thế hệ giáo viên yoga chất lượng, Mây đồng hành cùng <strong>Giang Metta Yoga &amp; Sound Healing Academy</strong> (trường được <strong>Yoga Alliance</strong> công nhận) tham gia giảng dạy trong chương trình <strong>YTT 200h</strong> (Yoga Teacher Training 200 giờ), giúp học viên đạt được chứng chỉ chuẩn quốc tế.</p>
+        <h3>Chương trình bao gồm:</h3>
+        <ul class="about-ytt-list">
+          <li>📘 <strong>Asana (Tư thế Yoga)</strong> — Kỹ thuật, định tuyến chuẩn, biến thể &amp; điều chỉnh</li>
+          <li>🌬️ <strong>Pranayama &amp; Thiền định</strong> — Kỹ thuật thở và thiền ứng dụng</li>
           <li>🫀 <strong>Giải phẫu học Yoga</strong> — Hiểu cơ thể để dạy an toàn</li>
           <li>📖 <strong>Triết lý Yoga</strong> — Patanjali Yoga Sutra, Bhagavad Gita</li>
           <li>🎤 <strong>Phương pháp giảng dạy</strong> — Kỹ năng cue, sequencing, quản lý lớp</li>
           <li>🧘 <strong>Thực hành giảng dạy</strong> — Dạy thử, nhận phản hồi, xây dựng phong cách riêng</li>
         </ul>
-        <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-          <a href="https://app.yogaalliance.org/schoolpublicprofile/001TR00000V95eXYAR/giang-metta-yoga-sound-healing-academy" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #8B5E3C, #A0724D); color: white; padding: 10px 24px; border-radius: 50px; text-decoration: none; font-size: 0.9rem; font-weight: 600; box-shadow: 0 4px 15px rgba(139,94,60,0.3); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(139,94,60,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 15px rgba(139,94,60,0.3)'">🏫 Xem trường trên Yoga Alliance</a>
-          <a href="https://zalo.me/0326808864" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #2d5a3d, #3d7a4a); color: white; padding: 10px 24px; border-radius: 50px; text-decoration: none; font-size: 0.9rem; font-weight: 600; box-shadow: 0 4px 15px rgba(61,90,58,0.3); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(61,90,58,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 15px rgba(61,90,58,0.3)'">📞 Liên hệ tư vấn YTT 200h</a>
+        <div class="about-ytt-actions">
+          <a class="about-ytt-link secondary" href="https://app.yogaalliance.org/schoolpublicprofile/001TR00000V95eXYAR/giang-metta-yoga-sound-healing-academy" target="_blank" rel="noopener">🏫 Xem trường trên Yoga Alliance</a>
+          <a class="about-ytt-link primary" href="https://zalo.me/0326808864" target="_blank" rel="noopener">💬 Liên hệ tư vấn YTT 200h</a>
         </div>
-      </div>
+      </section>
 
       <h2>Sứ mệnh của Mây Yoga</h2>
-
-      <div style="margin-bottom: 28px; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(61,90,58,0.1);">
-        <img loading="lazy" src="assets/images/about-mission.webp" alt="Sứ mệnh Mây Yoga" style="width: 100%; height: auto; display: block;">
-      </div>
-
+      <figure class="about-media">
+        <img loading="lazy" src="assets/images/about-mission.webp" alt="Sứ mệnh Mây Yoga">
+      </figure>
       <p><strong>Mây Yoga</strong> được tạo ra với mong muốn xây dựng một nền tảng kiến thức yoga <strong>chuyên sâu, chính xác, và hoàn toàn bằng tiếng Việt</strong> — để mọi người, đặc biệt là các bạn trẻ, có thể tiếp cận yoga đúng cách mà không cần phải vượt qua rào cản ngôn ngữ.</p>
-
       <p>Tại đây, bạn sẽ tìm thấy:</p>
       <ul>
         <li>✅ Hướng dẫn tư thế Hatha Yoga chi tiết với <strong>định tuyến chuẩn</strong></li>
         <li>✅ Kiến thức <strong>pranayama (kỹ thuật thở)</strong> dựa trên khoa học</li>
-        <li>✅ Bài viết <strong>thiền định & triết lý yoga</strong> dễ hiểu cho người Việt</li>
+        <li>✅ Bài viết <strong>thiền định &amp; triết lý yoga</strong> dễ hiểu cho người Việt</li>
         <li>✅ Nội dung được cập nhật đều đặn, <strong>miễn phí</strong></li>
         <li>✅ Cơ hội tham gia <strong>Chương trình đào tạo Giáo viên Yoga YTT 200h</strong> chuẩn quốc tế cùng Mây.</li>
       </ul>
 
       <h2>Kết nối với mình</h2>
-
       <p>Mình luôn vui lòng nghe ý kiến, câu hỏi, hoặc chia sẻ từ các bạn. Nếu bạn có bất kỳ thắc mắc nào về yoga, đừng ngần ngại liên hệ:</p>
-
-      <ul>
-        <li>📧 Email: <strong>phanthumay.yoga500@gmail.com</strong></li>
-        <li>📸 Instagram: <a href="https://www.instagram.com/thumay2808" target="_blank" style="color:#3d5a3a;"><strong>@thumay2808</strong></a></li>
-        <li>📘 Facebook: <a href="https://www.facebook.com/profile.php?id=61573065832463" target="_blank" style="color:#3d5a3a;"><strong>Mây Yoga</strong></a></li>
-        <li>🎵 TikTok: <a href="https://www.tiktok.com/@my.v.yoga" target="_blank" style="color:#3d5a3a;"><strong>@my.v.yoga</strong></a></li>
-        <li>📱 WhatsApp/Zalo: <a href="https://zalo.me/0326808864" style="color:#3d5a3a;"><strong>0326808864</strong></a></li>
+      <ul class="about-contact-list">
+        <li>📧 Email: <a href="mailto:phanthumay.yoga500@gmail.com"><strong>phanthumay.yoga500@gmail.com</strong></a></li>
+        <li>📸 Instagram: <a href="https://www.instagram.com/thumay2808" target="_blank" rel="noopener"><strong>@thumay2808</strong></a></li>
+        <li>📘 Facebook: <a href="https://www.facebook.com/profile.php?id=61573065832463" target="_blank" rel="noopener"><strong>Mây Yoga</strong></a></li>
+        <li>🎵 TikTok: <a href="https://www.tiktok.com/@my.v.yoga" target="_blank" rel="noopener"><strong>@my.v.yoga</strong></a></li>
+        <li>📱 WhatsApp/Zalo: <a href="https://zalo.me/0326808864" target="_blank" rel="noopener"><strong>0326808864</strong></a></li>
       </ul>
 
-      <blockquote><p>"Yoga không phải là về sự hoàn hảo. Yoga là về sự kiên nhẫn, lắng nghe cơ thể, và mỗi ngày tiến lên một chút." — Mây 🍀</p></blockquote>
+      <blockquote><p>“Yoga không phải là về sự hoàn hảo. Yoga là về sự kiên nhẫn, lắng nghe cơ thể, và mỗi ngày tiến lên một chút.” — Mây 🍀</p></blockquote>
 
-      <div class="article-share" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-        <span style="font-weight:600;color:#3d5a3a;font-family:'DM Sans',sans-serif;font-size:0.9rem">Chia sẻ:</span>
-        <!-- Facebook -->
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://mayyoga.health/ve-may-yoga.html" target="_blank" rel="noopener" aria-label="Chia sẻ lên Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:#1877F2;color:#fff;text-decoration:none;transition:all 0.3s;box-shadow:0 2px 8px rgba(24,119,242,0.25)">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-        <!-- Twitter/X -->
-        <a href="https://twitter.com/intent/tweet?url=https://mayyoga.health/ve-may-yoga.html&text=V%E1%BB%81%20M%C3%A2y%20Yoga%20%E2%80%94%20Gi%C3%A1o%20vi%C3%AAn%20Hatha%20Yoga%20RYT500" target="_blank" rel="noopener" aria-label="Chia sẻ lên X" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:#000;color:#fff;text-decoration:none;transition:all 0.3s;box-shadow:0 2px 8px rgba(0,0,0,0.2)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-        <!-- Zalo -->
-        <a href="https://zalo.me/share?u=https://mayyoga.health/ve-may-yoga.html" target="_blank" rel="noopener" aria-label="Chia sẻ qua Zalo" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:#0068FF;color:#fff;text-decoration:none;transition:all 0.3s;box-shadow:0 2px 8px rgba(0,104,255,0.25)">
-          <svg width="20" height="20" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.779 43.5892C10.1019 43.846 13.0061 43.1836 15.0682 42.1825C24.0225 47.1318 38.0197 46.8954 46.4923 41.4732C46.8209 40.9803 47.1279 40.4677 47.4128 39.9363C49.1062 36.7779 50.0004 33.22 50.0004 27.1316V22.7175C50.0004 16.629 49.1062 13.0711 47.4128 9.91273C45.7385 6.75436 43.2461 4.28093 40.0877 2.58758C36.9293 0.894239 33.3714 0 27.283 0H22.8499C17.6644 0 14.2982 0.652754 11.4699 1.89893C11.3153 2.03737 11.1636 2.17818 11.0151 2.32135C2.71734 10.3203 2.08658 27.6593 9.12279 37.0782C9.13064 37.0921 9.13933 37.1061 9.14889 37.1203C10.2334 38.7185 9.18694 41.5154 7.55068 43.1516C7.28431 43.399 7.37944 43.5512 7.779 43.5892Z" fill="white"/>
-            <path d="M20.5632 17H10.8382V19.0853H17.5869L10.9329 27.3317C10.7244 27.635 10.5728 27.9194 10.5728 28.5639V29.0947H19.748C20.203 29.0947 20.5822 28.7156 20.5822 28.2606V27.1421H13.4922L19.748 19.2938C19.8428 19.1801 20.0134 18.9716 20.0893 18.8768L20.1272 18.8199C20.4874 18.2891 20.5632 17.8341 20.5632 17.2844V17Z" fill="#0068FF"/>
-            <path d="M32.9416 29.0947H34.3255V17H32.2402V28.3933C32.2402 28.7725 32.5435 29.0947 32.9416 29.0947Z" fill="#0068FF"/>
-            <path d="M25.814 19.6924C23.1979 19.6924 21.0747 21.8156 21.0747 24.4317C21.0747 27.0478 23.1979 29.171 25.814 29.171C28.4301 29.171 30.5533 27.0478 30.5533 24.4317C30.5723 21.8156 28.4491 19.6924 25.814 19.6924ZM25.814 27.2184C24.2785 27.2184 23.0273 25.9672 23.0273 24.4317C23.0273 22.8962 24.2785 21.645 25.814 21.645C27.3495 21.645 28.6007 22.8962 28.6007 24.4317C28.6007 25.9672 27.3685 27.2184 25.814 27.2184Z" fill="#0068FF"/>
-            <path d="M40.4867 19.6162C37.8516 19.6162 35.7095 21.7584 35.7095 24.3934C35.7095 27.0285 37.8516 29.1707 40.4867 29.1707C43.1217 29.1707 45.2639 27.0285 45.2639 24.3934C45.2639 21.7584 43.1217 19.6162 40.4867 19.6162ZM40.4867 27.2181C38.9322 27.2181 37.681 25.9669 37.681 24.4124C37.681 22.8579 38.9322 21.6067 40.4867 21.6067C42.0412 21.6067 43.2924 22.8579 43.2924 24.4124C43.2924 25.9669 42.0412 27.2181 40.4867 27.2181Z" fill="#0068FF"/>
-            <path d="M29.4562 29.0944H30.5747V19.957H28.6221V28.2793C28.6221 28.7153 29.0012 29.0944 29.4562 29.0944Z" fill="#0068FF"/>
-          </svg>
-        </a>
-        <!-- Copy Link -->
-        <button onclick="navigator.clipboard.writeText(window.location.href);this.innerHTML='<svg width=\'16\' height=\'16\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'white\' stroke-width=\'2.5\'><polyline points=\'20 6 9 17 4 12\'/></svg>';setTimeout(()=>{this.innerHTML='<svg width=\'16\' height=\'16\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'white\' stroke-width=\'2\'><path d=\'M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71\'/><path d=\'M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71\'/></svg>'},2000)" aria-label="Sao chép liên kết" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:#5a7a56;color:#fff;border:none;cursor:pointer;transition:all 0.3s;box-shadow:0 2px 8px rgba(90,122,86,0.25)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-        </button>
-      </div>
+      <!-- Canonical article-share component replaces this shell at runtime. -->
+      <div class="article-share" aria-label="Chia sẻ trang"></div>
     </div>
   </main>
 
@@ -245,29 +202,28 @@
     </div>
   </section>
 
+  <!-- ===== SHARED FOOTER SHELL ===== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid-new">
-        <!-- Column 1: Brand -->
         <div class="footer-brand-col">
           <a href="index.html" class="footer-logo-link">
             <img src="assets/images/logo.webp" alt="Mây Yoga" class="footer-logo-img">
           </a>
           <p class="footer-tagline">Nền tảng kiến thức Hatha Yoga<br>dành cho mọi người.</p>
           <div class="footer-social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61573065832463" target="_blank" aria-label="Facebook" class="social-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <a href="https://www.facebook.com/profile.php?id=61573065832463" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </a>
-            <a href="https://www.instagram.com/thumay2808" target="_blank" aria-label="Instagram" class="social-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            <a href="https://www.instagram.com/thumay2808" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
             </a>
-            <a href="https://www.tiktok.com/@my.v.yoga" target="_blank" aria-label="TikTok" class="social-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            <a href="https://www.tiktok.com/@my.v.yoga" target="_blank" rel="noopener" aria-label="TikTok" class="social-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- Column 2: Policies -->
         <div class="footer-col">
           <h4>Chính sách</h4>
           <ul>
@@ -278,28 +234,26 @@
           </ul>
         </div>
 
-        <!-- Column 3: Contact -->
         <div class="footer-col">
           <h4>Liên hệ</h4>
           <ul>
             <li><a href="mailto:phanthumay.yoga500@gmail.com">📧 phanthumay.yoga500@gmail.com</a></li>
-            <li><a href="https://zalo.me/0326808864" target="_blank">📱 Hotline: 0326 808 864</a></li>
+            <li><a href="https://zalo.me/0326808864" target="_blank" rel="noopener">📱 Hotline: 0326 808 864</a></li>
             <li>📍 Đà Lạt, Lâm Đồng, Việt Nam</li>
           </ul>
           <p class="footer-legal"><strong>Chủ quản:</strong> Phan Thu Mây&nbsp;|&nbsp;<strong>MST:</strong> 066195013103</p>
         </div>
       </div>
-
-      <!-- Footer bottom -->
       <div class="footer-bottom">
         <p>© 2026 MâyYoga.health — All rights reserved. 🍀</p>
       </div>
     </div>
-</footer>
+  </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/search-index.js"></script>
+  <script src="js/search.js"></script>
 
-  <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -317,24 +271,5 @@
     }
   }
   </script>
-  <script src="js/search-index.js"></script>
-  <script src="js/search.js"></script>
-  <!-- ===== FLOATING CONTACT BUTTONS ===== -->
-  <div class="floating-contact" id="floatingContact">
-    <a href="https://zalo.me/0326808864" target="_blank" class="fc-zalo" data-tooltip="Chat Zalo" aria-label="Liên hệ Zalo">
-<svg width="28" height="28" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.779 43.5892C10.1019 43.846 13.0061 43.1836 15.0682 42.1825C24.0225 47.1318 38.0197 46.8954 46.4923 41.4732C46.8209 40.9803 47.1279 40.4677 47.4128 39.9363C49.1062 36.7779 50.0004 33.22 50.0004 27.1316V22.7175C50.0004 16.629 49.1062 13.0711 47.4128 9.91273C45.7385 6.75436 43.2461 4.28093 40.0877 2.58758C36.9293 0.894239 33.3714 0 27.283 0H22.8499C17.6644 0 14.2982 0.652754 11.4699 1.89893C11.3153 2.03737 11.1636 2.17818 11.0151 2.32135C2.71734 10.3203 2.08658 27.6593 9.12279 37.0782C9.13064 37.0921 9.13933 37.1061 9.14889 37.1203C10.2334 38.7185 9.18694 41.5154 7.55068 43.1516C7.28431 43.399 7.37944 43.5512 7.779 43.5892Z" fill="white"/>
-        <path d="M20.5632 17H10.8382V19.0853H17.5869L10.9329 27.3317C10.7244 27.635 10.5728 27.9194 10.5728 28.5639V29.0947H19.748C20.203 29.0947 20.5822 28.7156 20.5822 28.2606V27.1421H13.4922L19.748 19.2938C19.8428 19.1801 20.0134 18.9716 20.0893 18.8768L20.1272 18.8199C20.4874 18.2891 20.5632 17.8341 20.5632 17.2844V17Z" fill="#0068FF"/>
-        <path d="M32.9416 29.0947H34.3255V17H32.2402V28.3933C32.2402 28.7725 32.5435 29.0947 32.9416 29.0947Z" fill="#0068FF"/>
-        <path d="M25.814 19.6924C23.1979 19.6924 21.0747 21.8156 21.0747 24.4317C21.0747 27.0478 23.1979 29.171 25.814 29.171C28.4301 29.171 30.5533 27.0478 30.5533 24.4317C30.5723 21.8156 28.4491 19.6924 25.814 19.6924ZM25.814 27.2184C24.2785 27.2184 23.0273 25.9672 23.0273 24.4317C23.0273 22.8962 24.2785 21.645 25.814 21.645C27.3495 21.645 28.6007 22.8962 28.6007 24.4317C28.6007 25.9672 27.3685 27.2184 25.814 27.2184Z" fill="#0068FF"/>
-        <path d="M40.4867 19.6162C37.8516 19.6162 35.7095 21.7584 35.7095 24.3934C35.7095 27.0285 37.8516 29.1707 40.4867 29.1707C43.1217 29.1707 45.2639 27.0285 45.2639 24.3934C45.2639 21.7584 43.1217 19.6162 40.4867 19.6162ZM40.4867 27.2181C38.9322 27.2181 37.681 25.9669 37.681 24.4124C37.681 22.8579 38.9322 21.6067 40.4867 21.6067C42.0412 21.6067 43.2924 22.8579 43.2924 24.4124C43.2924 25.9669 42.0412 27.2181 40.4867 27.2181Z" fill="#0068FF"/>
-        <path d="M29.4562 29.0944H30.5747V19.957H28.6221V28.2793C28.6221 28.7153 29.0012 29.0944 29.4562 29.0944Z" fill="#0068FF"/>
-      </svg>
-    </a>
-    <a href="https://wa.me/84326808864" target="_blank" class="fc-whatsapp" data-tooltip="Chat WhatsApp" aria-label="Liên hệ WhatsApp">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    </a>
-  </div>
-
 </body>
 </html>
