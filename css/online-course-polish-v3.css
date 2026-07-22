@@ -209,49 +209,99 @@
   margin: 40px auto 0 !important;
 }
 
-.online-course-page .how-section .steps-grid {
-  width: min(100%, 920px) !important;
-  margin: 40px auto 0 !important;
-  gap: 18px !important;
+/* ===== PROCESS — RESTORED CLASSIC MULTICOLOR DESIGN =====
+   This section intentionally keeps the original four-color identity because it
+   scans better than a monochrome treatment while remaining soft and cohesive. */
+.online-course-page .how-section {
+  background: #fff !important;
 }
 
-/* The cleaned HTML uses <article class="course-step">, not the old anonymous divs. */
+.online-course-page .how-section .steps-grid {
+  width: min(100%, 1000px) !important;
+  margin: 52px auto 0 !important;
+  gap: 34px 36px !important;
+}
+
 .online-course-page .how-section .course-step {
-  min-height: 184px !important;
-  padding: 26px 25px !important;
-  border: 1px solid rgba(49, 93, 60, .10) !important;
-  border-radius: 20px !important;
-  background: linear-gradient(145deg, #fafbf7 0%, #eef4e9 100%) !important;
-  box-shadow: 0 9px 28px rgba(49, 93, 60, .06) !important;
+  min-height: 264px !important;
+  padding: 40px 36px 36px !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-radius: 24px !important;
+  box-shadow: none !important;
+}
+
+.online-course-page .how-section .course-step:nth-child(1) {
+  background: linear-gradient(135deg, #f0f5ee 0%, #e8efe5 100%) !important;
+  border-color: rgba(71, 111, 68, .10) !important;
+}
+
+.online-course-page .how-section .course-step:nth-child(2) {
+  background: linear-gradient(135deg, #fdf8ee 0%, #f7efe4 100%) !important;
+  border-color: rgba(151, 103, 64, .10) !important;
+}
+
+.online-course-page .how-section .course-step:nth-child(3) {
+  background: linear-gradient(135deg, #eef4f8 0%, #e5eef4 100%) !important;
+  border-color: rgba(60, 105, 143, .10) !important;
+}
+
+.online-course-page .how-section .course-step:nth-child(4) {
+  background: linear-gradient(135deg, #f7f0fa 0%, #efe5f4 100%) !important;
+  border-color: rgba(132, 66, 151, .10) !important;
 }
 
 .online-course-page .how-section .course-step .step-heading {
-  gap: 12px !important;
-  margin-bottom: 12px !important;
+  gap: 17px !important;
+  margin-bottom: 23px !important;
 }
 
 .online-course-page .how-section .course-step .step-number {
-  width: 42px !important;
-  height: 42px !important;
-  background: linear-gradient(145deg, #3c7442, #2f6538) !important;
-  box-shadow: 0 5px 14px rgba(49, 93, 60, .18) !important;
-  font-size: 1rem !important;
+  width: 60px !important;
+  height: 60px !important;
+  font-size: 1.3rem !important;
+  line-height: 1 !important;
+}
+
+.online-course-page .how-section .course-step:nth-child(1) .step-number {
+  background: #4f754e !important;
+  box-shadow: 0 10px 20px rgba(63, 104, 62, .24) !important;
+}
+
+.online-course-page .how-section .course-step:nth-child(2) .step-number {
+  background: #a77349 !important;
+  box-shadow: 0 10px 20px rgba(148, 94, 53, .22) !important;
+}
+
+.online-course-page .how-section .course-step:nth-child(3) .step-number {
+  background: #4479a2 !important;
+  box-shadow: 0 10px 20px rgba(52, 100, 138, .23) !important;
+}
+
+.online-course-page .how-section .course-step:nth-child(4) .step-number {
+  background: #9348a8 !important;
+  box-shadow: 0 10px 20px rgba(126, 55, 145, .22) !important;
 }
 
 .online-course-page .how-section .course-step h3 {
-  color: #315d3c !important;
   font-family: 'DM Sans', sans-serif !important;
-  font-size: 1rem !important;
+  font-size: 1.05rem !important;
   font-weight: 700 !important;
-  line-height: 1.4 !important;
+  line-height: 1.35 !important;
 }
+
+.online-course-page .how-section .course-step:nth-child(1) h3 { color: #28492c !important; }
+.online-course-page .how-section .course-step:nth-child(2) h3 { color: #684120 !important; }
+.online-course-page .how-section .course-step:nth-child(3) h3 { color: #294e6c !important; }
+.online-course-page .how-section .course-step:nth-child(4) h3 { color: #5f236d !important; }
 
 .online-course-page .how-section .course-step p {
   margin: 0 !important;
-  padding-left: 54px !important;
-  color: #657269 !important;
-  font-size: .9rem !important;
-  line-height: 1.7 !important;
+  padding-left: 77px !important;
+  max-width: 390px;
+  color: #66737a !important;
+  font-size: .94rem !important;
+  line-height: 1.78 !important;
 }
 
 /* Keep all 1:1 contexts visually Arabic, never serif/Roman-looking. */
@@ -280,25 +330,31 @@
     padding-inline: 4px;
   }
 
-  .online-course-page .benefit-section .benefit-list,
-  .online-course-page .how-section .steps-grid {
+  .online-course-page .benefit-section .benefit-list {
     margin-top: 28px !important;
+  }
+
+  .online-course-page .how-section .steps-grid {
+    width: min(100%, 430px) !important;
+    margin-top: 32px !important;
+    gap: 14px !important;
   }
 
   .online-course-page .how-section .course-step {
     min-height: 0 !important;
-    padding: 19px 18px !important;
-    border-radius: 17px !important;
+    padding: 22px 19px 23px !important;
+    border-radius: 19px !important;
   }
 
   .online-course-page .how-section .course-step .step-number {
-    width: 38px !important;
-    height: 38px !important;
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1rem !important;
   }
 
   .online-course-page .how-section .course-step .step-heading {
-    gap: 10px !important;
-    margin-bottom: 10px !important;
+    gap: 11px !important;
+    margin-bottom: 13px !important;
   }
 
   .online-course-page .how-section .course-step h3 {
@@ -306,8 +362,20 @@
   }
 
   .online-course-page .how-section .course-step p {
-    padding-left: 0 !important;
+    padding-left: 55px !important;
+    max-width: none;
     font-size: .86rem !important;
-    line-height: 1.64 !important;
+    line-height: 1.66 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .online-course-page .how-section .course-step {
+    padding: 20px 17px 21px !important;
+  }
+
+  .online-course-page .how-section .course-step p {
+    padding-left: 0 !important;
+    margin-top: 3px !important;
   }
 }
