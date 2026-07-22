@@ -58,6 +58,22 @@
   font-weight: 500 !important;
 }
 
+/* Match the benefit-section 1:1 to the hero numeral voice, but keep it lighter
+   so it blends naturally with the H2 rather than competing with the heading. */
+.online-course-page .benefit-section .section-header h2 .num {
+  display: inline-block;
+  margin-inline: .02em;
+  font-family: Georgia, 'Times New Roman', serif !important;
+  font-size: .72em !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: 'lnum' 1, 'tnum' 1;
+  line-height: 1;
+  letter-spacing: -.055em !important;
+  vertical-align: .055em;
+}
+
 .online-course-page .sales-hero .container p.hero-desc {
   max-width: 640px !important;
   margin: 0 0 22px !important;
