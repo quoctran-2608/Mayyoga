@@ -36,8 +36,10 @@
       '.article-share-standard .share-zalo{background:#0068ff!important}',
       '.article-share-standard .share-x{background:#111!important}',
       '.article-share-standard .share-native{background:#397334!important}',
-      '.article-share-standard .share-copy{background:#5a7a56!important}',
+      '.article-share-standard .share-copy{background:#5a7a56!important;color:#fff!important}',
       '.article-share-standard .article-share-btn svg{display:block;pointer-events:none}',
+      '.article-share-standard .share-copy [data-copy-icon],.article-share-standard .share-copy [data-copy-icon] svg{color:#fff!important}',
+      '.article-share-standard .share-copy [data-copy-icon] svg{stroke:#fff!important}',
       '.article-share-standard .article-share-status{min-width:0;color:#557057;font-size:.78rem;font-weight:600;line-height:1.3}',
       '@media(max-width:480px){.article-share.article-share-standard{gap:9px!important;padding:13px!important}.article-share-standard .article-share-label{flex:0 0 100%;margin:0 0 2px}.article-share-standard .article-share-status{flex:0 0 100%;margin-top:1px}}',
       '@media(prefers-reduced-motion:reduce){.article-share-standard .article-share-btn{transition:none!important}}'
@@ -74,10 +76,19 @@
       '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.6 6.8-4.2M8.6 13.4l6.8 4.2"/></svg>',
       '</button>',
       '<button type="button" class="article-share-btn share-copy" data-share-copy aria-label="Sao chép liên kết" title="Sao chép liên kết">',
-      '<span data-copy-icon><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>',
+      '<span data-copy-icon><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>',
       '</button>',
       '<span class="article-share-status" role="status" aria-live="polite"></span>'
     ].join('');
+  }
+
+  function normalizeAboutKnowledgeCta() {
+    if (!document.body.classList.contains('about-page')) return;
+    var cta = document.querySelector('.cta-banner .btn-primary');
+    if (!cta) return;
+    cta.href = 'index.html#categories';
+    cta.textContent = 'Khám phá kiến thức →';
+    cta.setAttribute('aria-label', 'Khám phá các chủ đề kiến thức Yoga');
   }
 
   function bindShare(share, pageData) {
@@ -122,7 +133,7 @@
         return;
       }
 
-      copyButton.querySelector('[data-copy-icon]').innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>';
+      copyButton.querySelector('[data-copy-icon]').innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>';
       copyButton.setAttribute('aria-label', 'Đã sao chép liên kết');
       setStatus('Đã sao chép liên kết');
       window.setTimeout(function() {
@@ -177,6 +188,7 @@
   }
 
   function init() {
+    normalizeAboutKnowledgeCta();
     var shares = findOrCreateShareShells();
     if (!shares.length) return;
     injectStyles();
