@@ -1,0 +1,178 @@
+@import url('online-course-polish-v2.css?v=20260722b');
+
+/* ===== MÂY YOGA — YOGA ONLINE FINAL STRUCTURE V3 =====
+   Structural guarantees for the cleaned hoc-yoga-online.html markup. */
+
+.sales-hero .course-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: .02em;
+}
+
+.sales-hero .hero-grid {
+  display: grid;
+}
+
+.sales-hero .sales-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sales-hero .trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.sales-hero .trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+}
+
+.sales-hero .course-hero-cta {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.sales-hero .hero-img-wrap {
+  position: relative;
+}
+
+.sales-hero .hero-img-wrap img {
+  width: 100%;
+  height: auto;
+}
+
+.benefit-section .benefit-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.benefit-section .benefit-row {
+  display: grid;
+  overflow: hidden;
+}
+
+.benefit-section .benefit-row > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.how-section .section-lead {
+  max-width: 560px;
+  margin: 10px auto 0;
+  color: #66736a;
+  font-size: .96rem;
+  line-height: 1.65;
+}
+
+.how-section .steps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.how-section .course-step {
+  position: relative;
+}
+
+.how-section .step-heading {
+  display: flex;
+  align-items: center;
+}
+
+.how-section .step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 800;
+}
+
+.how-section .step-heading h3 {
+  margin: 0;
+}
+
+#bang-gia .pkg-grid {
+  display: grid;
+}
+
+#bang-gia .pkg-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+}
+
+.course-faq .faq-list {
+  max-width: 760px;
+  margin: 38px auto 0;
+}
+
+.course-faq details summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+}
+
+.cta-final .cta-card {
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cta-final .cta-leaf {
+  margin-bottom: 13px;
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.cta-final .cta-trust {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-final .cta-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cta-final .btn-gold,
+.cta-final .btn-outline-sage {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .how-section .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .course-faq .faq-list {
+    margin-top: 28px;
+  }
+}
