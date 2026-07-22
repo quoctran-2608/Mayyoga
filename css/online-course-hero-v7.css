@@ -1,20 +1,88 @@
 /* ===== MÂY YOGA — ONLINE COURSE HERO V7 =====
    Final hero refinements for hoc-yoga-online.html:
+   - balanced desktop typography and 1:1 treatment;
    - refined trial CTA with Font Awesome;
-   - restored the approved dashed decorative frame behind the hero visual. */
+   - restored the approved dashed decorative frame;
+   - redesigned the mobile hero as a compact, intentional composition. */
+
+/* ===== DESKTOP RHYTHM + TYPOGRAPHY ===== */
+.online-course-page .sales-hero {
+  padding: 108px 0 76px !important;
+}
+
+.online-course-page .sales-hero .course-breadcrumb {
+  margin-bottom: 24px !important;
+  font-size: .76rem !important;
+}
+
+.online-course-page .sales-hero .hero-grid {
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr) !important;
+  gap: clamp(44px, 5vw, 66px) !important;
+  align-items: center !important;
+}
+
+.online-course-page .sales-hero .course-hero-copy {
+  min-width: 0;
+}
+
+.online-course-page .sales-hero .sales-badge {
+  margin-bottom: 20px !important;
+}
+
+.online-course-page .sales-hero h1 {
+  max-width: 690px !important;
+  margin: 0 0 21px !important;
+  font-size: clamp(2.7rem, 3.55vw, 3.45rem) !important;
+  line-height: 1.055 !important;
+  letter-spacing: -.036em !important;
+  text-wrap: balance;
+}
+
+/* Keep 1:1 clearly Arabic/sans-serif without letting it overpower the serif title. */
+.online-course-page .sales-hero h1 .num {
+  display: inline-block;
+  margin-inline: .015em;
+  font-size: .71em !important;
+  font-weight: 700 !important;
+  line-height: 1;
+  letter-spacing: -.045em !important;
+  vertical-align: .07em;
+}
+
+.online-course-page .sales-hero h1 em {
+  font-weight: 400 !important;
+}
+
+.online-course-page .sales-hero .container p.hero-desc {
+  max-width: 640px !important;
+  margin: 0 0 22px !important;
+  font-size: 1rem !important;
+  line-height: 1.72 !important;
+}
+
+.online-course-page .sales-hero .trust-row {
+  gap: 7px !important;
+  margin-bottom: 25px !important;
+}
+
+.online-course-page .sales-hero .trust-item {
+  min-height: 31px;
+  padding: 6px 10px;
+  font-size: .74rem !important;
+}
 
 .online-course-page .sales-hero .course-hero-cta {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   gap: 10px !important;
-  min-height: 50px !important;
+  min-height: 49px !important;
   max-width: 100%;
-  padding: 0 25px !important;
+  padding: 0 24px !important;
   border-radius: 999px !important;
   white-space: nowrap;
   font-family: 'DM Sans', sans-serif !important;
-  font-size: .91rem !important;
+  font-size: .89rem !important;
   font-weight: 700 !important;
   line-height: 1.2 !important;
   letter-spacing: -.005em;
@@ -37,15 +105,16 @@
   min-width: 0;
 }
 
-/* ===== HERO VISUAL — RESTORED DASHED BACK FRAME =====
-   The approved design uses a soft, more open dashed outline offset behind the image.
-   We recreate it entirely in CSS so there is no extra decorative markup. */
 .online-course-page .sales-hero .hero-img-wrap {
   position: relative !important;
   isolation: isolate;
+  width: min(100%, 440px);
+  max-width: 440px !important;
+  margin-left: auto !important;
   overflow: visible !important;
 }
 
+/* ===== HERO VISUAL — DASHED BACK FRAME ===== */
 .online-course-page .sales-hero .hero-img-wrap::before {
   content: '' !important;
   position: absolute !important;
@@ -70,11 +139,133 @@
   z-index: 1;
 }
 
+/* ===== TABLET ===== */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .online-course-page .sales-hero {
+    padding: 96px 0 68px !important;
+  }
+
+  .online-course-page .sales-hero .hero-grid {
+    grid-template-columns: minmax(0, 1fr) 350px !important;
+    gap: 36px !important;
+  }
+
+  .online-course-page .sales-hero h1 {
+    font-size: clamp(2.35rem, 4.4vw, 2.9rem) !important;
+  }
+}
+
+/* ===== MOBILE — PURPOSE-BUILT COMPOSITION ===== */
 @media (max-width: 768px) {
+  .online-course-page .sales-hero {
+    padding: 26px 0 46px !important;
+  }
+
+  .online-course-page .sales-hero .container {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  /* Breadcrumb is useful on desktop but adds noise above the mobile conversion hero. */
+  .online-course-page .sales-hero .course-breadcrumb {
+    display: none !important;
+  }
+
+  .online-course-page .sales-hero .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 26px !important;
+    text-align: center !important;
+  }
+
+  .online-course-page .sales-hero .course-hero-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .online-course-page .sales-hero .sales-badge {
+    align-self: center !important;
+    margin: 0 auto 15px !important;
+    padding: 7px 12px !important;
+    font-size: .7rem !important;
+  }
+
+  .online-course-page .sales-hero h1 {
+    max-width: 390px !important;
+    margin: 0 auto 16px !important;
+    font-size: clamp(2rem, 9.2vw, 2.52rem) !important;
+    line-height: 1.045 !important;
+    letter-spacing: -.033em !important;
+    text-align: center !important;
+    text-wrap: balance;
+  }
+
+  .online-course-page .sales-hero h1 br {
+    display: block !important;
+  }
+
+  .online-course-page .sales-hero h1 .num {
+    font-size: .69em !important;
+    vertical-align: .065em;
+  }
+
+  .online-course-page .sales-hero .container p.hero-desc {
+    max-width: 375px !important;
+    margin: 0 auto 18px !important;
+    font-size: .9rem !important;
+    line-height: 1.68 !important;
+    text-align: center !important;
+  }
+
+  /* Replace three independent scrolling pills with one compact proof panel. */
+  .online-course-page .sales-hero .trust-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0 !important;
+    width: min(100%, 380px) !important;
+    margin: 0 auto 20px !important;
+    padding: 8px 10px !important;
+    overflow: visible !important;
+    border: 1px solid rgba(49,93,60,.10);
+    border-radius: 16px;
+    background: rgba(255,255,255,.62);
+    box-shadow: 0 7px 22px rgba(49,93,60,.045);
+  }
+
+  .online-course-page .sales-hero .trust-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 32px !important;
+    padding: 5px 8px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #48604d !important;
+    font-size: .66rem !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+    text-align: center;
+  }
+
+  .online-course-page .sales-hero .trust-item:first-child {
+    grid-column: 1 / -1;
+    padding-bottom: 8px !important;
+    border-bottom: 1px solid rgba(49,93,60,.09) !important;
+  }
+
+  .online-course-page .sales-hero .trust-item:nth-child(3) {
+    border-left: 1px solid rgba(49,93,60,.09) !important;
+  }
+
   .online-course-page .sales-hero .course-hero-cta {
-    gap: 8px !important;
-    min-height: 47px !important;
+    width: min(100%, 330px) !important;
+    min-height: 48px !important;
+    margin: 0 auto !important;
     padding: 0 18px !important;
+    gap: 8px !important;
     font-size: .81rem !important;
   }
 
@@ -84,14 +275,47 @@
     font-size: 13px;
   }
 
+  .online-course-page .sales-hero .hero-img-wrap {
+    width: min(100%, 400px) !important;
+    max-width: 400px !important;
+    margin: 2px auto 0 !important;
+  }
+
+  .online-course-page .sales-hero .hero-img-wrap img,
+  .online-course-page .sales-hero .hero-img-wrap::before {
+    border-radius: 23px 23px 60px 23px !important;
+  }
+
   .online-course-page .sales-hero .hero-img-wrap::before {
     top: -9px !important;
     right: -9px !important;
-    border-radius: 24px 24px 58px 24px !important;
   }
 }
 
 @media (max-width: 420px) {
+  .online-course-page .sales-hero {
+    padding-top: 22px !important;
+  }
+
+  .online-course-page .sales-hero h1 {
+    max-width: 350px !important;
+    font-size: clamp(1.88rem, 9.7vw, 2.22rem) !important;
+  }
+
+  .online-course-page .sales-hero .container p.hero-desc {
+    font-size: .87rem !important;
+    line-height: 1.65 !important;
+  }
+
+  .online-course-page .sales-hero .trust-row {
+    width: 100% !important;
+    border-radius: 15px;
+  }
+
+  .online-course-page .sales-hero .trust-item {
+    font-size: .63rem !important;
+  }
+
   .online-course-page .sales-hero .hero-img-wrap::before {
     top: -7px !important;
     right: -7px !important;
