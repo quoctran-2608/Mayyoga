@@ -1,0 +1,68 @@
+/* ===== MÂY YOGA — ONLINE COURSE HERO V7 =====
+   Final hero CTA refinement for hoc-yoga-online.html.
+   Keeps the approved hero layout while replacing the emoji CTA icon with a
+   restrained Font Awesome calendar-check icon and tighter responsive rhythm. */
+
+.online-course-page .sales-hero .course-hero-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  min-height: 50px !important;
+  max-width: 100%;
+  padding: 0 25px !important;
+  border-radius: 999px !important;
+  white-space: nowrap;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: .91rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -.005em;
+}
+
+.online-course-page .sales-hero .course-hero-cta .hero-cta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  color: rgba(255,255,255,.94);
+  font-size: 15px;
+  line-height: 1;
+}
+
+.online-course-page .sales-hero .course-hero-cta .hero-cta-label {
+  display: inline-block;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .online-course-page .sales-hero .course-hero-cta {
+    gap: 8px !important;
+    min-height: 47px !important;
+    padding: 0 18px !important;
+    font-size: .81rem !important;
+  }
+
+  .online-course-page .sales-hero .course-hero-cta .hero-cta-icon {
+    width: 16px;
+    height: 16px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .online-course-page .sales-hero .course-hero-cta {
+    width: 100% !important;
+    padding: 0 14px !important;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .online-course-page .sales-hero .course-hero-cta {
+    transition: none !important;
+  }
+}
