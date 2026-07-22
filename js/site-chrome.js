@@ -63,6 +63,18 @@
     document.head.appendChild(link);
   }
 
+  function loadPageSpecificStyles() {
+    var path = window.location.pathname.replace(/\/+$/, '');
+    if (!/\/hoc-yoga-online\.html$/i.test(path)) return;
+    if (document.querySelector('link[data-online-course-polish]')) return;
+
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = siteUrl('css/online-course-polish-v2.css?v=20260722a');
+    link.setAttribute('data-online-course-polish', 'true');
+    document.head.appendChild(link);
+  }
+
   function normalizeFooter() {
     var footer = document.querySelector('footer.footer');
     if (!footer) return;
@@ -139,6 +151,7 @@
   function applyStandardChrome() {
     ensureStandardStyles();
     loadIndexCanonicalHeaderGeometry();
+    loadPageSpecificStyles();
     normalizeFooter();
     normalizeFloatingContact();
     loadCanonicalHeader();
