@@ -154,3 +154,25 @@
     font-size: .56rem !important;
   }
 }
+
+/* ===== MICRO TYPOGRAPHY + CTA ICON SPACING =====
+   Keep the Hero 1:1 compact at every breakpoint. This selector intentionally
+   outranks the later Hero V7 desktop/mobile declarations while preserving its font. */
+html body.online-course-page .sales-hero .course-hero-copy h1 span.num {
+  font-size: .67em !important;
+}
+
+/* Font Awesome icons need a real flex gap; relying on collapsed HTML whitespace
+   makes the icon/text spacing inconsistent across rendering engines. */
+html body.online-course-page .cta-final .cta-buttons > a.btn-gold,
+html body.online-course-page .cta-final .cta-buttons > a.btn-outline-sage {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 9px !important;
+}
+
+html body.online-course-page .cta-final .cta-buttons > a > i {
+  flex: 0 0 auto;
+  line-height: 1;
+}
