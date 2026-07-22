@@ -134,96 +134,171 @@ html body .navbar.site-header-standard .nav-cta a.btn > img.leaf-icon {
   }
 }
 
-/* ---------- Mobile: exact index 60px header rhythm ---------- */
+/* ---------- Mobile V4: calmer, airier and less visually crowded ---------- */
 @media (max-width: 768px) {
   body.home-hero-redesign .navbar,
   body.home-hero-redesign .navbar.scrolled,
-  html body .navbar.site-header-standard,
-  html body .navbar.site-header-standard.scrolled {
-    height: 60px !important;
-    min-height: 60px !important;
+  html body .navbar.site-header-standard.site-header-standard,
+  html body .navbar.site-header-standard.site-header-standard.scrolled {
+    height: 68px !important;
+    min-height: 68px !important;
+    padding: 0 !important;
+    background: rgba(255,255,255,.985) !important;
+    border-bottom: 1px solid rgba(72,103,67,.075) !important;
+    box-shadow: 0 5px 18px rgba(42,72,46,.035) !important;
   }
 
   body.home-hero-redesign .navbar .container,
-  html body .navbar.site-header-standard .container {
-    min-height: 60px !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-    gap: 6px !important;
+  html body .navbar.site-header-standard.site-header-standard .container {
+    min-height: 68px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    gap: 10px !important;
   }
 
-  body.home-hero-redesign .nav-logo .logo-img,
-  html body .navbar.site-header-standard .nav-logo .logo-img {
-    height: 46px !important;
-    max-width: 82px !important;
-  }
-
-  body.home-hero-redesign .nav-search,
-  html body .navbar.site-header-standard .nav-search {
-    display: block !important;
-    width: 36px !important;
-    flex: 0 0 36px !important;
-  }
-
-  body.home-hero-redesign .nav-cta,
-  html body .navbar.site-header-standard .nav-cta {
-    display: block !important;
+  body.home-hero-redesign .nav-logo,
+  html body .navbar.site-header-standard.site-header-standard .nav-logo {
+    margin-right: auto !important;
     flex: 0 0 auto !important;
   }
 
-  body.home-hero-redesign .nav-cta a.btn,
-  html body .navbar.site-header-standard .nav-cta a.btn {
-    width: auto !important;
-    min-width: 0 !important;
-    height: 36px !important;
-    min-height: 36px !important;
-    padding: 0 11px !important;
-    gap: 5px !important;
-    font-size: 0 !important;
+  body.home-hero-redesign .nav-logo .logo-img,
+  html body .navbar.site-header-standard.site-header-standard .nav-logo .logo-img {
+    height: 50px !important;
+    max-width: 88px !important;
   }
 
-  body.home-hero-redesign .nav-cta a.btn::before,
-  html body .navbar.site-header-standard .nav-cta a.btn::before {
-    content: 'Khám phá' !important;
-    font-family: var(--font-body, 'DM Sans', sans-serif) !important;
-    font-size: 11.5px !important;
-    font-weight: 600 !important;
-    line-height: 1 !important;
+  /* Mobile does not need a third CTA in the header. The Hero already carries the primary CTA. */
+  body.home-hero-redesign .nav-cta,
+  html body .navbar.site-header-standard.site-header-standard .nav-cta {
+    display: none !important;
   }
 
-  body.home-hero-redesign .nav-cta a.btn > img.leaf-icon,
-  html body .navbar.site-header-standard .nav-cta a.btn > img.leaf-icon {
-    width: 11px !important;
-    height: 14px !important;
-    min-width: 11px !important;
-    max-width: 11px !important;
-    flex-basis: 11px !important;
+  body.home-hero-redesign .nav-search,
+  html body .navbar.site-header-standard.site-header-standard .nav-search {
+    position: relative !important;
+    display: block !important;
+    width: 40px !important;
+    flex: 0 0 40px !important;
     margin: 0 !important;
+    z-index: 2200 !important;
+  }
+
+  body.home-hero-redesign .nav-search input,
+  html body .navbar.site-header-standard.site-header-standard .nav-search input {
+    display: block !important;
+    width: 40px !important;
+    min-width: 40px !important;
+    height: 40px !important;
+    padding: 0 !important;
+    border: 1px solid rgba(70,110,77,.13) !important;
+    border-radius: 999px !important;
+    background-color: rgba(255,255,255,.82) !important;
+    background-size: 17px 17px !important;
+    box-shadow: none !important;
+  }
+
+  body.home-hero-redesign .nav-search:focus-within,
+  html body .navbar.site-header-standard.site-header-standard .nav-search:focus-within {
+    position: absolute !important;
+    top: calc(100% + 10px) !important;
+    left: 16px !important;
+    right: 16px !important;
+    width: auto !important;
+  }
+
+  body.home-hero-redesign .nav-search:focus-within input,
+  html body .navbar.site-header-standard.site-header-standard .nav-search:focus-within input {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 46px !important;
+    padding: 0 16px 0 44px !important;
+    font-size: 14px !important;
+    color: #27465f !important;
+    caret-color: #27465f !important;
+    background-position: 14px center !important;
+    box-shadow: 0 14px 32px rgba(35,62,43,.12) !important;
   }
 
   body.home-hero-redesign .mobile-toggle,
-  html body .navbar.site-header-standard .mobile-toggle {
-    width: 36px !important;
-    height: 36px !important;
-    flex: 0 0 36px !important;
-    padding: 8px !important;
+  html body .navbar.site-header-standard.site-header-standard .mobile-toggle {
+    display: flex !important;
+    width: 40px !important;
+    height: 40px !important;
+    flex: 0 0 40px !important;
+    margin-left: 2px !important;
+    padding: 9px !important;
+    border: 1px solid rgba(70,110,77,.105) !important;
+    border-radius: 999px !important;
+    background: rgba(247,249,244,.70) !important;
+    box-shadow: none !important;
+  }
+
+  body.home-hero-redesign .mobile-toggle span,
+  html body .navbar.site-header-standard.site-header-standard .mobile-toggle span {
+    width: 19px !important;
+    height: 1.8px !important;
+  }
+
+  body.home-hero-redesign .nav-links.active,
+  html body .navbar.site-header-standard.site-header-standard .nav-links.active {
+    max-height: calc(100dvh - 68px) !important;
+  }
+
+  /* Give the first Hero element a little more breathing room below the calmer header. */
+  body.home-hero-redesign #hero .hero-content {
+    padding-top: 34px !important;
   }
 }
 
 @media (max-width: 420px) {
   body.home-hero-redesign .navbar,
   body.home-hero-redesign .navbar.scrolled,
+  html body .navbar.site-header-standard.site-header-standard,
+  html body .navbar.site-header-standard.site-header-standard.scrolled {
+    height: 64px !important;
+    min-height: 64px !important;
+  }
+
   body.home-hero-redesign .navbar .container,
-  html body .navbar.site-header-standard,
-  html body .navbar.site-header-standard.scrolled,
-  html body .navbar.site-header-standard .container {
-    height: 58px !important;
-    min-height: 58px !important;
+  html body .navbar.site-header-standard.site-header-standard .container {
+    height: 64px !important;
+    min-height: 64px !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    gap: 8px !important;
   }
 
   body.home-hero-redesign .nav-logo .logo-img,
-  html body .navbar.site-header-standard .nav-logo .logo-img {
-    height: 44px !important;
-    max-width: 78px !important;
+  html body .navbar.site-header-standard.site-header-standard .nav-logo .logo-img {
+    height: 48px !important;
+    max-width: 84px !important;
+  }
+
+  body.home-hero-redesign .nav-search,
+  html body .navbar.site-header-standard.site-header-standard .nav-search,
+  body.home-hero-redesign .nav-search input,
+  html body .navbar.site-header-standard.site-header-standard .nav-search input,
+  body.home-hero-redesign .mobile-toggle,
+  html body .navbar.site-header-standard.site-header-standard .mobile-toggle {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    flex-basis: 38px !important;
+  }
+
+  body.home-hero-redesign .nav-search:focus-within,
+  html body .navbar.site-header-standard.site-header-standard .nav-search:focus-within {
+    left: 14px !important;
+    right: 14px !important;
+  }
+
+  body.home-hero-redesign .nav-links.active,
+  html body .navbar.site-header-standard.site-header-standard .nav-links.active {
+    max-height: calc(100dvh - 64px) !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content {
+    padding-top: 30px !important;
   }
 }
