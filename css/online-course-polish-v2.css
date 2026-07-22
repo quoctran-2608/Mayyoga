@@ -1,0 +1,846 @@
+/* ===== MÂY YOGA — YOGA ONLINE 1:1 POLISH V2 =====
+   Page-scoped final visual layer for hoc-yoga-online.html.
+   Keeps the shared header/footer canonical while unifying the sales page into
+   the Mây Yoga sage + cream visual system. */
+
+.sales-hero,
+.benefit-section,
+.how-section,
+#bang-gia,
+#bang-gia + section,
+.cta-final {
+  --course-ink: #173f35;
+  --course-green: #315d3c;
+  --course-green-2: #477b50;
+  --course-sage: #eef4e9;
+  --course-sage-2: #f6f8f2;
+  --course-cream: #fbf8f0;
+  --course-gold: #b69445;
+  --course-muted: #637068;
+  --course-line: rgba(49, 93, 60, .12);
+  --course-shadow: 0 18px 52px rgba(41, 72, 48, .10);
+}
+
+.sales-hero .container,
+.benefit-section .container,
+.how-section .container,
+#bang-gia .container,
+#bang-gia + section .container,
+.cta-final .container {
+  max-width: 1180px;
+}
+
+/* ===== HERO ===== */
+.sales-hero {
+  padding: 128px 0 86px !important;
+  background:
+    radial-gradient(circle at 92% 10%, rgba(139, 165, 126, .18), transparent 29%),
+    radial-gradient(circle at 8% 88%, rgba(182, 148, 69, .08), transparent 25%),
+    linear-gradient(150deg, #f4f7f0 0%, #fbf8f0 48%, #fff 100%) !important;
+}
+
+.sales-hero::before {
+  top: -180px !important;
+  right: -120px !important;
+  width: 520px !important;
+  height: 520px !important;
+  background: radial-gradient(circle, rgba(126, 158, 112, .16), transparent 68%) !important;
+}
+
+.sales-hero::after {
+  bottom: -180px !important;
+  left: -140px !important;
+  width: 420px !important;
+  height: 420px !important;
+  background: radial-gradient(circle, rgba(182, 148, 69, .08), transparent 70%) !important;
+}
+
+.sales-hero .container > div:first-child {
+  margin-bottom: 28px !important;
+  color: #869087 !important;
+  font-size: .78rem !important;
+}
+
+.sales-hero .container > div:first-child a {
+  color: var(--course-green-2) !important;
+}
+
+.sales-hero .hero-grid {
+  grid-template-columns: minmax(0, 1.12fr) minmax(340px, .88fr) !important;
+  gap: clamp(48px, 6vw, 76px) !important;
+  align-items: center !important;
+}
+
+.sales-hero .sales-badge {
+  margin-bottom: 22px !important;
+  padding: 8px 15px !important;
+  border: 1px solid rgba(71, 123, 80, .14) !important;
+  background: rgba(239, 245, 234, .90) !important;
+  color: var(--course-green) !important;
+  font-size: .79rem !important;
+  letter-spacing: .01em;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.75);
+}
+
+.sales-hero .sales-badge .dot {
+  width: 7px !important;
+  height: 7px !important;
+  background: #70a065 !important;
+}
+
+.sales-hero h1 {
+  max-width: 690px;
+  margin-bottom: 22px !important;
+  color: var(--course-ink) !important;
+  font-size: clamp(2.45rem, 4vw, 3.75rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.035em;
+}
+
+.sales-hero h1 em {
+  color: #7ea568 !important;
+}
+
+.sales-hero .container p.hero-desc {
+  max-width: 620px !important;
+  margin: 0 0 25px !important;
+  color: #607067 !important;
+  font-size: 1.03rem !important;
+  line-height: 1.78 !important;
+}
+
+.sales-hero .trust-row {
+  gap: 8px !important;
+  margin-bottom: 29px !important;
+}
+
+.sales-hero .trust-item {
+  min-height: 32px;
+  padding: 6px 11px;
+  border: 1px solid rgba(49, 93, 60, .10);
+  border-radius: 999px;
+  background: rgba(255,255,255,.72);
+  color: #48604d !important;
+  font-size: .76rem !important;
+  box-shadow: 0 2px 10px rgba(49,93,60,.04);
+}
+
+.sales-hero .hero-grid > div:first-child > a.btn.btn-primary {
+  min-height: 50px !important;
+  padding: 0 24px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(180deg, #3e7a42, #326a37) !important;
+  box-shadow: 0 12px 28px rgba(50, 106, 55, .20) !important;
+  font-size: .92rem !important;
+}
+
+.sales-hero .hero-img-wrap {
+  max-width: 430px;
+  margin-left: auto;
+}
+
+.sales-hero .hero-img-wrap img {
+  display: block;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 1px solid rgba(49,93,60,.10) !important;
+  border-radius: 30px 30px 86px 30px !important;
+  box-shadow: 0 28px 70px rgba(47, 78, 48, .16) !important;
+}
+
+.sales-hero .hero-img-wrap::before {
+  top: 16px !important;
+  right: -16px !important;
+  border: 1px solid rgba(71,123,80,.16) !important;
+  border-radius: 30px 30px 86px 30px !important;
+}
+
+/* ===== SECTION HEADERS ===== */
+.benefit-section .section-header,
+.how-section .section-header,
+#bang-gia .section-header,
+#bang-gia + section .section-header {
+  max-width: 720px;
+  margin: 0 auto !important;
+  text-align: center;
+}
+
+.benefit-section .section-header h2,
+.how-section .section-header h2,
+#bang-gia .section-header h2,
+#bang-gia + section .section-header h2 {
+  margin-top: 12px;
+  color: var(--course-ink) !important;
+  font-size: clamp(1.9rem, 3vw, 2.55rem) !important;
+  line-height: 1.16 !important;
+  letter-spacing: -.025em;
+}
+
+.benefit-section .section-badge,
+.how-section .section-badge,
+#bang-gia .section-badge,
+#bang-gia + section .section-badge {
+  border: 1px solid rgba(71,123,80,.12);
+  background: #eef4e9 !important;
+  color: #416c48 !important;
+}
+
+/* ===== WHO IT FITS ===== */
+.benefit-section {
+  padding: 88px 0 !important;
+  background: linear-gradient(180deg, #fff 0%, #f7f9f4 100%) !important;
+}
+
+.benefit-section .container > div:last-child {
+  gap: 18px !important;
+  max-width: 920px !important;
+  margin-top: 44px !important;
+}
+
+.benefit-section .benefit-row {
+  grid-template-columns: 230px 1fr !important;
+  min-height: 184px;
+  border: 1px solid var(--course-line) !important;
+  border-radius: 22px !important;
+  background: rgba(255,255,255,.94) !important;
+  box-shadow: 0 8px 28px rgba(49,93,60,.06) !important;
+}
+
+.benefit-section .benefit-row:nth-child(even) {
+  grid-template-columns: 1fr 230px !important;
+}
+
+.benefit-section .benefit-row img {
+  min-height: 184px !important;
+  object-fit: cover !important;
+}
+
+.benefit-section .benefit-row:nth-child(odd) img {
+  border-radius: 21px 0 0 21px;
+}
+
+.benefit-section .benefit-row:nth-child(even) img {
+  border-radius: 0 21px 21px 0;
+}
+
+.benefit-section .benefit-row > div {
+  padding: 28px 32px !important;
+}
+
+.benefit-section .benefit-row h3 {
+  margin-bottom: 8px !important;
+  color: var(--course-green) !important;
+  font-size: 1.05rem !important;
+}
+
+.benefit-section .benefit-row p {
+  color: #657269 !important;
+  font-size: .93rem !important;
+  line-height: 1.72 !important;
+}
+
+/* ===== PROCESS ===== */
+.how-section {
+  padding: 88px 0 !important;
+  background: #fff !important;
+}
+
+.how-section .steps-grid {
+  max-width: 920px !important;
+  margin-top: 44px !important;
+  gap: 18px !important;
+}
+
+.how-section .steps-grid > div {
+  min-height: 190px;
+  padding: 27px 25px !important;
+  border: 1px solid rgba(49,93,60,.10) !important;
+  border-radius: 20px !important;
+  background: linear-gradient(145deg, #f8faf5, #eef4e9) !important;
+  box-shadow: 0 8px 24px rgba(49,93,60,.055);
+}
+
+.how-section .steps-grid > div > div:first-child {
+  gap: 12px !important;
+  margin-bottom: 13px !important;
+}
+
+.how-section .steps-grid > div > div:first-child > div:first-child {
+  width: 42px !important;
+  height: 42px !important;
+  background: linear-gradient(145deg, #3c7442, #2f6538) !important;
+  box-shadow: 0 5px 14px rgba(49,93,60,.18) !important;
+  font-size: 1rem !important;
+}
+
+.how-section .steps-grid h3 {
+  color: var(--course-green) !important;
+  font-size: 1rem !important;
+}
+
+.how-section .steps-grid p {
+  padding-left: 54px !important;
+  color: #66736a !important;
+  font-size: .9rem !important;
+  line-height: 1.68 !important;
+}
+
+/* ===== PRICING ===== */
+#bang-gia {
+  padding: 90px 0 94px !important;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,.72), transparent 36%),
+    linear-gradient(155deg, #edf3e9 0%, #f8f6ed 100%) !important;
+}
+
+#bang-gia .section-header p {
+  max-width: 650px;
+  margin: 12px auto 0;
+  color: #68736b;
+}
+
+#bang-gia .pkg-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  max-width: 1030px !important;
+  margin: 48px auto 0 !important;
+  align-items: stretch;
+}
+
+#bang-gia .pkg-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 31px 25px 25px !important;
+  border: 1px solid rgba(49,93,60,.11) !important;
+  border-radius: 22px !important;
+  background: rgba(255,255,255,.94) !important;
+  box-shadow: 0 10px 34px rgba(49,93,60,.065) !important;
+  transform: none !important;
+}
+
+#bang-gia .pkg-card.featured {
+  padding-top: 46px !important;
+  border-color: rgba(49,93,60,.34) !important;
+  background: linear-gradient(180deg, #fff 0%, #f5f8f1 100%) !important;
+  box-shadow: 0 18px 46px rgba(49,93,60,.13) !important;
+}
+
+#bang-gia .pkg-card.featured::before {
+  top: 13px !important;
+  right: 15px !important;
+  padding: 5px 10px !important;
+  border-radius: 999px !important;
+  background: #315d3c !important;
+  font-size: .68rem !important;
+  transform: none !important;
+}
+
+#bang-gia .pkg-name {
+  color: var(--course-green) !important;
+  font-size: 1rem !important;
+}
+
+#bang-gia .pkg-price {
+  margin: 8px 0 7px !important;
+  color: var(--course-ink) !important;
+  font-size: clamp(1.65rem, 2.3vw, 2.15rem) !important;
+  letter-spacing: -.025em;
+}
+
+#bang-gia .pkg-desc {
+  min-height: 44px;
+  margin-bottom: 17px !important;
+  color: #6a746d !important;
+  font-size: .82rem !important;
+}
+
+#bang-gia .pkg-list {
+  flex: 1;
+  margin-bottom: 22px !important;
+}
+
+#bang-gia .pkg-list li {
+  padding: 8px 0 !important;
+  color: #536058 !important;
+  border-color: rgba(49,93,60,.07) !important;
+  font-size: .88rem !important;
+  line-height: 1.5;
+}
+
+#bang-gia .pkg-btn {
+  min-height: 44px;
+  padding: 11px 16px !important;
+  border-radius: 999px !important;
+  font-size: .84rem !important;
+}
+
+#bang-gia .pkg-btn.primary {
+  background: linear-gradient(180deg, #3d7743, #306739) !important;
+  box-shadow: 0 10px 22px rgba(48,103,57,.18) !important;
+}
+
+#bang-gia .pkg-btn.outline {
+  border: 1px solid rgba(49,93,60,.28) !important;
+  background: #fff !important;
+}
+
+/* ===== FAQ ===== */
+#bang-gia + section {
+  padding: 88px 0 !important;
+  background: #fff !important;
+}
+
+#bang-gia + section .container > div:last-child {
+  max-width: 760px !important;
+  margin-top: 38px !important;
+}
+
+#bang-gia + section details {
+  margin-bottom: 10px;
+  padding: 0 !important;
+  border: 1px solid rgba(49,93,60,.10) !important;
+  border-radius: 16px;
+  background: #fbfcf9;
+  overflow: hidden;
+}
+
+#bang-gia + section details summary {
+  min-height: 58px;
+  padding: 16px 18px !important;
+  color: var(--course-green) !important;
+  font-size: .94rem !important;
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+#bang-gia + section details summary::-webkit-details-marker {
+  display: none;
+}
+
+#bang-gia + section details summary span {
+  flex: 0 0 auto;
+  margin-left: 16px;
+  color: #78907a;
+  transition: transform .2s ease;
+}
+
+#bang-gia + section details[open] summary span {
+  transform: rotate(45deg);
+}
+
+#bang-gia + section details p {
+  margin: 0 !important;
+  padding: 0 18px 18px !important;
+  color: #66736a !important;
+  font-size: .89rem !important;
+  line-height: 1.72 !important;
+}
+
+/* ===== FINAL CTA ===== */
+.cta-final {
+  padding: 90px 0 !important;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(182,148,69,.10), transparent 24%),
+    linear-gradient(145deg, #edf3e9 0%, #f8f6ee 58%, #eff4eb 100%) !important;
+}
+
+.cta-final::before,
+.cta-final::after {
+  opacity: .055 !important;
+}
+
+.cta-final .cta-card {
+  max-width: 720px !important;
+  padding: 50px 44px !important;
+  border: 1px solid rgba(49,93,60,.10) !important;
+  border-radius: 26px !important;
+  background: rgba(255,255,255,.92) !important;
+  box-shadow: 0 22px 60px rgba(49,93,60,.11) !important;
+}
+
+.cta-final .cta-card h2 {
+  color: var(--course-ink) !important;
+  font-size: clamp(1.75rem, 3vw, 2.35rem) !important;
+  letter-spacing: -.025em;
+}
+
+.cta-final .cta-card > p {
+  color: #657169 !important;
+  font-size: .98rem !important;
+  line-height: 1.7 !important;
+}
+
+.cta-final .cta-trust {
+  gap: 8px !important;
+  margin-bottom: 28px !important;
+}
+
+.cta-final .cta-trust span {
+  padding: 6px 11px !important;
+  border: 1px solid rgba(49,93,60,.10);
+  background: #eef4e9 !important;
+  color: #4b6a50 !important;
+  font-size: .75rem !important;
+}
+
+.cta-final .btn-gold,
+.cta-final .btn-outline-sage {
+  min-height: 46px;
+  padding: 0 21px !important;
+  border-radius: 999px !important;
+  font-size: .86rem !important;
+}
+
+.cta-final .btn-gold {
+  border: 0 !important;
+  background: linear-gradient(180deg, #3d7743, #306739) !important;
+  color: #fff !important;
+  box-shadow: 0 10px 24px rgba(48,103,57,.20) !important;
+}
+
+.cta-final .btn-outline-sage {
+  border: 1px solid rgba(49,93,60,.28) !important;
+  background: #fff !important;
+  color: #315d3c !important;
+}
+
+/* Hover motion only where a real hover pointer exists. */
+@media (hover:hover) and (pointer:fine) {
+  #bang-gia .pkg-card:hover,
+  .sales-hero .hero-grid > div:first-child > a.btn.btn-primary:hover,
+  .cta-final .btn-gold:hover,
+  .cta-final .btn-outline-sage:hover {
+    transform: translateY(-2px) !important;
+  }
+}
+
+/* ===== TABLET ===== */
+@media (max-width: 1024px) {
+  .sales-hero {
+    padding: 116px 0 72px !important;
+  }
+
+  .sales-hero .hero-grid {
+    grid-template-columns: minmax(0, 1fr) 360px !important;
+    gap: 38px !important;
+  }
+
+  .sales-hero h1 {
+    font-size: clamp(2.2rem, 4.6vw, 3rem) !important;
+  }
+
+  #bang-gia .pkg-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    max-width: 760px !important;
+  }
+
+  #bang-gia .pkg-card:last-child {
+    grid-column: 1 / -1;
+    width: min(100%, 370px);
+    justify-self: center;
+  }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .sales-hero {
+    padding: 34px 0 54px !important;
+  }
+
+  .sales-hero .container {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .sales-hero .container > div:first-child {
+    margin-bottom: 20px !important;
+  }
+
+  .sales-hero .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 31px !important;
+    text-align: left !important;
+  }
+
+  .sales-hero .sales-badge {
+    margin-bottom: 17px !important;
+    padding: 7px 12px !important;
+    font-size: .72rem !important;
+  }
+
+  .sales-hero h1 {
+    margin-bottom: 17px !important;
+    font-size: clamp(2.05rem, 10vw, 2.75rem) !important;
+    line-height: 1.03 !important;
+  }
+
+  .sales-hero h1 br {
+    display: none;
+  }
+
+  .sales-hero .container p.hero-desc {
+    margin: 0 0 20px !important;
+    font-size: .94rem !important;
+    line-height: 1.72 !important;
+  }
+
+  .sales-hero .trust-row {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    width: calc(100% + 36px);
+    margin: 0 -18px 23px !important;
+    padding: 0 18px 3px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sales-hero .trust-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sales-hero .trust-item {
+    flex: 0 0 auto;
+    min-height: 30px;
+    padding: 5px 9px;
+    font-size: .69rem !important;
+    white-space: nowrap;
+  }
+
+  .sales-hero .hero-grid > div:first-child > a.btn.btn-primary {
+    width: auto !important;
+    min-height: 46px !important;
+    padding: 0 18px !important;
+    font-size: .82rem !important;
+  }
+
+  .sales-hero .hero-img-wrap {
+    width: min(100%, 410px);
+    max-width: none !important;
+    margin: 1px auto 0 !important;
+  }
+
+  .sales-hero .hero-img-wrap img,
+  .sales-hero .hero-img-wrap::before {
+    border-radius: 22px 22px 58px 22px !important;
+  }
+
+  .sales-hero .hero-img-wrap::before {
+    top: 10px !important;
+    right: -8px !important;
+  }
+
+  .benefit-section,
+  .how-section,
+  #bang-gia,
+  #bang-gia + section,
+  .cta-final {
+    padding: 58px 0 !important;
+  }
+
+  .benefit-section .container,
+  .how-section .container,
+  #bang-gia .container,
+  #bang-gia + section .container,
+  .cta-final .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .benefit-section .section-header h2,
+  .how-section .section-header h2,
+  #bang-gia .section-header h2,
+  #bang-gia + section .section-header h2 {
+    font-size: clamp(1.65rem, 8vw, 2rem) !important;
+  }
+
+  .benefit-section .container > div:last-child {
+    gap: 13px !important;
+    margin-top: 30px !important;
+  }
+
+  .benefit-section .benefit-row,
+  .benefit-section .benefit-row:nth-child(even) {
+    grid-template-columns: 1fr !important;
+    min-height: 0;
+    border-radius: 18px !important;
+  }
+
+  .benefit-section .benefit-row img,
+  .benefit-section .benefit-row:nth-child(even) img,
+  .benefit-section .benefit-row:nth-child(odd) img {
+    order: 1;
+    width: 100%;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 9;
+    border-radius: 17px 17px 0 0 !important;
+  }
+
+  .benefit-section .benefit-row > div {
+    order: 2;
+    padding: 19px 18px 20px !important;
+  }
+
+  .benefit-section .benefit-row h3 {
+    font-size: .98rem !important;
+  }
+
+  .benefit-section .benefit-row p {
+    font-size: .88rem !important;
+    line-height: 1.65 !important;
+  }
+
+  .how-section .steps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    margin-top: 30px !important;
+  }
+
+  .how-section .steps-grid > div {
+    min-height: 0;
+    padding: 20px 18px !important;
+    border-radius: 17px !important;
+  }
+
+  .how-section .steps-grid > div > div:first-child > div:first-child {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .how-section .steps-grid h3 {
+    font-size: .94rem !important;
+  }
+
+  .how-section .steps-grid p {
+    padding-left: 50px !important;
+    font-size: .85rem !important;
+    line-height: 1.62 !important;
+  }
+
+  #bang-gia .section-header p {
+    font-size: .9rem;
+    line-height: 1.62;
+  }
+
+  #bang-gia .pkg-grid {
+    grid-template-columns: 1fr !important;
+    gap: 13px !important;
+    max-width: 430px !important;
+    margin-top: 32px !important;
+  }
+
+  #bang-gia .pkg-card,
+  #bang-gia .pkg-card:last-child {
+    grid-column: auto;
+    width: 100%;
+    padding: 24px 20px 20px !important;
+    border-radius: 18px !important;
+  }
+
+  #bang-gia .pkg-card.featured {
+    order: -1;
+    padding-top: 42px !important;
+  }
+
+  #bang-gia .pkg-price {
+    font-size: 1.65rem !important;
+  }
+
+  #bang-gia .pkg-desc {
+    min-height: 0;
+  }
+
+  #bang-gia + section .container > div:last-child {
+    margin-top: 28px !important;
+  }
+
+  #bang-gia + section details {
+    border-radius: 14px;
+  }
+
+  #bang-gia + section details summary {
+    min-height: 54px;
+    padding: 14px 15px !important;
+    font-size: .88rem !important;
+  }
+
+  #bang-gia + section details p {
+    padding: 0 15px 15px !important;
+    font-size: .84rem !important;
+  }
+
+  .cta-final .cta-card {
+    padding: 31px 20px !important;
+    border-radius: 20px !important;
+  }
+
+  .cta-final .cta-card > div:first-child {
+    margin-bottom: 10px !important;
+    font-size: 2rem !important;
+  }
+
+  .cta-final .cta-card h2 {
+    font-size: clamp(1.55rem, 7.6vw, 1.9rem) !important;
+  }
+
+  .cta-final .cta-card > p {
+    margin-bottom: 21px !important;
+    font-size: .9rem !important;
+  }
+
+  .cta-final .cta-trust {
+    margin-bottom: 22px !important;
+  }
+
+  .cta-final .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px !important;
+  }
+
+  .cta-final .btn-gold,
+  .cta-final .btn-outline-sage {
+    width: 100%;
+    min-height: 43px;
+    justify-content: center;
+    padding: 0 16px !important;
+    font-size: .8rem !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .sales-hero {
+    padding-top: 29px !important;
+  }
+
+  .sales-hero h1 {
+    font-size: clamp(1.9rem, 10.2vw, 2.35rem) !important;
+  }
+
+  .sales-hero .hero-grid > div:first-child > a.btn.btn-primary {
+    width: 100% !important;
+    justify-content: center;
+  }
+
+  .how-section .steps-grid p {
+    padding-left: 0 !important;
+    margin-top: 8px !important;
+  }
+
+  #bang-gia .pkg-card.featured::before {
+    right: 11px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sales-hero *,
+  .benefit-section *,
+  .how-section *,
+  #bang-gia *,
+  #bang-gia + section *,
+  .cta-final * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
