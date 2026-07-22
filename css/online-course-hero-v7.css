@@ -38,19 +38,24 @@
   text-wrap: balance;
 }
 
-/* Keep 1:1 clearly Arabic/sans-serif without letting it overpower the serif title. */
+/* Georgia keeps 1:1 closer to the surrounding serif voice while preserving
+   unmistakable Arabic numerals. Lining numerals prevent old-style figures. */
 .online-course-page .sales-hero h1 .num {
   display: inline-block;
-  margin-inline: .015em;
-  font-size: .71em !important;
+  margin-inline: .02em;
+  font-family: Georgia, 'Times New Roman', serif !important;
+  font-size: .72em !important;
   font-weight: 700 !important;
+  font-style: normal !important;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: 'lnum' 1, 'tnum' 1;
   line-height: 1;
-  letter-spacing: -.045em !important;
-  vertical-align: .07em;
+  letter-spacing: -.055em !important;
+  vertical-align: .055em;
 }
 
 .online-course-page .sales-hero h1 em {
-  font-weight: 400 !important;
+  font-weight: 500 !important;
 }
 
 .online-course-page .sales-hero .container p.hero-desc {
@@ -206,8 +211,8 @@
   }
 
   .online-course-page .sales-hero h1 .num {
-    font-size: .69em !important;
-    vertical-align: .065em;
+    font-size: .70em !important;
+    vertical-align: .05em;
   }
 
   .online-course-page .sales-hero .container p.hero-desc {
