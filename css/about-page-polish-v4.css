@@ -1,0 +1,63 @@
+@import url('about-page-polish-v3.css?v=20260722a');
+
+/* ===== MÂY YOGA — ABOUT PAGE POLISH V4 =====
+   Compatibility guard after the legacy about-hero mobile layer.
+   Class-based selectors deliberately outrank old nth-of-type rules. */
+
+@media (max-width: 768px) {
+  .about-page .about-hero-grid > .about-teacher-block {
+    order: 2 !important;
+    position: relative !important;
+    inset: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    text-align: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .about-page .about-hero-grid > .about-philosophy {
+    order: 1 !important;
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    width: auto !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 0 0 15px !important;
+    border-left: 3px solid rgba(107, 142, 107, .34) !important;
+    font-size: inherit !important;
+    text-align: left !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .about-page .about-hero-grid > .about-quote-mark {
+    position: absolute !important;
+    top: 4px !important;
+    right: 13px !important;
+    display: block !important;
+    font-size: 4.6rem !important;
+    line-height: 1 !important;
+    opacity: .04 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-page .about-hero-grid > .about-philosophy {
+    padding-left: 12px !important;
+  }
+}
