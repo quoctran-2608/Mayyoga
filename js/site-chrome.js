@@ -130,7 +130,7 @@
   function loadCanonicalArticleShare() {
     if (document.querySelector('script[data-article-share-standard]')) return;
     var script = document.createElement('script');
-    script.src = siteUrl('js/article-share-standard.js?v=20260721b');
+    script.src = siteUrl('js/article-share-standard.js?v=20260722c');
     script.defer = true;
     script.setAttribute('data-article-share-standard', 'true');
     document.head.appendChild(script);
