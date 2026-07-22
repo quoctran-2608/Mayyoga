@@ -58,7 +58,7 @@
     if (document.querySelector('link[data-header-index-canonical]')) return;
     var link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = siteUrl('css/header-index-canonical-v3.css?v=20260721a');
+    link.href = siteUrl('css/header-index-canonical-v3.css?v=20260722b');
     link.setAttribute('data-header-index-canonical', 'true');
     document.head.appendChild(link);
   }
