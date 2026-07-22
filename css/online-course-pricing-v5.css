@@ -1,0 +1,76 @@
+/* ===== MÂY YOGA — ONLINE COURSE PRICING V5 =====
+   Micro-polish for card top accents and featured ribbon clipping.
+   Loaded after pricing V4; scoped only to #bang-gia. */
+
+/* Replace the long top rail with a compact centered accent capsule. */
+.online-course-page #bang-gia .pkg-card::after {
+  top: 0 !important;
+  left: 50% !important;
+  right: auto !important;
+  width: 84px !important;
+  height: 4px !important;
+  border-radius: 0 0 999px 999px !important;
+  background: linear-gradient(90deg, rgba(82,127,88,.14), rgba(82,127,88,.62), rgba(82,127,88,.14)) !important;
+  transform: translateX(-50%) !important;
+}
+
+.online-course-page #bang-gia .pkg-card.featured::after {
+  width: 112px !important;
+  height: 5px !important;
+  background: linear-gradient(90deg, rgba(134,170,120,.5), #315d3c 50%, rgba(134,170,120,.5)) !important;
+}
+
+/* Desktop ribbon intentionally extends past the corner; never crop its star/icon. */
+@media (min-width: 769px) {
+  .online-course-page #bang-gia .pkg-card.featured {
+    overflow: visible !important;
+  }
+
+  .online-course-page #bang-gia .pkg-card.featured::before {
+    top: 17px !important;
+    right: -31px !important;
+    min-width: 154px !important;
+    padding: 6px 35px !important;
+    transform: rotate(45deg) !important;
+    transform-origin: center !important;
+    clip-path: none !important;
+  }
+}
+
+/* Mobile keeps every decoration inside the rounded card. */
+@media (max-width: 768px) {
+  .online-course-page #bang-gia .pkg-card::after {
+    width: 68px !important;
+    height: 3px !important;
+  }
+
+  .online-course-page #bang-gia .pkg-card.featured {
+    overflow: hidden !important;
+  }
+
+  .online-course-page #bang-gia .pkg-card.featured::after {
+    width: 88px !important;
+    height: 4px !important;
+  }
+
+  .online-course-page #bang-gia .pkg-card.featured::before {
+    top: 14px !important;
+    right: 16px !important;
+    left: auto !important;
+    min-width: 0 !important;
+    max-width: calc(100% - 32px) !important;
+    padding: 6px 10px !important;
+    border-radius: 999px !important;
+    transform: none !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .online-course-page #bang-gia .pkg-card.featured::before {
+    right: 13px !important;
+    padding: 5px 9px !important;
+    font-size: .59rem !important;
+  }
+}
