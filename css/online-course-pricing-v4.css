@@ -1,0 +1,430 @@
+/* ===== MÂY YOGA — ONLINE COURSE PRICING V4 =====
+   Final page-scoped pricing refinement for hoc-yoga-online.html.
+   Keeps the approved 3-card composition while improving hierarchy, rhythm,
+   contrast and mobile ergonomics without touching shared header/footer. */
+
+.online-course-page #bang-gia {
+  --price-ink: #173f35;
+  --price-green: #315d3c;
+  --price-green-2: #527f58;
+  --price-sage: #edf3e9;
+  --price-cream: #faf7ef;
+  --price-muted: #66726b;
+  --price-line: rgba(49, 93, 60, .12);
+
+  scroll-margin-top: 96px;
+  padding: 100px 0 104px !important;
+  background:
+    radial-gradient(circle at 14% 10%, rgba(126, 165, 105, .16), transparent 27%),
+    radial-gradient(circle at 86% 84%, rgba(182, 148, 69, .08), transparent 25%),
+    linear-gradient(145deg, #eef4eb 0%, #f6f7f0 54%, #f8f4e9 100%) !important;
+}
+
+.online-course-page #bang-gia .section-header {
+  width: min(100%, 780px) !important;
+}
+
+.online-course-page #bang-gia .section-badge {
+  min-height: 34px;
+  padding: 7px 14px !important;
+  border: 1px solid rgba(49, 93, 60, .11) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, .64) !important;
+  color: #476d4c !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.85);
+  backdrop-filter: blur(8px);
+  font-size: .74rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .015em;
+}
+
+.online-course-page #bang-gia .section-header h2 {
+  max-width: 720px;
+  margin-top: 18px !important;
+  color: var(--price-ink) !important;
+  font-size: clamp(2.35rem, 4vw, 3.2rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.035em !important;
+  text-wrap: balance;
+}
+
+.online-course-page #bang-gia .section-header p {
+  max-width: 650px !important;
+  margin-top: 16px !important;
+  color: var(--price-muted) !important;
+  font-size: .98rem !important;
+  line-height: 1.72 !important;
+}
+
+.online-course-page #bang-gia .pkg-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  width: min(100%, 990px) !important;
+  gap: 20px !important;
+  margin: 58px auto 0 !important;
+  align-items: stretch !important;
+}
+
+.online-course-page #bang-gia .pkg-card {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0;
+  min-height: 100%;
+  padding: 34px 28px 27px !important;
+  border: 1px solid rgba(49, 93, 60, .11) !important;
+  border-radius: 24px !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.995) 0%, rgba(253,253,250,.98) 100%) !important;
+  box-shadow:
+    0 18px 46px rgba(42, 70, 49, .07),
+    inset 0 1px 0 rgba(255,255,255,.92) !important;
+  overflow: hidden !important;
+  isolation: isolate;
+}
+
+.online-course-page #bang-gia .pkg-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 28px;
+  right: 28px;
+  height: 3px;
+  border-radius: 0 0 999px 999px;
+  background: linear-gradient(90deg, rgba(82,127,88,.20), rgba(82,127,88,.62), rgba(82,127,88,.20));
+}
+
+.online-course-page #bang-gia .pkg-card.featured {
+  border: 1.5px solid rgba(49, 93, 60, .62) !important;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(118, 157, 101, .10), transparent 32%),
+    linear-gradient(180deg, #fff 0%, #f7faf4 100%) !important;
+  box-shadow:
+    0 24px 58px rgba(49, 93, 60, .15),
+    inset 0 1px 0 rgba(255,255,255,.96) !important;
+}
+
+.online-course-page #bang-gia .pkg-card.featured::after {
+  height: 4px;
+  background: linear-gradient(90deg, #86aa78, #315d3c 50%, #86aa78);
+}
+
+.online-course-page #bang-gia .pkg-card.featured::before {
+  content: '⭐ Phổ biến nhất' !important;
+  position: absolute !important;
+  top: 17px !important;
+  right: -34px !important;
+  z-index: 3;
+  min-width: 148px;
+  padding: 6px 34px !important;
+  border-radius: 0 !important;
+  background: linear-gradient(90deg, #3d7043, #2f6138) !important;
+  color: #fff !important;
+  box-shadow: 0 5px 14px rgba(47, 97, 56, .18);
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: .65rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: .018em;
+  text-align: center;
+  white-space: nowrap;
+  transform: rotate(45deg) !important;
+  transform-origin: center !important;
+}
+
+.online-course-page #bang-gia .pkg-name {
+  margin: 0 0 12px !important;
+  padding-right: 24px;
+  color: #315d3c !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: .98rem !important;
+  font-weight: 750 !important;
+  line-height: 1.4 !important;
+}
+
+.online-course-page #bang-gia .pkg-card.featured .pkg-name {
+  color: #244d31 !important;
+}
+
+.online-course-page #bang-gia .pkg-price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  margin: 0 0 8px !important;
+  color: var(--price-ink) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: clamp(2rem, 2.75vw, 2.42rem) !important;
+  font-weight: 760 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.035em !important;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.online-course-page #bang-gia .pkg-card:first-child .pkg-price {
+  font-size: clamp(1.85rem, 2.5vw, 2.2rem) !important;
+  letter-spacing: -.025em !important;
+}
+
+.online-course-page #bang-gia .pkg-price small {
+  margin: 0 !important;
+  color: #77827b !important;
+  font-size: .74rem !important;
+  font-weight: 500 !important;
+  line-height: 1.35;
+  letter-spacing: 0 !important;
+}
+
+.online-course-page #bang-gia .pkg-desc {
+  min-height: 48px !important;
+  margin: 0 0 19px !important;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(49, 93, 60, .075);
+  color: #748078 !important;
+  font-size: .79rem !important;
+  line-height: 1.62 !important;
+}
+
+.online-course-page #bang-gia .pkg-list {
+  flex: 1 1 auto !important;
+  margin: 0 0 24px !important;
+  padding: 0 !important;
+  list-style: none !important;
+  font-family: 'DM Sans', sans-serif !important;
+}
+
+.online-course-page #bang-gia .pkg-list li {
+  position: relative;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 9px !important;
+  padding: 9px 0 !important;
+  border-bottom: 1px solid rgba(49, 93, 60, .055) !important;
+  color: #46534b !important;
+  font-size: .84rem !important;
+  line-height: 1.54 !important;
+}
+
+.online-course-page #bang-gia .pkg-list li:last-child {
+  border-bottom: 0 !important;
+}
+
+.online-course-page #bang-gia .pkg-list li::before {
+  content: '✓' !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: #edf4e9;
+  color: #477b50 !important;
+  font-size: .7rem;
+  font-weight: 900 !important;
+  line-height: 1;
+}
+
+.online-course-page #bang-gia .pkg-card.featured .pkg-list li::before {
+  background: #dfead9;
+  color: #315d3c !important;
+}
+
+.online-course-page #bang-gia .pkg-btn {
+  min-height: 49px !important;
+  margin-top: auto !important;
+  padding: 12px 18px !important;
+  border: 1.5px solid rgba(71, 123, 80, .42) !important;
+  border-radius: 999px !important;
+  background: rgba(255,255,255,.70) !important;
+  color: #315d3c !important;
+  box-shadow: none !important;
+  font-size: .84rem !important;
+  font-weight: 750 !important;
+  letter-spacing: .005em;
+  transition: background-color .18s ease, border-color .18s ease, box-shadow .18s ease !important;
+}
+
+.online-course-page #bang-gia .pkg-btn.primary {
+  border-color: transparent !important;
+  background: linear-gradient(180deg, #5f8a5d 0%, #477a4c 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 10px 22px rgba(71, 122, 76, .23) !important;
+}
+
+.online-course-page #bang-gia .pkg-btn.outline {
+  border-color: rgba(71,123,80,.40) !important;
+  background: rgba(255,255,255,.78) !important;
+  color: #315d3c !important;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .online-course-page #bang-gia .pkg-card {
+    transition: border-color .18s ease, box-shadow .18s ease !important;
+  }
+
+  .online-course-page #bang-gia .pkg-card:hover {
+    border-color: rgba(49,93,60,.24) !important;
+    box-shadow:
+      0 22px 54px rgba(42,70,49,.10),
+      inset 0 1px 0 rgba(255,255,255,.94) !important;
+    transform: none !important;
+  }
+
+  .online-course-page #bang-gia .pkg-card.featured:hover {
+    border-color: rgba(49,93,60,.72) !important;
+    box-shadow: 0 28px 62px rgba(49,93,60,.17) !important;
+  }
+
+  .online-course-page #bang-gia .pkg-btn.outline:hover {
+    border-color: #6e9a68 !important;
+    background: #eef5ea !important;
+  }
+
+  .online-course-page #bang-gia .pkg-btn.primary:hover {
+    background: linear-gradient(180deg, #557f54 0%, #3f7045 100%) !important;
+    box-shadow: 0 12px 26px rgba(63,112,69,.27) !important;
+  }
+}
+
+@media (max-width: 1040px) and (min-width: 769px) {
+  .online-course-page #bang-gia .pkg-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    width: min(100%, 740px) !important;
+  }
+
+  .online-course-page #bang-gia .pkg-card:last-child {
+    grid-column: 1 / -1;
+    width: min(100%, 360px) !important;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .online-course-page #bang-gia {
+    scroll-margin-top: 64px;
+    padding: 64px 0 68px !important;
+    background:
+      radial-gradient(circle at 100% 0%, rgba(126,165,105,.12), transparent 28%),
+      linear-gradient(160deg, #eef4eb 0%, #f7f7f0 62%, #faf6ec 100%) !important;
+  }
+
+  .online-course-page #bang-gia .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .online-course-page #bang-gia .section-header {
+    width: 100% !important;
+    padding-inline: 2px;
+  }
+
+  .online-course-page #bang-gia .section-badge {
+    min-height: 31px;
+    padding: 6px 12px !important;
+    font-size: .69rem !important;
+  }
+
+  .online-course-page #bang-gia .section-header h2 {
+    max-width: 360px;
+    margin-top: 14px !important;
+    font-size: clamp(1.85rem, 8.7vw, 2.3rem) !important;
+    line-height: 1.08 !important;
+  }
+
+  .online-course-page #bang-gia .section-header p {
+    max-width: 390px !important;
+    margin-top: 12px !important;
+    font-size: .88rem !important;
+    line-height: 1.65 !important;
+  }
+
+  .online-course-page #bang-gia .pkg-grid {
+    grid-template-columns: 1fr !important;
+    width: min(100%, 430px) !important;
+    gap: 15px !important;
+    margin-top: 32px !important;
+  }
+
+  .online-course-page #bang-gia .pkg-card,
+  .online-course-page #bang-gia .pkg-card:last-child {
+    grid-column: auto !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    padding: 27px 21px 22px !important;
+    border-radius: 20px !important;
+  }
+
+  .online-course-page #bang-gia .pkg-card::after {
+    left: 21px;
+    right: 21px;
+  }
+
+  .online-course-page #bang-gia .pkg-card.featured {
+    padding-top: 52px !important;
+  }
+
+  /* Diagonal ribbon becomes a compact badge on small screens. */
+  .online-course-page #bang-gia .pkg-card.featured::before {
+    top: 15px !important;
+    right: 18px !important;
+    min-width: 0;
+    padding: 6px 10px !important;
+    border-radius: 999px !important;
+    font-size: .62rem !important;
+    transform: none !important;
+    box-shadow: none;
+  }
+
+  .online-course-page #bang-gia .pkg-name {
+    padding-right: 0;
+    margin-bottom: 10px !important;
+    font-size: .94rem !important;
+  }
+
+  .online-course-page #bang-gia .pkg-price,
+  .online-course-page #bang-gia .pkg-card:first-child .pkg-price {
+    font-size: clamp(1.75rem, 8vw, 2.05rem) !important;
+  }
+
+  .online-course-page #bang-gia .pkg-desc {
+    min-height: 0 !important;
+    margin-bottom: 15px !important;
+    padding-bottom: 15px;
+    font-size: .78rem !important;
+  }
+
+  .online-course-page #bang-gia .pkg-list {
+    margin-bottom: 19px !important;
+  }
+
+  .online-course-page #bang-gia .pkg-list li {
+    padding: 8px 0 !important;
+    font-size: .82rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .online-course-page #bang-gia .pkg-list li::before {
+    flex-basis: 17px;
+    width: 17px;
+    height: 17px;
+    font-size: .66rem;
+  }
+
+  .online-course-page #bang-gia .pkg-btn {
+    min-height: 46px !important;
+    padding: 11px 16px !important;
+    font-size: .82rem !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .online-course-page #bang-gia .pkg-card,
+  .online-course-page #bang-gia .pkg-card:last-child {
+    padding: 24px 18px 20px !important;
+  }
+
+  .online-course-page #bang-gia .pkg-card.featured {
+    padding-top: 49px !important;
+  }
+}
