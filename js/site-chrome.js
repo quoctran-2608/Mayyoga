@@ -1,5 +1,5 @@
 // ===== Mây Yoga — Shared Site Chrome =====
-// Canonical footer, floating contact, header and article-share bootstrap. The homepage/index design is the source of truth.
+// Canonical footer, floating contact, header, breadcrumb and article-share bootstrap. The homepage/index design is the source of truth.
 (function syncSiteChrome() {
   'use strict';
 
@@ -60,6 +60,15 @@
     link.rel = 'stylesheet';
     link.href = siteUrl('css/header-index-canonical-v3.css?v=20260722b');
     link.setAttribute('data-header-index-canonical', 'true');
+    document.head.appendChild(link);
+  }
+
+  function loadCanonicalBreadcrumbStyles() {
+    if (document.querySelector('link[data-breadcrumb-canonical]')) return;
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = siteUrl('css/breadcrumb-canonical-v1.css?v=20260722a');
+    link.setAttribute('data-breadcrumb-canonical', 'true');
     document.head.appendChild(link);
   }
 
@@ -151,6 +160,7 @@
   function applyStandardChrome() {
     ensureStandardStyles();
     loadIndexCanonicalHeaderGeometry();
+    loadCanonicalBreadcrumbStyles();
     loadPageSpecificStyles();
     normalizeFooter();
     normalizeFloatingContact();
