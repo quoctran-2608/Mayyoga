@@ -4,6 +4,43 @@
    Compatibility guard after the legacy about-hero mobile layer.
    Class-based selectors deliberately outrank old nth-of-type rules. */
 
+/* Keep the desktop masthead title on one intentional line. The legacy <br>
+   remains harmless in markup but is suppressed so it cannot strand “Yoga”. */
+.about-page .h1-break {
+  display: none !important;
+}
+
+.about-page .article-header h1 {
+  max-width: none !important;
+  white-space: nowrap;
+  font-size: clamp(1.95rem, 3vw, 2.65rem) !important;
+  letter-spacing: -.032em;
+}
+
+/* Restore the decorative quote ornament from the earlier design.
+   It is intentionally visible but remains behind the philosophy copy. */
+.about-page .about-hero-grid > .about-quote-mark {
+  position: absolute !important;
+  top: 10px !important;
+  right: 24px !important;
+  display: block !important;
+  z-index: 0 !important;
+  font-family: Georgia, 'Times New Roman', serif !important;
+  font-size: 6.2rem !important;
+  line-height: 1 !important;
+  color: rgba(49, 93, 60, .13) !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+@media (max-width: 900px) {
+  /* Narrow screens should wrap naturally by available width rather than at a hard <br>. */
+  .about-page .article-header h1 {
+    white-space: normal;
+  }
+}
+
 @media (max-width: 768px) {
   .about-page .about-hero-grid > .about-teacher-block {
     order: 2 !important;
@@ -31,6 +68,7 @@
     position: relative !important;
     inset: auto !important;
     display: block !important;
+    z-index: 1 !important;
     width: auto !important;
     min-width: 0 !important;
     height: auto !important;
@@ -46,18 +84,23 @@
   }
 
   .about-page .about-hero-grid > .about-quote-mark {
-    position: absolute !important;
-    top: 4px !important;
-    right: 13px !important;
-    display: block !important;
-    font-size: 4.6rem !important;
-    line-height: 1 !important;
-    opacity: .04 !important;
+    top: 8px !important;
+    right: 14px !important;
+    font-size: 4.9rem !important;
+    color: rgba(49, 93, 60, .11) !important;
+    opacity: 1 !important;
   }
 }
 
 @media (max-width: 420px) {
   .about-page .about-hero-grid > .about-philosophy {
     padding-left: 12px !important;
+  }
+
+  .about-page .about-hero-grid > .about-quote-mark {
+    top: 10px !important;
+    right: 10px !important;
+    font-size: 4.35rem !important;
+    color: rgba(49, 93, 60, .10) !important;
   }
 }
