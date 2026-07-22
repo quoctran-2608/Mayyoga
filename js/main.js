@@ -322,8 +322,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   var src = current && current.src
-    ? new URL('site-chrome.js?v=20260721e', current.src).href
-    : 'js/site-chrome.js?v=20260721e';
+    ? new URL('site-chrome.js?v=20260722a', current.src).href
+    : 'js/site-chrome.js?v=20260722a';
 
   var script = document.createElement('script');
   script.src = src;
