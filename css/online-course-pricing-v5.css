@@ -1,6 +1,8 @@
+@import url('online-course-conversion-v6.css?v=20260722a');
+
 /* ===== MÂY YOGA — ONLINE COURSE PRICING V5 =====
-   Micro-polish for card top accents and a contained diagonal recommendation ribbon.
-   Loaded after pricing V4; scoped only to #bang-gia. */
+   Final pricing micro-polish plus the page conversion layer above.
+   Loaded after pricing V4. */
 
 /* Compact centered accents keep the card tops visually intentional. */
 .online-course-page #bang-gia .pkg-card::after {
