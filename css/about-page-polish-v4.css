@@ -78,6 +78,8 @@
     z-index: 2 !important;
   }
 
+  /* Reserve a quiet top lane for the ornament instead of letting it share the
+     first text line. This keeps the editorial quote mark visible without crowding copy. */
   .about-page .about-hero-grid > .about-philosophy {
     order: 1 !important;
     position: relative !important;
@@ -89,7 +91,7 @@
     height: auto !important;
     min-height: 0 !important;
     margin: 0 !important;
-    padding: 0 0 0 15px !important;
+    padding: 38px 0 0 15px !important;
     border-left: 3px solid rgba(107, 142, 107, .34) !important;
     font-size: inherit !important;
     text-align: left !important;
@@ -99,23 +101,23 @@
   }
 
   .about-page .about-hero-grid > .about-quote-mark {
-    top: 9px !important;
-    right: 14px !important;
-    font-size: 5rem !important;
-    color: rgba(49, 93, 60, .13) !important;
+    top: 10px !important;
+    right: 16px !important;
+    font-size: 3.2rem !important;
+    color: rgba(49, 93, 60, .14) !important;
     opacity: 1 !important;
   }
 }
 
 @media (max-width: 420px) {
   .about-page .about-hero-grid > .about-philosophy {
-    padding-left: 12px !important;
+    padding: 34px 0 0 12px !important;
   }
 
   .about-page .about-hero-grid > .about-quote-mark {
     top: 10px !important;
-    right: 10px !important;
-    font-size: 4.45rem !important;
-    color: rgba(49, 93, 60, .12) !important;
+    right: 12px !important;
+    font-size: 2.9rem !important;
+    color: rgba(49, 93, 60, .13) !important;
   }
 }
