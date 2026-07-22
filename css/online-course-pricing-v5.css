@@ -1,8 +1,8 @@
 /* ===== MÂY YOGA — ONLINE COURSE PRICING V5 =====
-   Micro-polish for card top accents and featured ribbon clipping.
+   Micro-polish for card top accents and featured recommendation badge.
    Loaded after pricing V4; scoped only to #bang-gia. */
 
-/* Replace the long top rail with a compact centered accent capsule. */
+/* Compact centered accents keep the card tops visually intentional. */
 .online-course-page #bang-gia .pkg-card::after {
   top: 0 !important;
   left: 50% !important;
@@ -20,32 +20,43 @@
   background: linear-gradient(90deg, rgba(134,170,120,.5), #315d3c 50%, rgba(134,170,120,.5)) !important;
 }
 
-/* Desktop ribbon intentionally extends past the corner; never crop its star/icon. */
-@media (min-width: 769px) {
-  .online-course-page #bang-gia .pkg-card.featured {
-    overflow: visible !important;
-  }
-
-  .online-course-page #bang-gia .pkg-card.featured::before {
-    top: 17px !important;
-    right: -31px !important;
-    min-width: 154px !important;
-    padding: 6px 35px !important;
-    transform: rotate(45deg) !important;
-    transform-origin: center !important;
-    clip-path: none !important;
-  }
+/* A centered recommendation badge is cleaner and more balanced than a diagonal ribbon. */
+.online-course-page #bang-gia .pkg-card.featured {
+  overflow: hidden !important;
+  padding-top: 58px !important;
 }
 
-/* Mobile keeps every decoration inside the rounded card. */
+.online-course-page #bang-gia .pkg-card.featured::before {
+  content: '⭐ Phổ biến nhất' !important;
+  position: absolute !important;
+  top: 16px !important;
+  left: 50% !important;
+  right: auto !important;
+  z-index: 3;
+  min-width: 0 !important;
+  max-width: calc(100% - 40px) !important;
+  padding: 7px 13px !important;
+  border: 1px solid rgba(49, 93, 60, .14) !important;
+  border-radius: 999px !important;
+  background: linear-gradient(180deg, #477b50 0%, #35673e 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 7px 16px rgba(49, 93, 60, .18) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: .66rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: .018em;
+  text-align: center;
+  white-space: nowrap !important;
+  transform: translateX(-50%) !important;
+  transform-origin: center !important;
+  clip-path: none !important;
+}
+
 @media (max-width: 768px) {
   .online-course-page #bang-gia .pkg-card::after {
     width: 68px !important;
     height: 3px !important;
-  }
-
-  .online-course-page #bang-gia .pkg-card.featured {
-    overflow: hidden !important;
   }
 
   .online-course-page #bang-gia .pkg-card.featured::after {
@@ -53,23 +64,26 @@
     height: 4px !important;
   }
 
+  .online-course-page #bang-gia .pkg-card.featured {
+    padding-top: 54px !important;
+  }
+
   .online-course-page #bang-gia .pkg-card.featured::before {
     top: 14px !important;
-    right: 16px !important;
-    left: auto !important;
-    min-width: 0 !important;
     max-width: calc(100% - 32px) !important;
-    padding: 6px 10px !important;
-    border-radius: 999px !important;
-    transform: none !important;
-    white-space: nowrap !important;
-    overflow: visible !important;
+    padding: 6px 11px !important;
+    font-size: .62rem !important;
+    box-shadow: 0 5px 12px rgba(49, 93, 60, .14) !important;
   }
 }
 
 @media (max-width: 390px) {
+  .online-course-page #bang-gia .pkg-card.featured {
+    padding-top: 51px !important;
+  }
+
   .online-course-page #bang-gia .pkg-card.featured::before {
-    right: 13px !important;
+    top: 13px !important;
     padding: 5px 9px !important;
     font-size: .59rem !important;
   }
