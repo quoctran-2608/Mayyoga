@@ -39,7 +39,6 @@
       geometry.setAttribute('data-header-index-canonical', 'true');
       document.head.appendChild(geometry);
     }
-
     if (!document.querySelector('link[data-site-navigation-canonical]')) {
       var navigation = document.createElement('link');
       navigation.rel = 'stylesheet';
@@ -94,7 +93,6 @@
       container.insertBefore(logo, container.firstChild);
     }
     logo.href = siteUrl('index.html');
-
     var image = logo.querySelector('.logo-img');
     if (!image) {
       image = document.createElement('img');
@@ -110,7 +108,6 @@
     var navLinks = container.querySelector('#navLinks');
     if (!navLinks) {
       navLinks = document.createElement('ul');
-      navLinks.className = 'nav-links';
       navLinks.id = 'navLinks';
       container.insertBefore(navLinks, logo.nextSibling);
     }
@@ -123,9 +120,9 @@
     var search = container.querySelector('#navSearch');
     if (!search) {
       search = document.createElement('div');
-      search.className = 'nav-search';
       search.id = 'navSearch';
     }
+    search.className = 'nav-search';
     search.setAttribute('data-site-search-standard', 'true');
 
     var input = search.querySelector('#globalSearch');
@@ -141,19 +138,17 @@
     var dropdown = search.querySelector('#searchDropdown');
     if (!dropdown) {
       dropdown = document.createElement('div');
-      dropdown.className = 'search-dropdown';
       dropdown.id = 'searchDropdown';
       search.appendChild(dropdown);
     }
+    dropdown.className = 'search-dropdown';
     return search;
   }
 
   function ensureCta(container) {
     var wrap = container.querySelector('.nav-cta');
-    if (!wrap) {
-      wrap = document.createElement('div');
-      wrap.className = 'nav-cta';
-    }
+    if (!wrap) wrap = document.createElement('div');
+    wrap.className = 'nav-cta';
 
     var cta = wrap.querySelector('a.btn');
     if (!cta) {
@@ -161,7 +156,8 @@
       cta.className = 'btn btn-primary btn-sm';
       wrap.replaceChildren(cta);
     }
-    cta.href = siteUrl('index.html#blog');
+    // “Khám phá ngay” should land on the broad discovery hub, not the specialist YTT/blog block.
+    cta.href = siteUrl('index.html#categories');
     cta.innerHTML = 'Khám phá ngay <img class="leaf-icon" src="' + siteUrl('assets/images/icons/leaf_button.svg') + '" alt="" aria-hidden="true" width="14" height="18">';
     return wrap;
   }
@@ -170,10 +166,10 @@
     var toggle = container.querySelector('#mobileToggle');
     if (!toggle) {
       toggle = document.createElement('button');
-      toggle.className = 'mobile-toggle';
       toggle.id = 'mobileToggle';
       toggle.innerHTML = '<span></span><span></span><span></span>';
     }
+    toggle.className = 'mobile-toggle';
     toggle.type = 'button';
     toggle.setAttribute('aria-label', 'Menu');
     toggle.setAttribute('aria-expanded', 'false');
@@ -193,8 +189,7 @@
   }
 
   function loadSearchEngine() {
-    if (!document.getElementById('globalSearch') || !document.getElementById('searchDropdown')) return;
-    if (hasScript('search.js')) return;
+    if (!document.getElementById('globalSearch') || !document.getElementById('searchDropdown') || hasScript('search.js')) return;
 
     function loadSearch() {
       if (hasScript('search.js')) return;
@@ -235,17 +230,13 @@
       siteUrl('giai-phau-yoga.html'),
       siteUrl('tu-tap-tai-nha.html')
     ].map(normalizePath);
-    var coursePages = [
-      siteUrl('hoc-yoga-online.html'),
-      siteUrl('goc-huan-luyen-vien.html')
-    ].map(normalizePath);
+    var coursePages = [siteUrl('hoc-yoga-online.html'), siteUrl('goc-huan-luyen-vien.html')].map(normalizePath);
 
     navLinks.querySelectorAll('a[aria-current]').forEach(function(link) { link.removeAttribute('aria-current'); });
     navLinks.querySelectorAll('.has-current-child').forEach(function(item) { item.classList.remove('has-current-child'); });
 
     navLinks.querySelectorAll('a[href]').forEach(function(link) {
-      if (link.classList.contains('dropdown-toggle')) return;
-      if (normalizePath(link.href) !== current) return;
+      if (link.classList.contains('dropdown-toggle') || normalizePath(link.href) !== current) return;
       link.setAttribute('aria-current', 'page');
       var parent = link.closest('.nav-dropdown');
       if (parent) parent.classList.add('has-current-child');
@@ -287,14 +278,12 @@
   function bindNavigation(navbar, navLinks) {
     if (navbar.dataset.canonicalNavigationBound === 'true') return;
     navbar.dataset.canonicalNavigationBound = 'true';
-
     var dropdowns = Array.prototype.slice.call(navLinks.querySelectorAll(':scope > .nav-dropdown'));
 
     dropdowns.forEach(function(dropdown) {
       var toggle = dropdown.querySelector(':scope > .dropdown-toggle');
       var firstItem = dropdown.querySelector(':scope > .dropdown-menu a[href]');
       if (!toggle) return;
-
       dropdown.addEventListener('mouseenter', function() {
         if (!isCompactInteraction()) toggle.setAttribute('aria-expanded', 'true');
       });
@@ -323,7 +312,6 @@
       });
     });
 
-    // Capture phase intentionally owns header actions before legacy page listeners.
     document.addEventListener('click', function(event) {
       var menuButton = event.target.closest('.navbar.site-header-standard #mobileToggle');
       if (menuButton) {
@@ -342,7 +330,6 @@
       if (!dropdownToggle) return;
       var dropdown = dropdownToggle.parentElement;
       event.stopPropagation();
-
       if (isCompactInteraction()) {
         event.preventDefault();
         var open = !dropdown.classList.contains('active');
@@ -383,7 +370,6 @@
   function applyHeader() {
     var navbar = document.getElementById('navbar');
     if (!navbar) return;
-
     ensureStyles();
     navbar.classList.add('site-header-standard', 'scrolled');
     navbar.setAttribute('data-site-header-standard', 'true');
@@ -395,7 +381,6 @@
     var cta = ensureCta(container);
     var toggle = ensureToggle(container);
     orderChrome(container, logo, navLinks, search, cta, toggle);
-
     markActive(navLinks);
     bindNavigation(navbar, navLinks);
     loadSearchEngine();
