@@ -210,8 +210,8 @@
 }
 
 /* ===== PROCESS — RESTORED CLASSIC MULTICOLOR DESIGN =====
-   This section intentionally keeps the original four-color identity because it
-   scans better than a monochrome treatment while remaining soft and cohesive. */
+   Visual appearance follows the approved classic design, while repeated color
+   declarations are centralized as per-step design tokens for easier maintenance. */
 .online-course-page .how-section {
   background: #fff !important;
 }
@@ -223,32 +223,46 @@
 }
 
 .online-course-page .how-section .course-step {
+  --step-bg-start: #f0f5ee;
+  --step-bg-end: #e8efe5;
+  --step-border: rgba(71, 111, 68, .10);
+  --step-accent: #4f754e;
+  --step-shadow: rgba(63, 104, 62, .24);
+  --step-title: #28492c;
+
   min-height: 264px !important;
   padding: 40px 36px 36px !important;
-  border-width: 1px !important;
-  border-style: solid !important;
+  border: 1px solid var(--step-border) !important;
   border-radius: 24px !important;
+  background: linear-gradient(135deg, var(--step-bg-start) 0%, var(--step-bg-end) 100%) !important;
   box-shadow: none !important;
 }
 
-.online-course-page .how-section .course-step:nth-child(1) {
-  background: linear-gradient(135deg, #f0f5ee 0%, #e8efe5 100%) !important;
-  border-color: rgba(71, 111, 68, .10) !important;
-}
-
 .online-course-page .how-section .course-step:nth-child(2) {
-  background: linear-gradient(135deg, #fdf8ee 0%, #f7efe4 100%) !important;
-  border-color: rgba(151, 103, 64, .10) !important;
+  --step-bg-start: #fdf8ee;
+  --step-bg-end: #f7efe4;
+  --step-border: rgba(151, 103, 64, .10);
+  --step-accent: #a77349;
+  --step-shadow: rgba(148, 94, 53, .22);
+  --step-title: #684120;
 }
 
 .online-course-page .how-section .course-step:nth-child(3) {
-  background: linear-gradient(135deg, #eef4f8 0%, #e5eef4 100%) !important;
-  border-color: rgba(60, 105, 143, .10) !important;
+  --step-bg-start: #eef4f8;
+  --step-bg-end: #e5eef4;
+  --step-border: rgba(60, 105, 143, .10);
+  --step-accent: #4479a2;
+  --step-shadow: rgba(52, 100, 138, .23);
+  --step-title: #294e6c;
 }
 
 .online-course-page .how-section .course-step:nth-child(4) {
-  background: linear-gradient(135deg, #f7f0fa 0%, #efe5f4 100%) !important;
-  border-color: rgba(132, 66, 151, .10) !important;
+  --step-bg-start: #f7f0fa;
+  --step-bg-end: #efe5f4;
+  --step-border: rgba(132, 66, 151, .10);
+  --step-accent: #9348a8;
+  --step-shadow: rgba(126, 55, 145, .22);
+  --step-title: #5f236d;
 }
 
 .online-course-page .how-section .course-step .step-heading {
@@ -259,41 +273,19 @@
 .online-course-page .how-section .course-step .step-number {
   width: 60px !important;
   height: 60px !important;
+  background: var(--step-accent) !important;
+  box-shadow: 0 10px 20px var(--step-shadow) !important;
   font-size: 1.3rem !important;
   line-height: 1 !important;
 }
 
-.online-course-page .how-section .course-step:nth-child(1) .step-number {
-  background: #4f754e !important;
-  box-shadow: 0 10px 20px rgba(63, 104, 62, .24) !important;
-}
-
-.online-course-page .how-section .course-step:nth-child(2) .step-number {
-  background: #a77349 !important;
-  box-shadow: 0 10px 20px rgba(148, 94, 53, .22) !important;
-}
-
-.online-course-page .how-section .course-step:nth-child(3) .step-number {
-  background: #4479a2 !important;
-  box-shadow: 0 10px 20px rgba(52, 100, 138, .23) !important;
-}
-
-.online-course-page .how-section .course-step:nth-child(4) .step-number {
-  background: #9348a8 !important;
-  box-shadow: 0 10px 20px rgba(126, 55, 145, .22) !important;
-}
-
 .online-course-page .how-section .course-step h3 {
+  color: var(--step-title) !important;
   font-family: 'DM Sans', sans-serif !important;
   font-size: 1.05rem !important;
   font-weight: 700 !important;
   line-height: 1.35 !important;
 }
-
-.online-course-page .how-section .course-step:nth-child(1) h3 { color: #28492c !important; }
-.online-course-page .how-section .course-step:nth-child(2) h3 { color: #684120 !important; }
-.online-course-page .how-section .course-step:nth-child(3) h3 { color: #294e6c !important; }
-.online-course-page .how-section .course-step:nth-child(4) h3 { color: #5f236d !important; }
 
 .online-course-page .how-section .course-step p {
   margin: 0 !important;
