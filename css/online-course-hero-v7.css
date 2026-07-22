@@ -1,7 +1,7 @@
 /* ===== MÂY YOGA — ONLINE COURSE HERO V7 =====
-   Final hero CTA refinement for hoc-yoga-online.html.
-   Keeps the approved hero layout while replacing the emoji CTA icon with a
-   restrained Font Awesome calendar-check icon and tighter responsive rhythm. */
+   Final hero refinements for hoc-yoga-online.html:
+   - refined trial CTA with Font Awesome;
+   - restored the approved dashed decorative frame behind the hero visual. */
 
 .online-course-page .sales-hero .course-hero-cta {
   display: inline-flex !important;
@@ -37,6 +37,39 @@
   min-width: 0;
 }
 
+/* ===== HERO VISUAL — RESTORED DASHED BACK FRAME =====
+   The old approved design used a soft dashed outline offset behind the image.
+   We recreate it entirely in CSS so there is no extra decorative markup. */
+.online-course-page .sales-hero .hero-img-wrap {
+  position: relative !important;
+  isolation: isolate;
+  overflow: visible !important;
+}
+
+.online-course-page .sales-hero .hero-img-wrap::before {
+  content: '' !important;
+  position: absolute !important;
+  display: block !important;
+  top: -14px !important;
+  right: -14px !important;
+  bottom: auto !important;
+  left: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 1.5px dashed rgba(61, 90, 58, .20) !important;
+  border-radius: 30px 30px 86px 30px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+  z-index: 0 !important;
+  pointer-events: none;
+}
+
+.online-course-page .sales-hero .hero-img-wrap img {
+  position: relative;
+  z-index: 1;
+}
+
 @media (max-width: 768px) {
   .online-course-page .sales-hero .course-hero-cta {
     gap: 8px !important;
@@ -49,6 +82,22 @@
     width: 16px;
     height: 16px;
     font-size: 13px;
+  }
+
+  .online-course-page .sales-hero .hero-img-wrap::before {
+    top: -9px !important;
+    right: -9px !important;
+    border-width: 1px !important;
+    border-color: rgba(61, 90, 58, .17) !important;
+    border-radius: 24px 24px 58px 24px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .online-course-page .sales-hero .hero-img-wrap::before {
+    top: -7px !important;
+    right: -7px !important;
+    border-color: rgba(61, 90, 58, .145) !important;
   }
 }
 
