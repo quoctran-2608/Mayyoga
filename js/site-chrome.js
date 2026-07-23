@@ -71,13 +71,14 @@
 
   function loadPageSpecificStyles() {
     var path = window.location.pathname.replace(/\/+$/, '');
-    if (!/\/hoc-yoga-online\.html$/i.test(path)) return;
-    if (document.querySelector('link[data-online-course-polish]')) return;
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = siteUrl('css/online-course-polish-v2.css?v=20260722a');
-    link.setAttribute('data-online-course-polish', 'true');
-    document.head.appendChild(link);
+
+    if (/\/hoc-yoga-online\.html$/i.test(path)) {
+      ensureStylesheet('link[data-online-course-polish]', 'css/online-course-polish-v2.css?v=20260722a', 'data-online-course-polish');
+    }
+
+    if (/\/goc-huan-luyen-vien\.html$/i.test(path)) {
+      ensureStylesheet('link[data-ytt-callout-viewport-fix]', 'css/ytt-callout-viewport-fix-v1.css?v=20260723a', 'data-ytt-callout-viewport-fix');
+    }
   }
 
   function footerMarkup() {
