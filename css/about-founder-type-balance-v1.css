@@ -1,0 +1,64 @@
+/* Mây Yoga — Founder hero typography balance
+   Fine-tunes only the visual hierarchy between the signature headline and founder quote.
+   Layout, portrait, credibility panel and CTAs remain unchanged. */
+
+/* Desktop: let the portrait and founder statement share attention more evenly. */
+html body.about-page .about-founder-hero .about-founder-title .about-founder-name {
+  font-size: .90em !important;
+  line-height: 1 !important;
+}
+
+html body.about-page .about-founder-copy .about-founder-intro {
+  padding-top: 24px !important;
+  padding-bottom: 23px !important;
+  color: #4f655a !important;
+  font-size: 1.22rem !important;
+  line-height: 1.64 !important;
+}
+
+/* Medium desktop / tablet: preserve the hierarchy without making the name feel undersized. */
+@media (max-width: 1100px) {
+  html body.about-page .about-founder-hero .about-founder-title .about-founder-name {
+    font-size: .92em !important;
+  }
+
+  html body.about-page .about-founder-copy .about-founder-intro {
+    font-size: 1.16rem !important;
+    line-height: 1.64 !important;
+  }
+}
+
+/* Tablet / stacked hero: keep the headline expressive while maintaining comfortable reading. */
+@media (max-width: 860px) {
+  html body.about-page .about-founder-hero .about-founder-title .about-founder-name {
+    font-size: .94em !important;
+  }
+
+  html body.about-page .about-founder-copy .about-founder-intro {
+    font-size: 1.11rem !important;
+    line-height: 1.64 !important;
+  }
+}
+
+/* Phone: only a subtle headline reduction; quote remains comfortably readable. */
+@media (max-width: 600px) {
+  html body.about-page .about-founder-hero .about-founder-title .about-founder-name {
+    font-size: .95em !important;
+  }
+
+  html body.about-page .about-founder-copy .about-founder-intro {
+    font-size: 1.07rem !important;
+    line-height: 1.62 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  html body.about-page .about-founder-hero .about-founder-title .about-founder-name {
+    font-size: .96em !important;
+  }
+
+  html body.about-page .about-founder-copy .about-founder-intro {
+    font-size: 1.02rem !important;
+    line-height: 1.60 !important;
+  }
+}
