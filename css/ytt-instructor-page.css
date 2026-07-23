@@ -540,3 +540,324 @@
   .ytt-section-visual img { height: 180px; }
   .ytt-community-visual img { height: 180px; }
 }
+
+/* ===== HERO POLISH V2 — Editorial / Professional ===== */
+/* The hero keeps the full-bleed photography but moves the reading column away
+   from the central subject, increases typographic hierarchy, and integrates the
+   YTT callout as a premium continuation of the hero. */
+.ytt-page-hero {
+  min-height: 610px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 64px 0 76px;
+  isolation: isolate;
+}
+
+.ytt-page-hero .hero-bg img {
+  object-position: center 46%;
+  transform: scale(1.015);
+}
+
+.ytt-page-hero::before {
+  background:
+    linear-gradient(90deg,
+      rgba(9, 24, 16, 0.91) 0%,
+      rgba(11, 29, 20, 0.82) 32%,
+      rgba(12, 29, 20, 0.46) 62%,
+      rgba(7, 19, 13, 0.54) 100%),
+    linear-gradient(180deg,
+      rgba(5, 16, 10, 0.12) 0%,
+      rgba(5, 16, 10, 0.04) 48%,
+      rgba(5, 16, 10, 0.66) 100%);
+}
+
+.ytt-page-hero::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 150px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, rgba(9, 24, 16, 0.26) 100%);
+}
+
+.ytt-page-hero .breadcrumb {
+  display: none !important;
+}
+
+.ytt-hero-content {
+  width: min(calc(100% - 40px), var(--container-width, 1200px));
+  max-width: none;
+  margin: 0 auto;
+  padding-top: 8px;
+}
+
+.ytt-hero-content > * {
+  max-width: 650px;
+}
+
+.ytt-hero-badge {
+  margin-bottom: 22px;
+  padding: 9px 18px;
+  gap: 9px;
+  color: #e2c36a;
+  background: rgba(12, 32, 21, 0.34);
+  border: 1px solid rgba(226, 195, 106, 0.46);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 0.74rem;
+  letter-spacing: 1.8px;
+}
+
+.ytt-hero-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d8b652;
+  box-shadow: 0 0 0 4px rgba(216, 182, 82, 0.1);
+  flex: 0 0 auto;
+}
+
+.ytt-page-hero h1 {
+  max-width: 670px;
+  margin: 0 0 22px;
+  color: #fbf8ef;
+  font-size: clamp(3.35rem, 4.25vw, 4.45rem);
+  font-weight: 500;
+  font-style: normal;
+  line-height: 0.99;
+  letter-spacing: -1.3px;
+  text-wrap: balance;
+  text-shadow: 0 4px 26px rgba(0,0,0,0.2);
+}
+
+.ytt-hero-desc {
+  max-width: 635px;
+  margin: 0 0 28px;
+  color: rgba(255,255,255,0.84);
+  font-size: 1.01rem;
+  line-height: 1.78;
+  text-wrap: pretty;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.2);
+}
+
+.ytt-hero-trust {
+  max-width: 680px;
+  justify-content: flex-start;
+  gap: 9px;
+  margin: 0;
+}
+
+.ytt-hero-trust span {
+  min-height: 38px;
+  padding: 8px 14px;
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.075);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  font-size: 0.78rem;
+  letter-spacing: 0.05px;
+}
+
+.ytt-callout {
+  position: relative;
+  z-index: 3;
+  background: linear-gradient(100deg, #17291e 0%, #112219 55%, #16271d 100%);
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 -16px 42px rgba(4, 14, 8, 0.16);
+}
+
+.ytt-callout-inner {
+  min-height: 112px;
+  padding: 20px 0;
+  gap: 34px;
+}
+
+.ytt-callout-text {
+  padding-left: 22px;
+  border-left: 2px solid rgba(212,175,55,0.55);
+}
+
+.ytt-callout-label {
+  margin-bottom: 5px;
+  color: #d1ae50;
+  font-size: 0.72rem;
+  letter-spacing: 1.65px;
+}
+
+.ytt-callout-title {
+  max-width: 760px;
+  color: rgba(255,255,255,0.94);
+  font-size: clamp(1.22rem, 1.55vw, 1.48rem);
+  line-height: 1.26;
+  letter-spacing: -0.15px;
+}
+
+.ytt-callout-btn {
+  min-height: 52px;
+  padding: 13px 25px;
+  background: linear-gradient(135deg, #d5b04d 0%, #b9943e 100%);
+  color: #122219;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.16), inset 0 1px 0 rgba(255,255,255,0.22);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.ytt-callout-btn:hover {
+  background: linear-gradient(135deg, #e0c063 0%, #c9a64d 100%);
+  box-shadow: 0 11px 28px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.26);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+  .ytt-page-hero {
+    min-height: 590px;
+    padding-top: 58px;
+  }
+  .ytt-hero-content > * {
+    max-width: 590px;
+  }
+  .ytt-page-hero h1 {
+    max-width: 610px;
+    font-size: clamp(3rem, 5.7vw, 3.75rem);
+  }
+  .ytt-hero-desc {
+    max-width: 570px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ytt-page-hero {
+    min-height: 620px;
+    align-items: flex-end;
+    text-align: center;
+    padding: 110px 0 46px;
+  }
+
+  .ytt-page-hero .hero-bg img {
+    object-position: 57% center;
+    transform: scale(1.01);
+  }
+
+  .ytt-page-hero::before {
+    background:
+      linear-gradient(180deg,
+        rgba(8, 22, 14, 0.35) 0%,
+        rgba(8, 22, 14, 0.48) 34%,
+        rgba(8, 22, 14, 0.86) 78%,
+        rgba(8, 22, 14, 0.96) 100%);
+  }
+
+  .ytt-page-hero::after {
+    height: 110px;
+  }
+
+  .ytt-hero-content {
+    width: min(calc(100% - 32px), 680px);
+    padding-top: 0;
+  }
+
+  .ytt-hero-content > * {
+    max-width: 100%;
+  }
+
+  .ytt-hero-badge {
+    margin-bottom: 17px;
+    padding: 8px 14px;
+    font-size: 0.66rem;
+    letter-spacing: 1.35px;
+  }
+
+  .ytt-page-hero h1 {
+    max-width: 560px;
+    margin: 0 auto 17px;
+    font-size: clamp(2.55rem, 10vw, 3.45rem);
+    line-height: 0.98;
+    letter-spacing: -0.8px;
+  }
+
+  .ytt-hero-desc {
+    max-width: 590px;
+    margin: 0 auto 22px;
+    font-size: 0.93rem;
+    line-height: 1.67;
+  }
+
+  .ytt-hero-trust {
+    justify-content: center;
+    gap: 7px;
+    margin: 0 auto;
+  }
+
+  .ytt-hero-trust span {
+    min-height: 34px;
+    padding: 6px 11px;
+    font-size: 0.71rem;
+  }
+
+  .ytt-callout-inner {
+    min-height: 0;
+    gap: 17px;
+    padding: 23px 0 25px;
+  }
+
+  .ytt-callout-text {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .ytt-callout-label {
+    font-size: 0.68rem;
+    letter-spacing: 1.3px;
+  }
+
+  .ytt-callout-title {
+    max-width: 590px;
+    margin: 0 auto;
+    font-size: 1.28rem;
+  }
+
+  .ytt-callout-btn {
+    min-height: 48px;
+    padding: 12px 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ytt-page-hero {
+    min-height: 600px;
+    padding: 102px 0 38px;
+  }
+
+  .ytt-page-hero h1 {
+    font-size: clamp(2.12rem, 11.6vw, 2.78rem);
+    line-height: 1;
+  }
+
+  .ytt-hero-desc {
+    font-size: 0.88rem;
+    line-height: 1.62;
+  }
+
+  .ytt-hero-trust {
+    gap: 6px;
+  }
+
+  .ytt-hero-trust span {
+    padding: 6px 9px;
+    font-size: 0.67rem;
+  }
+
+  .ytt-callout-title {
+    font-size: 1.16rem;
+  }
+
+  .ytt-callout-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
