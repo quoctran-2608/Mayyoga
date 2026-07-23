@@ -22,6 +22,13 @@ html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcru
   text-align: left !important;
 }
 
+/* Online-course masthead follows the same fixed-header-safe top rhythm as
+   ve-may-yoga.html. Only top padding is normalized; the approved hero spacing
+   below the breadcrumb and the rest of the hero composition stay unchanged. */
+html body.online-course-page .sales-hero {
+  padding-top: 136px !important;
+}
+
 /* Parent / ancestor links — sage, readable, but quieter than the current page. */
 html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > a,
 html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcrumb"] > a {
@@ -74,9 +81,19 @@ html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcru
   letter-spacing: inherit !important;
 }
 
+@media (max-width: 1024px) and (min-width: 769px) {
+  html body.online-course-page .sales-hero {
+    padding-top: 124px !important;
+  }
+}
+
 /* Keep the approved breadcrumb visible on mobile. Some legacy page CSS used to
    hide course breadcrumbs; canonical behavior is now compact-but-visible. */
 @media (max-width: 768px) {
+  html body.online-course-page .sales-hero {
+    padding-top: 104px !important;
+  }
+
   html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]),
   html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcrumb"] {
     display: flex !important;
@@ -88,6 +105,10 @@ html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcru
 }
 
 @media (max-width: 420px) {
+  html body.online-course-page .sales-hero {
+    padding-top: 96px !important;
+  }
+
   html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]),
   html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcrumb"] {
     gap: 6px !important;
