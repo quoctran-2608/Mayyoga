@@ -1,10 +1,19 @@
 /* Mây Yoga — YTT hero/callout viewport balance
-   Keep the conversion band compact, move its content slightly lower in normal flow,
-   and return the saved vertical space to the photographic hero. */
+   Keep the conversion band compact, preserve its current viewport position,
+   and give the hero reading cluster more breathing room below the breadcrumb. */
 
 body .ytt-page-hero {
   min-height: 705px !important;
   padding-bottom: 68px !important;
+}
+
+/* Move only the post-breadcrumb hero cluster. Transform keeps the hero/callout
+   boundary unchanged, so the callout stays exactly where it is now. */
+body .ytt-page-hero .ytt-hero-badge,
+body .ytt-page-hero h1,
+body .ytt-page-hero .ytt-hero-desc,
+body .ytt-page-hero .ytt-hero-trust {
+  transform: translateY(18px);
 }
 
 @media (min-width: 769px) {
@@ -35,6 +44,13 @@ body .ytt-callout-inner {
     padding-bottom: 60px !important;
   }
 
+  body .ytt-page-hero .ytt-hero-badge,
+  body .ytt-page-hero h1,
+  body .ytt-page-hero .ytt-hero-desc,
+  body .ytt-page-hero .ytt-hero-trust {
+    transform: translateY(14px);
+  }
+
   body .ytt-callout-inner {
     min-height: 112px !important;
     padding: 18px 0 12px !important;
@@ -46,6 +62,13 @@ body .ytt-callout-inner {
   body .ytt-page-hero {
     min-height: 640px !important;
     padding-bottom: 44px !important;
+  }
+
+  body .ytt-page-hero .ytt-hero-badge,
+  body .ytt-page-hero h1,
+  body .ytt-page-hero .ytt-hero-desc,
+  body .ytt-page-hero .ytt-hero-trust {
+    transform: translateY(10px);
   }
 
   body .ytt-callout {
