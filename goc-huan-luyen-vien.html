@@ -7,10 +7,11 @@
   <meta name="description" content="Thư viện kiến thức chuyên sâu dành cho Giáo viên Yoga và Học viên đào tạo 200 giờ: Giải phẫu học ứng dụng, Nghệ thuật giảng dạy, và Phân tích ca lâm sàng thực tế.">
 
   <link rel="stylesheet" href="css/style.css?v=20260723a">
-  <link rel="stylesheet" href="css/ytt-instructor-page.css?v=20260723c">
-  <style data-ytt-hero-layout-fix="v3">
-    /* Fix fixed-header overlap: follow the same masthead rhythm as ve-may-yoga.html.
-       Breadcrumb now participates in normal document flow before badge/title. */
+  <link rel="stylesheet" href="css/ytt-instructor-page.css?v=20260723d">
+  <link rel="stylesheet" href="css/site-navigation-canonical-v4.css?v=20260722a" data-site-navigation-canonical="true">
+  <link rel="stylesheet" href="css/header-index-canonical-v3.css?v=20260722b" data-header-index-canonical="true">
+  <style data-ytt-hero-layout-fix="v4">
+    /* Fixed-header-safe hero masthead. Breadcrumb follows the same normal-flow rhythm as ve-may-yoga.html. */
     .ytt-page-hero {
       min-height: 640px;
       align-items: flex-start;
@@ -67,7 +68,11 @@
       box-shadow: 0 0 0 4px rgba(225,185,79,.12), 0 0 18px rgba(225,185,79,.16);
     }
     .ytt-page-hero h1 {
+      max-width: 650px;
       color: #e1b94f;
+      font-size: clamp(2.95rem, 3.5vw, 3.8rem);
+      line-height: 1.02;
+      letter-spacing: -1px;
       text-shadow: 0 3px 24px rgba(0,0,0,.32), 0 1px 0 rgba(255,255,255,.05);
     }
     .ytt-hero-desc {
@@ -77,6 +82,10 @@
       .ytt-page-hero {
         min-height: 620px;
         padding: 132px 0 66px;
+      }
+      .ytt-page-hero h1 {
+        font-size: clamp(2.7rem, 5vw, 3.25rem);
+        line-height: 1.03;
       }
     }
     @media (max-width: 768px) {
@@ -103,8 +112,12 @@
         margin-bottom: 17px;
       }
       .ytt-page-hero h1 {
+        max-width: 560px;
         margin-left: auto;
         margin-right: auto;
+        font-size: clamp(2.25rem, 8.5vw, 2.9rem);
+        line-height: 1.02;
+        letter-spacing: -.7px;
       }
       .ytt-hero-desc,
       .ytt-hero-trust {
@@ -126,6 +139,8 @@
       }
       .ytt-page-hero h1 {
         color: #e3bb54;
+        font-size: clamp(1.95rem, 10vw, 2.45rem);
+        line-height: 1.03;
       }
     }
   </style>
@@ -150,19 +165,19 @@
 </head>
 <body>
 
-  <!-- ===== NAVBAR SHELL (canonical nav replaces at runtime) ===== -->
+  <!-- ===== NAVBAR SHELL (canonical shared navigation replaces/normalizes at runtime) ===== -->
   <nav class="navbar scrolled" id="navbar">
     <div class="container">
       <a href="index.html" class="nav-logo"><img src="assets/images/logo.webp" alt="Mây Yoga" class="logo-img"></a>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Trang chủ</a></li>
         <li><a href="ve-may-yoga.html">Về Mây Yoga</a></li>
-        <li class="nav-dropdown"><a href="hoc-yoga-online.html" class="dropdown-toggle">Các khoá học <span class="chevron">▾</span></a><ul class="dropdown-menu"><li><a href="hoc-yoga-online.html">🌿 Yoga Online 1:1</a></li><li><a href="goc-huan-luyen-vien.html">🦉 Đào tạo YTT 200H</a></li></ul></li>
-        <li class="nav-dropdown"><a href="bai-viet/yoga-cho-nguoi-moi.html" class="dropdown-toggle">Kiến thức Yoga <span class="chevron">▾</span></a><ul class="dropdown-menu"><li><a href="bai-viet/yoga-cho-nguoi-moi.html">🌱 Yoga cho người mới</a></li><li><a href="tu-the-yoga.html">🧘 90 Tư thế Yoga</a></li><li><a href="bai-viet/pranayama-ky-thuat-tho.html">🌬️ Pranayama</a></li><li><a href="bai-viet/thien-cho-nguoi-moi.html">🕊️ Thiền định</a></li><li><a href="giai-phau-yoga.html">🫀 Giải phẫu Yoga</a></li><li><a href="tu-tap-tai-nha.html">🏠 Tự tập tại nhà</a></li></ul></li>
+        <li class="nav-dropdown"><a href="hoc-yoga-online.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Các khoá học <span class="chevron">▾</span></a><ul class="dropdown-menu"><li><a href="hoc-yoga-online.html">🌿 Yoga Online 1:1</a></li><li><a href="goc-huan-luyen-vien.html">🦉 Đào tạo YTT 200H</a></li></ul></li>
+        <li class="nav-dropdown"><a href="bai-viet/yoga-cho-nguoi-moi.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Kiến thức Yoga <span class="chevron">▾</span></a><ul class="dropdown-menu"><li><a href="bai-viet/yoga-cho-nguoi-moi.html">🌱 Yoga cho người mới</a></li><li><a href="tu-the-yoga.html">🧘 90 Tư thế Yoga</a></li><li><a href="bai-viet/pranayama-ky-thuat-tho.html">🌬️ Pranayama</a></li><li><a href="bai-viet/thien-cho-nguoi-moi.html">🕊️ Thiền định</a></li><li><a href="giai-phau-yoga.html">🫀 Giải phẫu Yoga</a></li><li style="border-top:1px solid rgba(61,90,58,.1);margin-top:4px;padding-top:4px"><a href="tu-tap-tai-nha.html">🏠 Tự tập tại nhà</a></li></ul></li>
         <li><a href="trac-nghiem.html">Trắc nghiệm</a></li>
       </ul>
       <div class="nav-search" id="navSearch"><input type="text" id="globalSearch" placeholder="🔍 Tìm tư thế, bài viết..." autocomplete="off"><div class="search-dropdown" id="searchDropdown"></div></div>
-      <div class="nav-cta"><a href="#ytt-register" class="btn btn-primary btn-sm">Nhận tư vấn YTT</a></div>
+      <div class="nav-cta"><a href="index.html#categories" class="btn btn-primary btn-sm">Khám phá ngay <img class="leaf-icon" src="assets/images/icons/leaf_button.svg" alt="" aria-hidden="true" width="14" height="18"></a></div>
       <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </nav>
