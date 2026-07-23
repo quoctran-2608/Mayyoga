@@ -1,30 +1,30 @@
-/* Mây Yoga — Founder intro quote card
-   Adds a restrained editorial quote treatment to the founder statement without
-   changing the surrounding hero structure. */
+/* Mây Yoga — Founder intro quote + credibility panel
+   Refines the founder statement and proof points into one calm editorial cluster
+   without changing the surrounding hero structure. */
 
 .about-page .about-founder-copy .about-founder-intro {
   position: relative;
   max-width: 610px;
   margin: 20px 0 0;
-  padding: 22px 24px 21px 70px;
+  padding: 23px 25px 22px 70px;
   overflow: hidden;
   border: 1px solid rgba(91, 128, 96, .13);
   border-radius: 22px;
   background:
     radial-gradient(circle at 10% 8%, rgba(232, 198, 119, .15) 0%, rgba(232, 198, 119, 0) 35%),
-    linear-gradient(135deg, rgba(255,255,255,.82) 0%, rgba(248,250,243,.88) 58%, rgba(250,246,235,.78) 100%);
-  color: #576b61 !important;
+    linear-gradient(135deg, rgba(255,255,255,.84) 0%, rgba(248,250,243,.90) 58%, rgba(250,246,235,.80) 100%);
+  color: #53685d !important;
   box-shadow:
     0 16px 38px rgba(66, 99, 72, .075),
-    inset 0 1px 0 rgba(255,255,255,.92);
+    inset 0 1px 0 rgba(255,255,255,.94);
   backdrop-filter: blur(9px);
   -webkit-backdrop-filter: blur(9px);
   font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
-  font-size: 1.02rem !important;
+  font-size: 1.12rem !important;
   font-style: italic;
   font-weight: 500;
-  line-height: 1.72 !important;
-  letter-spacing: -.008em;
+  line-height: 1.7 !important;
+  letter-spacing: -.009em;
 }
 
 .about-page .about-founder-copy .about-founder-intro::before {
@@ -34,7 +34,7 @@
   top: 9px;
   color: #d0a84f;
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 4.6rem;
+  font-size: 4.7rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1;
@@ -46,52 +46,183 @@
   content: '';
   position: absolute;
   left: 25px;
-  top: 62px;
-  width: 27px;
+  top: 63px;
+  width: 28px;
   height: 2px;
   border-radius: 999px;
   background: linear-gradient(90deg, rgba(208,168,79,.92), rgba(208,168,79,.12));
   pointer-events: none;
 }
 
+/* The proof points visually continue the quote instead of starting a separate section. */
+.about-page .about-founder-copy .about-founder-trust {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  max-width: 610px;
+  margin-top: 13px;
+  padding: 10px 12px;
+  overflow: hidden;
+  border: 1px solid rgba(91, 128, 96, .11) !important;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 8% 18%, rgba(231, 198, 121, .075), transparent 32%),
+    linear-gradient(135deg, rgba(255,255,255,.59), rgba(247,250,243,.68));
+  box-shadow:
+    0 10px 26px rgba(66, 99, 72, .052),
+    inset 0 1px 0 rgba(255,255,255,.84);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.about-page .about-founder-copy .about-founder-trust-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  min-height: 54px;
+  padding: 7px 18px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  color: transparent !important;
+  font-size: 0 !important;
+}
+
+.about-page .about-founder-copy .about-founder-trust-item:first-child {
+  padding-left: 10px !important;
+}
+
+.about-page .about-founder-copy .about-founder-trust-item + .about-founder-trust-item {
+  border-left: 1px solid rgba(78, 116, 84, .11) !important;
+}
+
+.about-page .about-founder-copy .about-founder-trust-item + .about-founder-trust-item::before {
+  left: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+.about-page .about-founder-copy .about-founder-trust-item::after {
+  display: block;
+  margin-top: 4px;
+  color: #7a8981 !important;
+  font-family: inherit;
+  font-size: .72rem !important;
+  font-weight: 530;
+  line-height: 1.25;
+  letter-spacing: .01em;
+}
+
+.about-page .about-founder-copy .about-founder-trust-item:nth-child(1)::before,
+.about-page .about-founder-copy .about-founder-trust-item:nth-child(2)::before,
+.about-page .about-founder-copy .about-founder-trust-item:nth-child(3)::before {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  background: none !important;
+  color: #3e654d !important;
+  font-family: inherit;
+  font-size: .98rem !important;
+  font-weight: 740;
+  line-height: 1.15;
+}
+
+.about-page .about-founder-copy .about-founder-trust-item:nth-child(1)::before { content: 'RYT500'; }
+.about-page .about-founder-copy .about-founder-trust-item:nth-child(1)::after { content: 'Yoga Alliance'; }
+.about-page .about-founder-copy .about-founder-trust-item:nth-child(2)::before { content: '3+ năm'; }
+.about-page .about-founder-copy .about-founder-trust-item:nth-child(2)::after { content: 'Giảng dạy'; }
+.about-page .about-founder-copy .about-founder-trust-item:nth-child(3)::before { content: 'Hatha Yoga'; }
+.about-page .about-founder-copy .about-founder-trust-item:nth-child(3)::after { content: 'Alignment'; }
+
+/* Pull the CTA slightly closer so quote → proof → action reads as one composed group. */
+.about-page .about-founder-copy .about-founder-actions {
+  margin-top: 22px;
+}
+
 @media (max-width: 768px) {
   .about-page .about-founder-copy .about-founder-intro {
     max-width: 100%;
     margin-top: 18px;
-    padding: 20px 18px 19px 60px;
+    padding: 21px 19px 20px 60px;
     border-radius: 19px;
-    font-size: .96rem !important;
+    font-size: 1.02rem !important;
     line-height: 1.68 !important;
   }
 
   .about-page .about-founder-copy .about-founder-intro::before {
     left: 17px;
     top: 9px;
-    font-size: 3.9rem;
+    font-size: 4rem;
   }
 
   .about-page .about-founder-copy .about-founder-intro::after {
     left: 21px;
-    top: 55px;
+    top: 56px;
     width: 23px;
+  }
+
+  .about-page .about-founder-copy .about-founder-trust {
+    grid-template-columns: repeat(3, minmax(118px, 1fr));
+    width: 100%;
+    max-width: 100%;
+    margin-top: 11px;
+    margin-right: 0;
+    padding: 8px 9px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: 16px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .about-page .about-founder-copy .about-founder-trust::-webkit-scrollbar {
+    display: none;
+  }
+
+  .about-page .about-founder-copy .about-founder-trust-item {
+    min-height: 50px;
+    padding: 6px 13px !important;
+  }
+
+  .about-page .about-founder-copy .about-founder-trust-item:first-child {
+    padding-left: 9px !important;
+  }
+
+  .about-page .about-founder-copy .about-founder-actions {
+    margin-top: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .about-page .about-founder-copy .about-founder-intro {
-    padding: 18px 16px 18px 54px;
+    padding: 19px 16px 19px 54px;
     border-radius: 17px;
-    font-size: .93rem !important;
+    font-size: .99rem !important;
   }
 
   .about-page .about-founder-copy .about-founder-intro::before {
     left: 15px;
-    font-size: 3.55rem;
+    font-size: 3.65rem;
   }
 
   .about-page .about-founder-copy .about-founder-intro::after {
     left: 19px;
-    top: 51px;
+    top: 52px;
     width: 20px;
+  }
+
+  .about-page .about-founder-copy .about-founder-trust {
+    grid-template-columns: repeat(3, minmax(110px, 1fr));
+  }
+
+  .about-page .about-founder-copy .about-founder-trust-item:nth-child(1)::before,
+  .about-page .about-founder-copy .about-founder-trust-item:nth-child(2)::before,
+  .about-page .about-founder-copy .about-founder-trust-item:nth-child(3)::before {
+    font-size: .91rem !important;
   }
 }
