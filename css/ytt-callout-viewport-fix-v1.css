@@ -1,0 +1,55 @@
+/* Mây Yoga — YTT callout viewport fix
+   Keeps the conversion band visible in the first desktop viewport without
+   translating its inner content out of normal flow. */
+
+body .ytt-page-hero {
+  min-height: 650px !important;
+  padding-bottom: 68px !important;
+}
+
+body .ytt-callout {
+  margin-top: 0 !important;
+  background:
+    radial-gradient(circle at 84% 0%, rgba(255, 225, 148, .18) 0%, rgba(255, 225, 148, 0) 30%),
+    linear-gradient(112deg, #926613 0%, #9c6c0f 38%, #95670d 67%, #815b17 100%) !important;
+}
+
+body .ytt-callout-inner {
+  min-height: 165px !important;
+  box-sizing: border-box;
+  padding: 14px 0 30px !important;
+  transform: none !important;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  body .ytt-page-hero {
+    min-height: 635px !important;
+    padding-bottom: 60px !important;
+  }
+
+  body .ytt-callout-inner {
+    min-height: 150px !important;
+    padding: 14px 0 26px !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body .ytt-page-hero {
+    min-height: 640px !important;
+    padding-bottom: 44px !important;
+  }
+
+  body .ytt-callout {
+    background:
+      radial-gradient(circle at 84% 0%, rgba(255, 225, 148, .18) 0%, rgba(255, 225, 148, 0) 30%),
+      linear-gradient(112deg, #926613 0%, #9c6c0f 38%, #95670d 67%, #815b17 100%) !important;
+  }
+
+  body .ytt-callout-inner {
+    min-height: 0 !important;
+    padding: 18px 0 24px !important;
+    transform: none !important;
+  }
+}
