@@ -1,21 +1,24 @@
-/* ===== MÂY YOGA — FOUNDER HERO V2 / QUIET LUXURY =====
-   Simplifies the unified founder hero after visual review of the live desktop layout.
-   One cohesive botanical field, one portrait focal point, editorial proof stats,
-   fewer floating surfaces and a clearer hierarchy. Shared Header/Footer stay untouched. */
+/* ===== MÂY YOGA — FOUNDER HERO V3 / BOTANICAL EDITORIAL LIGHT =====
+   Bright, artistic founder hero for ve-may-yoga.html.
+   Keeps the clean V2 hierarchy while shifting the visual language to warm ivory,
+   botanical sage, soft mint and champagne accents. Shared Header/Footer stay untouched. */
 
 .about-page .about-founder-hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   min-height: 680px;
-  padding: 136px 0 70px;
-  color: #fffaf0;
+  padding: 136px 0 72px;
+  color: #29483d;
   background:
-    radial-gradient(circle at 79% 38%, rgba(229, 194, 108, .15) 0%, rgba(229, 194, 108, 0) 27%),
-    radial-gradient(circle at 8% 88%, rgba(92, 158, 118, .18) 0%, rgba(92, 158, 118, 0) 31%),
-    linear-gradient(118deg, #12372e 0%, #194538 54%, #285744 100%);
+    radial-gradient(circle at 7% 15%, rgba(163, 194, 151, .24) 0%, rgba(163, 194, 151, 0) 25%),
+    radial-gradient(circle at 92% 12%, rgba(236, 202, 124, .24) 0%, rgba(236, 202, 124, 0) 24%),
+    radial-gradient(circle at 76% 86%, rgba(184, 216, 197, .26) 0%, rgba(184, 216, 197, 0) 29%),
+    linear-gradient(128deg, #fbfaf4 0%, #f6f8ef 48%, #fffaf0 100%);
+  border-bottom: 1px solid rgba(72, 111, 78, .08);
 }
 
+/* Fine paper-grid texture, deliberately very faint. */
 .about-page .about-founder-hero::before {
   content: '';
   position: absolute;
@@ -23,17 +26,33 @@
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px),
-    linear-gradient(rgba(255,255,255,.014) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(75, 112, 82, .026) 1px, transparent 1px),
+    linear-gradient(rgba(75, 112, 82, .021) 1px, transparent 1px);
   background-size: 58px 58px;
-  -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,.26), transparent 64%);
-  mask-image: linear-gradient(90deg, rgba(0,0,0,.26), transparent 64%);
-  opacity: .24;
+  -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,.44), rgba(0,0,0,.10) 68%, transparent 92%);
+  mask-image: linear-gradient(90deg, rgba(0,0,0,.44), rgba(0,0,0,.10) 68%, transparent 92%);
+  opacity: .48;
 }
 
-/* Remove the oversized cream field that previously split the hero into two competing halves. */
+/* Localized artistic wash behind the portrait — not a split-screen field. */
 .about-page .about-founder-hero::after {
-  content: none !important;
+  content: '' !important;
+  position: absolute;
+  z-index: 0;
+  top: 15%;
+  right: 4.5%;
+  width: min(38vw, 560px);
+  aspect-ratio: 1 / 1.02;
+  border-radius: 53% 47% 57% 43% / 42% 55% 45% 58%;
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255,255,255,.86), rgba(255,255,255,.18) 40%, transparent 67%),
+    linear-gradient(145deg, rgba(219,232,205,.76), rgba(250,231,182,.58) 52%, rgba(226,239,226,.72));
+  box-shadow:
+    0 0 0 34px rgba(143, 177, 135, .055),
+    0 0 0 72px rgba(232, 199, 121, .035),
+    0 30px 90px rgba(67, 97, 73, .07);
+  transform: rotate(-7deg);
+  pointer-events: none;
 }
 
 .about-page .about-founder-hero > .container {
@@ -43,7 +62,7 @@
   max-width: 1220px;
 }
 
-/* Breadcrumb remains canonical in structure, recolored only for this dark surface. */
+/* Breadcrumb on light editorial surface. */
 html body.about-page .about-founder-hero .breadcrumb {
   position: relative !important;
   z-index: 3;
@@ -51,25 +70,25 @@ html body.about-page .about-founder-hero .breadcrumb {
   align-items: center !important;
   gap: 8px !important;
   margin: 0 0 38px !important;
-  color: rgba(255,249,231,.64) !important;
+  color: #7c8c82 !important;
   font-size: .8rem !important;
 }
 
 html body.about-page .about-founder-hero .breadcrumb > a {
-  color: #e3cd8a !important;
+  color: #55755f !important;
 }
 
 html body.about-page .about-founder-hero .breadcrumb > a:hover,
 html body.about-page .about-founder-hero .breadcrumb > a:focus-visible {
-  color: #ffe6a1 !important;
+  color: #315d3c !important;
 }
 
 html body.about-page .about-founder-hero .breadcrumb > .sep {
-  color: rgba(255,255,255,.28) !important;
+  color: rgba(66, 96, 74, .32) !important;
 }
 
 html body.about-page .about-founder-hero .breadcrumb > span:last-child {
-  color: rgba(255,250,235,.88) !important;
+  color: #52665d !important;
 }
 
 .about-page .about-founder-grid {
@@ -87,7 +106,6 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
   padding: 2px 0;
 }
 
-/* The former vertical gold rail added another visual direction; hierarchy is cleaner without it. */
 .about-page .about-founder-copy::before {
   content: none !important;
 }
@@ -96,18 +114,18 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  min-height: 33px;
+  min-height: 34px;
   margin: 0 0 24px;
   padding: 7px 14px;
-  border: 1px solid rgba(238,207,130,.21);
+  border: 1px solid rgba(90, 130, 86, .16);
   border-radius: 999px;
-  background: rgba(255,248,225,.055);
-  color: #eed48b;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.045);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255,255,255,.62);
+  color: #55785d;
+  box-shadow: 0 7px 22px rgba(71, 105, 77, .05), inset 0 1px 0 rgba(255,255,255,.82);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
   font-size: .73rem;
-  font-weight: 650;
+  font-weight: 680;
   line-height: 1;
   letter-spacing: .055em;
   text-transform: uppercase;
@@ -115,24 +133,24 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
 
 .about-page .about-founder-eyebrow::before {
   content: '';
-  width: 6px;
-  height: 6px;
-  flex: 0 0 6px;
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
   border-radius: 50%;
-  background: #e7c566;
-  box-shadow: 0 0 0 4px rgba(231,197,102,.09);
+  background: #d2aa50;
+  box-shadow: 0 0 0 4px rgba(210,170,80,.10), 0 0 18px rgba(210,170,80,.10);
 }
 
 .about-page .about-founder-title {
   margin: 0;
-  color: #fff9ea !important;
+  color: #264c3e !important;
   font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
   font-size: clamp(3.55rem, 5.15vw, 5.25rem) !important;
   font-weight: 550;
   line-height: .94 !important;
   letter-spacing: -.048em;
   text-wrap: balance;
-  text-shadow: 0 4px 30px rgba(4,26,20,.15);
+  text-shadow: none !important;
 }
 
 .about-page .about-founder-title .about-founder-greeting,
@@ -142,26 +160,41 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
 
 .about-page .about-founder-title .about-founder-greeting {
   margin-bottom: 6px;
-  color: rgba(255,250,238,.80);
+  color: #667d72 !important;
   font-size: .51em;
   font-weight: 500;
   letter-spacing: -.02em;
 }
 
-/* Retain the signature champagne accent, but soften it so it does not fight the portrait/CTA. */
+/* Signature name treatment: green ink with a soft hand-painted champagne stroke. */
 .about-page .about-founder-title .about-founder-name {
-  color: #f0d27a !important;
+  position: relative;
+  width: fit-content;
+  color: #315d46 !important;
   background: none !important;
   -webkit-text-fill-color: currentColor !important;
   filter: none !important;
 }
 
+.about-page .about-founder-title .about-founder-name::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 8%;
+  right: -3%;
+  bottom: .07em;
+  height: .17em;
+  border-radius: 60% 42% 56% 38%;
+  background: linear-gradient(90deg, rgba(226,190,104,.18), rgba(226,190,104,.52) 46%, rgba(226,190,104,.12));
+  transform: rotate(-1.2deg);
+}
+
 .about-page .about-founder-role {
   max-width: 570px;
   margin: 24px 0 0;
-  color: rgba(255,252,240,.94);
+  color: #345649 !important;
   font-size: clamp(1.06rem, 1.45vw, 1.28rem);
-  font-weight: 580;
+  font-weight: 650;
   line-height: 1.42;
   letter-spacing: -.012em;
 }
@@ -169,21 +202,21 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
 .about-page .about-founder-intro {
   max-width: 590px;
   margin: 15px 0 0;
-  color: rgba(242,247,239,.76) !important;
+  color: #617169 !important;
   font-size: .96rem !important;
   line-height: 1.74 !important;
 }
 
-/* Editorial proof row: same information, no pills, no competing card surfaces. */
+/* Editorial proof row: airy, typographic, no card noise. */
 .about-page .about-founder-trust {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
   max-width: 590px;
   margin-top: 28px;
-  padding: 15px 0;
-  border-top: 1px solid rgba(255,238,190,.12);
-  border-bottom: 1px solid rgba(255,238,190,.12);
+  padding: 16px 0;
+  border-top: 1px solid rgba(71, 111, 78, .13);
+  border-bottom: 1px solid rgba(71, 111, 78, .13);
 }
 
 .about-page .about-founder-trust-item {
@@ -215,56 +248,36 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
   top: 5px;
   bottom: 5px;
   width: 1px;
-  background: rgba(255,238,190,.13);
+  background: rgba(71, 111, 78, .14);
 }
 
 .about-page .about-founder-trust-item::after {
   display: block;
   margin-top: 4px;
-  color: rgba(255,250,235,.70);
+  color: #77867e;
   font-size: .72rem;
-  font-weight: 500;
+  font-weight: 520;
   line-height: 1.25;
   letter-spacing: .01em;
 }
 
-.about-page .about-founder-trust-item:nth-child(1) {
-  color: transparent !important;
-}
-.about-page .about-founder-trust-item:nth-child(1)::before {
-  content: 'RYT500';
-  position: static;
-  width: auto;
-  background: none;
-  color: #efd177;
-  font-size: .94rem;
-  font-weight: 720;
-  line-height: 1.15;
-}
-.about-page .about-founder-trust-item:nth-child(1)::after { content: 'Yoga Alliance'; }
-
-.about-page .about-founder-trust-item:nth-child(2)::before {
-  content: '3+ năm';
-  position: static;
-  width: auto;
-  background: none;
-  color: #efd177;
-  font-size: .94rem;
-  font-weight: 720;
-  line-height: 1.15;
-}
-.about-page .about-founder-trust-item:nth-child(2)::after { content: 'Giảng dạy'; }
-
+.about-page .about-founder-trust-item:nth-child(1)::before,
+.about-page .about-founder-trust-item:nth-child(2)::before,
 .about-page .about-founder-trust-item:nth-child(3)::before {
-  content: 'Hatha Yoga';
   position: static;
   width: auto;
   background: none;
-  color: #efd177;
-  font-size: .94rem;
-  font-weight: 720;
+  color: #41664f;
+  font-size: .95rem;
+  font-weight: 740;
   line-height: 1.15;
 }
+
+.about-page .about-founder-trust-item:nth-child(1)::before { content: 'RYT500'; }
+.about-page .about-founder-trust-item:nth-child(1)::after { content: 'Yoga Alliance'; }
+.about-page .about-founder-trust-item:nth-child(2)::before { content: '3+ năm'; }
+.about-page .about-founder-trust-item:nth-child(2)::after { content: 'Giảng dạy'; }
+.about-page .about-founder-trust-item:nth-child(3)::before { content: 'Hatha Yoga'; }
 .about-page .about-founder-trust-item:nth-child(3)::after { content: 'Alignment'; }
 
 .about-page .about-founder-actions {
@@ -283,25 +296,26 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
   padding: 0 21px;
   border-radius: 999px;
   font-size: .82rem;
-  font-weight: 650;
+  font-weight: 680;
   line-height: 1;
   text-decoration: none;
   transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
 }
 
 .about-page .about-founder-action.primary {
-  border: 1px solid rgba(255,242,198,.48);
-  background: linear-gradient(135deg, #f4d47b 0%, #eab751 58%, #d99a38 100%);
-  color: #18372f;
-  box-shadow: 0 13px 28px rgba(4,26,20,.20), inset 0 1px 0 rgba(255,255,255,.53);
+  border: 1px solid rgba(52, 94, 63, .18);
+  background: linear-gradient(135deg, #3f724e 0%, #57845d 58%, #6d956d 100%);
+  color: #fffdf7;
+  box-shadow: 0 13px 28px rgba(49,93,60,.17), inset 0 1px 0 rgba(255,255,255,.18);
 }
 
 .about-page .about-founder-action.secondary {
-  border: 1px solid rgba(255,246,219,.19);
-  background: rgba(255,255,255,.045);
-  color: rgba(255,248,225,.91);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(65, 103, 72, .16);
+  background: rgba(255,255,255,.58);
+  color: #3b6248;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.76);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
 }
 
 .about-page .about-founder-action:hover,
@@ -311,17 +325,17 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
 
 .about-page .about-founder-action.primary:hover,
 .about-page .about-founder-action.primary:focus-visible {
-  background: linear-gradient(135deg, #ffe49a 0%, #f2c464 58%, #e3a443 100%);
-  box-shadow: 0 17px 34px rgba(4,26,20,.25), 0 0 22px rgba(231,183,68,.08), inset 0 1px 0 rgba(255,255,255,.64);
+  background: linear-gradient(135deg, #315f40 0%, #4e7c57 58%, #659067 100%);
+  box-shadow: 0 17px 34px rgba(49,93,60,.22), 0 0 24px rgba(117,151,111,.10), inset 0 1px 0 rgba(255,255,255,.20);
 }
 
 .about-page .about-founder-action.secondary:hover,
 .about-page .about-founder-action.secondary:focus-visible {
-  border-color: rgba(255,231,165,.31);
-  background: rgba(255,255,255,.08);
+  border-color: rgba(62, 104, 70, .26);
+  background: rgba(255,255,255,.82);
 }
 
-/* Portrait is now the single right-side focal object. */
+/* Portrait stage: organic art-print composition with restrained decorative rings. */
 .about-page .about-founder-portrait {
   position: relative;
   z-index: 3;
@@ -334,26 +348,31 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
   content: '';
   position: absolute;
   z-index: -2;
-  top: -3%;
-  left: -2%;
-  width: 105%;
+  top: -7%;
+  left: -6%;
+  width: 110%;
   aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle at 52% 44%, rgba(251,243,220,.17) 0%, rgba(244,225,174,.08) 44%, rgba(244,225,174,0) 72%);
-  filter: blur(2px);
+  border: 1px solid rgba(118, 151, 105, .18);
+  border-radius: 49% 51% 46% 54% / 56% 43% 57% 44%;
+  background:
+    radial-gradient(circle at 52% 44%, rgba(255,255,255,.48) 0%, rgba(255,255,255,.14) 48%, transparent 72%);
+  box-shadow:
+    0 0 0 27px rgba(154, 184, 143, .055),
+    0 0 0 60px rgba(226, 190, 104, .035);
+  transform: rotate(-7deg);
   pointer-events: none;
 }
 
 .about-page .about-founder-photo-frame {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(199,157,67,.32);
+  border: 1px solid rgba(111, 145, 103, .22);
   border-radius: 44% 44% 28px 28px / 19% 19% 28px 28px;
-  background: #ece8dd;
+  background: #f0eee5;
   box-shadow:
-    0 30px 76px rgba(5,30,23,.29),
-    0 0 0 1px rgba(255,255,255,.18),
-    inset 0 1px 0 rgba(255,255,255,.38);
+    0 28px 68px rgba(65, 93, 69, .16),
+    0 0 0 1px rgba(255,255,255,.72),
+    inset 0 1px 0 rgba(255,255,255,.86);
 }
 
 .about-page .about-founder-photo-frame::after {
@@ -361,7 +380,7 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(255,255,255,.025), transparent 46%, rgba(20,53,42,.045));
+  background: linear-gradient(180deg, rgba(255,255,255,.06), transparent 46%, rgba(56,88,65,.035));
 }
 
 .about-page .about-founder-photo {
@@ -380,11 +399,11 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
   gap: 2px;
   max-width: 185px;
   padding: 10px 13px;
-  border: 1px solid rgba(93,93,68,.13);
+  border: 1px solid rgba(77, 111, 79, .13);
   border-radius: 14px;
-  background: rgba(255,253,246,.93);
-  color: #2f5543;
-  box-shadow: 0 14px 32px rgba(18,48,36,.16), inset 0 1px 0 rgba(255,255,255,.76);
+  background: rgba(255,253,247,.91);
+  color: #52705f;
+  box-shadow: 0 14px 32px rgba(65,95,71,.12), inset 0 1px 0 rgba(255,255,255,.86);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   font-size: .69rem;
@@ -394,9 +413,9 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
 }
 
 .about-page .about-founder-credential strong {
-  color: #234d3d;
+  color: #315d46;
   font-size: .78rem;
-  font-weight: 720;
+  font-weight: 740;
 }
 
 .about-page .about-founder-credential.primary {
@@ -405,7 +424,6 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
   bottom: 13%;
 }
 
-/* The second floating credential was useful information but visually overcrowded the portrait. */
 .about-page .about-founder-credential.secondary {
   display: none !important;
 }
@@ -413,10 +431,10 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
 .about-page .about-founder-credential:hover,
 .about-page .about-founder-credential:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 18px 36px rgba(18,48,36,.20), inset 0 1px 0 rgba(255,255,255,.80);
+  box-shadow: 0 18px 36px rgba(65,95,71,.16), inset 0 1px 0 rgba(255,255,255,.92);
 }
 
-/* The full-width quote ribbon acted like a second hero. The philosophy remains in the article copy. */
+/* Keep philosophy in the article so the hero remains visually calm. */
 .about-page .about-founder-quote {
   display: none !important;
 }
@@ -441,6 +459,11 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
 
   .about-page .about-founder-portrait {
     width: min(100%, 440px);
+  }
+
+  .about-page .about-founder-hero::after {
+    right: 1%;
+    width: min(44vw, 500px);
   }
 }
 
@@ -467,15 +490,22 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
 @media (max-width: 768px) {
   .about-page .about-founder-hero {
     min-height: 0;
-    padding: 104px 0 46px;
+    padding: 104px 0 48px;
     background:
-      radial-gradient(circle at 82% 39%, rgba(225,187,98,.12), transparent 28%),
-      radial-gradient(circle at 7% 86%, rgba(91,161,118,.17), transparent 31%),
-      linear-gradient(160deg, #12372e 0%, #1c493b 58%, #285744 100%);
+      radial-gradient(circle at 88% 12%, rgba(235,202,127,.24) 0%, transparent 25%),
+      radial-gradient(circle at 8% 78%, rgba(168,201,159,.24) 0%, transparent 31%),
+      linear-gradient(155deg, #fbfaf4 0%, #f4f8ef 58%, #fff8ea 100%);
   }
 
   .about-page .about-founder-hero::before {
-    opacity: .17;
+    opacity: .30;
+  }
+
+  .about-page .about-founder-hero::after {
+    top: 48%;
+    right: -36%;
+    width: 118%;
+    opacity: .72;
   }
 
   html body.about-page .about-founder-hero .breadcrumb {
@@ -521,6 +551,7 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
     overflow-x: auto;
     overflow-y: hidden;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
 
   .about-page .about-founder-trust::-webkit-scrollbar {
@@ -528,8 +559,7 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
   }
 
   .about-page .about-founder-trust-item {
-    min-width: 118px;
-    padding: 0 14px;
+    padding: 0 13px;
   }
 
   .about-page .about-founder-trust-item:first-child {
@@ -537,62 +567,51 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
   }
 
   .about-page .about-founder-actions {
-    gap: 9px;
     margin-top: 24px;
+    gap: 9px;
   }
 
   .about-page .about-founder-action {
-    min-height: 45px;
+    min-height: 44px;
     padding: 0 17px;
-    font-size: .76rem;
+    font-size: .77rem;
   }
 
   .about-page .about-founder-portrait {
-    width: min(100%, 390px);
+    width: min(100%, 430px);
     margin: 0 auto;
-    padding: 10px 16px 22px;
+    padding: 22px 18px 22px;
   }
 
   .about-page .about-founder-portrait::before {
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: -4%;
+    left: -1%;
+    width: 102%;
   }
 
   .about-page .about-founder-credential.primary {
-    right: 4px;
-    bottom: 8%;
-  }
-
-  .about-page .article-body {
-    padding-top: 52px !important;
+    right: 10px;
+    bottom: 10%;
   }
 }
 
 @media (max-width: 480px) {
   .about-page .about-founder-hero {
-    padding: 96px 0 40px;
-  }
-
-  html body.about-page .about-founder-hero .breadcrumb {
-    margin-bottom: 20px !important;
-    font-size: .73rem !important;
+    padding-top: 96px;
   }
 
   .about-page .about-founder-eyebrow {
     max-width: 100%;
-    min-height: 31px;
-    padding: 6px 11px;
+    padding: 7px 11px;
     font-size: .62rem;
-    letter-spacing: .04em;
   }
 
   .about-page .about-founder-title {
-    font-size: clamp(2.55rem, 13.8vw, 3.32rem) !important;
+    font-size: clamp(2.45rem, 12.6vw, 3.25rem) !important;
   }
 
-  .about-page .about-founder-trust {
-    grid-template-columns: repeat(3, 118px);
+  .about-page .about-founder-role {
+    max-width: 95%;
   }
 
   .about-page .about-founder-actions {
@@ -600,30 +619,20 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
   }
 
   .about-page .about-founder-action.primary {
-    flex: 1 1 100%;
+    width: 100%;
   }
 
   .about-page .about-founder-action.secondary {
-    flex: 0 1 auto;
-    min-height: 40px;
-    border-radius: 0;
-    border-width: 0 0 1px;
-    padding: 0 2px;
-    background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    width: fit-content;
   }
 
   .about-page .about-founder-portrait {
-    width: min(100%, 350px);
     padding-left: 10px;
     padding-right: 10px;
   }
 
-  .about-page .about-founder-credential.primary {
-    right: 0;
-    bottom: 7%;
-    max-width: 150px;
+  .about-page .about-founder-credential {
+    max-width: 160px;
     padding: 8px 10px;
   }
 }
