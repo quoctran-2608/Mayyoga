@@ -7,6 +7,13 @@ body .ytt-page-hero {
   padding-bottom: 68px !important;
 }
 
+/* Canonical breadcrumb stays visible even though an older HERO POLISH V2 block
+   still contains a legacy display:none rule. This guard keeps runtime behavior
+   stable until the larger YTT stylesheet is consolidated in a dedicated refactor. */
+body .ytt-page-hero .breadcrumb {
+  display: flex !important;
+}
+
 /* Move only the post-breadcrumb hero cluster. Transform keeps the hero/callout
    boundary unchanged, so the callout stays exactly where it is now. */
 body .ytt-page-hero .ytt-hero-badge,
