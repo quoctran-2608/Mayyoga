@@ -1,0 +1,65 @@
+/* ===== MÂY YOGA — SHARED HEADER ALIGNMENT V1 =====
+   Final geometry guard for the canonical Header.
+   Page-specific Hero/layout CSS must not change the shared Header coordinate system.
+   The approved homepage header is the visual reference, so every page uses the same
+   full-width header container, responsive side gutters, logo size and nav alignment. */
+
+html body .navbar.site-header-standard > .container,
+html body.home-hero-redesign .navbar.site-header-standard > .container {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: clamp(34px, 4.3vw, 74px) !important;
+  padding-right: clamp(34px, 4.3vw, 74px) !important;
+}
+
+/* Keep the desktop navigation flow identical to the approved homepage Header. */
+@media (min-width: 981px) {
+  html body .navbar.site-header-standard .nav-links,
+  html body.home-hero-redesign .navbar.site-header-standard .nav-links {
+    margin-left: auto !important;
+  }
+}
+
+@media (max-width: 980px) {
+  html body .navbar.site-header-standard > .container,
+  html body.home-hero-redesign .navbar.site-header-standard > .container {
+    width: 100% !important;
+    max-width: none !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  html body .navbar.site-header-standard > .container,
+  html body.home-hero-redesign .navbar.site-header-standard > .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Higher specificity intentionally neutralizes the old homepage-only runtime
+     rule that enlarged the logo to 56px below 640px. */
+  html body .navbar.site-header-standard .nav-logo .logo-img,
+  html body.home-hero-redesign .navbar.site-header-standard .nav-logo .logo-img {
+    width: auto !important;
+    height: 50px !important;
+    max-width: 88px !important;
+    object-fit: contain !important;
+  }
+}
+
+@media (max-width: 420px) {
+  html body .navbar.site-header-standard > .container,
+  html body.home-hero-redesign .navbar.site-header-standard > .container {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  html body .navbar.site-header-standard .nav-logo .logo-img,
+  html body.home-hero-redesign .navbar.site-header-standard .nav-logo .logo-img {
+    height: 48px !important;
+    max-width: 84px !important;
+  }
+}
