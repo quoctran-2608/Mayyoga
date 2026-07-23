@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/ytt-instructor-page.css?v=20260723d">
   <link rel="stylesheet" href="css/site-navigation-canonical-v4.css?v=20260722a" data-site-navigation-canonical="true">
   <link rel="stylesheet" href="css/header-index-canonical-v3.css?v=20260722b" data-header-index-canonical="true">
-  <style data-ytt-hero-layout-fix="v4">
+  <style data-ytt-hero-layout-fix="v5">
     /* Fixed-header-safe hero masthead. Breadcrumb follows the same normal-flow rhythm as ve-may-yoga.html. */
     .ytt-page-hero {
       min-height: 640px;
@@ -78,6 +78,87 @@
     .ytt-hero-desc {
       color: rgba(255,255,255,.88);
     }
+
+    /* Premium conversion band: deliberately contrasts the dark photographic hero. */
+    .ytt-callout {
+      position: relative;
+      z-index: 3;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 84% 8%, rgba(255,255,255,.78) 0%, rgba(255,255,255,0) 30%),
+        linear-gradient(112deg, #fff9ec 0%, #f6e7bd 46%, #f1d995 100%);
+      border-top: 1px solid rgba(164,124,35,.26);
+      border-bottom: 1px solid rgba(49,93,60,.14);
+      box-shadow: 0 18px 44px rgba(31,63,43,.10);
+    }
+    .ytt-callout::before {
+      content: '';
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: 10%;
+      top: -210px;
+      border-radius: 50%;
+      border: 1px solid rgba(145,105,30,.13);
+      box-shadow: 0 0 0 38px rgba(255,255,255,.11), 0 0 0 76px rgba(145,105,30,.04);
+      pointer-events: none;
+    }
+    .ytt-callout-inner {
+      position: relative;
+      z-index: 1;
+      min-height: 126px;
+      padding: 23px 0;
+      gap: 38px;
+    }
+    .ytt-callout-text {
+      position: relative;
+      padding-left: 25px;
+      border-left: 3px solid #ad8428;
+    }
+    .ytt-callout-label {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin: 0 0 7px;
+      padding: 5px 10px;
+      color: #775715;
+      background: rgba(255,255,255,.48);
+      border: 1px solid rgba(143,103,25,.18);
+      border-radius: 999px;
+      font-size: .71rem;
+      letter-spacing: 1.45px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
+    }
+    .ytt-callout-title {
+      max-width: 780px;
+      margin: 0;
+      color: #173f35;
+      font-size: clamp(1.32rem, 1.7vw, 1.58rem);
+      font-weight: 650;
+      line-height: 1.23;
+      letter-spacing: -.2px;
+      text-wrap: balance;
+    }
+    .ytt-callout-btn {
+      min-height: 54px;
+      padding: 14px 27px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: linear-gradient(135deg, #315d3c 0%, #214934 100%);
+      color: #fffdf6;
+      box-shadow: 0 10px 26px rgba(33,73,52,.25), inset 0 1px 0 rgba(255,255,255,.12);
+      transition: transform .24s ease, box-shadow .24s ease, background .24s ease;
+    }
+    .ytt-callout-btn:hover {
+      background: linear-gradient(135deg, #3b6b47 0%, #28583b 100%);
+      color: #fff;
+      box-shadow: 0 14px 34px rgba(33,73,52,.32), inset 0 1px 0 rgba(255,255,255,.16);
+      transform: translateY(-2px) scale(1.01);
+    }
+    .ytt-callout-btn:focus-visible {
+      outline: 3px solid rgba(49,93,60,.22);
+      outline-offset: 4px;
+    }
+
     @media (max-width: 1024px) {
       .ytt-page-hero {
         min-height: 620px;
@@ -86,6 +167,9 @@
       .ytt-page-hero h1 {
         font-size: clamp(2.7rem, 5vw, 3.25rem);
         line-height: 1.03;
+      }
+      .ytt-callout-inner {
+        gap: 28px;
       }
     }
     @media (max-width: 768px) {
@@ -124,6 +208,37 @@
         margin-left: auto;
         margin-right: auto;
       }
+      .ytt-callout {
+        background:
+          radial-gradient(circle at 90% 0%, rgba(255,255,255,.78) 0%, rgba(255,255,255,0) 36%),
+          linear-gradient(155deg, #fff9eb 0%, #f5e4b5 58%, #efd58c 100%);
+      }
+      .ytt-callout::before {
+        right: -110px;
+        top: -205px;
+      }
+      .ytt-callout-inner {
+        gap: 20px;
+        padding: 27px 0 30px;
+      }
+      .ytt-callout-text {
+        padding-left: 0;
+        border-left: 0;
+        text-align: center;
+      }
+      .ytt-callout-label {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .ytt-callout-title {
+        max-width: 570px;
+        margin: 0 auto;
+        font-size: 1.3rem;
+      }
+      .ytt-callout-btn {
+        min-height: 50px;
+        padding: 13px 24px;
+      }
     }
     @media (max-width: 480px) {
       .ytt-page-hero {
@@ -141,6 +256,13 @@
         color: #e3bb54;
         font-size: clamp(1.95rem, 10vw, 2.45rem);
         line-height: 1.03;
+      }
+      .ytt-callout-title {
+        font-size: 1.18rem;
+      }
+      .ytt-callout-btn {
+        width: 100%;
+        justify-content: center;
       }
     }
   </style>
@@ -185,11 +307,9 @@
   <main>
     <!-- ===== 1. HERO ===== -->
     <section class="ytt-page-hero" id="hero">
-      <!-- Background image -->
       <div class="hero-bg">
         <img src="assets/images/ytt-hero-bg.jpg" alt="" loading="eager" fetchpriority="high" aria-hidden="true">
       </div>
-      <!-- Content: breadcrumb follows the same normal-flow masthead pattern as ve-may-yoga.html -->
       <div class="ytt-hero-content">
         <div class="breadcrumb" aria-label="Breadcrumb">
           <a href="index.html">Trang chủ</a>
