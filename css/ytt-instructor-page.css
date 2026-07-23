@@ -2,141 +2,99 @@
 /* Design ref: hoc-yoga-online.html (sales) + ve-may-yoga.html (editorial) */
 /* Palette: sage green + warm gold + cream */
 
-/* ---- Hero Section (Warm Gold Gradient — Premium) ---- */
+/* ---- Hero Section (Full-width BG + Centered Text) ---- */
 .ytt-page-hero {
-  padding: 140px 0 88px;
-  background: linear-gradient(160deg, #faf3e0 0%, #f3e8c8 40%, #ede0b8 80%, #e8d8aa 100%);
-  overflow: hidden;
   position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 20px 80px;
+  overflow: hidden;
 }
-.ytt-page-hero::after {
+.ytt-page-hero .hero-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+}
+.ytt-page-hero .hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ytt-page-hero::before {
   content: '';
   position: absolute;
-  top: 0; right: 0;
-  width: 45%;
-  height: 100%;
-  background: radial-gradient(ellipse at 80% 50%, rgba(212,175,55,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-.ytt-hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: center;
-  position: relative;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15,26,17,0.75) 0%,
+    rgba(15,26,17,0.6) 40%,
+    rgba(15,26,17,0.7) 100%
+  );
   z-index: 1;
+}
+.ytt-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
 }
 .ytt-hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 20px;
-  background: #1a2e1f;
-  border: none;
+  padding: 10px 24px;
+  background: transparent;
+  border: 1.5px solid rgba(212,175,55,0.45);
   border-radius: 999px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  color: #e8d09a;
-  letter-spacing: 0.8px;
-  margin-bottom: 22px;
+  color: #d4af37;
+  letter-spacing: 1.5px;
+  margin-bottom: 28px;
   text-transform: uppercase;
-}
-.ytt-hero-badge .badge-dot {
-  width: 8px; height: 8px;
-  background: #d4af37;
-  border-radius: 50%;
-  flex-shrink: 0;
-  animation: pulse-dot 2s ease-in-out infinite;
-  box-shadow: 0 0 6px rgba(212,175,55,0.6);
-}
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.4); }
 }
 .ytt-page-hero h1 {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2.4rem, 3.8vw, 3.4rem);
-  font-weight: 700;
-  color: #0f1a11;
-  line-height: 1.1;
-  letter-spacing: -0.8px;
-  margin-bottom: 22px;
-}
-.ytt-page-hero h1 em {
-  color: #7a5a10;
+  font-size: clamp(2.2rem, 4.2vw, 3.6rem);
   font-weight: 600;
+  color: #d4af37;
+  line-height: 1.15;
+  letter-spacing: -0.3px;
+  margin-bottom: 24px;
   font-style: italic;
 }
 .ytt-hero-desc {
   font-family: 'DM Sans', sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.72;
-  color: #2e3b2d;
-  margin-bottom: 28px;
-  max-width: 520px;
-  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.82);
+  margin: 0 auto 36px;
+  max-width: 620px;
 }
 .ytt-hero-trust {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 .ytt-hero-trust span {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  color: #2e3b2d;
-  background: rgba(255,255,255,0.7);
-  border: 1px solid rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
   padding: 7px 16px;
   border-radius: 999px;
-  backdrop-filter: blur(4px);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-.ytt-hero-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 36px;
-  background: #1a2e1f;
-  color: #fff;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  border-radius: 999px;
-  text-decoration: none;
-  box-shadow: 0 6px 24px rgba(26,46,31,0.35);
-  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-  letter-spacing: 0.3px;
-}
-.ytt-hero-cta:hover {
-  background: #b69445;
-  color: #fff;
-  box-shadow: 0 8px 32px rgba(182,148,69,0.4);
-  transform: translateY(-3px);
-}
-.ytt-hero-img-wrap {
-  position: relative;
-}
-.ytt-hero-img-wrap img {
-  width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(40,30,10,0.25), 0 8px 24px rgba(0,0,0,0.1);
-  object-fit: cover;
-  aspect-ratio: 3/2;
-}
-.ytt-hero-img-wrap::before {
-  content: '';
-  position: absolute;
-  top: 14px; left: 14px; right: -14px; bottom: -14px;
-  border: 2.5px dashed rgba(26,46,31,0.2);
-  border-radius: 24px;
-  z-index: -1;
 }
 
 /* ---- YTT Callout Banner ---- */
@@ -524,23 +482,15 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-  .ytt-hero-grid { gap: 40px; }
   .ytt-section-visual { gap: 32px; }
 }
 
 @media (max-width: 768px) {
-  .ytt-page-hero { padding: 120px 0 56px; }
-  .ytt-hero-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .ytt-hero-img-wrap { order: -1; }
-  .ytt-hero-img-wrap::before { display: none; }
+  .ytt-page-hero { min-height: 420px; padding: 120px 16px 56px; }
+  .ytt-page-hero .breadcrumb { display: none; }
   .ytt-page-hero h1 { font-size: 2rem; }
   .ytt-hero-desc { font-size: 0.92rem; }
-  .ytt-hero-trust { gap: 8px; }
-  .ytt-hero-trust span { font-size: 0.78rem; padding: 5px 10px; }
-  .ytt-hero-cta { width: 100%; justify-content: center; }
+  .ytt-hero-trust span { font-size: 0.76rem; padding: 5px 12px; }
 
   .ytt-callout-inner {
     flex-direction: column;
@@ -580,9 +530,11 @@
 }
 
 @media (max-width: 480px) {
-  .ytt-page-hero { padding: 110px 0 48px; }
-  .ytt-page-hero h1 { font-size: 1.75rem; }
-  .ytt-hero-badge { font-size: 0.75rem; }
+  .ytt-page-hero { min-height: 360px; padding: 110px 14px 48px; }
+  .ytt-page-hero h1 { font-size: 1.65rem; }
+  .ytt-hero-badge { font-size: 0.7rem; padding: 7px 16px; letter-spacing: 1px; }
+  .ytt-hero-desc { font-size: 0.85rem; }
+  .ytt-hero-trust span { font-size: 0.72rem; padding: 4px 10px; }
   .ytt-section-header h2 { font-size: 1.45rem; }
   .ytt-article-card h3 { font-size: 1rem; }
   .ytt-section-visual img { height: 180px; }
