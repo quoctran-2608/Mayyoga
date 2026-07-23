@@ -8,6 +8,7 @@
 
   <link rel="stylesheet" href="css/style.css?v=20260722a">
   <link rel="stylesheet" href="css/about-page-polish-v4.css?v=20260722a">
+  <link rel="stylesheet" href="css/about-founder-hero-v1.css?v=20260723a">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
@@ -67,48 +68,63 @@
     </div>
   </nav>
 
-  <!-- ===== PAGE MASTHEAD ===== -->
-  <header class="article-header">
+  <!-- ===== UNIFIED FOUNDER EDITORIAL HERO ===== -->
+  <header class="about-founder-hero" aria-labelledby="about-founder-title">
     <div class="container">
-      <div class="breadcrumb">
+      <div class="breadcrumb" aria-label="Breadcrumb">
         <a href="index.html">Trang chủ</a><span class="sep">›</span>
         <span>Về Mây Yoga</span>
       </div>
-      <span class="article-tag">🍀 Về Mây Yoga</span>
-      <h1>Xin chào, mình là Mây —<br class="h1-break"> Giáo viên Hatha Yoga</h1>
-      <div class="article-meta">
-        <span class="meta-item">🎓 RYT500 — Yoga Alliance</span>
-        <span class="meta-item">⏱ 3 năm kinh nghiệm</span>
-        <span class="meta-item">🧘 Hatha Yoga chuyên sâu</span>
+
+      <div class="about-founder-grid">
+        <div class="about-founder-copy">
+          <div class="about-founder-eyebrow">Người sáng lập Mây Yoga · RYT500</div>
+          <h1 class="about-founder-title" id="about-founder-title">
+            <span class="about-founder-greeting">Xin chào,</span>
+            <span class="about-founder-name">mình là Mây.</span>
+          </h1>
+          <p class="about-founder-role">Giáo viên Hatha Yoga &amp; người sáng lập Mây Yoga</p>
+          <p class="about-founder-intro">Mình xây dựng Mây Yoga với mong muốn giúp người Việt tập yoga bằng sự hiểu biết — hiểu cơ thể, hơi thở và lý do đằng sau từng tư thế, để hành trình tập luyện an toàn và bền vững hơn.</p>
+
+          <div class="about-founder-trust" aria-label="Kinh nghiệm và chuyên môn">
+            <span class="about-founder-trust-item">RYT500 · Yoga Alliance</span>
+            <span class="about-founder-trust-item">3 năm giảng dạy</span>
+            <span class="about-founder-trust-item">Hatha Yoga · Alignment</span>
+          </div>
+
+          <div class="about-founder-actions">
+            <a class="about-founder-action primary" href="#cau-chuyen">Khám phá hành trình của Mây ↓</a>
+            <a class="about-founder-action secondary" href="https://app.yogaalliance.org/teacherpublicprofile/003TR00001A7ugoYAB/thu-may-phan" target="_blank" rel="noopener">Xác minh chứng chỉ ↗</a>
+          </div>
+        </div>
+
+        <div class="about-founder-portrait" aria-label="Hồ sơ giáo viên Mây">
+          <div class="about-founder-photo-frame">
+            <img class="about-founder-photo" loading="eager" fetchpriority="high" src="assets/images/about-teacher.webp" alt="Mây - Giáo viên Hatha Yoga RYT500">
+          </div>
+
+          <a class="about-founder-credential primary" href="https://app.yogaalliance.org/teacherpublicprofile/003TR00001A7ugoYAB/thu-may-phan" target="_blank" rel="noopener">
+            <strong>✓ RYT500</strong>
+            <span>Yoga Alliance</span>
+          </a>
+          <a class="about-founder-credential secondary" href="https://app.yogaalliance.org/schoolpublicprofile/001TR00000V95eXYAR/giang-metta-yoga-sound-healing-academy" target="_blank" rel="noopener">
+            <strong>Giảng viên chuyên môn</strong>
+            <span>Giang Metta · RYS</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="about-founder-quote" aria-label="Triết lý Yoga của Mây">
+        <span class="about-founder-quote-mark" aria-hidden="true">❝</span>
+        <p>“Tôi tin rằng yoga không phải về sự dẻo dai hay những tư thế đẹp. Yoga là về việc hiểu cơ thể mình.”</p>
+        <cite>— Mây, RYT500 🍀</cite>
       </div>
     </div>
   </header>
 
   <main class="article-body">
     <div class="container">
-      <!-- ===== TEACHER + PHILOSOPHY HERO ===== -->
-      <section class="about-hero-grid" aria-label="Giới thiệu giáo viên và triết lý Yoga">
-        <span class="about-quote-mark" aria-hidden="true">❝</span>
-
-        <div class="about-teacher-block">
-          <img class="about-teacher-photo" loading="eager" fetchpriority="high" src="assets/images/about-teacher.webp" alt="Mây - Giáo viên RYT500">
-          <div class="about-credential-links">
-            <a class="about-credential-link primary" href="https://app.yogaalliance.org/teacherpublicprofile/003TR00001A7ugoYAB/thu-may-phan" target="_blank" rel="noopener">
-              🎓 RYT 500 — Yoga Alliance ✓
-            </a>
-            <a class="about-credential-link secondary" href="https://app.yogaalliance.org/schoolpublicprofile/001TR00000V95eXYAR/giang-metta-yoga-sound-healing-academy" target="_blank" rel="noopener">
-              🏫 Giang Metta Yoga Academy — RYS ✓
-            </a>
-          </div>
-        </div>
-
-        <div class="about-philosophy">
-          <p class="about-philosophy-copy">“Tôi tin rằng yoga không phải về sự dẻo dai hay những tư thế đẹp. Yoga là về việc <strong>hiểu cơ thể mình</strong> — cách cột sống cử động, cách hơi thở ảnh hưởng hệ thần kinh, cách mỗi tư thế tác động lên từng nhóm cơ. <strong>Khi bạn hiểu, bạn sẽ tập đúng — và khi tập đúng, cơ thể sẽ tự thay đổi.</strong>”</p>
-          <p class="about-philosophy-signature">— Mây, RYT 500 🍀</p>
-        </div>
-      </section>
-
-      <h2>Câu chuyện của mình</h2>
+      <h2 id="cau-chuyen">Câu chuyện của mình</h2>
       <p>Mình là <strong>Mây</strong> — người sáng lập <strong>Mây Yoga</strong> và giáo viên Hatha Yoga được chứng nhận <strong>RYT500 (Registered Yoga Teacher 500-hour)</strong> bởi <strong>Yoga Alliance</strong> — tổ chức uy tín nhất thế giới trong lĩnh vực đào tạo yoga.</p>
       <p>Hành trình yoga của mình bắt đầu từ một giai đoạn khó khăn trong cuộc sống — khi stress, mất ngủ, và đau lưng trở thành bạn đồng hành hàng ngày. Mình tìm đến yoga như một giải pháp tạm thời, nhưng nhanh chóng nhận ra đây là một <strong>hành trình chuyển hoá</strong> thực sự — không chỉ cho cơ thể mà còn cho cả tâm trí.</p>
       <blockquote><p>“Yoga đã thay đổi cách mình nhìn cuộc sống. Và mình muốn chia sẻ điều đó với mọi người — đặc biệt là các bạn trẻ Việt Nam.”</p></blockquote>
