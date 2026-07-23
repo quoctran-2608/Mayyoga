@@ -7,7 +7,128 @@
   <meta name="description" content="Thư viện kiến thức chuyên sâu dành cho Giáo viên Yoga và Học viên đào tạo 200 giờ: Giải phẫu học ứng dụng, Nghệ thuật giảng dạy, và Phân tích ca lâm sàng thực tế.">
 
   <link rel="stylesheet" href="css/style.css?v=20260723a">
-  <link rel="stylesheet" href="css/ytt-instructor-page.css?v=20260723a">
+  <link rel="stylesheet" href="css/ytt-instructor-page.css?v=20260723c">
+  <style data-ytt-hero-layout-fix="v3">
+    /* Fix fixed-header overlap: follow the same masthead rhythm as ve-may-yoga.html.
+       Breadcrumb now participates in normal document flow before badge/title. */
+    .ytt-page-hero {
+      min-height: 640px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      text-align: left;
+      padding: 136px 0 76px;
+    }
+    .ytt-hero-content {
+      width: min(calc(100% - 40px), var(--container-width, 1200px));
+      max-width: none;
+      margin: 0 auto;
+      padding-top: 0;
+    }
+    .ytt-hero-content > * {
+      max-width: 650px;
+    }
+    .ytt-page-hero .breadcrumb {
+      position: static !important;
+      display: flex !important;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      width: auto !important;
+      max-width: 650px !important;
+      margin: 0 0 20px !important;
+      padding: 0 !important;
+      transform: none !important;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .82rem;
+      line-height: 1.4;
+    }
+    .ytt-page-hero .breadcrumb a {
+      color: rgba(255,255,255,.68) !important;
+      text-decoration: none;
+    }
+    .ytt-page-hero .breadcrumb a:hover {
+      color: #f0cf72 !important;
+    }
+    .ytt-page-hero .breadcrumb .sep {
+      color: rgba(255,255,255,.36) !important;
+    }
+    .ytt-page-hero .breadcrumb .current {
+      color: rgba(255,255,255,.9) !important;
+    }
+    .ytt-hero-badge {
+      margin-bottom: 21px;
+      color: #f0cf72;
+      border-color: rgba(224,184,77,.58);
+      background: rgba(13,31,21,.42);
+      box-shadow: 0 8px 28px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .ytt-hero-badge::before {
+      background: #e1b94f;
+      box-shadow: 0 0 0 4px rgba(225,185,79,.12), 0 0 18px rgba(225,185,79,.16);
+    }
+    .ytt-page-hero h1 {
+      color: #e1b94f;
+      text-shadow: 0 3px 24px rgba(0,0,0,.32), 0 1px 0 rgba(255,255,255,.05);
+    }
+    .ytt-hero-desc {
+      color: rgba(255,255,255,.88);
+    }
+    @media (max-width: 1024px) {
+      .ytt-page-hero {
+        min-height: 620px;
+        padding: 132px 0 66px;
+      }
+    }
+    @media (max-width: 768px) {
+      .ytt-page-hero {
+        min-height: 640px;
+        align-items: flex-start;
+        text-align: center;
+        padding: 94px 0 44px;
+      }
+      .ytt-hero-content {
+        width: min(calc(100% - 32px), 680px);
+      }
+      .ytt-page-hero .breadcrumb {
+        justify-content: flex-start;
+        max-width: 100% !important;
+        margin-bottom: 18px !important;
+        font-size: .76rem;
+        text-align: left;
+      }
+      .ytt-hero-content > * {
+        max-width: 100%;
+      }
+      .ytt-hero-badge {
+        margin-bottom: 17px;
+      }
+      .ytt-page-hero h1 {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .ytt-hero-desc,
+      .ytt-hero-trust {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    @media (max-width: 480px) {
+      .ytt-page-hero {
+        min-height: 620px;
+        padding-top: 88px;
+      }
+      .ytt-page-hero .breadcrumb {
+        margin-bottom: 15px !important;
+        font-size: .72rem;
+      }
+      .ytt-hero-badge {
+        color: #f2d47d;
+      }
+      .ytt-page-hero h1 {
+        color: #e3bb54;
+      }
+    }
+  </style>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="canonical" href="https://mayyoga.health/goc-huan-luyen-vien.html">
@@ -53,14 +174,13 @@
       <div class="hero-bg">
         <img src="assets/images/ytt-hero-bg.jpg" alt="" loading="eager" fetchpriority="high" aria-hidden="true">
       </div>
-      <!-- Breadcrumb -->
-      <div class="breadcrumb" aria-label="Breadcrumb" style="position:absolute;top:90px;left:0;right:0;z-index:3;max-width:var(--container-width,1200px);margin:0 auto;padding:0 20px;">
-        <a href="index.html" style="color:rgba(255,255,255,0.5);">Trang chủ</a>
-        <span class="sep" aria-hidden="true" style="color:rgba(255,255,255,0.3);">›</span>
-        <span class="current" aria-current="page" style="color:rgba(255,255,255,0.75);">Góc Huấn Luyện Viên</span>
-      </div>
-      <!-- Content -->
+      <!-- Content: breadcrumb follows the same normal-flow masthead pattern as ve-may-yoga.html -->
       <div class="ytt-hero-content">
+        <div class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Trang chủ</a>
+          <span class="sep" aria-hidden="true">›</span>
+          <span class="current" aria-current="page">Góc Huấn Luyện Viên</span>
+        </div>
         <div class="ytt-hero-badge">Dành riêng cho Giáo viên Yoga</div>
         <h1>Nâng Tầm Hành Trình Giảng Dạy Yoga</h1>
         <p class="ytt-hero-desc">Để đứng vững trên bục giảng, bạn không chỉ cần tập giỏi mà còn cần sự am hiểu sâu sắc về Cơ sinh học, Năng lượng, và Tâm lý học. Chào mừng đến với Thư viện Kiến thức chuyên sâu dành riêng cho Cộng đồng đào tạo Giáo viên Yoga 200 giờ.</p>
