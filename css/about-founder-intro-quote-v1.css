@@ -1,0 +1,97 @@
+/* Mây Yoga — Founder intro quote card
+   Adds a restrained editorial quote treatment to the founder statement without
+   changing the surrounding hero structure. */
+
+.about-page .about-founder-copy .about-founder-intro {
+  position: relative;
+  max-width: 610px;
+  margin: 20px 0 0;
+  padding: 22px 24px 21px 70px;
+  overflow: hidden;
+  border: 1px solid rgba(91, 128, 96, .13);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 10% 8%, rgba(232, 198, 119, .15) 0%, rgba(232, 198, 119, 0) 35%),
+    linear-gradient(135deg, rgba(255,255,255,.82) 0%, rgba(248,250,243,.88) 58%, rgba(250,246,235,.78) 100%);
+  color: #576b61 !important;
+  box-shadow:
+    0 16px 38px rgba(66, 99, 72, .075),
+    inset 0 1px 0 rgba(255,255,255,.92);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.02rem !important;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.72 !important;
+  letter-spacing: -.008em;
+}
+
+.about-page .about-founder-copy .about-founder-intro::before {
+  content: '“';
+  position: absolute;
+  left: 20px;
+  top: 9px;
+  color: #d0a84f;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 4.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  opacity: .92;
+  pointer-events: none;
+}
+
+.about-page .about-founder-copy .about-founder-intro::after {
+  content: '';
+  position: absolute;
+  left: 25px;
+  top: 62px;
+  width: 27px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(208,168,79,.92), rgba(208,168,79,.12));
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .about-page .about-founder-copy .about-founder-intro {
+    max-width: 100%;
+    margin-top: 18px;
+    padding: 20px 18px 19px 60px;
+    border-radius: 19px;
+    font-size: .96rem !important;
+    line-height: 1.68 !important;
+  }
+
+  .about-page .about-founder-copy .about-founder-intro::before {
+    left: 17px;
+    top: 9px;
+    font-size: 3.9rem;
+  }
+
+  .about-page .about-founder-copy .about-founder-intro::after {
+    left: 21px;
+    top: 55px;
+    width: 23px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-page .about-founder-copy .about-founder-intro {
+    padding: 18px 16px 18px 54px;
+    border-radius: 17px;
+    font-size: .93rem !important;
+  }
+
+  .about-page .about-founder-copy .about-founder-intro::before {
+    left: 15px;
+    font-size: 3.55rem;
+  }
+
+  .about-page .about-founder-copy .about-founder-intro::after {
+    left: 19px;
+    top: 51px;
+    width: 20px;
+  }
+}
