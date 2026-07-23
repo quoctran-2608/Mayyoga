@@ -1,19 +1,19 @@
-/* ===== MÂY YOGA — FOUNDER EDITORIAL HERO V1 =====
-   Unified hero for ve-may-yoga.html.
-   Replaces the separate article masthead + profile/philosophy card with one
-   editorial founder composition while leaving the shared Header/Footer untouched. */
+/* ===== MÂY YOGA — FOUNDER HERO V2 / QUIET LUXURY =====
+   Simplifies the unified founder hero after visual review of the live desktop layout.
+   One cohesive botanical field, one portrait focal point, editorial proof stats,
+   fewer floating surfaces and a clearer hierarchy. Shared Header/Footer stay untouched. */
 
 .about-page .about-founder-hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  min-height: 720px;
-  padding: 136px 0 58px;
+  min-height: 680px;
+  padding: 136px 0 70px;
   color: #fffaf0;
   background:
-    radial-gradient(circle at 13% 86%, rgba(95, 162, 119, .20) 0%, rgba(95, 162, 119, 0) 33%),
-    radial-gradient(circle at 54% 6%, rgba(224, 188, 103, .11) 0%, rgba(224, 188, 103, 0) 27%),
-    linear-gradient(118deg, #15372f 0%, #1e4739 45%, #285443 66%, #315a49 100%);
+    radial-gradient(circle at 79% 38%, rgba(229, 194, 108, .15) 0%, rgba(229, 194, 108, 0) 27%),
+    radial-gradient(circle at 8% 88%, rgba(92, 158, 118, .18) 0%, rgba(92, 158, 118, 0) 31%),
+    linear-gradient(118deg, #12372e 0%, #194538 54%, #285744 100%);
 }
 
 .about-page .about-founder-hero::before {
@@ -23,53 +23,40 @@
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
-    linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: linear-gradient(90deg, rgba(0,0,0,.34), transparent 58%);
-  opacity: .38;
+    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,.014) 1px, transparent 1px);
+  background-size: 58px 58px;
+  -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,.26), transparent 64%);
+  mask-image: linear-gradient(90deg, rgba(0,0,0,.26), transparent 64%);
+  opacity: .24;
 }
 
-/* Warm organic field behind the portrait. */
+/* Remove the oversized cream field that previously split the hero into two competing halves. */
 .about-page .about-founder-hero::after {
-  content: '';
-  position: absolute;
-  z-index: 0;
-  top: -13%;
-  right: -7%;
-  width: 50%;
-  height: 126%;
-  border-radius: 54% 0 0 46% / 48% 0 0 52%;
-  background:
-    radial-gradient(circle at 32% 24%, rgba(226, 188, 100, .18), transparent 29%),
-    linear-gradient(150deg, #eef0e4 0%, #f7f2e7 54%, #fbf8ef 100%);
-  box-shadow: -42px 0 90px rgba(7, 31, 25, .13);
-  transform: rotate(-2.5deg);
-  transform-origin: center;
-  pointer-events: none;
+  content: none !important;
 }
 
 .about-page .about-founder-hero > .container {
   position: relative;
   z-index: 2;
-  width: min(100%, 1260px);
-  max-width: 1260px;
+  width: min(100%, 1220px);
+  max-width: 1220px;
 }
 
-/* Breadcrumb lives inside the hero but remains the canonical shared component. */
+/* Breadcrumb remains canonical in structure, recolored only for this dark surface. */
 html body.about-page .about-founder-hero .breadcrumb {
   position: relative !important;
   z-index: 3;
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
-  margin: 0 0 30px !important;
-  color: rgba(255,249,231,.66) !important;
+  margin: 0 0 38px !important;
+  color: rgba(255,249,231,.64) !important;
   font-size: .8rem !important;
 }
 
 html body.about-page .about-founder-hero .breadcrumb > a {
-  color: #e7d394 !important;
+  color: #e3cd8a !important;
 }
 
 html body.about-page .about-founder-hero .breadcrumb > a:hover,
@@ -78,7 +65,7 @@ html body.about-page .about-founder-hero .breadcrumb > a:focus-visible {
 }
 
 html body.about-page .about-founder-hero .breadcrumb > .sep {
-  color: rgba(255,255,255,.30) !important;
+  color: rgba(255,255,255,.28) !important;
 }
 
 html body.about-page .about-founder-hero .breadcrumb > span:last-child {
@@ -88,44 +75,38 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
 .about-page .about-founder-grid {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
-  gap: clamp(54px, 6vw, 86px);
+  grid-template-columns: minmax(0, 1.06fr) minmax(380px, .94fr);
+  gap: clamp(52px, 6vw, 82px);
   align-items: center;
 }
 
 .about-page .about-founder-copy {
   position: relative;
   z-index: 3;
-  max-width: 690px;
-  padding: 8px 0 2px;
+  max-width: 660px;
+  padding: 2px 0;
 }
 
+/* The former vertical gold rail added another visual direction; hierarchy is cleaner without it. */
 .about-page .about-founder-copy::before {
-  content: '';
-  position: absolute;
-  left: -28px;
-  top: 82px;
-  width: 1px;
-  height: 150px;
-  background: linear-gradient(180deg, transparent, rgba(240,201,111,.88) 28%, rgba(240,201,111,.25) 76%, transparent);
-  box-shadow: 0 0 18px rgba(240,201,111,.14);
+  content: none !important;
 }
 
 .about-page .about-founder-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  min-height: 34px;
-  margin: 0 0 22px;
+  min-height: 33px;
+  margin: 0 0 24px;
   padding: 7px 14px;
-  border: 1px solid rgba(238,207,130,.25);
+  border: 1px solid rgba(238,207,130,.21);
   border-radius: 999px;
-  background: rgba(255,248,225,.075);
-  color: #f1d891;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
-  backdrop-filter: blur(9px);
-  -webkit-backdrop-filter: blur(9px);
-  font-size: .75rem;
+  background: rgba(255,248,225,.055);
+  color: #eed48b;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.045);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: .73rem;
   font-weight: 650;
   line-height: 1;
   letter-spacing: .055em;
@@ -134,24 +115,24 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
 
 .about-page .about-founder-eyebrow::before {
   content: '';
-  width: 7px;
-  height: 7px;
-  flex: 0 0 7px;
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
   border-radius: 50%;
-  background: #eec96e;
-  box-shadow: 0 0 0 4px rgba(238,201,110,.10), 0 0 18px rgba(238,201,110,.20);
+  background: #e7c566;
+  box-shadow: 0 0 0 4px rgba(231,197,102,.09);
 }
 
 .about-page .about-founder-title {
   margin: 0;
-  color: #fffaf0 !important;
+  color: #fff9ea !important;
   font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
-  font-size: clamp(3.7rem, 5.45vw, 5.65rem) !important;
+  font-size: clamp(3.55rem, 5.15vw, 5.25rem) !important;
   font-weight: 550;
-  line-height: .91 !important;
-  letter-spacing: -.052em;
+  line-height: .94 !important;
+  letter-spacing: -.048em;
   text-wrap: balance;
-  text-shadow: 0 4px 30px rgba(4,26,20,.18);
+  text-shadow: 0 4px 30px rgba(4,26,20,.15);
 }
 
 .about-page .about-founder-title .about-founder-greeting,
@@ -160,69 +141,137 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
 }
 
 .about-page .about-founder-title .about-founder-greeting {
-  margin-bottom: 5px;
-  font-size: .52em;
+  margin-bottom: 6px;
+  color: rgba(255,250,238,.80);
+  font-size: .51em;
   font-weight: 500;
-  letter-spacing: -.025em;
-  color: rgba(255,250,238,.83);
+  letter-spacing: -.02em;
 }
 
+/* Retain the signature champagne accent, but soften it so it does not fight the portrait/CTA. */
 .about-page .about-founder-title .about-founder-name {
-  background: linear-gradient(135deg, #fff3c1 0%, #f0d17b 46%, #dfa846 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 10px rgba(225,174,63,.08));
+  color: #f0d27a !important;
+  background: none !important;
+  -webkit-text-fill-color: currentColor !important;
+  filter: none !important;
 }
 
 .about-page .about-founder-role {
-  max-width: 580px;
-  margin: 22px 0 0;
+  max-width: 570px;
+  margin: 24px 0 0;
   color: rgba(255,252,240,.94);
-  font-size: clamp(1.08rem, 1.55vw, 1.34rem);
+  font-size: clamp(1.06rem, 1.45vw, 1.28rem);
   font-weight: 580;
   line-height: 1.42;
   letter-spacing: -.012em;
 }
 
 .about-page .about-founder-intro {
-  max-width: 615px;
+  max-width: 590px;
   margin: 15px 0 0;
   color: rgba(242,247,239,.76) !important;
-  font-size: .98rem !important;
-  line-height: 1.76 !important;
+  font-size: .96rem !important;
+  line-height: 1.74 !important;
 }
 
+/* Editorial proof row: same information, no pills, no competing card surfaces. */
 .about-page .about-founder-trust {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  max-width: 590px;
+  margin-top: 28px;
+  padding: 15px 0;
+  border-top: 1px solid rgba(255,238,190,.12);
+  border-bottom: 1px solid rgba(255,238,190,.12);
 }
 
 .about-page .about-founder-trust-item {
-  display: inline-flex;
-  align-items: center;
-  min-height: 33px;
-  padding: 6px 11px;
-  border: 1px solid rgba(255,238,190,.13);
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(255,255,255,.095), rgba(255,255,255,.045));
-  color: rgba(255,250,235,.88);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.055);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  font-size: .75rem;
-  font-weight: 520;
-  line-height: 1.25;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  min-height: 43px;
+  padding: 0 18px;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  color: transparent !important;
+  font-size: 0 !important;
 }
+
+.about-page .about-founder-trust-item:first-child {
+  padding-left: 0;
+}
+
+.about-page .about-founder-trust-item + .about-founder-trust-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  bottom: 5px;
+  width: 1px;
+  background: rgba(255,238,190,.13);
+}
+
+.about-page .about-founder-trust-item::after {
+  display: block;
+  margin-top: 4px;
+  color: rgba(255,250,235,.70);
+  font-size: .72rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: .01em;
+}
+
+.about-page .about-founder-trust-item:nth-child(1) {
+  color: transparent !important;
+}
+.about-page .about-founder-trust-item:nth-child(1)::before {
+  content: 'RYT500';
+  position: static;
+  width: auto;
+  background: none;
+  color: #efd177;
+  font-size: .94rem;
+  font-weight: 720;
+  line-height: 1.15;
+}
+.about-page .about-founder-trust-item:nth-child(1)::after { content: 'Yoga Alliance'; }
+
+.about-page .about-founder-trust-item:nth-child(2)::before {
+  content: '3+ năm';
+  position: static;
+  width: auto;
+  background: none;
+  color: #efd177;
+  font-size: .94rem;
+  font-weight: 720;
+  line-height: 1.15;
+}
+.about-page .about-founder-trust-item:nth-child(2)::after { content: 'Giảng dạy'; }
+
+.about-page .about-founder-trust-item:nth-child(3)::before {
+  content: 'Hatha Yoga';
+  position: static;
+  width: auto;
+  background: none;
+  color: #efd177;
+  font-size: .94rem;
+  font-weight: 720;
+  line-height: 1.15;
+}
+.about-page .about-founder-trust-item:nth-child(3)::after { content: 'Alignment'; }
 
 .about-page .about-founder-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 11px;
+  gap: 12px;
   margin-top: 28px;
 }
 
@@ -230,26 +279,27 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
+  min-height: 47px;
   padding: 0 21px;
   border-radius: 999px;
-  font-size: .84rem;
+  font-size: .82rem;
   font-weight: 650;
   line-height: 1;
+  text-decoration: none;
   transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
 }
 
 .about-page .about-founder-action.primary {
-  border: 1px solid rgba(255,242,198,.52);
-  background: linear-gradient(135deg, #f6d781 0%, #eebd58 56%, #dc9b38 100%);
+  border: 1px solid rgba(255,242,198,.48);
+  background: linear-gradient(135deg, #f4d47b 0%, #eab751 58%, #d99a38 100%);
   color: #18372f;
-  box-shadow: 0 13px 30px rgba(4,26,20,.22), inset 0 1px 0 rgba(255,255,255,.56);
+  box-shadow: 0 13px 28px rgba(4,26,20,.20), inset 0 1px 0 rgba(255,255,255,.53);
 }
 
 .about-page .about-founder-action.secondary {
-  border: 1px solid rgba(255,246,219,.22);
-  background: rgba(255,255,255,.065);
-  color: #fff7df;
+  border: 1px solid rgba(255,246,219,.19);
+  background: rgba(255,255,255,.045);
+  color: rgba(255,248,225,.91);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -261,52 +311,49 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
 
 .about-page .about-founder-action.primary:hover,
 .about-page .about-founder-action.primary:focus-visible {
-  background: linear-gradient(135deg, #ffe59d 0%, #f4c969 56%, #e5aa46 100%);
-  box-shadow: 0 17px 35px rgba(4,26,20,.27), 0 0 24px rgba(231,183,68,.10), inset 0 1px 0 rgba(255,255,255,.68);
+  background: linear-gradient(135deg, #ffe49a 0%, #f2c464 58%, #e3a443 100%);
+  box-shadow: 0 17px 34px rgba(4,26,20,.25), 0 0 22px rgba(231,183,68,.08), inset 0 1px 0 rgba(255,255,255,.64);
 }
 
 .about-page .about-founder-action.secondary:hover,
 .about-page .about-founder-action.secondary:focus-visible {
-  border-color: rgba(255,231,165,.35);
-  background: rgba(255,255,255,.10);
+  border-color: rgba(255,231,165,.31);
+  background: rgba(255,255,255,.08);
 }
 
-/* Portrait stage */
+/* Portrait is now the single right-side focal object. */
 .about-page .about-founder-portrait {
   position: relative;
   z-index: 3;
-  width: min(100%, 455px);
+  width: min(100%, 490px);
   margin-left: auto;
-  padding: 22px 10px 18px 34px;
+  padding: 20px 18px 22px 28px;
 }
 
 .about-page .about-founder-portrait::before {
   content: '';
   position: absolute;
   z-index: -2;
-  top: 2%;
-  left: 3%;
-  width: 92%;
+  top: -3%;
+  left: -2%;
+  width: 105%;
   aspect-ratio: 1;
-  border: 1px solid rgba(185,142,55,.24);
-  border-radius: 48% 52% 47% 53% / 56% 44% 56% 44%;
-  box-shadow:
-    0 0 0 28px rgba(212,171,79,.045),
-    0 0 0 60px rgba(55,95,72,.032),
-    0 24px 70px rgba(48,62,48,.10);
-  transform: rotate(-8deg);
+  border-radius: 50%;
+  background: radial-gradient(circle at 52% 44%, rgba(251,243,220,.17) 0%, rgba(244,225,174,.08) 44%, rgba(244,225,174,0) 72%);
+  filter: blur(2px);
+  pointer-events: none;
 }
 
 .about-page .about-founder-photo-frame {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(183,139,49,.33);
-  border-radius: 48% 48% 34px 34px / 24% 24% 34px 34px;
-  background: #eee9dc;
+  border: 1px solid rgba(199,157,67,.32);
+  border-radius: 44% 44% 28px 28px / 19% 19% 28px 28px;
+  background: #ece8dd;
   box-shadow:
-    0 28px 72px rgba(24,54,39,.22),
-    0 0 0 1px rgba(255,255,255,.38),
-    inset 0 1px 0 rgba(255,255,255,.50);
+    0 30px 76px rgba(5,30,23,.29),
+    0 0 0 1px rgba(255,255,255,.18),
+    inset 0 1px 0 rgba(255,255,255,.38);
 }
 
 .about-page .about-founder-photo-frame::after {
@@ -314,7 +361,7 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(255,255,255,.04), transparent 42%, rgba(23,55,45,.055));
+  background: linear-gradient(180deg, rgba(255,255,255,.025), transparent 46%, rgba(20,53,42,.045));
 }
 
 .about-page .about-founder-photo {
@@ -330,88 +377,52 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
   z-index: 4;
   display: flex;
   flex-direction: column;
-  gap: 1px;
-  max-width: 210px;
+  gap: 2px;
+  max-width: 185px;
   padding: 10px 13px;
-  border: 1px solid rgba(93,93,68,.14);
-  border-radius: 15px;
-  background: rgba(255,253,246,.91);
+  border: 1px solid rgba(93,93,68,.13);
+  border-radius: 14px;
+  background: rgba(255,253,246,.93);
   color: #2f5543;
-  box-shadow: 0 14px 34px rgba(39,66,49,.16), inset 0 1px 0 rgba(255,255,255,.75);
+  box-shadow: 0 14px 32px rgba(18,48,36,.16), inset 0 1px 0 rgba(255,255,255,.76);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  font-size: .71rem;
+  font-size: .69rem;
   line-height: 1.25;
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease;
 }
 
 .about-page .about-founder-credential strong {
   color: #234d3d;
-  font-size: .79rem;
-  font-weight: 700;
+  font-size: .78rem;
+  font-weight: 720;
 }
 
 .about-page .about-founder-credential.primary {
-  top: 23%;
-  right: -24px;
+  top: auto;
+  right: -5px;
+  bottom: 13%;
 }
 
+/* The second floating credential was useful information but visually overcrowded the portrait. */
 .about-page .about-founder-credential.secondary {
-  left: -4px;
-  bottom: 12%;
+  display: none !important;
 }
 
 .about-page .about-founder-credential:hover,
 .about-page .about-founder-credential:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 18px 38px rgba(39,66,49,.20), inset 0 1px 0 rgba(255,255,255,.80);
+  box-shadow: 0 18px 36px rgba(18,48,36,.20), inset 0 1px 0 rgba(255,255,255,.80);
 }
 
-/* Quote ribbon integrates the former philosophy card into the same hero. */
+/* The full-width quote ribbon acted like a second hero. The philosophy remains in the article copy. */
 .about-page .about-founder-quote {
-  position: relative;
-  z-index: 3;
-  display: grid;
-  grid-template-columns: 58px 1fr auto;
-  gap: 17px;
-  align-items: center;
-  margin-top: 40px;
-  padding: 20px 24px;
-  border: 1px solid rgba(255,238,189,.13);
-  border-radius: 20px;
-  background: linear-gradient(135deg, rgba(255,255,255,.085), rgba(255,255,255,.035));
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.045), 0 16px 36px rgba(4,27,20,.08);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  display: none !important;
 }
 
-.about-page .about-founder-quote-mark {
-  color: rgba(239,205,119,.80);
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 4.1rem;
-  line-height: .72;
-}
-
-.about-page .about-founder-quote p {
-  margin: 0 !important;
-  color: rgba(255,250,238,.91) !important;
-  font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
-  font-size: clamp(1.05rem, 1.45vw, 1.24rem) !important;
-  font-style: italic;
-  line-height: 1.55 !important;
-  letter-spacing: -.01em;
-}
-
-.about-page .about-founder-quote cite {
-  color: #ead28e;
-  font-size: .76rem;
-  font-style: normal;
-  font-weight: 650;
-  white-space: nowrap;
-}
-
-/* The article now starts as a true second chapter rather than carrying a second hero card. */
 .about-page .article-body {
-  padding-top: 62px !important;
+  padding-top: 66px !important;
 }
 
 .about-page .article-body > .container > h2#cau-chuyen {
@@ -420,135 +431,96 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
 
 @media (max-width: 1100px) {
   .about-page .about-founder-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(330px, .78fr);
+    grid-template-columns: minmax(0, 1fr) minmax(340px, .86fr);
     gap: 42px;
   }
 
   .about-page .about-founder-title {
-    font-size: clamp(3.25rem, 6vw, 4.8rem) !important;
+    font-size: clamp(3.15rem, 5.9vw, 4.65rem) !important;
   }
 
   .about-page .about-founder-portrait {
-    width: min(100%, 410px);
-    padding-left: 24px;
-  }
-
-  .about-page .about-founder-credential.primary {
-    right: -8px;
+    width: min(100%, 440px);
   }
 }
 
 @media (max-width: 900px) {
   .about-page .about-founder-hero {
     min-height: 0;
-    padding-bottom: 50px;
+    padding-bottom: 58px;
   }
 
   .about-page .about-founder-grid {
-    grid-template-columns: minmax(0, 1.05fr) minmax(290px, .75fr);
-    gap: 30px;
-  }
-
-  .about-page .about-founder-copy::before {
-    display: none;
-  }
-
-  .about-page .about-founder-trust {
-    gap: 6px;
+    grid-template-columns: minmax(0, 1fr) minmax(310px, .78fr);
+    gap: 32px;
   }
 
   .about-page .about-founder-trust-item {
-    font-size: .7rem;
+    padding: 0 12px;
   }
 
-  .about-page .about-founder-credential {
-    max-width: 180px;
-    padding: 8px 10px;
-  }
-
-  .about-page .about-founder-quote {
-    grid-template-columns: 44px 1fr;
-  }
-
-  .about-page .about-founder-quote cite {
-    grid-column: 2;
-    justify-self: start;
+  .about-page .about-founder-credential.primary {
+    right: 4px;
   }
 }
 
 @media (max-width: 768px) {
   .about-page .about-founder-hero {
-    padding: 104px 0 42px;
+    min-height: 0;
+    padding: 104px 0 46px;
     background:
-      radial-gradient(circle at 82% 42%, rgba(225,187,98,.13), transparent 27%),
-      radial-gradient(circle at 8% 84%, rgba(91,161,118,.18), transparent 31%),
-      linear-gradient(160deg, #15372f 0%, #20493b 58%, #2c5746 100%);
+      radial-gradient(circle at 82% 39%, rgba(225,187,98,.12), transparent 28%),
+      radial-gradient(circle at 7% 86%, rgba(91,161,118,.17), transparent 31%),
+      linear-gradient(160deg, #12372e 0%, #1c493b 58%, #285744 100%);
   }
 
   .about-page .about-founder-hero::before {
-    opacity: .22;
-  }
-
-  .about-page .about-founder-hero::after {
-    top: 38%;
-    right: -38%;
-    width: 118%;
-    height: 62%;
-    border-radius: 50%;
-    background: radial-gradient(ellipse at center, rgba(247,241,225,.16) 0%, rgba(247,241,225,.06) 48%, transparent 72%);
-    box-shadow: none;
-    transform: none;
+    opacity: .17;
   }
 
   html body.about-page .about-founder-hero .breadcrumb {
-    margin-bottom: 22px !important;
+    margin-bottom: 24px !important;
     font-size: .76rem !important;
   }
 
   .about-page .about-founder-grid {
     display: flex;
     flex-direction: column;
-    gap: 31px;
+    gap: 34px;
   }
 
   .about-page .about-founder-copy {
     width: 100%;
     max-width: none;
-    text-align: left;
   }
 
   .about-page .about-founder-eyebrow {
     margin-bottom: 18px;
-    font-size: .69rem;
+    font-size: .67rem;
   }
 
   .about-page .about-founder-title {
-    max-width: 560px;
-    font-size: clamp(3.05rem, 14.4vw, 4.45rem) !important;
-    line-height: .92 !important;
+    font-size: clamp(2.75rem, 11.8vw, 3.7rem) !important;
+    line-height: .96 !important;
   }
 
   .about-page .about-founder-role {
-    max-width: 520px;
     margin-top: 18px;
-    font-size: 1.04rem;
+    font-size: 1.03rem;
   }
 
   .about-page .about-founder-intro {
-    max-width: 560px;
     font-size: .92rem !important;
-    line-height: 1.7 !important;
+    line-height: 1.68 !important;
   }
 
   .about-page .about-founder-trust {
-    width: calc(100% + 32px);
-    margin-left: -16px;
-    margin-right: -16px;
-    padding: 0 16px 4px;
-    flex-wrap: nowrap;
+    grid-template-columns: repeat(3, minmax(118px, 1fr));
+    width: calc(100% + 18px);
+    margin-right: -18px;
     overflow-x: auto;
+    overflow-y: hidden;
     scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
   }
 
   .about-page .about-founder-trust::-webkit-scrollbar {
@@ -556,124 +528,103 @@ html body.about-page .about-founder-hero .breadcrumb > span:last-child {
   }
 
   .about-page .about-founder-trust-item {
-    flex: 0 0 auto;
-    white-space: nowrap;
+    min-width: 118px;
+    padding: 0 14px;
+  }
+
+  .about-page .about-founder-trust-item:first-child {
+    padding-left: 0;
   }
 
   .about-page .about-founder-actions {
-    gap: 8px;
+    gap: 9px;
     margin-top: 24px;
   }
 
   .about-page .about-founder-action {
     min-height: 45px;
     padding: 0 17px;
-    font-size: .78rem;
+    font-size: .76rem;
   }
 
   .about-page .about-founder-portrait {
-    order: 2;
     width: min(100%, 390px);
-    margin: 4px auto 0;
-    padding: 18px 20px 58px;
+    margin: 0 auto;
+    padding: 10px 16px 22px;
   }
 
   .about-page .about-founder-portrait::before {
-    top: 2%;
-    left: 3%;
-    width: 94%;
-    box-shadow: 0 0 0 22px rgba(215,175,82,.038), 0 22px 55px rgba(8,30,23,.13);
-  }
-
-  .about-page .about-founder-photo-frame {
-    border-radius: 46% 46% 27px 27px / 22% 22% 27px 27px;
-  }
-
-  .about-page .about-founder-credential {
-    position: absolute;
-    max-width: calc(50% - 22px);
-    min-width: 145px;
-    font-size: .64rem;
-  }
-
-  .about-page .about-founder-credential strong {
-    font-size: .71rem;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
 
   .about-page .about-founder-credential.primary {
-    top: auto;
-    right: 9px;
-    bottom: 21px;
-  }
-
-  .about-page .about-founder-credential.secondary {
-    left: 9px;
-    bottom: 4px;
-  }
-
-  .about-page .about-founder-quote {
-    order: 3;
-    grid-template-columns: 34px 1fr;
-    gap: 10px;
-    margin-top: 3px;
-    padding: 17px 16px;
-    border-radius: 17px;
-  }
-
-  .about-page .about-founder-quote-mark {
-    align-self: start;
-    margin-top: 7px;
-    font-size: 2.75rem;
-  }
-
-  .about-page .about-founder-quote p {
-    font-size: 1rem !important;
-    line-height: 1.56 !important;
-  }
-
-  .about-page .about-founder-quote cite {
-    grid-column: 2;
-    font-size: .7rem;
+    right: 4px;
+    bottom: 8%;
   }
 
   .about-page .article-body {
-    padding-top: 50px !important;
+    padding-top: 52px !important;
   }
 }
 
 @media (max-width: 480px) {
   .about-page .about-founder-hero {
-    padding-top: 96px;
+    padding: 96px 0 40px;
+  }
+
+  html body.about-page .about-founder-hero .breadcrumb {
+    margin-bottom: 20px !important;
+    font-size: .73rem !important;
+  }
+
+  .about-page .about-founder-eyebrow {
+    max-width: 100%;
+    min-height: 31px;
+    padding: 6px 11px;
+    font-size: .62rem;
+    letter-spacing: .04em;
   }
 
   .about-page .about-founder-title {
-    font-size: clamp(2.75rem, 15vw, 3.85rem) !important;
+    font-size: clamp(2.55rem, 13.8vw, 3.32rem) !important;
   }
 
-  .about-page .about-founder-role {
-    font-size: .98rem;
+  .about-page .about-founder-trust {
+    grid-template-columns: repeat(3, 118px);
   }
 
   .about-page .about-founder-actions {
-    flex-direction: column;
     align-items: stretch;
   }
 
-  .about-page .about-founder-action {
-    width: 100%;
+  .about-page .about-founder-action.primary {
+    flex: 1 1 100%;
+  }
+
+  .about-page .about-founder-action.secondary {
+    flex: 0 1 auto;
+    min-height: 40px;
+    border-radius: 0;
+    border-width: 0 0 1px;
+    padding: 0 2px;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .about-page .about-founder-portrait {
     width: min(100%, 350px);
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
-  .about-page .about-founder-credential {
-    min-width: 0;
-    width: calc(50% - 18px);
-    max-width: none;
-    padding: 8px 9px;
+  .about-page .about-founder-credential.primary {
+    right: 0;
+    bottom: 7%;
+    max-width: 150px;
+    padding: 8px 10px;
   }
 }
 
