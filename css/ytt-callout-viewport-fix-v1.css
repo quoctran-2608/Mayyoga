@@ -1,10 +1,17 @@
-/* Mây Yoga — YTT callout viewport fix
-   Keeps the conversion band visible in the first desktop viewport without
-   translating its inner content out of normal flow. */
+/* Mây Yoga — YTT hero/callout viewport balance
+   Keep the conversion band compact, move its content slightly lower in normal flow,
+   and return the saved vertical space to the photographic hero. */
 
 body .ytt-page-hero {
-  min-height: 650px !important;
+  min-height: 705px !important;
   padding-bottom: 68px !important;
+}
+
+@media (min-width: 769px) {
+  body .ytt-page-hero .hero-bg img {
+    object-position: center 40% !important;
+    transform: scale(1.005) !important;
+  }
 }
 
 body .ytt-callout {
@@ -15,22 +22,22 @@ body .ytt-callout {
 }
 
 body .ytt-callout-inner {
-  min-height: 165px !important;
+  min-height: 112px !important;
   box-sizing: border-box;
-  padding: 14px 0 30px !important;
+  padding: 20px 0 12px !important;
   transform: none !important;
   align-items: center;
 }
 
 @media (max-width: 1024px) {
   body .ytt-page-hero {
-    min-height: 635px !important;
+    min-height: 680px !important;
     padding-bottom: 60px !important;
   }
 
   body .ytt-callout-inner {
-    min-height: 150px !important;
-    padding: 14px 0 26px !important;
+    min-height: 112px !important;
+    padding: 18px 0 12px !important;
     transform: none !important;
   }
 }
