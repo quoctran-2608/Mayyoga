@@ -560,11 +560,11 @@
    from the central subject, increases typographic hierarchy, and integrates the
    YTT callout as a premium continuation of the hero. */
 .ytt-page-hero {
-  min-height: 520px;
+  min-height: 620px;
   align-items: flex-start;
   justify-content: flex-start;
   text-align: left;
-  padding: 64px 0 48px;
+  padding: 64px 0 56px;
   isolation: isolate;
 }
 
@@ -729,7 +729,7 @@
 
 @media (max-width: 1024px) {
   .ytt-page-hero {
-    min-height: 500px;
+    min-height: 580px;
     padding-top: 58px;
   }
   .ytt-hero-content > * {
@@ -746,10 +746,10 @@
 
 @media (max-width: 768px) {
   .ytt-page-hero {
-    min-height: 480px;
+    min-height: 520px;
     align-items: flex-end;
     text-align: center;
-    padding: 90px 0 36px;
+    padding: 90px 0 40px;
   }
 
   .ytt-page-hero .hero-bg img {

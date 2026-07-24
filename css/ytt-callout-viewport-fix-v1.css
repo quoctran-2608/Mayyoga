@@ -1,9 +1,9 @@
 /* Mây Yoga — YTT hero/callout viewport balance
-   v3: Premium CTA callout with bg image. Hero height reduced for above-fold callout. */
+   v4: Hero 620px+ to show full bg image. Premium gold CTA. */
 
 body .ytt-page-hero {
-  min-height: 520px !important;
-  padding-bottom: 48px !important;
+  min-height: 620px !important;
+  padding-bottom: 56px !important;
 }
 
 /* Canonical breadcrumb stays visible */
@@ -29,8 +29,8 @@ body .ytt-page-hero .ytt-hero-trust {
 /* ---- Tablet ---- */
 @media (max-width: 1024px) {
   body .ytt-page-hero {
-    min-height: 500px !important;
-    padding-bottom: 40px !important;
+    min-height: 580px !important;
+    padding-bottom: 48px !important;
   }
 
   body .ytt-page-hero .ytt-hero-badge,
@@ -44,8 +44,8 @@ body .ytt-page-hero .ytt-hero-trust {
 /* ---- Mobile ---- */
 @media (max-width: 768px) {
   body .ytt-page-hero {
-    min-height: 480px !important;
-    padding-bottom: 36px !important;
+    min-height: 520px !important;
+    padding-bottom: 40px !important;
   }
 
   body .ytt-page-hero .ytt-hero-badge,

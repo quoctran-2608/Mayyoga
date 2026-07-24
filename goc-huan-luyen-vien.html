@@ -13,11 +13,11 @@
   <style data-ytt-hero-layout-fix="v6">
     /* Fixed-header-safe hero masthead. Breadcrumb follows the same normal-flow rhythm as ve-may-yoga.html. */
     .ytt-page-hero {
-      min-height: 520px;
+      min-height: 620px;
       align-items: flex-start;
       justify-content: flex-start;
       text-align: left;
-      padding: 120px 0 48px;
+      padding: 130px 0 56px;
     }
     .ytt-hero-content {
       width: min(calc(100% - 40px), var(--container-width, 1200px));
@@ -100,7 +100,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(12,24,16,0.45);
+      background: rgba(180,140,40,0.08);
       z-index: 1;
       pointer-events: none;
     }
@@ -122,9 +122,9 @@
       width: fit-content;
       margin: 0 auto 18px;
       padding: 7px 16px;
-      color: #f0cf72;
-      background: rgba(240,207,114,0.1);
-      border: 1px solid rgba(240,207,114,0.28);
+      color: #3d5a3a;
+      background: rgba(61,90,58,0.1);
+      border: 1px solid rgba(61,90,58,0.2);
       border-radius: 999px;
       font-family: 'DM Sans', sans-serif;
       font-size: .75rem;
@@ -135,18 +135,18 @@
     .ytt-callout-title {
       max-width: 720px;
       margin: 0 auto 20px;
-      color: #fff;
+      color: #1a2e1f;
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: clamp(1.85rem, 2.8vw, 2.5rem);
       font-weight: 600;
       line-height: 1.18;
       letter-spacing: -.3px;
       text-wrap: balance;
-      text-shadow: 0 2px 16px rgba(0,0,0,.25);
+      text-shadow: none;
     }
     .ytt-callout-title em {
       font-style: italic;
-      color: #f0cf72;
+      color: #5a3d10;
     }
     .ytt-callout-chips {
       display: flex;
@@ -158,8 +158,8 @@
     .ytt-callout-chips span {
       font-family: 'DM Sans', sans-serif;
       font-size: .8rem;
-      font-weight: 500;
-      color: rgba(255,255,255,.78);
+      font-weight: 600;
+      color: #3d5a3a;
       letter-spacing: .2px;
     }
     .ytt-callout-btn {
@@ -170,24 +170,24 @@
       padding: 16px 36px;
       border: none;
       border-radius: 999px;
-      background: linear-gradient(135deg, #e8c44a 0%, #d4af37 50%, #b8942e 100%);
-      color: #12201a;
+      background: #1a2e1f;
+      color: #f5e6b8;
       font-family: 'DM Sans', sans-serif;
       font-size: .95rem;
       font-weight: 700;
       text-decoration: none;
       white-space: nowrap;
-      box-shadow: 0 6px 24px rgba(212,175,55,.35), inset 0 1px 0 rgba(255,255,255,.3);
+      box-shadow: 0 6px 24px rgba(26,46,31,.3);
       transition: transform .28s ease, box-shadow .28s ease, background .28s ease;
     }
     .ytt-callout-btn:hover {
-      background: linear-gradient(135deg, #f2d46a 0%, #e0c04a 50%, #c9a640 100%);
-      color: #0d1a12;
-      box-shadow: 0 10px 36px rgba(212,175,55,.45), inset 0 1px 0 rgba(255,255,255,.4);
+      background: #2d4a30;
+      color: #fff;
+      box-shadow: 0 10px 32px rgba(26,46,31,.4);
       transform: translateY(-3px);
     }
     .ytt-callout-btn:focus-visible {
-      outline: 3px solid rgba(240,207,114,.5);
+      outline: 3px solid rgba(61,90,58,.4);
       outline-offset: 4px;
     }
     .ytt-callout-btn svg {
