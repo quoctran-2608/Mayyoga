@@ -206,7 +206,7 @@
   box-shadow: 0 8px 32px rgba(45,90,61,0.1);
 }
 
-/* ---- Article Cards ---- */
+/* ---- Article Cards (Image Header) ---- */
 .ytt-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -215,33 +215,39 @@
 .ytt-article-card {
   background: #fff;
   border-radius: 20px;
-  padding: 28px 24px;
   border: 1.5px solid rgba(61,90,58,0.08);
   box-shadow: 0 2px 12px rgba(45,90,61,0.04);
   transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
   display: flex;
   flex-direction: column;
   text-decoration: none;
+  overflow: hidden;
+  position: relative;
 }
 .ytt-article-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 36px rgba(45,90,61,0.12);
   border-color: rgba(61,90,58,0.18);
 }
-.ytt-article-card .card-icon-wrap {
-  width: 48px; height: 48px;
-  background: rgba(61,90,58,0.06);
-  border-radius: 14px;
+.ytt-article-card .card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.ytt-article-card:hover .card-img {
+  transform: scale(1.04);
+}
+.ytt-article-card .card-body {
+  padding: 22px 24px 26px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  margin-bottom: 16px;
-  flex-shrink: 0;
+  flex-direction: column;
+  flex-grow: 1;
 }
 .ytt-article-card h3 {
   font-family: 'DM Sans', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.08rem;
   font-weight: 700;
   color: #214a34;
   line-height: 1.4;
@@ -249,7 +255,7 @@
 }
 .ytt-article-card p {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: #68736b;
   line-height: 1.65;
   flex-grow: 1;
@@ -258,9 +264,9 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 16px;
+  margin-top: 14px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 600;
   color: #477b50;
   text-decoration: none;
@@ -274,20 +280,21 @@
   background: linear-gradient(135deg, #fffdf6 0%, #fff 100%);
   box-shadow: 0 4px 20px rgba(182,148,69,0.1);
 }
-.ytt-article-card.featured .card-icon-wrap {
-  background: rgba(182,148,69,0.1);
-}
 .ytt-article-card.featured .card-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
   display: inline-block;
   background: #b69445;
   color: #fff;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 6px;
-  margin-bottom: 12px;
+  padding: 5px 12px;
+  border-radius: 8px;
   letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 .ytt-article-card.featured .card-link {
   color: #b69445;
