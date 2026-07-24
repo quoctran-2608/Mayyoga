@@ -1,0 +1,211 @@
+/* Mây Yoga — YTT 200H Hero Color System V7
+   Purpose-built zonal contrast: light champagne text field + deeper amber image field.
+   This layer intentionally overrides prior hero color experiments. */
+
+/* ===== HERO BACKGROUND: CONTROLLED LIGHT/DARK ZONES ===== */
+body.ytt200-page .ytt200-hero {
+  color-scheme: light;
+  background:
+    radial-gradient(circle at 14% 24%, rgba(255, 249, 222, .58) 0%, rgba(255, 249, 222, .22) 26%, rgba(255, 249, 222, 0) 49%),
+    radial-gradient(circle at 76% 8%, rgba(255, 237, 178, .34) 0%, rgba(255, 237, 178, 0) 31%),
+    radial-gradient(circle at 48% 112%, rgba(255, 239, 185, .22) 0%, rgba(255, 239, 185, 0) 38%),
+    linear-gradient(100deg, #f4dc91 0%, #edc86d 36%, #d6a445 66%, #a56f26 100%) !important;
+  color: #174735 !important;
+  box-shadow:
+    inset 0 -1px 0 rgba(88, 58, 16, .14),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+/* Keep the decorative texture subtle so it never competes with typography. */
+body.ytt200-page .ytt200-hero::before {
+  background:
+    linear-gradient(90deg, rgba(64, 74, 48, .025) 1px, transparent 1px),
+    linear-gradient(rgba(64, 74, 48, .020) 1px, transparent 1px) !important;
+  background-size: 62px 62px !important;
+  mask-image: linear-gradient(90deg, rgba(0,0,0,.18), transparent 70%);
+  opacity: .52 !important;
+}
+
+body.ytt200-page .ytt200-hero::after {
+  background:
+    radial-gradient(circle at 40% 40%, rgba(255,250,223,.34) 0%, rgba(255,235,173,.13) 43%, rgba(255,235,173,0) 70%) !important;
+  border-color: rgba(255,244,205,.24) !important;
+  box-shadow:
+    0 0 0 34px rgba(255,249,221,.025),
+    0 0 92px rgba(89,58,14,.08) !important;
+}
+
+/* ===== BREADCRUMB ===== */
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] {
+  color: #456553 !important;
+}
+
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > a {
+  color: #285f49 !important;
+  font-weight: 600 !important;
+}
+
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > a:hover,
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > a:focus-visible {
+  color: #123e2f !important;
+}
+
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > .sep {
+  color: rgba(42, 82, 62, .34) !important;
+}
+
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > span:last-child {
+  color: #174735 !important;
+  font-weight: 700 !important;
+}
+
+/* ===== PRIMARY CREDENTIAL BADGE ===== */
+body.ytt200-page .ytt200-badge {
+  border: 1px solid rgba(255, 235, 173, .34) !important;
+  background: linear-gradient(135deg, #2a624a 0%, #1d4d39 100%) !important;
+  color: #fff4cf !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.09),
+    0 10px 26px rgba(63, 54, 20, .14) !important;
+  backdrop-filter: none !important;
+}
+
+body.ytt200-page .ytt200-badge::before {
+  background: #e8bd58 !important;
+  box-shadow: 0 0 0 4px rgba(232,189,88,.15) !important;
+}
+
+/* ===== HEADLINE ===== */
+body.ytt200-page .ytt200-hero h1 {
+  color: #174735 !important;
+  text-shadow: 0 1px 0 rgba(255, 249, 220, .20) !important;
+}
+
+/* Antique-gold accent remains DARK enough to meet the light text field safely. */
+body.ytt200-page .ytt200-hero h1 em {
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  -webkit-text-fill-color: #6f430b !important;
+  color: #6f430b !important;
+  filter: none !important;
+  text-shadow: 0 1px 0 rgba(255, 244, 207, .20) !important;
+}
+
+/* ===== LEAD COPY ===== */
+body.ytt200-page .ytt200-hero-lead {
+  color: #284a3c !important;
+  font-weight: 500 !important;
+  letter-spacing: .002em;
+  text-shadow: none !important;
+}
+
+/* ===== SUPPORTING FACT CHIPS ===== */
+body.ytt200-page .ytt200-format-item {
+  border: 1px solid rgba(39, 82, 61, .15) !important;
+  background: #fff4d8 !important;
+  color: #456153 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.82),
+    0 9px 22px rgba(83, 58, 15, .07) !important;
+  backdrop-filter: none !important;
+}
+
+body.ytt200-page .ytt200-format-item strong {
+  color: #194633 !important;
+  font-weight: 700 !important;
+}
+
+/* ===== CTA HIERARCHY ===== */
+body.ytt200-page .ytt200-hero .ytt200-btn-primary {
+  border-color: rgba(16, 60, 43, .24) !important;
+  background: linear-gradient(135deg, #276047 0%, #173f30 100%) !important;
+  color: #fff6d8 !important;
+  box-shadow:
+    0 15px 32px rgba(54, 53, 20, .18),
+    inset 0 1px 0 rgba(255,255,255,.10) !important;
+}
+
+body.ytt200-page .ytt200-hero .ytt200-btn-primary:hover,
+body.ytt200-page .ytt200-hero .ytt200-btn-primary:focus-visible {
+  background: linear-gradient(135deg, #34735a 0%, #20513d 100%) !important;
+}
+
+body.ytt200-page .ytt200-hero .ytt200-btn-secondary {
+  border-color: rgba(39, 80, 59, .18) !important;
+  background: #fff2d2 !important;
+  color: #1d4d3a !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.78),
+    0 8px 20px rgba(81, 56, 14, .06) !important;
+  backdrop-filter: none !important;
+}
+
+body.ytt200-page .ytt200-hero .ytt200-btn-secondary:hover,
+body.ytt200-page .ytt200-hero .ytt200-btn-secondary:focus-visible {
+  background: #fff8e7 !important;
+  border-color: rgba(31, 75, 54, .28) !important;
+}
+
+/* ===== IMAGE FRAME + CREDENTIAL ===== */
+body.ytt200-page .ytt200-hero-visual::before {
+  border-color: rgba(47, 88, 65, .24) !important;
+  box-shadow: 0 0 0 18px rgba(255, 239, 191, .05) !important;
+}
+
+body.ytt200-page .ytt200-hero-photo {
+  border-color: rgba(74, 71, 34, .20) !important;
+  box-shadow:
+    0 30px 72px rgba(74, 48, 10, .22),
+    0 0 0 1px rgba(255,255,255,.16) !important;
+}
+
+body.ytt200-page .ytt200-hero-credential {
+  background: #fffaf0 !important;
+  border: 1px solid rgba(70, 92, 59, .12) !important;
+  color: #285642 !important;
+  box-shadow: 0 15px 36px rgba(70, 49, 12, .15) !important;
+  backdrop-filter: none !important;
+}
+
+body.ytt200-page .ytt200-hero-credential span {
+  color: #68776f !important;
+}
+
+/* ===== RESPONSIVE: STACKED LAYOUT NEEDS A UNIFORMLY LIGHT FIELD ===== */
+@media (max-width: 980px) {
+  body.ytt200-page .ytt200-hero {
+    background:
+      radial-gradient(circle at 78% 10%, rgba(255, 247, 210, .48) 0%, rgba(255, 247, 210, 0) 29%),
+      linear-gradient(145deg, #f3dc98 0%, #edcb79 56%, #d9a94e 100%) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body.ytt200-page .ytt200-hero {
+    background:
+      radial-gradient(circle at 84% 10%, rgba(255, 248, 219, .44) 0%, rgba(255, 248, 219, 0) 27%),
+      linear-gradient(155deg, #f4dfa2 0%, #edcc7c 58%, #dcae55 100%) !important;
+  }
+
+  body.ytt200-page .ytt200-hero h1,
+  body.ytt200-page .ytt200-hero-lead {
+    text-shadow: none !important;
+  }
+
+  body.ytt200-page .ytt200-hero h1 em {
+    -webkit-text-fill-color: #6f430b !important;
+    color: #6f430b !important;
+  }
+}
+
+@media (max-width: 460px) {
+  body.ytt200-page .ytt200-badge {
+    background: #245942 !important;
+  }
+
+  body.ytt200-page .ytt200-format-item,
+  body.ytt200-page .ytt200-hero .ytt200-btn-secondary {
+    background: #fff5dc !important;
+  }
+}
