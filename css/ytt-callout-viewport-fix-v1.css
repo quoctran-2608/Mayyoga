@@ -1,5 +1,5 @@
 /* Mây Yoga — YTT hero/callout viewport balance
-   v8: Near-fullscreen hero with spacious copy and a cinematic hero-to-callout transition. */
+   v9: Near-fullscreen hero with spacious copy, cinematic transition and clearer callout eyebrow. */
 
 body .ytt-page-hero {
   min-height: max(90vh, 850px) !important;
@@ -96,6 +96,25 @@ body .ytt-callout::after {
     transparent 100%
   );
   box-shadow: 0 -12px 28px rgba(224, 174, 67, .07);
+}
+
+/* The callout eyebrow should read clearly without competing with the primary CTA. */
+body .ytt-callout .ytt-callout-label {
+  margin-bottom: 20px !important;
+  padding: 10px 20px !important;
+  color: #f7e7b0 !important;
+  background:
+    linear-gradient(135deg, rgba(15, 48, 32, .86), rgba(23, 61, 40, .76)) !important;
+  border: 1px solid rgba(239, 205, 112, .46) !important;
+  box-shadow:
+    0 9px 24px rgba(21, 32, 17, .18),
+    inset 0 1px 0 rgba(255, 255, 255, .10) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: .76rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.45px !important;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, .16);
 }
 
 @media (min-width: 769px) {
@@ -196,5 +215,12 @@ body .ytt-callout::after {
       rgba(180, 140, 40, .04) 112px,
       rgba(180, 140, 40, .025) 100%
     ) !important;
+  }
+
+  body .ytt-callout .ytt-callout-label {
+    margin-bottom: 17px !important;
+    padding: 9px 16px !important;
+    font-size: .70rem !important;
+    letter-spacing: 1.15px !important;
   }
 }
