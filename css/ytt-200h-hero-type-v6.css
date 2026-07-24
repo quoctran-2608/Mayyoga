@@ -1,0 +1,103 @@
+/* Mây Yoga — YTT 200H Hero Typography V6
+   Refines type contrast and harmony on the champagne-gold hero. */
+
+/* Breadcrumb: a slightly warmer emerald hierarchy, readable without feeling heavy. */
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] {
+  color: rgba(28, 73, 55, .72) !important;
+}
+
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > a {
+  color: #285f49 !important;
+  font-weight: 600 !important;
+}
+
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > a:hover,
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > a:focus-visible {
+  color: #123e2f !important;
+}
+
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > .sep {
+  color: rgba(37, 78, 59, .34) !important;
+}
+
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > span:last-child {
+  color: #174735 !important;
+  font-weight: 700 !important;
+}
+
+/* Eyebrow: warmer ivory surface, crisp but softer than the title. */
+body.ytt200-page .ytt200-badge {
+  background: rgba(255, 249, 226, .84) !important;
+  border-color: rgba(42, 91, 67, .20) !important;
+  color: #20513f !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.82),
+    0 9px 24px rgba(96, 65, 13, .075) !important;
+}
+
+/* Main title: lift the emerald slightly so it does not read as near-black on gold. */
+body.ytt200-page .ytt200-hero h1 {
+  color: #174b3a !important;
+  text-shadow:
+    0 1px 0 rgba(255, 248, 218, .28),
+    0 3px 14px rgba(84, 57, 14, .035) !important;
+}
+
+/* 200 Giờ: champagne instead of flat ivory, visually related to the background
+   while retaining enough luminance and a subtle dark edge for contrast. */
+body.ytt200-page .ytt200-hero h1 em {
+  color: #f5dda0 !important;
+  text-shadow:
+    0 1px 0 rgba(73, 45, 6, .22),
+    0 3px 16px rgba(83, 52, 7, .10) !important;
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  body.ytt200-page .ytt200-hero h1 em {
+    background: linear-gradient(180deg, #fff6d5 0%, #f5dda0 48%, #e5bb5e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent !important;
+    filter: drop-shadow(0 1px 0 rgba(77, 48, 7, .18));
+  }
+}
+
+/* Lead copy: slightly darker and more substantial for long-form readability. */
+body.ytt200-page .ytt200-hero-lead {
+  color: #21483a !important;
+  font-weight: 500;
+  letter-spacing: .002em;
+  text-shadow: 0 1px 0 rgba(255, 248, 220, .12) !important;
+}
+
+/* Supporting facts: keep them secondary, but make labels and values crisp. */
+body.ytt200-page .ytt200-format-item {
+  color: #426050 !important;
+  background: rgba(255, 249, 228, .82) !important;
+  border-color: rgba(35, 78, 57, .15) !important;
+}
+
+body.ytt200-page .ytt200-format-item strong {
+  color: #194633 !important;
+  font-weight: 700;
+}
+
+body.ytt200-page .ytt200-hero .ytt200-btn-secondary {
+  color: #1d4d3a !important;
+  background: rgba(255, 249, 226, .74) !important;
+}
+
+@media (max-width: 768px) {
+  body.ytt200-page .ytt200-hero h1 {
+    color: #164735 !important;
+  }
+
+  body.ytt200-page .ytt200-hero h1 em {
+    color: #f6dda0 !important;
+  }
+
+  body.ytt200-page .ytt200-hero-lead {
+    color: #204738 !important;
+  }
+}
