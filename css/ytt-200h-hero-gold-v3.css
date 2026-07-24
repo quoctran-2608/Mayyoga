@@ -1,4 +1,4 @@
-/* Mây Yoga — YTT 200H Hero Gold V4
+/* Mây Yoga — YTT 200H Hero Gold V5
    Refined champagne-gold hero palette + opaque proof bridge.
    Scoped to dao-tao-huan-luyen-vien-200h.html only. */
 
@@ -6,9 +6,9 @@ body.ytt200-page .ytt200-hero {
   color-scheme: light;
   background:
     radial-gradient(circle at 78% 13%, rgba(255, 247, 208, .62) 0%, rgba(255, 247, 208, 0) 27%),
-    radial-gradient(circle at 8% 88%, rgba(112, 72, 14, .20) 0%, rgba(112, 72, 14, 0) 31%),
-    radial-gradient(circle at 48% 108%, rgba(255, 236, 171, .20) 0%, rgba(255, 236, 171, 0) 36%),
-    linear-gradient(116deg, #93651f 0%, #b9832a 31%, #d3a744 61%, #ead086 100%) !important;
+    radial-gradient(circle at 8% 88%, rgba(112, 72, 14, .14) 0%, rgba(112, 72, 14, 0) 31%),
+    radial-gradient(circle at 48% 108%, rgba(255, 236, 171, .24) 0%, rgba(255, 236, 171, 0) 36%),
+    linear-gradient(312deg, #93651f 0%, #b9832a 31%, #d3a744 61%, #ead086 100%) !important;
   color: #17372f !important;
   box-shadow: inset 0 -1px 0 rgba(91, 62, 15, .16);
 }
@@ -61,7 +61,7 @@ html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] >
 /* Eyebrow badge becomes a soft ivory seal rather than another green text block. */
 body.ytt200-page .ytt200-badge {
   border-color: rgba(31, 75, 57, .22) !important;
-  background: rgba(255, 247, 216, .70) !important;
+  background: rgba(255, 247, 216, .76) !important;
   color: #1b4a38 !important;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.72),
@@ -94,7 +94,7 @@ body.ytt200-page .ytt200-hero-lead {
 /* Supporting facts read as warm ivory tiles with crisp forest type. */
 body.ytt200-page .ytt200-format-item {
   border-color: rgba(34, 72, 55, .16) !important;
-  background: rgba(255, 248, 222, .72) !important;
+  background: rgba(255, 248, 222, .78) !important;
   color: #315545 !important;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.68),
@@ -122,7 +122,7 @@ body.ytt200-page .ytt200-hero .ytt200-btn-primary:focus-visible {
 
 body.ytt200-page .ytt200-hero .ytt200-btn-secondary {
   border-color: rgba(29, 70, 53, .20) !important;
-  background: rgba(255, 247, 218, .62) !important;
+  background: rgba(255, 247, 218, .68) !important;
   color: #1c4937 !important;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.55),
@@ -201,8 +201,8 @@ body.ytt200-page .ytt200-proof-item span {
   body.ytt200-page .ytt200-hero {
     background:
       radial-gradient(circle at 76% 16%, rgba(255, 247, 208, .56) 0%, rgba(255, 247, 208, 0) 27%),
-      radial-gradient(circle at 8% 90%, rgba(111, 73, 16, .17) 0%, rgba(111, 73, 16, 0) 31%),
-      linear-gradient(145deg, #a67121 0%, #ca9636 45%, #e7c778 100%) !important;
+      radial-gradient(circle at 8% 90%, rgba(111, 73, 16, .12) 0%, rgba(111, 73, 16, 0) 31%),
+      linear-gradient(312deg, #9d6d23 0%, #c28d34 38%, #ddb95f 70%, #f0d99a 100%) !important;
   }
 }
 
@@ -210,7 +210,7 @@ body.ytt200-page .ytt200-proof-item span {
   body.ytt200-page .ytt200-hero {
     background:
       radial-gradient(circle at 84% 13%, rgba(255, 249, 219, .52) 0%, rgba(255, 249, 219, 0) 26%),
-      linear-gradient(155deg, #a97424 0%, #d0a24b 54%, #ead18b 100%) !important;
+      linear-gradient(312deg, #a97424 0%, #ca963c 42%, #dfbd68 72%, #f0d99d 100%) !important;
   }
 
   body.ytt200-page .ytt200-hero h1 em {
