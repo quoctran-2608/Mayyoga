@@ -1,9 +1,9 @@
 /* Mây Yoga — YTT hero/callout viewport balance
-   v5: Restored full hero heights for proper bg image display. */
+   v6: Near-fullscreen hero to show full figure with headroom. */
 
 body .ytt-page-hero {
-  min-height: 700px !important;
-  padding-bottom: 64px !important;
+  min-height: max(90vh, 850px) !important;
+  padding-bottom: 72px !important;
 }
 
 body .ytt-page-hero .breadcrumb {
@@ -19,15 +19,15 @@ body .ytt-page-hero .ytt-hero-trust {
 
 @media (min-width: 769px) {
   body .ytt-page-hero .hero-bg img {
-    object-position: center 40% !important;
+    object-position: center center !important;
     transform: scale(1.005) !important;
   }
 }
 
 @media (max-width: 1024px) {
   body .ytt-page-hero {
-    min-height: 680px !important;
-    padding-bottom: 54px !important;
+    min-height: max(85vh, 800px) !important;
+    padding-bottom: 60px !important;
   }
 
   body .ytt-page-hero .ytt-hero-badge,
@@ -40,8 +40,8 @@ body .ytt-page-hero .ytt-hero-trust {
 
 @media (max-width: 768px) {
   body .ytt-page-hero {
-    min-height: 640px !important;
-    padding-bottom: 44px !important;
+    min-height: max(80vh, 720px) !important;
+    padding-bottom: 48px !important;
   }
 
   body .ytt-page-hero .ytt-hero-badge,
