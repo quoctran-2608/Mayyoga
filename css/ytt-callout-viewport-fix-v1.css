@@ -1,22 +1,17 @@
 /* Mây Yoga — YTT hero/callout viewport balance
-   Keep the conversion band compact, preserve its current viewport position,
-   and give the hero reading cluster more breathing room below the breadcrumb.
-   v2: yellow-cta-bg.webp background with dark-on-light text treatment. */
+   v3: Premium CTA callout with bg image. Hero height reduced for above-fold callout. */
 
 body .ytt-page-hero {
   min-height: 520px !important;
   padding-bottom: 48px !important;
 }
 
-/* Canonical breadcrumb stays visible even though an older HERO POLISH V2 block
-   still contains a legacy display:none rule. This guard keeps runtime behavior
-   stable until the larger YTT stylesheet is consolidated in a dedicated refactor. */
+/* Canonical breadcrumb stays visible */
 body .ytt-page-hero .breadcrumb {
   display: flex !important;
 }
 
-/* Move only the post-breadcrumb hero cluster. Transform keeps the hero/callout
-   boundary unchanged, so the callout stays exactly where it is now. */
+/* Post-breadcrumb hero cluster spacing */
 body .ytt-page-hero .ytt-hero-badge,
 body .ytt-page-hero h1,
 body .ytt-page-hero .ytt-hero-desc,
@@ -29,65 +24,6 @@ body .ytt-page-hero .ytt-hero-trust {
     object-position: center 40% !important;
     transform: scale(1.005) !important;
   }
-}
-
-/* ---- Callout: yellow botanical background image ---- */
-body .ytt-callout {
-  margin-top: 0 !important;
-  background: url('../assets/images/yellow-cta-bg.webp') center / cover no-repeat !important;
-  border-top: none !important;
-  border-bottom: 1px solid rgba(180,150,50,0.2) !important;
-  box-shadow: 0 4px 24px rgba(160,120,30,0.12) !important;
-}
-
-/* Subtle overlay for text readability */
-body .ytt-callout::before {
-  content: '' !important;
-  position: absolute !important;
-  top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
-  background: rgba(255,248,220,0.15) !important;
-  pointer-events: none !important;
-  z-index: 0 !important;
-}
-
-body .ytt-callout-inner {
-  position: relative !important;
-  z-index: 1 !important;
-  min-height: 112px !important;
-  box-sizing: border-box;
-  padding: 20px 0 12px !important;
-  transform: none !important;
-  align-items: center;
-}
-
-/* Dark text on light background */
-body .ytt-callout-text {
-  padding-left: 22px !important;
-  border-left: 3px solid #3d5a3a !important;
-}
-
-body .ytt-callout-label {
-  color: #3d5a3a !important;
-}
-
-body .ytt-callout-title {
-  color: #1a2e1f !important;
-  text-shadow: none !important;
-}
-
-/* Button: dark green on gold bg */
-body .ytt-callout-btn {
-  background: #1a2e1f !important;
-  color: #f5e6b8 !important;
-  border: none !important;
-  box-shadow: 0 6px 20px rgba(26,46,31,0.25) !important;
-}
-
-body .ytt-callout-btn:hover {
-  background: #2d4a30 !important;
-  color: #fff !important;
-  box-shadow: 0 8px 28px rgba(26,46,31,0.35) !important;
-  transform: translateY(-2px);
 }
 
 /* ---- Tablet ---- */
@@ -103,12 +39,6 @@ body .ytt-callout-btn:hover {
   body .ytt-page-hero .ytt-hero-trust {
     transform: translateY(14px);
   }
-
-  body .ytt-callout-inner {
-    min-height: 112px !important;
-    padding: 18px 0 12px !important;
-    transform: none !important;
-  }
 }
 
 /* ---- Mobile ---- */
@@ -123,27 +53,5 @@ body .ytt-callout-btn:hover {
   body .ytt-page-hero .ytt-hero-desc,
   body .ytt-page-hero .ytt-hero-trust {
     transform: translateY(10px);
-  }
-
-  body .ytt-callout {
-    background-position: center center !important;
-    background-size: cover !important;
-  }
-
-  body .ytt-callout-text {
-    padding-left: 0 !important;
-    border-left: none !important;
-    text-align: center !important;
-  }
-
-  body .ytt-callout-label {
-    display: flex !important;
-    justify-content: center !important;
-  }
-
-  body .ytt-callout-inner {
-    min-height: 0 !important;
-    padding: 22px 0 28px !important;
-    transform: none !important;
   }
 }

@@ -79,58 +79,122 @@
       color: rgba(255,255,255,.88);
     }
 
-    /* Yellow botanical CTA band — image bg with dark-on-light text */
+    /* ===== Premium CTA Callout — dark bg image + gold accents ===== */
     .ytt-callout {
       position: relative;
       z-index: 3;
       overflow: hidden;
+      padding: 0;
     }
-    .ytt-callout-text {
+    .ytt-callout-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .ytt-callout-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .ytt-callout::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(12,24,16,0.45);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .ytt-callout .container {
       position: relative;
+      z-index: 2;
+    }
+    .ytt-callout-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 56px 20px 52px;
+      gap: 0;
     }
     .ytt-callout-label {
       display: inline-flex;
       align-items: center;
       width: fit-content;
-      margin: 0 0 7px;
-      padding: 5px 10px;
-      color: #3d5a3a;
-      background: rgba(61,90,58,.08);
-      border: 1px solid rgba(61,90,58,.15);
+      margin: 0 auto 18px;
+      padding: 7px 16px;
+      color: #f0cf72;
+      background: rgba(240,207,114,0.1);
+      border: 1px solid rgba(240,207,114,0.28);
       border-radius: 999px;
-      font-size: .71rem;
-      letter-spacing: 1.45px;
-      box-shadow: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
     }
     .ytt-callout-title {
-      max-width: 780px;
-      margin: 0;
-      color: #1a2e1f;
-      font-size: clamp(1.32rem, 1.7vw, 1.58rem);
-      font-weight: 650;
-      line-height: 1.23;
-      letter-spacing: -.2px;
+      max-width: 720px;
+      margin: 0 auto 20px;
+      color: #fff;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.85rem, 2.8vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.18;
+      letter-spacing: -.3px;
       text-wrap: balance;
-      text-shadow: none;
+      text-shadow: 0 2px 16px rgba(0,0,0,.25);
+    }
+    .ytt-callout-title em {
+      font-style: italic;
+      color: #f0cf72;
+    }
+    .ytt-callout-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .ytt-callout-chips span {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .8rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.78);
+      letter-spacing: .2px;
     }
     .ytt-callout-btn {
-      min-height: 52px;
-      padding: 13px 27px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 56px;
+      padding: 16px 36px;
       border: none;
-      background: #1a2e1f;
-      color: #f5e6b8;
-      box-shadow: 0 6px 20px rgba(26,46,31,.25);
-      transition: transform .24s ease, box-shadow .24s ease, background .24s ease;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #e8c44a 0%, #d4af37 50%, #b8942e 100%);
+      color: #12201a;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 6px 24px rgba(212,175,55,.35), inset 0 1px 0 rgba(255,255,255,.3);
+      transition: transform .28s ease, box-shadow .28s ease, background .28s ease;
     }
     .ytt-callout-btn:hover {
-      background: #2d4a30;
-      color: #fff;
-      box-shadow: 0 8px 28px rgba(26,46,31,.35);
-      transform: translateY(-2px);
+      background: linear-gradient(135deg, #f2d46a 0%, #e0c04a 50%, #c9a640 100%);
+      color: #0d1a12;
+      box-shadow: 0 10px 36px rgba(212,175,55,.45), inset 0 1px 0 rgba(255,255,255,.4);
+      transform: translateY(-3px);
     }
     .ytt-callout-btn:focus-visible {
-      outline: 3px solid rgba(61,90,58,.35);
+      outline: 3px solid rgba(240,207,114,.5);
       outline-offset: 4px;
+    }
+    .ytt-callout-btn svg {
+      transition: transform .25s ease;
+    }
+    .ytt-callout-btn:hover svg {
+      transform: translateX(3px);
     }
 
     @media (max-width: 1024px) {
@@ -146,7 +210,7 @@
         line-height: 1.03;
       }
       .ytt-callout-inner {
-        gap: 28px;
+        padding: 48px 16px 44px;
       }
     }
     @media (max-width: 768px) {
@@ -185,18 +249,17 @@
         margin-left: auto;
         margin-right: auto;
       }
-      .ytt-callout-label {
-        margin-left: auto;
-        margin-right: auto;
+      .ytt-callout-inner {
+        padding: 42px 16px 38px;
       }
       .ytt-callout-title {
-        max-width: 570px;
-        margin: 0 auto;
-        font-size: 1.3rem;
+        font-size: clamp(1.55rem, 5.5vw, 2rem);
       }
-      .ytt-callout-btn {
-        min-height: 50px;
-        padding: 13px 24px;
+      .ytt-callout-chips {
+        gap: 6px 14px;
+      }
+      .ytt-callout-chips span {
+        font-size: .74rem;
       }
     }
     @media (max-width: 480px) {
@@ -216,12 +279,20 @@
         font-size: clamp(1.95rem, 10vw, 2.45rem);
         line-height: 1.03;
       }
+      .ytt-callout-inner {
+        padding: 36px 12px 32px;
+      }
       .ytt-callout-title {
-        font-size: 1.18rem;
+        font-size: 1.4rem;
+      }
+      .ytt-callout-chips {
+        flex-direction: column;
+        gap: 4px;
       }
       .ytt-callout-btn {
         width: 100%;
         justify-content: center;
+        padding: 15px 28px;
       }
     }
   </style>
@@ -286,15 +357,24 @@
       </div>
     </section>
 
-    <!-- ===== 2. YTT CALLOUT ===== -->
-    <section class="ytt-callout">
+    <!-- ===== 2. YTT CALLOUT (Premium CTA) ===== -->
+    <section class="ytt-callout" id="ytt-cta">
+      <div class="ytt-callout-bg">
+        <img src="assets/images/ytt-callout-bg.jpg" alt="" loading="eager" aria-hidden="true">
+      </div>
       <div class="container">
         <div class="ytt-callout-inner">
-          <div class="ytt-callout-text">
-            <p class="ytt-callout-label">🎓 Muốn trở thành Huấn Luyện Viên Yoga?</p>
-            <p class="ytt-callout-title">Xem chi tiết Khoá Đào Tạo YTT 200H — Chứng chỉ Yoga Alliance Mỹ</p>
+          <p class="ytt-callout-label">🎓 Muốn trở thành Huấn Luyện Viên Yoga?</p>
+          <h2 class="ytt-callout-title">Khoá Đào Tạo Giáo Viên Yoga YTT 200H<br><em>Chứng chỉ Yoga Alliance Quốc tế</em></h2>
+          <div class="ytt-callout-chips">
+            <span>✓ Chuẩn Yoga Alliance Mỹ</span>
+            <span>✓ Giảng viên RYT 500</span>
+            <span>✓ Hỗ trợ sau khoá trọn đời</span>
           </div>
-          <a href="dao-tao-huan-luyen-vien-200h.html" class="ytt-callout-btn">Xem Khoá Học &amp; Đăng Ký →</a>
+          <a href="dao-tao-huan-luyen-vien-200h.html" class="ytt-callout-btn">
+            <span>Xem Khoá Học &amp; Đăng Ký</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
         </div>
       </div>
     </section>
