@@ -1,20 +1,43 @@
 /* Mây Yoga — YTT hero/callout viewport balance
-   v6: Near-fullscreen hero to show full figure with headroom. */
+   v7: Near-fullscreen hero with a more spacious editorial text composition. */
 
 body .ytt-page-hero {
   min-height: max(90vh, 850px) !important;
   padding-bottom: 72px !important;
 }
 
+/* Breadcrumb stays anchored in its approved masthead position. */
 body .ytt-page-hero .breadcrumb {
   display: flex !important;
 }
 
+/* Shift only the message group lower so the tall hero breathes more naturally. */
 body .ytt-page-hero .ytt-hero-badge,
 body .ytt-page-hero h1,
 body .ytt-page-hero .ytt-hero-desc,
 body .ytt-page-hero .ytt-hero-trust {
-  transform: translateY(18px);
+  transform: translateY(30px);
+}
+
+/* Open up the reading column without letting copy collide with the central subject. */
+body .ytt-page-hero h1 {
+  max-width: 690px !important;
+  margin-bottom: 30px !important;
+}
+
+body .ytt-page-hero .ytt-hero-badge {
+  margin-bottom: 28px !important;
+}
+
+body .ytt-page-hero .ytt-hero-desc {
+  max-width: 675px !important;
+  margin-bottom: 35px !important;
+  line-height: 1.84 !important;
+}
+
+body .ytt-page-hero .ytt-hero-trust {
+  max-width: 690px !important;
+  gap: 12px !important;
 }
 
 @media (min-width: 769px) {
@@ -34,7 +57,27 @@ body .ytt-page-hero .ytt-hero-trust {
   body .ytt-page-hero h1,
   body .ytt-page-hero .ytt-hero-desc,
   body .ytt-page-hero .ytt-hero-trust {
-    transform: translateY(14px);
+    transform: translateY(22px);
+  }
+
+  body .ytt-page-hero .ytt-hero-badge {
+    margin-bottom: 24px !important;
+  }
+
+  body .ytt-page-hero h1 {
+    max-width: 630px !important;
+    margin-bottom: 26px !important;
+  }
+
+  body .ytt-page-hero .ytt-hero-desc {
+    max-width: 600px !important;
+    margin-bottom: 31px !important;
+    line-height: 1.8 !important;
+  }
+
+  body .ytt-page-hero .ytt-hero-trust {
+    max-width: 620px !important;
+    gap: 10px !important;
   }
 }
 
@@ -48,6 +91,26 @@ body .ytt-page-hero .ytt-hero-trust {
   body .ytt-page-hero h1,
   body .ytt-page-hero .ytt-hero-desc,
   body .ytt-page-hero .ytt-hero-trust {
-    transform: translateY(10px);
+    transform: translateY(12px);
+  }
+
+  body .ytt-page-hero .ytt-hero-badge {
+    margin-bottom: 18px !important;
+  }
+
+  body .ytt-page-hero h1 {
+    max-width: 560px !important;
+    margin-bottom: 22px !important;
+  }
+
+  body .ytt-page-hero .ytt-hero-desc {
+    max-width: 560px !important;
+    margin-bottom: 27px !important;
+    line-height: 1.76 !important;
+  }
+
+  body .ytt-page-hero .ytt-hero-trust {
+    max-width: 100% !important;
+    gap: 8px !important;
   }
 }
