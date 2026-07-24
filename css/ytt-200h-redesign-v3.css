@@ -396,27 +396,13 @@ body.ytt200-page .ytt200-section-head p {
   line-height: 1.78;
 }
 
-/* ===== PAIN / OBJECTIONS ===== */
+/* ===== PAIN / OBJECTIONS — CONCERN ROWS ===== */
 body.ytt200-page .ytt200-section--paper {
   position: relative;
-  overflow: hidden;
+  padding: 100px 0;
   background:
-    radial-gradient(circle at 4% 4%, rgba(214, 176, 83, .11) 0%, rgba(214, 176, 83, 0) 26%),
-    radial-gradient(circle at 96% 16%, rgba(91, 137, 102, .10) 0%, rgba(91, 137, 102, 0) 27%),
+    radial-gradient(circle at 50% 0%, rgba(214, 172, 80, .07) 0%, transparent 40%),
     linear-gradient(180deg, #fffdf8 0%, #f8f6ef 100%);
-}
-
-body.ytt200-page .ytt200-section--paper::before {
-  content: '';
-  position: absolute;
-  right: -130px;
-  bottom: -150px;
-  width: 360px;
-  aspect-ratio: 1;
-  border: 1px solid rgba(176, 139, 48, .09);
-  border-radius: 50%;
-  box-shadow: 0 0 0 44px rgba(176, 139, 48, .027), 0 0 0 94px rgba(176, 139, 48, .014);
-  pointer-events: none;
 }
 
 body.ytt200-page .ytt200-section--paper > .container {
@@ -424,93 +410,88 @@ body.ytt200-page .ytt200-section--paper > .container {
   z-index: 1;
 }
 
-body.ytt200-page .ytt200-section--paper .ytt200-section-head::before {
-  content: 'NHỮNG BĂN KHOĂN THƯỜNG GẶP';
-  display: inline-flex;
-  margin-bottom: 14px;
-  color: #9a7428;
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .13em;
-}
-
-body.ytt200-page .ytt200-pain-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-  align-items: stretch;
-}
-
-body.ytt200-page .ytt200-pain-card {
-  position: relative;
+body.ytt200-page .ytt200-concern-list {
+  max-width: 900px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 0 0 30px;
-  border: 1px solid rgba(43, 77, 58, .105);
-  border-radius: 24px;
-  background: #ffffff;
-  box-shadow: 0 18px 44px rgba(38, 66, 50, .075), inset 0 1px 0 rgba(255,255,255,.88);
-  transition: box-shadow .28s ease, border-color .28s ease;
+  gap: 0;
 }
 
-body.ytt200-page .ytt200-pain-card:hover {
-  border-color: rgba(49, 89, 66, .16);
-  box-shadow: 0 24px 52px rgba(34, 61, 46, .105), inset 0 1px 0 rgba(255,255,255,.9);
+body.ytt200-page .ytt200-concern-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 44px 0;
+  border-bottom: 1px solid rgba(43, 77, 58, .09);
 }
 
-body.ytt200-page .ytt200-pain-img img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  border-radius: 24px 24px 0 0;
-  border-bottom: 1px solid rgba(45, 78, 59, .08);
+body.ytt200-page .ytt200-concern-row:first-child {
+  padding-top: 0;
 }
 
-body.ytt200-page .ytt200-pain-content {
-  padding: 0 28px;
+body.ytt200-page .ytt200-concern-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
-body.ytt200-page .ytt200-pain-index {
+body.ytt200-page .ytt200-concern-visual {
   position: relative;
-  z-index: 2;
-  display: inline-flex;
+  width: 180px;
+  height: 180px;
+  flex-shrink: 0;
+}
+
+body.ytt200-page .ytt200-concern-visual img {
+  display: block;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(214, 172, 80, .22);
+  box-shadow: 0 12px 32px rgba(38, 66, 50, .1);
+}
+
+body.ytt200-page .ytt200-concern-num {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 46px;
-  margin-top: -23px;
-  margin-left: 28px;
-  margin-bottom: 22px;
-  border: 4px solid #fffdf8;
-  border-radius: 15px;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
   background: linear-gradient(135deg, #e8ca7d 0%, #c99d3c 100%);
   color: #553d10;
-  box-shadow: 0 9px 20px rgba(144, 103, 22, .16);
   font-family: var(--font-heading);
-  font-size: .9rem;
+  font-size: .82rem;
   font-weight: 800;
+  box-shadow: 0 4px 14px rgba(144, 103, 22, .2);
+  border: 3px solid #fffdf8;
 }
 
-body.ytt200-page .ytt200-pain-card h3 {
-  margin: 0 0 14px;
-  padding: 0 28px;
-  color: #173f31;
-  font-size: 1.18rem;
-  line-height: 1.45;
-  letter-spacing: -.012em;
+body.ytt200-page .ytt200-concern-body h3 {
+  margin: 0 0 12px;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--ytt200-forest);
+  line-height: 1.35;
 }
 
-body.ytt200-page .ytt200-pain-card p {
+body.ytt200-page .ytt200-concern-body p {
   margin: 0;
-  padding: 0 28px;
-  color: #5d6d64;
-  font-size: .94rem;
+  color: var(--ytt200-muted);
+  font-size: .95rem;
   line-height: 1.78;
 }
 
-body.ytt200-page .ytt200-pain-card p strong {
+body.ytt200-page .ytt200-concern-body p strong {
   color: #294e3d;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 /* ===== CURRICULUM ===== */
@@ -1217,10 +1198,22 @@ body.ytt200-page .ytt200-cta-phone-link i {
     max-width: 600px;
   }
   
-  body.ytt200-page .ytt200-pain-grid {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-    margin: 0 auto;
+  body.ytt200-page .ytt200-concern-row {
+    grid-template-columns: 140px 1fr;
+    gap: 28px;
+    padding: 36px 0;
+  }
+
+  body.ytt200-page .ytt200-concern-visual,
+  body.ytt200-page .ytt200-concern-visual img {
+    width: 140px;
+    height: 140px;
+  }
+
+  body.ytt200-page .ytt200-concern-num {
+    width: 34px;
+    height: 34px;
+    font-size: .76rem;
   }
 
   body.ytt200-page .ytt200-module-grid {
@@ -1260,6 +1253,7 @@ body.ytt200-page .ytt200-cta-phone-link i {
 
 @media (max-width: 768px) {
   body.ytt200-page .ytt200-section,
+  body.ytt200-page .ytt200-section--paper,
   body.ytt200-page #chuong-trinh,
   body.ytt200-page .ytt200-format-section,
   body.ytt200-page .ytt200-instructor,
@@ -1295,10 +1289,33 @@ body.ytt200-page .ytt200-cta-phone-link i {
   body.ytt200-page .ytt200-proof-item:nth-child(n+3) {
     border-top: 1px solid rgba(79, 91, 61, .14);
   }
+
+  body.ytt200-page .ytt200-concern-row {
+    grid-template-columns: 110px 1fr;
+    gap: 20px;
+    padding: 28px 0;
+  }
+
+  body.ytt200-page .ytt200-concern-visual,
+  body.ytt200-page .ytt200-concern-visual img {
+    width: 110px;
+    height: 110px;
+  }
+
+  body.ytt200-page .ytt200-concern-num {
+    width: 30px;
+    height: 30px;
+    font-size: .72rem;
+  }
+
+  body.ytt200-page .ytt200-concern-body h3 {
+    font-size: 1.15rem;
+  }
 }
 
 @media (max-width: 460px) {
   body.ytt200-page .ytt200-section,
+  body.ytt200-page .ytt200-section--paper,
   body.ytt200-page #chuong-trinh,
   body.ytt200-page .ytt200-format-section,
   body.ytt200-page .ytt200-instructor,
@@ -1311,6 +1328,33 @@ body.ytt200-page .ytt200-cta-phone-link i {
   body.ytt200-page .ytt200-btn-primary,
   body.ytt200-page .ytt200-btn-secondary {
     width: 100%;
+  }
+
+  body.ytt200-page .ytt200-concern-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 28px 0;
+    text-align: center;
+  }
+
+  body.ytt200-page .ytt200-concern-visual {
+    margin: 0 auto;
+    width: 140px;
+    height: 140px;
+  }
+
+  body.ytt200-page .ytt200-concern-visual img {
+    width: 140px;
+    height: 140px;
+  }
+
+  body.ytt200-page .ytt200-concern-body h3 {
+    font-size: 1.1rem;
+  }
+
+  body.ytt200-page .ytt200-concern-body p {
+    font-size: .9rem;
+    text-align: left;
   }
 
   body.ytt200-page .ytt200-proof-grid {
