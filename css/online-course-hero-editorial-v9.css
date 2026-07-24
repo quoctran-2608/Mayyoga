@@ -1,0 +1,250 @@
+/* Mây Yoga — Yoga Online Hero Editorial Contrast V9
+   Bright botanical background + deep sage editorial copy panel + champagne accents.
+   Layout stays unchanged; this layer only upgrades the visual presentation. */
+
+html body.online-course-page .sales-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 84% 16%, rgba(232, 197, 111, .24) 0%, rgba(232, 197, 111, 0) 29%),
+    radial-gradient(circle at 8% 84%, rgba(129, 171, 131, .22) 0%, rgba(129, 171, 131, 0) 31%),
+    linear-gradient(126deg, #edf4e8 0%, #f8f4e8 48%, #fffaf1 100%) !important;
+  border-bottom: 1px solid rgba(61, 90, 58, .08);
+}
+
+html body.online-course-page .sales-hero::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -150px !important;
+  right: -90px !important;
+  width: 520px !important;
+  height: 520px !important;
+  border-radius: 50% !important;
+  background:
+    radial-gradient(circle, rgba(255, 245, 209, .62) 0%, rgba(214, 229, 201, .30) 40%, transparent 70%) !important;
+  opacity: .9;
+  pointer-events: none;
+  z-index: 0;
+}
+
+html body.online-course-page .sales-hero::after {
+  content: '' !important;
+  position: absolute !important;
+  left: -150px !important;
+  bottom: -220px !important;
+  width: 470px !important;
+  height: 470px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle, rgba(120, 166, 122, .18) 0%, transparent 68%) !important;
+  pointer-events: none;
+  z-index: 0;
+}
+
+html body.online-course-page .sales-hero > .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Editorial copy panel: creates a clear visual counterpart to the portrait. */
+html body.online-course-page .sales-hero .course-hero-copy {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(30px, 3vw, 42px) clamp(28px, 3.25vw, 46px) clamp(31px, 3vw, 41px) !important;
+  border: 1px solid rgba(255, 247, 220, .16);
+  border-radius: 32px 76px 34px 50px;
+  background:
+    radial-gradient(circle at 12% 4%, rgba(235, 202, 121, .18) 0%, rgba(235, 202, 121, 0) 34%),
+    linear-gradient(138deg, rgba(39, 79, 63, .98) 0%, rgba(50, 96, 73, .97) 54%, rgba(63, 112, 82, .95) 100%) !important;
+  box-shadow:
+    0 28px 68px rgba(38, 77, 58, .18),
+    inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+
+html body.online-course-page .sales-hero .course-hero-copy::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  right: -70px;
+  bottom: -96px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(178, 210, 157, .16), transparent 68%);
+  pointer-events: none;
+}
+
+html body.online-course-page .sales-hero .sales-badge {
+  border-color: rgba(255, 239, 194, .20) !important;
+  background: rgba(255, 252, 239, .10) !important;
+  color: #f5e8bd !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+html body.online-course-page .sales-hero .sales-badge .dot {
+  background: #efcc72 !important;
+  box-shadow: 0 0 0 4px rgba(239, 204, 114, .10), 0 0 16px rgba(239, 204, 114, .16);
+}
+
+html body.online-course-page .sales-hero h1 {
+  color: #fffaf0 !important;
+  text-shadow: 0 2px 18px rgba(14, 42, 31, .10);
+}
+
+html body.online-course-page .sales-hero h1 .num,
+html body.online-course-page .sales-hero h1 em {
+  color: #f0cf79 !important;
+  -webkit-text-fill-color: currentColor !important;
+  background: none !important;
+  filter: none !important;
+}
+
+html body.online-course-page .sales-hero .container p.hero-desc {
+  color: rgba(249, 249, 239, .84) !important;
+}
+
+html body.online-course-page .sales-hero .trust-row {
+  gap: 8px !important;
+}
+
+html body.online-course-page .sales-hero .trust-item {
+  border-color: rgba(255, 246, 218, .16) !important;
+  background: rgba(255, 255, 255, .085) !important;
+  color: rgba(255, 249, 228, .92) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.045) !important;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+/* Champagne conversion CTA: strongest warm accent inside the dark panel. */
+html body.online-course-page .sales-hero .hero-grid .course-hero-copy > a.course-hero-cta.btn.btn-primary {
+  border: 1px solid rgba(255, 242, 199, .52) !important;
+  background: linear-gradient(135deg, #f8dd8d 0%, #efc35e 56%, #dfa23b 100%) !important;
+  color: #24483a !important;
+  box-shadow:
+    0 15px 34px rgba(24, 55, 42, .24),
+    0 0 0 1px rgba(255,255,255,.08) inset,
+    inset 0 1px 0 rgba(255,255,255,.55) !important;
+}
+
+html body.online-course-page .sales-hero .hero-grid .course-hero-copy > a.course-hero-cta.btn.btn-primary .hero-cta-icon {
+  color: #24483a !important;
+}
+
+html body.online-course-page .sales-hero .hero-grid .course-hero-copy > a.course-hero-cta.btn.btn-primary:hover,
+html body.online-course-page .sales-hero .hero-grid .course-hero-copy > a.course-hero-cta.btn.btn-primary:focus-visible {
+  background: linear-gradient(135deg, #ffe7a0 0%, #f5cc6c 56%, #e8ad47 100%) !important;
+  box-shadow: 0 18px 38px rgba(24, 55, 42, .28), 0 0 24px rgba(232, 184, 73, .16) !important;
+  transform: translateY(-2px);
+}
+
+/* Portrait remains clean; only the surrounding light and frame are enriched. */
+html body.online-course-page .sales-hero .hero-img-wrap {
+  position: relative !important;
+  filter: drop-shadow(0 22px 38px rgba(55, 91, 67, .10));
+}
+
+html body.online-course-page .sales-hero .hero-img-wrap::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -8% -12% -9% -9%;
+  border-radius: 48% 52% 45% 55% / 56% 44% 56% 44%;
+  background:
+    radial-gradient(circle at 54% 46%, rgba(255, 248, 221, .72) 0%, rgba(211, 227, 196, .34) 47%, rgba(211, 227, 196, 0) 73%);
+  box-shadow:
+    0 0 0 28px rgba(143, 176, 130, .055),
+    0 0 0 58px rgba(229, 194, 108, .035);
+  transform: rotate(-6deg);
+  pointer-events: none;
+}
+
+html body.online-course-page .sales-hero .hero-img-wrap::before {
+  border-color: rgba(69, 111, 76, .19) !important;
+}
+
+html body.online-course-page .sales-hero .hero-img-wrap img {
+  border-color: rgba(64, 105, 72, .13) !important;
+  box-shadow: 0 30px 72px rgba(50, 83, 58, .17) !important;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  html body.online-course-page .sales-hero .course-hero-copy {
+    padding: 30px 30px 31px !important;
+    border-radius: 28px 58px 30px 42px;
+  }
+}
+
+@media (max-width: 768px) {
+  html body.online-course-page .sales-hero {
+    background:
+      radial-gradient(circle at 88% 12%, rgba(232, 197, 111, .22) 0%, transparent 26%),
+      radial-gradient(circle at 8% 86%, rgba(129, 171, 131, .20) 0%, transparent 31%),
+      linear-gradient(155deg, #eef4e9 0%, #f7f4e9 56%, #fff9ef 100%) !important;
+  }
+
+  html body.online-course-page .sales-hero .hero-grid {
+    gap: 28px !important;
+  }
+
+  html body.online-course-page .sales-hero .course-hero-copy {
+    width: 100%;
+    padding: 27px 20px 25px !important;
+    border-radius: 26px 50px 28px 36px;
+    text-align: center;
+  }
+
+  html body.online-course-page .sales-hero .sales-badge {
+    background: rgba(255,255,255,.10) !important;
+  }
+
+  html body.online-course-page .sales-hero .trust-row {
+    border-color: rgba(255, 246, 218, .14) !important;
+    background: rgba(255,255,255,.07) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.04) !important;
+  }
+
+  html body.online-course-page .sales-hero .trust-item {
+    background: transparent !important;
+    color: rgba(255, 249, 228, .90) !important;
+  }
+
+  html body.online-course-page .sales-hero .trust-item:first-child {
+    border-bottom-color: rgba(255, 246, 218, .12) !important;
+  }
+
+  html body.online-course-page .sales-hero .trust-item:nth-child(3) {
+    border-left-color: rgba(255, 246, 218, .12) !important;
+  }
+
+  html body.online-course-page .sales-hero .hero-img-wrap::after {
+    inset: -6% -7% -7%;
+    box-shadow:
+      0 0 0 18px rgba(143, 176, 130, .05),
+      0 0 0 38px rgba(229, 194, 108, .03);
+  }
+}
+
+@media (max-width: 420px) {
+  html body.online-course-page .sales-hero .course-hero-copy {
+    padding: 24px 17px 22px !important;
+    border-radius: 23px 42px 24px 31px;
+  }
+
+  html body.online-course-page .sales-hero .container p.hero-desc {
+    color: rgba(249, 249, 239, .82) !important;
+  }
+
+  html body.online-course-page .sales-hero .hero-grid .course-hero-copy > a.course-hero-cta.btn.btn-primary {
+    width: 100% !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body.online-course-page .sales-hero .course-hero-cta {
+    transition: none !important;
+  }
+}
