@@ -515,10 +515,11 @@ body.ytt200-page .ytt200-module-card:last-child::after {
 body.ytt200-page #chuong-trinh {
   position: relative;
   overflow: hidden;
-  padding: 100px 0 90px;
+  padding: 110px 0 100px;
   background:
     radial-gradient(circle at 15% 5%, rgba(45, 100, 70, .25) 0%, transparent 35%),
-    radial-gradient(circle at 85% 95%, rgba(214, 172, 80, .08) 0%, transparent 30%),
+    radial-gradient(circle at 85% 95%, rgba(214, 172, 80, .1) 0%, transparent 30%),
+    radial-gradient(circle at 50% 50%, rgba(30, 60, 42, .5) 0%, transparent 60%),
     linear-gradient(160deg, #0f2b22 0%, #163829 40%, #1a3f2f 70%, #122e24 100%);
   color: #e8e4d8;
 }
@@ -531,52 +532,87 @@ body.ytt200-page #chuong-trinh::before {
   pointer-events: none;
 }
 
+/* Decorative gold ornament around section title */
+body.ytt200-page #chuong-trinh .ytt200-section-head {
+  position: relative;
+  margin-bottom: 64px;
+}
+
 body.ytt200-page #chuong-trinh .ytt200-section-head h2 {
   color: #f5dda0;
+  position: relative;
+  display: inline-block;
+}
+
+body.ytt200-page #chuong-trinh .ytt200-section-head h2::before,
+body.ytt200-page #chuong-trinh .ytt200-section-head h2::after {
+  content: '✦';
+  position: relative;
+  display: inline-block;
+  margin: 0 16px;
+  color: rgba(214, 172, 80, .4);
+  font-size: .6em;
+  vertical-align: middle;
 }
 
 body.ytt200-page #chuong-trinh .ytt200-section-head p {
-  color: rgba(232, 228, 216, .7);
+  color: rgba(232, 228, 216, .72);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 body.ytt200-page #chuong-trinh .ytt200-section-head::after {
   content: '';
   display: block;
-  width: 52px;
-  height: 3px;
-  margin: 18px auto 0;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #c99d3c, #e6c978);
-  box-shadow: 0 4px 14px rgba(173, 128, 35, .12);
+  width: 80px;
+  height: 2px;
+  margin: 22px auto 0;
+  background: linear-gradient(90deg, transparent, #d6ac50 30%, #e6c978 50%, #d6ac50 70%, transparent);
+  box-shadow: 0 0 20px rgba(214, 172, 80, .2);
 }
 
+/* Vertical gold timeline connector */
 body.ytt200-page .ytt200-module-grid {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 36px;
   max-width: 1000px;
   margin: 0 auto;
   position: relative;
 }
 
+body.ytt200-page .ytt200-module-grid::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, transparent 0%, rgba(214, 172, 80, .25) 10%, rgba(214, 172, 80, .2) 90%, transparent 100%);
+  transform: translateX(-1px);
+  z-index: 0;
+}
+
 body.ytt200-page .ytt200-module-card {
   position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 320px 1fr;
   gap: 0;
   align-items: stretch;
   padding: 0;
-  border: none;
+  border: 1px solid rgba(214, 172, 80, .08);
   border-radius: 20px;
   background: #faf7ef;
   box-shadow: 0 16px 48px rgba(0, 0, 0, .28), 0 4px 12px rgba(0,0,0,.12);
   overflow: hidden;
-  transition: box-shadow .3s ease, border-color .3s ease;
+  transition: box-shadow .35s ease, transform .35s ease, border-color .35s ease;
 }
 
 body.ytt200-page .ytt200-module-card:hover {
-  box-shadow: 0 20px 56px rgba(0, 0, 0, .32), 0 6px 16px rgba(0,0,0,.14);
-  transform: translateY(-3px);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, .32), 0 0 0 1px rgba(214, 172, 80, .15), 0 0 40px rgba(214, 172, 80, .06);
+  transform: translateY(-4px);
+  border-color: rgba(214, 172, 80, .2);
 }
 
 /* Alternating: even cards flip image to right */
@@ -623,19 +659,31 @@ body.ytt200-page .ytt200-module-num {
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 700;
-  box-shadow: 0 6px 18px rgba(26, 64, 48, .25), inset 0 1px 0 rgba(255,255,255,.08);
+  box-shadow: 0 6px 18px rgba(26, 64, 48, .25), inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 3px rgba(214, 172, 80, .1);
   letter-spacing: .02em;
+  transition: box-shadow .35s ease;
+}
+
+body.ytt200-page .ytt200-module-card:hover .ytt200-module-num {
+  box-shadow: 0 6px 18px rgba(26, 64, 48, .25), inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 4px rgba(214, 172, 80, .2), 0 0 20px rgba(214, 172, 80, .1);
 }
 
 /* Last child (Practicum) — gold accent capstone */
 body.ytt200-page .ytt200-module-card:last-child {
-  background: #faf7ef;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, .28), inset 4px 0 0 #c99d3c;
+  background: linear-gradient(135deg, #fdf8ee 0%, #faf3e2 100%);
+  border: 1px solid rgba(201, 157, 60, .2);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, .28), inset 4px 0 0 #c99d3c, 0 0 0 1px rgba(214, 172, 80, .08);
+}
+
+body.ytt200-page .ytt200-module-card:last-child:hover {
+  box-shadow: 0 22px 60px rgba(0, 0, 0, .32), inset 4px 0 0 #d6ac50, 0 0 40px rgba(214, 172, 80, .1);
+  border-color: rgba(201, 157, 60, .3);
 }
 
 body.ytt200-page .ytt200-module-card:last-child .ytt200-module-num {
   background: linear-gradient(135deg, #c99d3c 0%, #e6c978 100%);
   color: #3a2a0a;
+  box-shadow: 0 6px 18px rgba(201, 157, 60, .3), 0 0 0 3px rgba(214, 172, 80, .15);
 }
 
 body.ytt200-page .ytt200-module-card:last-child h3 {
@@ -1274,13 +1322,17 @@ body.ytt200-page .ytt200-cta-phone-link i {
     font-size: .76rem;
   }
 
+  body.ytt200-page .ytt200-module-grid::before {
+    display: none;
+  }
+
   body.ytt200-page .ytt200-module-card,
   body.ytt200-page .ytt200-module-card:nth-child(even) {
     grid-template-columns: 1fr;
   }
 
   body.ytt200-page .ytt200-module-image {
-    min-height: 200px;
+    min-height: 220px;
     order: 0;
   }
 
@@ -1293,7 +1345,19 @@ body.ytt200-page .ytt200-cta-phone-link i {
   }
 
   body.ytt200-page .ytt200-module-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     padding: 28px 28px;
+  }
+
+  body.ytt200-page .ytt200-module-num {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+    border-radius: 14px;
+    margin-bottom: 16px;
+    align-self: flex-start;
   }
 }
 
@@ -1431,16 +1495,52 @@ body.ytt200-page .ytt200-cta-phone-link i {
   body.ytt200-page .ytt200-format-bar {
     grid-template-columns: 1fr;
   }
-  
+
+  /* Mobile curriculum cards */
+  body.ytt200-page .ytt200-module-grid::before {
+    display: none;
+  }
+
   body.ytt200-page .ytt200-module-content {
-    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 24px 22px;
+  }
+
+  body.ytt200-page .ytt200-module-num {
+    width: 42px;
+    height: 42px;
+    font-size: .95rem;
+    border-radius: 12px;
+    margin-bottom: 14px;
+    align-self: flex-start;
   }
 
   body.ytt200-page .ytt200-module-image {
-    min-height: 160px;
+    min-height: 180px;
   }
 
   body.ytt200-page .ytt200-module-card h3 {
-    font-size: 1.12rem;
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+  }
+
+  body.ytt200-page .ytt200-module-card p {
+    font-size: .9rem;
+  }
+
+  body.ytt200-page .ytt200-module-card ul {
+    padding-left: 4px;
+  }
+
+  body.ytt200-page .ytt200-module-card li {
+    font-size: .88rem;
+  }
+
+  body.ytt200-page #chuong-trinh .ytt200-section-head h2::before,
+  body.ytt200-page #chuong-trinh .ytt200-section-head h2::after {
+    margin: 0 10px;
+    font-size: .5em;
   }
 }
