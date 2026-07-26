@@ -1,5 +1,5 @@
 /* Mây Yoga — YTT hero/callout viewport balance
-   v9: Near-fullscreen hero with spacious copy, cinematic transition and clearer callout eyebrow. */
+   v10: Preserve the approved desktop composition and refine mobile readability, density and hero length. */
 
 body .ytt-page-hero {
   min-height: max(90vh, 850px) !important;
@@ -164,45 +164,111 @@ body .ytt-callout .ytt-callout-label {
 
 @media (max-width: 768px) {
   body .ytt-page-hero {
-    min-height: max(80vh, 720px) !important;
-    padding-bottom: 48px !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 88px 0 32px !important;
+  }
+
+  /* Darken the visual centre where the mobile copy sits, while retaining image depth at the edges. */
+  body .ytt-page-hero::before {
+    background:
+      radial-gradient(
+        ellipse 88% 64% at 50% 45%,
+        rgba(4, 15, 9, .62) 0%,
+        rgba(4, 15, 9, .48) 48%,
+        rgba(4, 15, 9, .18) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(5, 17, 11, .76) 0%,
+        rgba(5, 17, 11, .61) 27%,
+        rgba(5, 17, 11, .72) 70%,
+        rgba(5, 17, 11, .91) 100%
+      ) !important;
+  }
+
+  body .ytt-page-hero .hero-bg img {
+    object-position: 54% center !important;
+    transform: scale(1.015) !important;
+  }
+
+  body .ytt-page-hero .ytt-hero-content {
+    width: min(calc(100% - 28px), 620px) !important;
+  }
+
+  body .ytt-page-hero .breadcrumb {
+    margin-bottom: 18px !important;
   }
 
   body .ytt-page-hero .ytt-hero-badge,
   body .ytt-page-hero h1,
   body .ytt-page-hero .ytt-hero-desc,
   body .ytt-page-hero .ytt-hero-trust {
-    transform: translateY(12px);
+    transform: none !important;
   }
 
   body .ytt-page-hero .ytt-hero-badge {
-    margin-bottom: 18px !important;
+    margin-bottom: 15px !important;
+    padding: 9px 16px !important;
+    font-size: .73rem !important;
+    letter-spacing: 1.25px !important;
+    background: rgba(13, 31, 21, .58) !important;
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, .16),
+      inset 0 1px 0 rgba(255, 255, 255, .07) !important;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
   }
 
   body .ytt-page-hero h1 {
-    max-width: 560px !important;
-    margin-bottom: 22px !important;
+    max-width: 520px !important;
+    margin-bottom: 18px !important;
+    font-size: clamp(2.18rem, 8.25vw, 2.72rem) !important;
+    line-height: 1.01 !important;
+    color: #e8c15c !important;
+    text-shadow:
+      0 3px 22px rgba(0, 0, 0, .58),
+      0 1px 0 rgba(255, 255, 255, .05) !important;
   }
 
   body .ytt-page-hero .ytt-hero-desc {
-    max-width: 560px !important;
-    margin-bottom: 27px !important;
-    line-height: 1.76 !important;
+    max-width: 450px !important;
+    margin-bottom: 22px !important;
+    font-size: .94rem !important;
+    line-height: 1.66 !important;
+    font-weight: 500 !important;
+    color: rgba(255, 255, 255, .94) !important;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, .66) !important;
   }
 
   body .ytt-page-hero .ytt-hero-trust {
-    max-width: 100% !important;
-    gap: 8px !important;
+    max-width: 440px !important;
+    gap: 7px !important;
+    margin: 0 auto !important;
+  }
+
+  body .ytt-page-hero .ytt-hero-trust span {
+    padding: 7px 12px !important;
+    font-size: .74rem !important;
+    line-height: 1.2 !important;
+    color: rgba(255, 255, 255, .94) !important;
+    background: rgba(12, 29, 20, .58) !important;
+    border-color: rgba(255, 255, 255, .24) !important;
+    box-shadow:
+      0 7px 20px rgba(0, 0, 0, .14),
+      inset 0 1px 0 rgba(255, 255, 255, .06) !important;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
   }
 
   body .ytt-page-hero::after {
-    height: 125px !important;
+    height: 82px !important;
     background: linear-gradient(
       180deg,
       rgba(9, 24, 16, 0) 0%,
-      rgba(9, 24, 16, .30) 38%,
-      rgba(31, 32, 17, .55) 72%,
-      rgba(73, 48, 15, .68) 100%
+      rgba(9, 24, 16, .32) 34%,
+      rgba(31, 32, 17, .59) 70%,
+      rgba(73, 48, 15, .72) 100%
     ) !important;
   }
 
@@ -222,5 +288,54 @@ body .ytt-callout .ytt-callout-label {
     padding: 9px 16px !important;
     font-size: .70rem !important;
     letter-spacing: 1.15px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body .ytt-page-hero {
+    padding-top: 84px !important;
+    padding-bottom: 26px !important;
+  }
+
+  body .ytt-page-hero .ytt-hero-content {
+    width: calc(100% - 24px) !important;
+  }
+
+  body .ytt-page-hero .breadcrumb {
+    margin-bottom: 16px !important;
+  }
+
+  body .ytt-page-hero .ytt-hero-badge {
+    max-width: 100% !important;
+    margin-bottom: 14px !important;
+    padding: 8px 14px !important;
+    font-size: .68rem !important;
+    letter-spacing: 1.05px !important;
+    line-height: 1.25 !important;
+    text-align: center;
+  }
+
+  body .ytt-page-hero h1 {
+    margin-bottom: 16px !important;
+    font-size: clamp(2.02rem, 10.2vw, 2.35rem) !important;
+  }
+
+  body .ytt-page-hero .ytt-hero-desc {
+    margin-bottom: 18px !important;
+    font-size: .90rem !important;
+    line-height: 1.60 !important;
+  }
+
+  body .ytt-page-hero .ytt-hero-trust {
+    gap: 6px !important;
+  }
+
+  body .ytt-page-hero .ytt-hero-trust span {
+    padding: 6px 10px !important;
+    font-size: .70rem !important;
+  }
+
+  body .ytt-page-hero::after {
+    height: 64px !important;
   }
 }
