@@ -1,23 +1,25 @@
 // ===== Mây Yoga — Shared Site Chrome =====
-// Single bootstrap for Header/Menu/Search, Footer, Floating Contact, Breadcrumb and Article Share.
+// Owns only shared Header/Menu/Search, Footer, Floating Contact, Breadcrumb and Article Share.
 (function syncSiteChrome() {
   'use strict';
 
-  function getSiteRoot() {
+  function resolveSiteRoot() {
     var script = document.currentScript;
     if (!script || !script.src) {
       var scripts = document.querySelectorAll('script[src]');
-      for (var i = scripts.length - 1; i >= 0; i--) {
-        if (/\/js\/site-chrome\.js(?:\?|$)/.test(scripts[i].src)) {
-          script = scripts[i];
+      for (var index = scripts.length - 1; index >= 0; index -= 1) {
+        if (/\/js\/site-chrome\.js(?:\?|$)/.test(scripts[index].src)) {
+          script = scripts[index];
           break;
         }
       }
     }
-    return script && script.src ? new URL('../', script.src) : new URL('./', window.location.href);
+    return script && script.src
+      ? new URL('../', script.src)
+      : new URL(window.MAY_YOGA_SITE_ROOT || './', window.location.href);
   }
 
-  var siteRoot = getSiteRoot();
+  var siteRoot = resolveSiteRoot();
   function siteUrl(path) { return new URL(path, siteRoot).href; }
 
   function primeHeaderState() {
@@ -27,10 +29,9 @@
     navbar.setAttribute('data-site-header-standard', 'true');
   }
 
-  primeHeaderState();
-
   function ensureStandardStyles() {
     if (document.getElementById('may-yoga-site-chrome-standard')) return;
+
     var style = document.createElement('style');
     style.id = 'may-yoga-site-chrome-standard';
     style.textContent = [
@@ -76,15 +77,7 @@
     ensureStylesheet('link[data-header-first-paint]', 'css/header-first-paint-v1.css?v=20260726a', 'data-header-first-paint');
     ensureStylesheet('link[data-header-index-canonical]', 'css/header-index-canonical-v3.css?v=20260726c', 'data-header-index-canonical');
     ensureStylesheet('link[data-site-navigation-canonical]', 'css/site-navigation-canonical-v4.css?v=20260722a', 'data-site-navigation-canonical');
-    ensureStylesheet('link[data-breadcrumb-canonical]', 'css/breadcrumb-canonical-v1.css?v=20260726a', 'data-breadcrumb-canonical');
-  }
-
-  function loadPageSpecificStyles() {
-    var path = window.location.pathname.replace(/\/+$/, '');
-
-    if (/\/hoc-yoga-online\.html$/i.test(path)) {
-      ensureStylesheet('link[data-online-course-polish]', 'css/online-course-polish-v2.css?v=20260722a', 'data-online-course-polish');
-    }
+    ensureStylesheet('link[data-breadcrumb-canonical]', 'css/breadcrumb-canonical-v1.css?v=20260726b', 'data-breadcrumb-canonical');
   }
 
   function footerMarkup() {
@@ -141,7 +134,10 @@
   }
 
   function normalizeFloatingContact() {
-    document.querySelectorAll('.floating-contact').forEach(function(node) { node.remove(); });
+    document.querySelectorAll('.floating-contact').forEach(function removeFloating(node) {
+      node.remove();
+    });
+
     var floating = document.createElement('div');
     floating.className = 'floating-contact';
     floating.id = 'floatingContact';
@@ -172,12 +168,13 @@
     primeHeaderState();
     ensureStandardStyles();
     loadSharedStyles();
-    loadPageSpecificStyles();
     normalizeFooter();
     normalizeFloatingContact();
     loadCanonicalNavigation();
     loadCanonicalArticleShare();
   }
+
+  primeHeaderState();
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', applyStandardChrome, { once: true });
