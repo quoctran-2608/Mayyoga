@@ -1,0 +1,188 @@
+/* ===== MÂY YOGA — YTT 200H MOBILE LAYOUT =====
+   Mobile-only layout owner for the YTT 200H hero.
+   The breadcrumb is intentionally owned by ytt-200h-page-v4.css. */
+
+@media (max-width: 768px) {
+  body.ytt200-page .ytt200-hero {
+    min-height: 0;
+    height: auto;
+    padding: 30px 0 44px;
+    background-position: 61% center;
+    align-items: flex-start;
+  }
+
+  body.ytt200-page .ytt200-hero::before {
+    background:
+      radial-gradient(
+        ellipse 82% 58% at 50% 38%,
+        rgba(17, 25, 15, .18) 0%,
+        rgba(17, 25, 15, .08) 58%,
+        rgba(17, 25, 15, 0) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(14, 26, 17, .68) 0%,
+        rgba(16, 28, 18, .50) 32%,
+        rgba(12, 24, 16, .60) 68%,
+        rgba(9, 20, 13, .84) 100%
+      );
+  }
+
+  body.ytt200-page .ytt200-hero > .container {
+    width: min(calc(100% - 28px), 560px);
+  }
+
+  body.ytt200-page .ytt200-hero-grid,
+  body.ytt200-page .ytt200-hero-copy {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  body.ytt200-page .ytt200-badge {
+    max-width: 100%;
+    margin: 0 auto 17px;
+    padding: 8px 14px;
+    gap: 8px;
+    white-space: nowrap;
+    font-size: clamp(.62rem, 2.7vw, .70rem);
+    line-height: 1.25;
+    letter-spacing: .045em;
+    background: rgba(107, 78, 28, .34);
+    border-color: rgba(238, 196, 91, .50);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+  }
+
+  body.ytt200-page .ytt200-badge::before {
+    width: 6px;
+    height: 6px;
+    box-shadow: 0 0 0 3px rgba(232, 189, 88, .18);
+  }
+
+  body.ytt200-page .ytt200-hero h1 {
+    max-width: 370px;
+    margin: 0 auto 17px;
+    font-size: clamp(2.35rem, 11.6vw, 2.90rem);
+    line-height: .96;
+    letter-spacing: -.035em;
+    text-wrap: balance;
+    text-shadow: 0 3px 24px rgba(0, 0, 0, .48);
+  }
+
+  body.ytt200-page .ytt200-hero h1 em {
+    display: block;
+    margin-top: .10em;
+    font-size: .92em;
+    line-height: 1;
+  }
+
+  body.ytt200-page .ytt200-hero-lead {
+    max-width: 365px;
+    margin: 0 auto 22px;
+    color: rgba(255, 255, 255, .91);
+    font-size: .91rem;
+    line-height: 1.58;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, .55);
+  }
+
+  body.ytt200-page .ytt200-hero-lead::before {
+    width: 54px;
+    height: 2px;
+    margin: 0 auto 17px;
+  }
+
+  body.ytt200-page .ytt200-format-bar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    width: min(100%, 360px);
+    margin: 0 auto 23px;
+  }
+
+  body.ytt200-page .ytt200-format-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 42px;
+    padding: 7px 9px;
+    border-radius: 10px;
+    background: rgba(21, 43, 29, .48);
+    color: rgba(255, 255, 255, .86);
+    font-size: .67rem;
+    line-height: 1.28;
+    text-align: center;
+  }
+
+  body.ytt200-page .ytt200-format-item:last-child {
+    grid-column: 1 / -1;
+  }
+
+  body.ytt200-page .ytt200-format-item strong {
+    margin: 0;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  body.ytt200-page .ytt200-format-item i {
+    flex: 0 0 auto;
+    margin-right: 5px;
+  }
+
+  body.ytt200-page .ytt200-hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+    width: min(100%, 340px);
+    margin: 0 auto;
+  }
+
+  body.ytt200-page .ytt200-hero-actions .ytt200-btn-primary,
+  body.ytt200-page .ytt200-hero-actions .ytt200-btn-secondary {
+    width: 100%;
+    min-height: 48px;
+    padding: 0 18px;
+    font-size: .82rem;
+  }
+}
+
+@media (max-width: 420px) {
+  body.ytt200-page .ytt200-hero {
+    padding: 24px 0 38px;
+    background-position: 63% center;
+  }
+
+  body.ytt200-page .ytt200-hero > .container {
+    width: calc(100% - 22px);
+  }
+
+  body.ytt200-page .ytt200-badge {
+    margin-bottom: 15px;
+    padding: 7px 11px;
+    letter-spacing: .035em;
+  }
+
+  body.ytt200-page .ytt200-hero h1 {
+    max-width: 345px;
+    margin-bottom: 15px;
+    font-size: clamp(2.20rem, 10.9vw, 2.65rem);
+  }
+
+  body.ytt200-page .ytt200-hero-lead {
+    margin-bottom: 20px;
+    font-size: .88rem;
+    line-height: 1.55;
+  }
+
+  body.ytt200-page .ytt200-format-bar {
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  body.ytt200-page .ytt200-format-item {
+    min-height: 40px;
+    padding: 6px 7px;
+    font-size: .64rem;
+  }
+}
