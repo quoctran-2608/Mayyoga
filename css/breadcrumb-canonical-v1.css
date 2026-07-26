@@ -1,15 +1,12 @@
 @import url('shared-header-alignment-v1.css?v=20260723a');
 @import url('pose-category-nav-v2.css?v=20260722a');
 @import url('about-founder-type-balance-v1.css?v=20260723a');
-@import url('online-course-hero-editorial-v9.css?v=20260724b');
 
 /* ===== MÂY YOGA — CANONICAL BREADCRUMB V1 =====
-   Visual source of truth: the approved breadcrumb treatment on ve-may-yoga.html.
-   Applies to canonical .breadcrumb, legacy .course-breadcrumb, and semantic
-   aria-label="Breadcrumb" shells. The current-page label is part of the component. */
+   Shared breadcrumb treatment only. Page-specific hero spacing and backgrounds
+   belong to each page stylesheet and are intentionally excluded here. */
 
-html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]),
-html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcrumb"] {
+html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) {
   display: flex !important;
   align-items: center !important;
   flex-wrap: wrap !important;
@@ -25,16 +22,7 @@ html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcru
   text-align: left !important;
 }
 
-/* Online-course masthead follows the same fixed-header-safe top rhythm as
-   ve-may-yoga.html. Only top padding is normalized; the approved hero spacing
-   below the breadcrumb and the rest of the hero composition stay unchanged. */
-html body.online-course-page .sales-hero {
-  padding-top: 136px !important;
-}
-
-/* Parent / ancestor links — sage, readable, but quieter than the current page. */
-html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > a,
-html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcrumb"] > a {
+html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > a {
   color: #6b8e6b !important;
   font-family: inherit !important;
   font-size: inherit !important;
@@ -45,37 +33,25 @@ html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcru
 }
 
 html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > a:hover,
-html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > a:focus-visible,
-html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcrumb"] > a:hover,
-html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcrumb"] > a:focus-visible {
+html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > a:focus-visible {
   color: #315d3c !important;
 }
 
-html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > a:focus-visible,
-html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcrumb"] > a:focus-visible {
-  outline: 2px solid rgba(49,93,60,.20);
+html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > a:focus-visible {
+  outline: 2px solid rgba(49, 93, 60, .20);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* Separators. Legacy course markup uses a plain span for ›, while article pages
-   normally use .sep. Any non-final direct span is therefore treated as a separator. */
 html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > .sep,
-html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > span:not(:last-child),
-html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcrumb"] > .sep,
-html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcrumb"] > span:not(:last-child) {
+html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > span:not(:last-child) {
   color: #b6c0b8 !important;
   font-weight: 400 !important;
 }
 
-/* Current-page label — intentionally darker and slightly stronger.
-   IMPORTANT: this segment is part of the breadcrumb visual standard, not generic body text. */
 html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > .current,
 html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > span:last-child,
-html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > [aria-current="page"],
-html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcrumb"] > .current,
-html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcrumb"] > span:last-child,
-html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcrumb"] > [aria-current="page"] {
+html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > [aria-current="page"] {
   color: #53635a !important;
   font-family: inherit !important;
   font-size: inherit !important;
@@ -84,26 +60,12 @@ html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcru
   letter-spacing: inherit !important;
 }
 
-@media (max-width: 1024px) and (min-width: 769px) {
-  html body.online-course-page .sales-hero {
-    padding-top: 124px !important;
-  }
-}
-
-/* Mobile header is already in normal document flow. Keep only a compact visual
-   gap below it instead of adding another fixed-header-sized offset. */
 @media (max-width: 768px) {
-  html body.online-course-page .sales-hero {
-    padding-top: 34px !important;
-  }
-
   html body.about-page .about-founder-hero {
     padding-top: 36px !important;
   }
 
-  html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]),
-  html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcrumb"] {
-    display: flex !important;
+  html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) {
     gap: 7px !important;
     margin-bottom: 16px !important;
     font-size: .78rem !important;
@@ -112,16 +74,11 @@ html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcru
 }
 
 @media (max-width: 420px) {
-  html body.online-course-page .sales-hero {
-    padding-top: 28px !important;
-  }
-
   html body.about-page .about-founder-hero {
     padding-top: 30px !important;
   }
 
-  html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]),
-  html body.online-course-page .sales-hero .course-breadcrumb[aria-label="Breadcrumb"] {
+  html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) {
     gap: 6px !important;
     margin-bottom: 14px !important;
     font-size: .75rem !important;
