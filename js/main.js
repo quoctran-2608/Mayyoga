@@ -72,7 +72,7 @@
   function loadSiteChrome() {
     if (document.querySelector('script[data-site-chrome-standard]')) return;
     var script = document.createElement('script');
-    script.src = siteUrl('js/site-chrome.js?v=20260726d');
+    script.src = siteUrl('js/site-chrome.js?v=20260726e');
     script.async = false;
     script.setAttribute('data-site-chrome-standard', 'true');
     document.head.appendChild(script);
