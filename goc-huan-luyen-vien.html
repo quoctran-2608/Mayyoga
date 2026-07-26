@@ -6,296 +6,8 @@
   <title>Góc Huấn Luyện Viên — Kiến thức chuyên sâu đào tạo YTT 200H | Mây Yoga</title>
   <meta name="description" content="Thư viện kiến thức chuyên sâu dành cho Giáo viên Yoga và Học viên đào tạo 200 giờ: Giải phẫu học ứng dụng, Nghệ thuật giảng dạy, và Phân tích ca lâm sàng thực tế.">
 
-  <link rel="stylesheet" href="css/style.css?v=20260723a">
-  <link rel="stylesheet" href="css/ytt-instructor-page.css?v=20260723e">
-  <link rel="stylesheet" href="css/site-navigation-canonical-v4.css?v=20260722a" data-site-navigation-canonical="true">
-  <link rel="stylesheet" href="css/header-index-canonical-v3.css?v=20260722b" data-header-index-canonical="true">
-  <style data-ytt-hero-layout-fix="v6">
-    /* Fixed-header-safe hero masthead. Breadcrumb follows the same normal-flow rhythm as ve-may-yoga.html. */
-    .ytt-page-hero {
-      min-height: max(90vh, 850px);
-      align-items: flex-start;
-      justify-content: flex-start;
-      text-align: left;
-      padding: 140px 0 72px;
-    }
-    .ytt-hero-content {
-      width: min(calc(100% - 40px), var(--container-width, 1200px));
-      max-width: none;
-      margin: 0 auto;
-      padding-top: 0;
-    }
-    .ytt-hero-content > * {
-      max-width: 650px;
-    }
-    .ytt-page-hero .breadcrumb {
-      position: static !important;
-      display: flex !important;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      width: auto !important;
-      max-width: 650px !important;
-      margin: 0 0 32px !important;
-      padding: 0 !important;
-      transform: none !important;
-      font-family: 'DM Sans', sans-serif;
-      font-size: .82rem;
-      line-height: 1.4;
-    }
-    .ytt-page-hero .breadcrumb a {
-      color: rgba(255,255,255,.68) !important;
-      text-decoration: none;
-    }
-    .ytt-page-hero .breadcrumb a:hover {
-      color: #f0cf72 !important;
-    }
-    .ytt-page-hero .breadcrumb .sep {
-      color: rgba(255,255,255,.36) !important;
-    }
-    .ytt-page-hero .breadcrumb .current {
-      color: rgba(255,255,255,.9) !important;
-    }
-    .ytt-hero-badge {
-      margin-bottom: 21px;
-      color: #f0cf72;
-      border-color: rgba(224,184,77,.58);
-      background: rgba(13,31,21,.42);
-      box-shadow: 0 8px 28px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.06);
-    }
-    .ytt-hero-badge::before {
-      background: #e1b94f;
-      box-shadow: 0 0 0 4px rgba(225,185,79,.12), 0 0 18px rgba(225,185,79,.16);
-    }
-    .ytt-page-hero h1 {
-      max-width: 650px;
-      color: #e1b94f;
-      font-size: clamp(2.95rem, 3.5vw, 3.8rem);
-      line-height: 1.02;
-      letter-spacing: -1px;
-      text-shadow: 0 3px 24px rgba(0,0,0,.32), 0 1px 0 rgba(255,255,255,.05);
-    }
-    .ytt-hero-desc {
-      color: rgba(255,255,255,.88);
-    }
-
-    /* ===== Premium CTA Callout — dark bg image + gold accents ===== */
-    .ytt-callout {
-      position: relative;
-      z-index: 3;
-      overflow: hidden;
-      padding: 0;
-    }
-    .ytt-callout-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-    .ytt-callout-bg img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .ytt-callout::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(180,140,40,0.08);
-      z-index: 1;
-      pointer-events: none;
-    }
-    .ytt-callout .container {
-      position: relative;
-      z-index: 2;
-    }
-    .ytt-callout-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 56px 20px 52px;
-      gap: 0;
-    }
-    .ytt-callout-label {
-      display: inline-flex;
-      align-items: center;
-      width: fit-content;
-      margin: 0 auto 18px;
-      padding: 7px 16px;
-      color: #3d5a3a;
-      background: rgba(61,90,58,0.1);
-      border: 1px solid rgba(61,90,58,0.2);
-      border-radius: 999px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: 1.6px;
-      text-transform: uppercase;
-    }
-    .ytt-callout-title {
-      max-width: 720px;
-      margin: 0 auto 20px;
-      color: #1a2e1f;
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(1.85rem, 2.8vw, 2.5rem);
-      font-weight: 600;
-      line-height: 1.18;
-      letter-spacing: -.3px;
-      text-wrap: balance;
-      text-shadow: none;
-    }
-    .ytt-callout-title em {
-      font-style: italic;
-      color: #5a3d10;
-    }
-    .ytt-callout-chips {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 28px;
-    }
-    .ytt-callout-chips span {
-      font-family: 'DM Sans', sans-serif;
-      font-size: .8rem;
-      font-weight: 600;
-      color: #3d5a3a;
-      letter-spacing: .2px;
-    }
-    .ytt-callout-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      min-height: 56px;
-      padding: 16px 36px;
-      border: none;
-      border-radius: 999px;
-      background: #1a2e1f;
-      color: #f5e6b8;
-      font-family: 'DM Sans', sans-serif;
-      font-size: .95rem;
-      font-weight: 700;
-      text-decoration: none;
-      white-space: nowrap;
-      box-shadow: 0 6px 24px rgba(26,46,31,.3);
-      transition: transform .28s ease, box-shadow .28s ease, background .28s ease;
-    }
-    .ytt-callout-btn:hover {
-      background: #2d4a30;
-      color: #fff;
-      box-shadow: 0 10px 32px rgba(26,46,31,.4);
-      transform: translateY(-3px);
-    }
-    .ytt-callout-btn:focus-visible {
-      outline: 3px solid rgba(61,90,58,.4);
-      outline-offset: 4px;
-    }
-    .ytt-callout-btn svg {
-      transition: transform .25s ease;
-    }
-    .ytt-callout-btn:hover svg {
-      transform: translateX(3px);
-    }
-
-    @media (max-width: 1024px) {
-      .ytt-page-hero {
-        min-height: max(85vh, 800px);
-        padding: 132px 0 60px;
-      }
-      .ytt-page-hero .breadcrumb {
-        margin-bottom: 28px !important;
-      }
-      .ytt-page-hero h1 {
-        font-size: clamp(2.7rem, 5vw, 3.25rem);
-        line-height: 1.03;
-      }
-      .ytt-callout-inner {
-        padding: 48px 16px 44px;
-      }
-    }
-    @media (max-width: 768px) {
-      .ytt-page-hero {
-        min-height: max(80vh, 720px);
-        align-items: flex-start;
-        text-align: center;
-        padding: 96px 0 48px;
-      }
-      .ytt-hero-content {
-        width: min(calc(100% - 32px), 680px);
-      }
-      .ytt-page-hero .breadcrumb {
-        justify-content: flex-start;
-        max-width: 100% !important;
-        margin-bottom: 25px !important;
-        font-size: .76rem;
-        text-align: left;
-      }
-      .ytt-hero-content > * {
-        max-width: 100%;
-      }
-      .ytt-hero-badge {
-        margin-bottom: 17px;
-      }
-      .ytt-page-hero h1 {
-        max-width: 560px;
-        margin-left: auto;
-        margin-right: auto;
-        font-size: clamp(2.25rem, 8.5vw, 2.9rem);
-        line-height: 1.02;
-        letter-spacing: -.7px;
-      }
-      .ytt-hero-desc,
-      .ytt-hero-trust {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .ytt-callout-inner {
-        padding: 42px 16px 38px;
-      }
-      .ytt-callout-title {
-        font-size: clamp(1.55rem, 5.5vw, 2rem);
-      }
-      .ytt-callout-chips {
-        gap: 6px 14px;
-      }
-      .ytt-callout-chips span {
-        font-size: .74rem;
-      }
-    }
-    @media (max-width: 480px) {
-      .ytt-page-hero {
-        min-height: max(78vh, 680px);
-        padding-top: 90px;
-      }
-      .ytt-page-hero .breadcrumb {
-        margin-bottom: 22px !important;
-        font-size: .72rem;
-      }
-      .ytt-hero-badge {
-        color: #f2d47d;
-      }
-      .ytt-page-hero h1 {
-        color: #e3bb54;
-        font-size: clamp(1.95rem, 10vw, 2.45rem);
-        line-height: 1.03;
-      }
-      .ytt-callout-inner {
-        padding: 36px 12px 32px;
-      }
-      .ytt-callout-title {
-        font-size: 1.4rem;
-      }
-      .ytt-callout-chips {
-        flex-direction: column;
-        gap: 4px;
-      }
-      .ytt-callout-btn {
-        width: 100%;
-        justify-content: center;
-        padding: 15px 28px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css?v=20260726f">
+  <link rel="stylesheet" href="css/goc-huan-luyen-vien-page-v1.css?v=20260726a" data-goc-hlv-page="true" data-ytt-callout-viewport-fix="true" data-breadcrumb-canonical="true">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="canonical" href="https://mayyoga.health/goc-huan-luyen-vien.html">
@@ -311,37 +23,48 @@
   <meta name="twitter:title" content="Góc Huấn Luyện Viên — Kiến thức chuyên sâu đào tạo YTT 200H">
   <meta name="twitter:description" content="Thư viện kiến thức chuyên sâu dành cho Giáo viên Yoga và Học viên đào tạo 200 giờ.">
   <meta name="twitter:image" content="https://mayyoga.health/assets/images/ytt-hero-bg.jpg">
-
-  <script defer src="js/site-chrome.js?v=20260723a" data-site-chrome-standard="true"></script>
-  <script defer src="js/site-navigation-canonical-v2.js?v=20260723a" data-site-navigation-canonical="true"></script>
 </head>
-<body>
+<body class="goc-hlv-page">
 
-  <!-- ===== NAVBAR SHELL (canonical shared navigation replaces/normalizes at runtime) ===== -->
-  <nav class="navbar scrolled" id="navbar">
+  <nav class="navbar site-header-standard scrolled" id="navbar" data-site-header-standard="true">
     <div class="container">
       <a href="index.html" class="nav-logo"><img src="assets/images/logo.webp" alt="Mây Yoga" class="logo-img"></a>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Trang chủ</a></li>
         <li><a href="ve-may-yoga.html">Về Mây Yoga</a></li>
-        <li class="nav-dropdown"><a href="hoc-yoga-online.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Các khoá học <span class="chevron">▾</span></a><ul class="dropdown-menu"><li><a href="hoc-yoga-online.html">🌿 Yoga Online 1:1</a></li><li><a href="goc-huan-luyen-vien.html">🦉 Đào tạo YTT 200H</a></li></ul></li>
-        <li class="nav-dropdown"><a href="bai-viet/yoga-cho-nguoi-moi.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Kiến thức Yoga <span class="chevron">▾</span></a><ul class="dropdown-menu"><li><a href="bai-viet/yoga-cho-nguoi-moi.html">🌱 Yoga cho người mới</a></li><li><a href="tu-the-yoga.html">🧘 90 Tư thế Yoga</a></li><li><a href="bai-viet/pranayama-ky-thuat-tho.html">🌬️ Pranayama</a></li><li><a href="bai-viet/thien-cho-nguoi-moi.html">🕊️ Thiền định</a></li><li><a href="giai-phau-yoga.html">🫀 Giải phẫu Yoga</a></li><li style="border-top:1px solid rgba(61,90,58,.1);margin-top:4px;padding-top:4px"><a href="tu-tap-tai-nha.html">🏠 Tự tập tại nhà</a></li></ul></li>
+        <li class="nav-dropdown">
+          <a href="hoc-yoga-online.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Các khoá học <span class="chevron">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="hoc-yoga-online.html">Yoga Online 1:1</a></li>
+            <li><a href="dao-tao-huan-luyen-vien-200h.html">Đào tạo YTT 200H</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href="bai-viet/yoga-cho-nguoi-moi.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Kiến thức Yoga <span class="chevron">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="bai-viet/yoga-cho-nguoi-moi.html">Yoga cho người mới</a></li>
+            <li><a href="tu-the-yoga.html">90 Tư thế Yoga</a></li>
+            <li><a href="bai-viet/pranayama-ky-thuat-tho.html">Pranayama</a></li>
+            <li><a href="bai-viet/thien-cho-nguoi-moi.html">Thiền định</a></li>
+            <li><a href="giai-phau-yoga.html">Giải phẫu Yoga</a></li>
+            <li class="nav-menu-separator"><a href="tu-tap-tai-nha.html">Tự tập tại nhà</a></li>
+          </ul>
+        </li>
         <li><a href="trac-nghiem.html">Trắc nghiệm</a></li>
       </ul>
       <div class="nav-search" id="navSearch"><input type="text" id="globalSearch" placeholder="🔍 Tìm tư thế, bài viết..." autocomplete="off"><div class="search-dropdown" id="searchDropdown"></div></div>
-      <div class="nav-cta"><a href="index.html#categories" class="btn btn-primary btn-sm">Khám phá ngay <img class="leaf-icon" src="assets/images/icons/leaf_button.svg" alt="" aria-hidden="true" width="14" height="18"></a></div>
+      <div class="nav-cta"><a href="#ytt-register" class="btn btn-primary btn-sm">Nhận tư vấn</a></div>
       <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
   <main>
-    <!-- ===== 1. HERO ===== -->
-    <section class="ytt-page-hero" id="hero">
+    <section class="ytt-page-hero" id="goc-hlv-hero">
       <div class="hero-bg">
         <img src="assets/images/ytt-hero-bg.jpg" alt="" loading="eager" fetchpriority="high" aria-hidden="true">
       </div>
       <div class="ytt-hero-content">
-        <div class="breadcrumb" aria-label="Breadcrumb">
+        <div class="breadcrumb breadcrumb--on-dark" aria-label="Breadcrumb">
           <a href="index.html">Trang chủ</a>
           <span class="sep" aria-hidden="true">›</span>
           <span class="current" aria-current="page">Góc Huấn Luyện Viên</span>
@@ -357,7 +80,6 @@
       </div>
     </section>
 
-    <!-- ===== 2. YTT CALLOUT (Premium CTA) ===== -->
     <section class="ytt-callout" id="ytt-cta">
       <div class="ytt-callout-bg">
         <img src="assets/images/ytt-callout-bg.jpg" alt="" loading="eager" aria-hidden="true">
@@ -373,21 +95,20 @@
           </div>
           <a href="dao-tao-huan-luyen-vien-200h.html" class="ytt-callout-btn">
             <span>Xem Khoá Học &amp; Đăng Ký</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- ===== 3. GIẢI PHẪU HỌC & CƠ SINH HỌC ===== -->
     <section id="giai-phau-co-sinh-hoc" class="ytt-section bg-white">
       <div class="container">
         <div class="ytt-section-visual reveal">
           <div>
-            <div class="ytt-section-header" style="text-align:left; margin-bottom:24px;">
+            <div class="ytt-section-header">
               <div class="section-icon">🫀</div>
               <h2>Giải phẫu học Ứng dụng &amp; Cơ sinh học</h2>
-              <p style="margin:0;">Khoa học đằng sau mỗi chuyển động. Cơ sinh học giúp giáo viên hiểu "Tại sao" cơ thể học viên lại kháng cự hoặc dễ bị chấn thương.</p>
+              <p>Khoa học đằng sau mỗi chuyển động. Cơ sinh học giúp giáo viên hiểu "Tại sao" cơ thể học viên lại kháng cự hoặc dễ bị chấn thương.</p>
             </div>
           </div>
           <img src="assets/images/ytt-anatomy.jpg" alt="Giảng viên giảng giải phẫu học ứng dụng trong đào tạo Yoga" loading="lazy">
@@ -422,15 +143,14 @@
       </div>
     </section>
 
-    <!-- ===== 4. SƯ PHẠM & PHÁT TRIỂN NGHỀ ===== -->
     <section id="su-pham" class="ytt-section bg-sage">
       <div class="container">
         <div class="ytt-section-visual reverse reveal">
           <div>
-            <div class="ytt-section-header" style="text-align:left; margin-bottom:24px;">
+            <div class="ytt-section-header">
               <div class="section-icon">🗣️</div>
               <h2>Nghệ thuật Sư phạm &amp; Phát triển Nghề</h2>
-              <p style="margin:0;">Kỹ năng đứng lớp (Khẩu lệnh), sắp xếp chuỗi tư thế, đạo đức nghề nghiệp và tự xây dựng thương hiệu cá nhân.</p>
+              <p>Kỹ năng đứng lớp (Khẩu lệnh), sắp xếp chuỗi tư thế, đạo đức nghề nghiệp và tự xây dựng thương hiệu cá nhân.</p>
             </div>
           </div>
           <img src="assets/images/ytt-pedagogy.jpg" alt="Lớp đào tạo giáo viên Yoga với học viên thực hành" loading="lazy">
@@ -482,15 +202,14 @@
       </div>
     </section>
 
-    <!-- ===== 5. CA LÂM SÀNG ===== -->
     <section id="ca-lam-sang" class="ytt-section bg-white">
       <div class="container">
         <div class="ytt-section-visual reveal">
           <div>
-            <div class="ytt-section-header" style="text-align:left; margin-bottom:24px;">
+            <div class="ytt-section-header">
               <div class="section-icon">🔍</div>
               <h2>Phân Tích Ca Lâm Sàng Thực Tế</h2>
-              <p style="margin:0;">Học từ thực tế. Phân tích lỗi định tuyến của học viên trong các ca học thực tiễn và cách đưa ra phương án điều chỉnh.</p>
+              <p>Học từ thực tế. Phân tích lỗi định tuyến của học viên trong các ca học thực tiễn và cách đưa ra phương án điều chỉnh.</p>
             </div>
           </div>
           <img src="assets/images/ytt-clinical.jpg" alt="Close-up sửa tư thế định tuyến cho học viên Yoga" loading="lazy">
@@ -518,7 +237,6 @@
       </div>
     </section>
 
-    <!-- ===== 6. HỖ TRỢ SAU KHÓA ===== -->
     <section id="post-ytt" class="ytt-section bg-cream">
       <div class="container">
         <div class="ytt-section-header reveal">
@@ -551,7 +269,6 @@
       </div>
     </section>
 
-    <!-- ===== 7. CTA + FORM ĐĂNG KÝ ===== -->
     <section id="ytt-register" class="ytt-cta-final">
       <div class="container reveal">
         <h2>Sẵn sàng bước vào<br><em>hành trình giảng dạy?</em></h2>
@@ -578,14 +295,12 @@
     </section>
   </main>
 
-  <!-- FOOTER (canonical via site-chrome.js) -->
-  <footer class="footer"><div class="container"><div class="footer-grid-new"><div class="footer-brand-col"><a href="index.html" class="footer-logo-link"><img src="assets/images/logo.webp" alt="Mây Yoga" class="footer-logo-img"></a><p class="footer-tagline">Nền tảng kiến thức Hatha Yoga<br>dành cho mọi người.</p><div class="footer-social-icons"><a href="https://www.facebook.com/profile.php?id=61573065832463" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">f</a><a href="https://www.instagram.com/thumay2808" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">◎</a><a href="https://www.tiktok.com/@my.v.yoga" target="_blank" rel="noopener" aria-label="TikTok" class="social-icon">♪</a></div></div><div class="footer-col"><h4>Chính sách</h4><ul><li><a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a></li><li><a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a></li><li><a href="chinh-sach-thanh-toan.html">Chính sách thanh toán</a></li><li><a href="chinh-sach-doi-tra.html">Chính sách hoàn tiền</a></li></ul></div><div class="footer-col"><h4>Liên hệ</h4><ul><li><a href="mailto:phanthumay.yoga500@gmail.com">📧 phanthumay.yoga500@gmail.com</a></li><li><a href="https://zalo.me/0326808864" target="_blank" rel="noopener">📱 Hotline: 0326 808 864</a></li><li>📍 Đà Lạt, Lâm Đồng, Việt Nam</li></ul><p class="footer-legal"><strong>Chủ quản:</strong> Phan Thu Mây&nbsp;|&nbsp;<strong>MST:</strong> 066195013103</p></div></div><div class="footer-bottom"><p>© 2026 MâyYoga.health — All rights reserved. 🍀</p></div></div></footer>
-
+  <footer class="footer"></footer>
   <div class="floating-contact" id="floatingContact"></div>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20260726f"></script>
   <script src="js/search-index.js"></script>
-  <script src="js/search.js"></script>
+  <script src="js/search-base.js?v=20260726a"></script>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"Đào tạo Giáo viên Yoga YTT 200H","description":"Chương trình đào tạo giáo viên yoga 200 giờ cấp chứng chỉ quốc tế Yoga Alliance. Giải phẫu học ứng dụng, Kỹ năng sư phạm, Ca lâm sàng thực tế.","provider":{"@type":"EducationalOrganization","name":"Giang Metta Yoga & Sound Healing Academy","url":"https://app.yogaalliance.org/schoolpublicprofile/001TR00000V95eXYAR/giang-metta-yoga-sound-healing-academy"},"instructor":{"@type":"Person","name":"Thu Mây","jobTitle":"Giáo viên Yoga RYT 500h","url":"https://mayyoga.health/ve-may-yoga.html"},"educationalCredentialAwarded":"RYT 200 — Yoga Alliance","courseCode":"YTT200","hasCourseInstance":{"@type":"CourseInstance","courseMode":"blended","courseWorkload":"PT200H","instructor":{"@type":"Person","name":"Thu Mây"}}}</script>
 </body>
