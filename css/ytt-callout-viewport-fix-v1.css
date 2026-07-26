@@ -1,199 +1,66 @@
-/* Mây Yoga — YTT hero/callout viewport balance
-   v10: Preserve the approved desktop composition and refine mobile readability, density and hero length. */
+@import url('ytt-callout-viewport-fix-v1-base.css?v=20260726c');
 
-body .ytt-page-hero {
-  min-height: max(90vh, 850px) !important;
-  padding-bottom: 72px !important;
-}
-
-/* Breadcrumb stays anchored in its approved masthead position. */
-body .ytt-page-hero .breadcrumb {
-  display: flex !important;
-}
-
-/* Shift only the message group lower so the tall hero breathes more naturally. */
-body .ytt-page-hero .ytt-hero-badge,
-body .ytt-page-hero h1,
-body .ytt-page-hero .ytt-hero-desc,
-body .ytt-page-hero .ytt-hero-trust {
-  transform: translateY(30px);
-}
-
-/* Open up the reading column without letting copy collide with the central subject. */
-body .ytt-page-hero h1 {
-  max-width: 690px !important;
-  margin-bottom: 30px !important;
-}
-
-body .ytt-page-hero .ytt-hero-badge {
-  margin-bottom: 28px !important;
-}
-
-body .ytt-page-hero .ytt-hero-desc {
-  max-width: 675px !important;
-  margin-bottom: 35px !important;
-  line-height: 1.84 !important;
-}
-
-body .ytt-page-hero .ytt-hero-trust {
-  max-width: 690px !important;
-  gap: 12px !important;
-}
-
-/* Cinematic bridge: forest green -> olive/bronze -> existing golden callout artwork. */
-body .ytt-page-hero::after {
-  height: 190px !important;
-  background: linear-gradient(
-    180deg,
-    rgba(9, 24, 16, 0) 0%,
-    rgba(9, 24, 16, .28) 42%,
-    rgba(27, 31, 17, .58) 72%,
-    rgba(76, 49, 14, .72) 100%
-  ) !important;
-}
-
-body .ytt-callout {
-  position: relative;
-  isolation: isolate;
-  border-top: 0 !important;
-  box-shadow:
-    inset 0 1px 0 rgba(244, 211, 128, .14),
-    0 -20px 54px rgba(56, 39, 12, .13) !important;
-}
-
-body .ytt-callout::before {
-  content: '' !important;
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 1 !important;
-  pointer-events: none !important;
-  background: linear-gradient(
-    180deg,
-    rgba(39, 37, 18, .64) 0%,
-    rgba(91, 66, 20, .38) 38px,
-    rgba(150, 103, 28, .14) 86px,
-    rgba(180, 140, 40, .06) 145px,
-    rgba(180, 140, 40, .035) 100%
-  ) !important;
-}
-
-body .ytt-callout::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 7%;
-  right: 7%;
-  height: 1px;
-  z-index: 2;
-  pointer-events: none;
-  opacity: .6;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(241, 205, 113, .22) 20%,
-    rgba(255, 226, 147, .48) 50%,
-    rgba(241, 205, 113, .22) 80%,
-    transparent 100%
-  );
-  box-shadow: 0 -12px 28px rgba(224, 174, 67, .07);
-}
-
-/* The callout eyebrow should read clearly without competing with the primary CTA. */
-body .ytt-callout .ytt-callout-label {
-  margin-bottom: 20px !important;
-  padding: 10px 20px !important;
-  color: #f7e7b0 !important;
-  background:
-    linear-gradient(135deg, rgba(15, 48, 32, .86), rgba(23, 61, 40, .76)) !important;
-  border: 1px solid rgba(239, 205, 112, .46) !important;
-  box-shadow:
-    0 9px 24px rgba(21, 32, 17, .18),
-    inset 0 1px 0 rgba(255, 255, 255, .10) !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  font-size: .76rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 1.45px !important;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, .16);
-}
-
-@media (min-width: 769px) {
-  body .ytt-page-hero .hero-bg img {
-    object-position: center center !important;
-    transform: scale(1.005) !important;
-  }
-}
-
-@media (max-width: 1024px) {
-  body .ytt-page-hero {
-    min-height: max(85vh, 800px) !important;
-    padding-bottom: 60px !important;
-  }
-
-  body .ytt-page-hero .ytt-hero-badge,
-  body .ytt-page-hero h1,
-  body .ytt-page-hero .ytt-hero-desc,
-  body .ytt-page-hero .ytt-hero-trust {
-    transform: translateY(22px);
-  }
-
-  body .ytt-page-hero .ytt-hero-badge {
-    margin-bottom: 24px !important;
-  }
-
-  body .ytt-page-hero h1 {
-    max-width: 630px !important;
-    margin-bottom: 26px !important;
-  }
-
-  body .ytt-page-hero .ytt-hero-desc {
-    max-width: 600px !important;
-    margin-bottom: 31px !important;
-    line-height: 1.8 !important;
-  }
-
-  body .ytt-page-hero .ytt-hero-trust {
-    max-width: 620px !important;
-    gap: 10px !important;
-  }
-
-  body .ytt-page-hero::after {
-    height: 165px !important;
-  }
-}
+/* Mây Yoga — Góc Huấn Luyện Viên mobile hero balance
+   v11: Restore cinematic image presence, move the yoga subject left,
+   and keep a soft reading veil behind the centred copy. */
 
 @media (max-width: 768px) {
   body .ytt-page-hero {
-    min-height: 0 !important;
+    min-height: clamp(640px, 82svh, 700px) !important;
     height: auto !important;
-    padding: 88px 0 32px !important;
+    padding: 92px 0 34px !important;
   }
 
-  /* Darken the visual centre where the mobile copy sits, while retaining image depth at the edges. */
+  /* Keep the full scene visible. The overlay is deliberately lighter than v10. */
   body .ytt-page-hero::before {
     background:
       radial-gradient(
-        ellipse 88% 64% at 50% 45%,
-        rgba(4, 15, 9, .62) 0%,
-        rgba(4, 15, 9, .48) 48%,
-        rgba(4, 15, 9, .18) 100%
+        ellipse 86% 68% at 59% 47%,
+        rgba(4, 15, 9, .34) 0%,
+        rgba(4, 15, 9, .24) 50%,
+        rgba(4, 15, 9, .05) 100%
       ),
       linear-gradient(
         180deg,
-        rgba(5, 17, 11, .76) 0%,
-        rgba(5, 17, 11, .61) 27%,
-        rgba(5, 17, 11, .72) 70%,
-        rgba(5, 17, 11, .91) 100%
+        rgba(5, 17, 11, .64) 0%,
+        rgba(5, 17, 11, .34) 27%,
+        rgba(5, 17, 11, .30) 62%,
+        rgba(5, 17, 11, .76) 100%
       ) !important;
   }
 
+  /* Higher object-position shifts the image left inside an object-fit: cover frame. */
   body .ytt-page-hero .hero-bg img {
-    object-position: 54% center !important;
-    transform: scale(1.015) !important;
+    object-position: 67% 52% !important;
+    transform: scale(1.075) !important;
+    transform-origin: center center;
   }
 
   body .ytt-page-hero .ytt-hero-content {
-    width: min(calc(100% - 28px), 620px) !important;
+    position: relative;
+    isolation: isolate;
+    width: min(calc(100% - 26px), 620px) !important;
+    padding: 0 5px;
+  }
+
+  /* A borderless, feathered veil protects readability without turning into a card. */
+  body .ytt-page-hero .ytt-hero-content::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 44px;
+    right: -12px;
+    bottom: -18px;
+    left: 5%;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 74% 68% at 60% 47%,
+      rgba(3, 13, 8, .52) 0%,
+      rgba(3, 13, 8, .36) 47%,
+      rgba(3, 13, 8, .13) 73%,
+      rgba(3, 13, 8, 0) 100%
+    );
+    filter: blur(8px);
   }
 
   body .ytt-page-hero .breadcrumb {
@@ -208,97 +75,94 @@ body .ytt-callout .ytt-callout-label {
   }
 
   body .ytt-page-hero .ytt-hero-badge {
-    margin-bottom: 15px !important;
-    padding: 9px 16px !important;
-    font-size: .73rem !important;
-    letter-spacing: 1.25px !important;
-    background: rgba(13, 31, 21, .58) !important;
+    margin-bottom: 16px !important;
+    padding: 9px 17px !important;
+    font-size: .72rem !important;
+    letter-spacing: 1.2px !important;
+    background: rgba(11, 29, 19, .50) !important;
+    border-color: rgba(228, 193, 89, .58) !important;
     box-shadow:
-      0 8px 24px rgba(0, 0, 0, .16),
+      0 8px 24px rgba(0, 0, 0, .13),
       inset 0 1px 0 rgba(255, 255, 255, .07) !important;
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
   }
 
   body .ytt-page-hero h1 {
-    max-width: 520px !important;
+    max-width: 525px !important;
     margin-bottom: 18px !important;
-    font-size: clamp(2.18rem, 8.25vw, 2.72rem) !important;
+    font-size: clamp(2.2rem, 8.3vw, 2.78rem) !important;
     line-height: 1.01 !important;
-    color: #e8c15c !important;
+    color: #ebc45f !important;
     text-shadow:
-      0 3px 22px rgba(0, 0, 0, .58),
-      0 1px 0 rgba(255, 255, 255, .05) !important;
+      0 3px 22px rgba(0, 0, 0, .55),
+      0 1px 0 rgba(255, 255, 255, .06) !important;
   }
 
   body .ytt-page-hero .ytt-hero-desc {
-    max-width: 450px !important;
-    margin-bottom: 22px !important;
+    max-width: 445px !important;
+    margin-bottom: 21px !important;
     font-size: .94rem !important;
-    line-height: 1.66 !important;
+    line-height: 1.64 !important;
     font-weight: 500 !important;
     color: rgba(255, 255, 255, .94) !important;
-    text-shadow: 0 2px 14px rgba(0, 0, 0, .66) !important;
+    text-shadow: 0 2px 13px rgba(0, 0, 0, .62) !important;
   }
 
   body .ytt-page-hero .ytt-hero-trust {
-    max-width: 440px !important;
+    max-width: 435px !important;
     gap: 7px !important;
     margin: 0 auto !important;
   }
 
   body .ytt-page-hero .ytt-hero-trust span {
     padding: 7px 12px !important;
-    font-size: .74rem !important;
+    font-size: .73rem !important;
     line-height: 1.2 !important;
     color: rgba(255, 255, 255, .94) !important;
-    background: rgba(12, 29, 20, .58) !important;
-    border-color: rgba(255, 255, 255, .24) !important;
+    background: rgba(10, 28, 18, .52) !important;
+    border-color: rgba(255, 255, 255, .23) !important;
     box-shadow:
-      0 7px 20px rgba(0, 0, 0, .14),
+      0 7px 20px rgba(0, 0, 0, .12),
       inset 0 1px 0 rgba(255, 255, 255, .06) !important;
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
   }
 
   body .ytt-page-hero::after {
-    height: 82px !important;
+    height: 78px !important;
     background: linear-gradient(
       180deg,
       rgba(9, 24, 16, 0) 0%,
-      rgba(9, 24, 16, .32) 34%,
-      rgba(31, 32, 17, .59) 70%,
-      rgba(73, 48, 15, .72) 100%
+      rgba(9, 24, 16, .22) 35%,
+      rgba(31, 32, 17, .52) 72%,
+      rgba(73, 48, 15, .70) 100%
     ) !important;
-  }
-
-  body .ytt-callout::before {
-    background: linear-gradient(
-      180deg,
-      rgba(39, 37, 18, .58) 0%,
-      rgba(93, 67, 21, .30) 34px,
-      rgba(151, 104, 30, .10) 76px,
-      rgba(180, 140, 40, .04) 112px,
-      rgba(180, 140, 40, .025) 100%
-    ) !important;
-  }
-
-  body .ytt-callout .ytt-callout-label {
-    margin-bottom: 17px !important;
-    padding: 9px 16px !important;
-    font-size: .70rem !important;
-    letter-spacing: 1.15px !important;
   }
 }
 
 @media (max-width: 480px) {
   body .ytt-page-hero {
-    padding-top: 84px !important;
-    padding-bottom: 26px !important;
+    min-height: clamp(620px, 80svh, 675px) !important;
+    padding-top: 86px !important;
+    padding-bottom: 28px !important;
+  }
+
+  body .ytt-page-hero .hero-bg img {
+    object-position: 69% 52% !important;
+    transform: scale(1.095) !important;
   }
 
   body .ytt-page-hero .ytt-hero-content {
-    width: calc(100% - 24px) !important;
+    width: calc(100% - 22px) !important;
+    padding: 0 3px;
+  }
+
+  body .ytt-page-hero .ytt-hero-content::before {
+    top: 40px;
+    right: -9px;
+    bottom: -15px;
+    left: 3%;
   }
 
   body .ytt-page-hero .breadcrumb {
@@ -310,19 +174,20 @@ body .ytt-callout .ytt-callout-label {
     margin-bottom: 14px !important;
     padding: 8px 14px !important;
     font-size: .68rem !important;
-    letter-spacing: 1.05px !important;
+    letter-spacing: 1.02px !important;
     line-height: 1.25 !important;
     text-align: center;
   }
 
   body .ytt-page-hero h1 {
     margin-bottom: 16px !important;
-    font-size: clamp(2.02rem, 10.2vw, 2.35rem) !important;
+    font-size: clamp(2.06rem, 10.1vw, 2.43rem) !important;
   }
 
   body .ytt-page-hero .ytt-hero-desc {
-    margin-bottom: 18px !important;
-    font-size: .90rem !important;
+    max-width: 420px !important;
+    margin-bottom: 19px !important;
+    font-size: .91rem !important;
     line-height: 1.60 !important;
   }
 
@@ -336,6 +201,6 @@ body .ytt-callout .ytt-callout-label {
   }
 
   body .ytt-page-hero::after {
-    height: 64px !important;
+    height: 66px !important;
   }
 }
