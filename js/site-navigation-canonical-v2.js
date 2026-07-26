@@ -31,21 +31,43 @@
     }
   }
 
+  // Apply the canonical state before any structural checks. When the geometry CSS is
+  // already in <head>, this prevents the legacy 85px logo from becoming a painted frame.
+  function primeHeaderState() {
+    var navbar = document.getElementById('navbar');
+    if (!navbar) return null;
+    navbar.classList.add('site-header-standard', 'scrolled');
+    navbar.setAttribute('data-site-header-standard', 'true');
+    return navbar;
+  }
+
+  primeHeaderState();
+
+  function ensureStylesheet(selector, href, attribute) {
+    if (document.querySelector(selector)) return;
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = siteUrl(href);
+    link.setAttribute(attribute, 'true');
+    document.head.appendChild(link);
+  }
+
   function ensureStyles() {
-    if (!document.querySelector('link[data-header-index-canonical]')) {
-      var geometry = document.createElement('link');
-      geometry.rel = 'stylesheet';
-      geometry.href = siteUrl('css/header-index-canonical-v3.css?v=20260722b');
-      geometry.setAttribute('data-header-index-canonical', 'true');
-      document.head.appendChild(geometry);
-    }
-    if (!document.querySelector('link[data-site-navigation-canonical]')) {
-      var navigation = document.createElement('link');
-      navigation.rel = 'stylesheet';
-      navigation.href = siteUrl('css/site-navigation-canonical-v4.css?v=20260722a');
-      navigation.setAttribute('data-site-navigation-canonical', 'true');
-      document.head.appendChild(navigation);
-    }
+    ensureStylesheet(
+      'link[data-header-first-paint]',
+      'css/header-first-paint-v1.css?v=20260726a',
+      'data-header-first-paint'
+    );
+    ensureStylesheet(
+      'link[data-header-index-canonical]',
+      'css/header-index-canonical-v3.css?v=20260726c',
+      'data-header-index-canonical'
+    );
+    ensureStylesheet(
+      'link[data-site-navigation-canonical]',
+      'css/site-navigation-canonical-v4.css?v=20260722a',
+      'data-site-navigation-canonical'
+    );
   }
 
   function navMarkup() {
@@ -92,7 +114,10 @@
       logo.className = 'nav-logo';
       container.insertBefore(logo, container.firstChild);
     }
-    logo.href = siteUrl('index.html');
+
+    var expectedHref = siteUrl('index.html');
+    if (normalizePath(logo.href) !== normalizePath(expectedHref)) logo.href = expectedHref;
+
     var image = logo.querySelector('.logo-img');
     if (!image) {
       image = document.createElement('img');
@@ -100,8 +125,37 @@
       image.alt = 'Mây Yoga';
       logo.replaceChildren(image);
     }
-    image.src = siteUrl('assets/images/logo.webp');
+
+    var expectedSrc = siteUrl('assets/images/logo.webp');
+    if (image.src !== expectedSrc) image.src = expectedSrc;
+    if (!image.alt) image.alt = 'Mây Yoga';
     return logo;
+  }
+
+  function hasUsableNavMarkup(navLinks) {
+    if (!navLinks) return false;
+    var expected = [
+      siteUrl('index.html'),
+      siteUrl('ve-may-yoga.html'),
+      siteUrl('hoc-yoga-online.html'),
+      siteUrl('goc-huan-luyen-vien.html'),
+      siteUrl('bai-viet/yoga-cho-nguoi-moi.html'),
+      siteUrl('tu-the-yoga.html'),
+      siteUrl('giai-phau-yoga.html'),
+      siteUrl('trac-nghiem.html')
+    ].map(normalizePath);
+    var actual = Array.prototype.map.call(navLinks.querySelectorAll('a[href]'), function(link) {
+      return normalizePath(link.href);
+    });
+    return expected.every(function(path) { return actual.indexOf(path) !== -1; }) &&
+      navLinks.querySelectorAll(':scope > li').length >= 5;
+  }
+
+  function normalizeDropdownSemantics(navLinks) {
+    navLinks.querySelectorAll(':scope > .nav-dropdown > .dropdown-toggle').forEach(function(toggle) {
+      toggle.setAttribute('aria-haspopup', 'true');
+      if (!toggle.hasAttribute('aria-expanded')) toggle.setAttribute('aria-expanded', 'false');
+    });
   }
 
   function ensureNavLinks(container, logo) {
@@ -112,7 +166,11 @@
       container.insertBefore(navLinks, logo.nextSibling);
     }
     navLinks.className = 'nav-links';
-    navLinks.innerHTML = navMarkup();
+
+    // Most pages already ship the canonical links. Preserve those nodes so the browser
+    // does not repaint the menu and so previously attached state is not discarded.
+    if (!hasUsableNavMarkup(navLinks)) navLinks.innerHTML = navMarkup();
+    normalizeDropdownSemantics(navLinks);
     return navLinks;
   }
 
@@ -132,7 +190,7 @@
       input.type = 'text';
       search.prepend(input);
     }
-    input.placeholder = '🔍 Tìm tư thế, bài viết...';
+    if (!input.placeholder) input.placeholder = '🔍 Tìm tư thế, bài viết...';
     input.autocomplete = 'off';
 
     var dropdown = search.querySelector('#searchDropdown');
@@ -147,18 +205,24 @@
 
   function ensureCta(container) {
     var wrap = container.querySelector('.nav-cta');
-    if (!wrap) wrap = document.createElement('div');
-    wrap.className = 'nav-cta';
+    if (!wrap) {
+      wrap = document.createElement('div');
+      wrap.className = 'nav-cta';
+    } else {
+      wrap.className = 'nav-cta';
+    }
 
     var cta = wrap.querySelector('a.btn');
     if (!cta) {
       cta = document.createElement('a');
       cta.className = 'btn btn-primary btn-sm';
+      cta.href = siteUrl('index.html#categories');
+      cta.textContent = 'Khám phá ngay';
       wrap.replaceChildren(cta);
     }
-    // “Khám phá ngay” should land on the broad discovery hub, not the specialist YTT/blog block.
-    cta.href = siteUrl('index.html#categories');
-    cta.innerHTML = 'Khám phá ngay <img class="leaf-icon" src="' + siteUrl('assets/images/icons/leaf_button.svg') + '" alt="" aria-hidden="true" width="14" height="18">';
+
+    // Existing page-level CTAs are kept intact. Geometry is canonicalized in CSS,
+    // while preserving the initial text/href avoids another visible startup mutation.
     return wrap;
   }
 
@@ -168,18 +232,26 @@
       toggle = document.createElement('button');
       toggle.id = 'mobileToggle';
       toggle.innerHTML = '<span></span><span></span><span></span>';
+    } else if (toggle.querySelectorAll(':scope > span').length !== 3) {
+      toggle.innerHTML = '<span></span><span></span><span></span>';
     }
     toggle.className = 'mobile-toggle';
     toggle.type = 'button';
     toggle.setAttribute('aria-label', 'Menu');
-    toggle.setAttribute('aria-expanded', 'false');
+    if (!toggle.hasAttribute('aria-expanded')) toggle.setAttribute('aria-expanded', 'false');
     return toggle;
   }
 
   function orderChrome(container, logo, navLinks, search, cta, toggle) {
-    [logo, navLinks, search, cta, toggle].forEach(function(node) {
-      if (node) container.appendChild(node);
+    var desired = [logo, navLinks, search, cta, toggle].filter(Boolean);
+    var current = Array.prototype.filter.call(container.children, function(node) {
+      return desired.indexOf(node) !== -1;
     });
+    var alreadyOrdered = desired.length === current.length && desired.every(function(node, index) {
+      return current[index] === node;
+    });
+    if (alreadyOrdered) return;
+    desired.forEach(function(node) { container.appendChild(node); });
   }
 
   function hasScript(filename) {
@@ -195,6 +267,7 @@
       if (hasScript('search.js')) return;
       var searchScript = document.createElement('script');
       searchScript.src = siteUrl('js/search.js?v=20260722b');
+      searchScript.async = false;
       searchScript.setAttribute('data-site-search-engine', 'true');
       document.head.appendChild(searchScript);
     }
@@ -217,6 +290,7 @@
 
     var indexScript = document.createElement('script');
     indexScript.src = siteUrl('js/search-index.js?v=20260721a');
+    indexScript.async = false;
     indexScript.setAttribute('data-site-search-index', 'true');
     indexScript.addEventListener('load', loadSearch, { once: true });
     document.head.appendChild(indexScript);
@@ -368,11 +442,9 @@
   }
 
   function applyHeader() {
-    var navbar = document.getElementById('navbar');
+    var navbar = primeHeaderState();
     if (!navbar) return;
     ensureStyles();
-    navbar.classList.add('site-header-standard', 'scrolled');
-    navbar.setAttribute('data-site-header-standard', 'true');
 
     var container = ensureContainer(navbar);
     var logo = ensureLogo(container);
@@ -384,9 +456,14 @@
     markActive(navLinks);
     bindNavigation(navbar, navLinks);
     loadSearchEngine();
+    navbar.setAttribute('data-canonical-header-applied', 'true');
   }
 
-  if (document.readyState === 'loading') {
+  // Defer scripts and dynamically injected scripts normally execute after #navbar exists.
+  // Apply immediately instead of waiting for DOMContentLoaded and creating another paint.
+  if (document.getElementById('navbar')) {
+    applyHeader();
+  } else if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', applyHeader, { once: true });
   } else {
     applyHeader();
