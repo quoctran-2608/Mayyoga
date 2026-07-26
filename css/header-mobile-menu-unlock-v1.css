@@ -1,0 +1,13 @@
+/* ===== MÂY YOGA — MOBILE MENU UNLOCK V1 =====
+   The first-paint guard hides the collapsed navigation with an ID-based !important rule.
+   Restore the canonical open state with higher specificity once JavaScript adds .active. */
+
+@media (max-width: 980px) {
+  html body #navbar.navbar .nav-links.active,
+  html body #navbar.navbar.site-header-standard .nav-links.active {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
