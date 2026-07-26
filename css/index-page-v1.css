@@ -1,11 +1,30 @@
-@layer home-base, home-edge;
-
-@import url('index-page-v1-base.css?v=20260726a') layer(home-base);
+@import url('index-page-v1-base.css?v=20260726b');
 
 /* ===== MÂY YOGA — HOMEPAGE EDGE ALIGNMENT =====
-   The content column keeps its readable inset while the Hero visual reaches the
-   physical right edge of the viewport at every responsive breakpoint. */
-@layer home-edge {
+   The page stylesheet stays unlayered so it correctly outranks shared legacy
+   primitives loaded by css/style.css. Only the Hero geometry below changes. */
+
+body.home-page .home-hero .home-container {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
+
+body.home-page .home-hero-grid {
+  padding-left: clamp(36px, 4vw, 72px);
+}
+
+@media (max-width: 1180px) and (min-width: 981px) {
+  body.home-page .home-hero .home-container {
+    width: 100%;
+  }
+
+  body.home-page .home-hero-grid {
+    padding-left: clamp(26px, 3vw, 42px);
+  }
+}
+
+@media (max-width: 980px) {
   body.home-page .home-hero .home-container {
     width: 100%;
     max-width: none;
@@ -13,72 +32,50 @@
   }
 
   body.home-page .home-hero-grid {
-    padding-left: clamp(36px, 4vw, 72px);
+    padding-left: 0;
   }
 
-  @media (max-width: 1180px) and (min-width: 981px) {
-    body.home-page .home-hero .home-container {
-      width: 100%;
-    }
-
-    body.home-page .home-hero-grid {
-      padding-left: clamp(26px, 3vw, 42px);
-    }
+  body.home-page .home-hero-copy,
+  body.home-page .home-principles {
+    width: min(calc(100% - 36px), 700px);
+    margin-inline: auto;
   }
 
-  @media (max-width: 980px) {
-    body.home-page .home-hero .home-container {
-      width: 100%;
-      max-width: none;
-      margin-inline: 0;
-    }
-
-    body.home-page .home-hero-grid {
-      padding-left: 0;
-    }
-
-    body.home-page .home-hero-copy,
-    body.home-page .home-principles {
-      width: min(calc(100% - 36px), 700px);
-      margin-inline: auto;
-    }
-
-    body.home-page .home-hero-visual {
-      width: calc(100% - 18px);
-      margin-left: 18px;
-      margin-right: 0;
-    }
-
-    body.home-page .home-hero-picture img {
-      border-radius: 28px 0 0 28px;
-    }
+  body.home-page .home-hero-visual {
+    width: calc(100% - 18px);
+    margin-left: 18px;
+    margin-right: 0;
   }
 
-  @media (max-width: 768px) {
-    body.home-page .home-hero-copy,
-    body.home-page .home-principles {
-      width: min(calc(100% - 32px), 560px);
-    }
+  body.home-page .home-hero-picture img {
+    border-radius: 28px 0 0 28px;
+  }
+}
 
-    body.home-page .home-hero-visual {
-      width: calc(100% - 16px);
-      margin-left: 16px;
-    }
-
-    body.home-page .home-hero-picture img {
-      border-radius: 23px 0 0 23px;
-    }
+@media (max-width: 768px) {
+  body.home-page .home-hero-copy,
+  body.home-page .home-principles {
+    width: min(calc(100% - 32px), 560px);
   }
 
-  @media (max-width: 480px) {
-    body.home-page .home-hero-copy,
-    body.home-page .home-principles {
-      width: calc(100% - 24px);
-    }
+  body.home-page .home-hero-visual {
+    width: calc(100% - 16px);
+    margin-left: 16px;
+  }
 
-    body.home-page .home-hero-visual {
-      width: calc(100% - 12px);
-      margin-left: 12px;
-    }
+  body.home-page .home-hero-picture img {
+    border-radius: 23px 0 0 23px;
+  }
+}
+
+@media (max-width: 480px) {
+  body.home-page .home-hero-copy,
+  body.home-page .home-principles {
+    width: calc(100% - 24px);
+  }
+
+  body.home-page .home-hero-visual {
+    width: calc(100% - 12px);
+    margin-left: 12px;
   }
 }
