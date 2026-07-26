@@ -1,0 +1,228 @@
+/* ===== MÂY YOGA — YTT 200H MOBILE HERO =====
+   Single mobile owner for dao-tao-huan-luyen-vien-200h.html.
+   Keeps desktop untouched and overrides the legacy oversized mobile hero rhythm. */
+
+@media (max-width: 768px) {
+  html body.ytt200-page .ytt200-hero {
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 30px 0 44px !important;
+    background-position: 61% center !important;
+    align-items: flex-start !important;
+  }
+
+  html body.ytt200-page .ytt200-hero::before {
+    background:
+      radial-gradient(
+        ellipse 82% 58% at 50% 38%,
+        rgba(17, 25, 15, .18) 0%,
+        rgba(17, 25, 15, .08) 58%,
+        rgba(17, 25, 15, 0) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(14, 26, 17, .68) 0%,
+        rgba(16, 28, 18, .50) 32%,
+        rgba(12, 24, 16, .60) 68%,
+        rgba(9, 20, 13, .84) 100%
+      ) !important;
+  }
+
+  html body.ytt200-page .ytt200-hero > .container {
+    width: min(calc(100% - 28px), 560px) !important;
+  }
+
+  /* This dark-image breadcrumb intentionally differs from the global light-page standard. */
+  html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 5px 7px !important;
+    width: 100% !important;
+    margin: 0 0 18px !important;
+    color: rgba(255, 246, 218, .90) !important;
+    font-size: .74rem !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0 !important;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, .55) !important;
+  }
+
+  html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > a {
+    color: #f3d98f !important;
+    font-weight: 600 !important;
+  }
+
+  html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > a:hover,
+  html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > a:focus-visible {
+    color: #fff4d1 !important;
+  }
+
+  html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > .sep {
+    color: rgba(255, 255, 255, .52) !important;
+  }
+
+  html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > span:last-child {
+    color: #fff7de !important;
+    font-weight: 700 !important;
+  }
+
+  html body.ytt200-page .ytt200-hero-grid,
+  html body.ytt200-page .ytt200-hero-copy {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+
+  html body.ytt200-page .ytt200-badge {
+    max-width: 100% !important;
+    margin: 0 auto 17px !important;
+    padding: 8px 14px !important;
+    gap: 8px !important;
+    white-space: nowrap !important;
+    font-size: clamp(.62rem, 2.7vw, .70rem) !important;
+    line-height: 1.25 !important;
+    letter-spacing: .045em !important;
+    background: rgba(107, 78, 28, .34) !important;
+    border-color: rgba(238, 196, 91, .50) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .18) !important;
+  }
+
+  html body.ytt200-page .ytt200-badge::before {
+    width: 6px !important;
+    height: 6px !important;
+    box-shadow: 0 0 0 3px rgba(232, 189, 88, .18) !important;
+  }
+
+  html body.ytt200-page .ytt200-hero h1 {
+    max-width: 370px !important;
+    margin: 0 auto 17px !important;
+    font-size: clamp(2.35rem, 11.6vw, 2.90rem) !important;
+    line-height: .96 !important;
+    letter-spacing: -.035em !important;
+    text-wrap: balance !important;
+    text-shadow: 0 3px 24px rgba(0, 0, 0, .48) !important;
+  }
+
+  html body.ytt200-page .ytt200-hero h1 em {
+    display: block !important;
+    margin-top: .10em !important;
+    font-size: .92em !important;
+    line-height: 1 !important;
+  }
+
+  html body.ytt200-page .ytt200-hero-lead {
+    max-width: 365px !important;
+    margin: 0 auto 22px !important;
+    color: rgba(255, 255, 255, .91) !important;
+    font-size: .91rem !important;
+    line-height: 1.58 !important;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, .55) !important;
+  }
+
+  html body.ytt200-page .ytt200-hero-lead::before {
+    width: 54px !important;
+    height: 2px !important;
+    margin: 0 auto 17px !important;
+  }
+
+  html body.ytt200-page .ytt200-format-bar {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 7px !important;
+    width: min(100%, 360px) !important;
+    margin: 0 auto 23px !important;
+  }
+
+  html body.ytt200-page .ytt200-format-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 0 !important;
+    min-height: 42px !important;
+    padding: 7px 9px !important;
+    border-radius: 10px !important;
+    background: rgba(21, 43, 29, .48) !important;
+    color: rgba(255, 255, 255, .86) !important;
+    font-size: .67rem !important;
+    line-height: 1.28 !important;
+    text-align: center !important;
+  }
+
+  html body.ytt200-page .ytt200-format-item:last-child {
+    grid-column: 1 / -1 !important;
+  }
+
+  html body.ytt200-page .ytt200-format-item strong {
+    margin: 0 !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+  }
+
+  html body.ytt200-page .ytt200-format-item i {
+    flex: 0 0 auto !important;
+    margin-right: 5px !important;
+  }
+
+  html body.ytt200-page .ytt200-hero-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 9px !important;
+    width: min(100%, 340px) !important;
+    margin: 0 auto !important;
+  }
+
+  html body.ytt200-page .ytt200-hero-actions .ytt200-btn-primary,
+  html body.ytt200-page .ytt200-hero-actions .ytt200-btn-secondary {
+    width: 100% !important;
+    min-height: 48px !important;
+    padding: 0 18px !important;
+    font-size: .82rem !important;
+  }
+}
+
+@media (max-width: 420px) {
+  html body.ytt200-page .ytt200-hero {
+    padding: 24px 0 38px !important;
+    background-position: 63% center !important;
+  }
+
+  html body.ytt200-page .ytt200-hero > .container {
+    width: calc(100% - 22px) !important;
+  }
+
+  html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] {
+    gap: 4px 6px !important;
+    margin-bottom: 15px !important;
+    font-size: .70rem !important;
+  }
+
+  html body.ytt200-page .ytt200-badge {
+    margin-bottom: 15px !important;
+    padding: 7px 11px !important;
+    letter-spacing: .035em !important;
+  }
+
+  html body.ytt200-page .ytt200-hero h1 {
+    max-width: 345px !important;
+    margin-bottom: 15px !important;
+    font-size: clamp(2.20rem, 10.9vw, 2.65rem) !important;
+  }
+
+  html body.ytt200-page .ytt200-hero-lead {
+    margin-bottom: 20px !important;
+    font-size: .88rem !important;
+    line-height: 1.55 !important;
+  }
+
+  html body.ytt200-page .ytt200-format-bar {
+    gap: 6px !important;
+    margin-bottom: 20px !important;
+  }
+
+  html body.ytt200-page .ytt200-format-item {
+    min-height: 40px !important;
+    padding: 6px 7px !important;
+    font-size: .64rem !important;
+  }
+}
