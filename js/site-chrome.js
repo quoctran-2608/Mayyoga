@@ -20,6 +20,17 @@
   var siteRoot = getSiteRoot();
   function siteUrl(path) { return new URL(path, siteRoot).href; }
 
+  // Prime the static header shell before loading any optional components. This is safe
+  // even when canonical navigation is also included directly because all later steps are idempotent.
+  function primeHeaderState() {
+    var navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    navbar.classList.add('site-header-standard', 'scrolled');
+    navbar.setAttribute('data-site-header-standard', 'true');
+  }
+
+  primeHeaderState();
+
   function ensureStandardStyles() {
     if (document.getElementById('may-yoga-site-chrome-standard')) return;
     var style = document.createElement('style');
@@ -64,9 +75,10 @@
   }
 
   function loadSharedStyles() {
-    ensureStylesheet('link[data-header-index-canonical]', 'css/header-index-canonical-v3.css?v=20260722b', 'data-header-index-canonical');
+    ensureStylesheet('link[data-header-first-paint]', 'css/header-first-paint-v1.css?v=20260726a', 'data-header-first-paint');
+    ensureStylesheet('link[data-header-index-canonical]', 'css/header-index-canonical-v3.css?v=20260726c', 'data-header-index-canonical');
     ensureStylesheet('link[data-site-navigation-canonical]', 'css/site-navigation-canonical-v4.css?v=20260722a', 'data-site-navigation-canonical');
-    ensureStylesheet('link[data-breadcrumb-canonical]', 'css/breadcrumb-canonical-v1.css?v=20260722a', 'data-breadcrumb-canonical');
+    ensureStylesheet('link[data-breadcrumb-canonical]', 'css/breadcrumb-canonical-v1.css?v=20260726a', 'data-breadcrumb-canonical');
   }
 
   function loadPageSpecificStyles() {
@@ -77,7 +89,7 @@
     }
 
     if (/\/goc-huan-luyen-vien\.html$/i.test(path)) {
-      ensureStylesheet('link[data-ytt-callout-viewport-fix]', 'css/ytt-callout-viewport-fix-v1.css?v=20260723a', 'data-ytt-callout-viewport-fix');
+      ensureStylesheet('link[data-ytt-callout-viewport-fix]', 'css/ytt-callout-viewport-fix-v1.css?v=20260726e', 'data-ytt-callout-viewport-fix');
     }
   }
 
@@ -147,8 +159,8 @@
   function loadCanonicalNavigation() {
     if (document.querySelector('script[data-site-navigation-canonical]')) return;
     var script = document.createElement('script');
-    script.src = siteUrl('js/site-navigation-canonical-v2.js?v=20260722a');
-    script.defer = true;
+    script.src = siteUrl('js/site-navigation-canonical-v2.js?v=20260726b');
+    script.async = false;
     script.setAttribute('data-site-navigation-canonical', 'true');
     document.head.appendChild(script);
   }
@@ -157,12 +169,13 @@
     if (document.querySelector('script[data-article-share-standard]')) return;
     var script = document.createElement('script');
     script.src = siteUrl('js/article-share-standard.js?v=20260722c');
-    script.defer = true;
+    script.async = false;
     script.setAttribute('data-article-share-standard', 'true');
     document.head.appendChild(script);
   }
 
   function applyStandardChrome() {
+    primeHeaderState();
     ensureStandardStyles();
     loadSharedStyles();
     loadPageSpecificStyles();
