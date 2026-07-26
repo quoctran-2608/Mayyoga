@@ -78,64 +78,12 @@
     document.head.appendChild(script);
   }
 
-  markSharedStyleEntry();
-  primeHeaderShell();
-  loadCanonicalNavigation();
-  loadSiteChrome();
-
   function onReady(callback) {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', callback, { once: true });
     } else {
       callback();
     }
-  }
-
-  function createHeroPrinciples() {
-    var principles = document.createElement('div');
-    principles.className = 'hero-principles';
-    principles.setAttribute('aria-label', 'Ba nguyên tắc nền tảng của Mây Yoga');
-    principles.innerHTML = [
-      '<div class="hero-principle">',
-      '  <span class="hero-principle-icon" aria-hidden="true"><img src="' + siteUrl('assets/images/icons/tu_the_chuan_icon.webp') + '" alt="" width="50" height="50"></span>',
-      '  <div class="hero-principle-copy"><div class="hero-principle-title">Tư thế chuẩn</div><div class="hero-principle-subtitle">Căn chỉnh an toàn</div></div>',
-      '</div>',
-      '<div class="hero-principle">',
-      '  <span class="hero-principle-icon" aria-hidden="true"><img src="' + siteUrl('assets/images/icons/hoi_tho_dung_icon.webp') + '" alt="" width="50" height="50"></span>',
-      '  <div class="hero-principle-copy"><div class="hero-principle-title">Hơi thở đúng</div><div class="hero-principle-subtitle">Thực hành có nền tảng</div></div>',
-      '</div>',
-      '<div class="hero-principle">',
-      '  <span class="hero-principle-icon" aria-hidden="true"><img src="' + siteUrl('assets/images/icons/hieu_co_the_icon.webp') + '" alt="" width="50" height="50"></span>',
-      '  <div class="hero-principle-copy"><div class="hero-principle-title">Hiểu cơ thể</div><div class="hero-principle-subtitle">An toàn &amp; bền vững</div></div>',
-      '</div>'
-    ].join('');
-    return principles;
-  }
-
-  function createHeroTrustCard() {
-    var card = document.createElement('div');
-    card.className = 'floating-card card-2 hero-trust-card';
-    card.setAttribute('aria-label', 'Học đúng từ nền tảng: Tư thế, Hơi thở, Hiểu cơ thể');
-    card.innerHTML = [
-      '<div class="card-icon hero-trust-icon" aria-hidden="true">✓</div>',
-      '<div class="card-text"><div class="card-title">Học đúng từ nền tảng</div><div class="card-sub">Tư thế • Hơi thở • Hiểu cơ thể</div></div>'
-    ].join('');
-    return card;
-  }
-
-  function initHomepageHero() {
-    var hero = document.getElementById('hero');
-    var heroImage = hero && hero.querySelector('.hero-image');
-    if (!hero || !heroImage) return;
-
-    hero.querySelectorAll('.hero-stats').forEach(function(node) { node.remove(); });
-    heroImage.querySelectorAll('.floating-card.card-2').forEach(function(card) {
-      if (!card.classList.contains('hero-trust-card')) card.remove();
-    });
-
-    var principles = heroImage.querySelector('.hero-principles');
-    if (!principles) heroImage.appendChild(createHeroPrinciples());
-    if (!heroImage.querySelector('.hero-trust-card')) heroImage.appendChild(createHeroTrustCard());
   }
 
   function initSmoothAnchors() {
@@ -189,21 +137,14 @@
     });
   }
 
-  function initHeroParallax() {
-    var heroImage = document.querySelector('.hero-image');
-    if (!heroImage || window.innerWidth <= 768 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    window.addEventListener('scroll', function() {
-      var scrolled = window.scrollY;
-      if (scrolled < 800) heroImage.style.transform = 'translateY(' + (scrolled * 0.05) + 'px)';
-    }, { passive: true });
-  }
+  markSharedStyleEntry();
+  primeHeaderShell();
+  loadCanonicalNavigation();
+  loadSiteChrome();
 
   onReady(function() {
-    initHomepageHero();
     initSmoothAnchors();
     initHoverHints();
     initNewsletter();
-    initHeroParallax();
   });
 })();
