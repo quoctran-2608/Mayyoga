@@ -1,0 +1,117 @@
+/* ===== MÂY YOGA — GÓC HLV CALLOUT ACTIONS V1 =====
+   Dedicated, non-overlapping component styles for the course callout eyebrow and primary CTA.
+   These selectors use unique classes and do not override the legacy callout selectors. */
+
+body.goc-hlv-page .ytt-callout-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto 20px;
+  padding: 8px 16px;
+  border: 1px solid rgba(49, 93, 60, .18);
+  border-radius: 999px;
+  background: rgba(255, 252, 242, .78);
+  color: #315d3c;
+  box-shadow: 0 7px 20px rgba(31, 58, 39, .09), inset 0 1px 0 rgba(255, 255, 255, .82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: var(--goc-body);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: 1.25px;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+body.goc-hlv-page .ytt-callout-primary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 58px;
+  padding: 12px 16px 12px 28px;
+  border: 1px solid rgba(240, 207, 114, .56);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #173d2c 0%, #10291e 100%);
+  color: #fff8e7;
+  box-shadow: 0 11px 30px rgba(15, 39, 28, .28), inset 0 1px 0 rgba(255, 255, 255, .08);
+  font-family: var(--goc-body);
+  font-size: .95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: transform .24s ease, box-shadow .24s ease, background .24s ease;
+}
+
+body.goc-hlv-page .ytt-callout-primary-action svg {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  padding: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f0d37a 0%, #d7b34f 100%);
+  color: #143023;
+  stroke: currentColor;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .42);
+  transition: transform .24s ease;
+}
+
+body.goc-hlv-page .ytt-callout-primary-action:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #1d4a36 0%, #143426 100%);
+  color: #fff;
+  box-shadow: 0 15px 36px rgba(15, 39, 28, .34), inset 0 1px 0 rgba(255, 255, 255, .10);
+}
+
+body.goc-hlv-page .ytt-callout-primary-action:hover svg {
+  transform: translateX(3px);
+}
+
+body.goc-hlv-page .ytt-callout-primary-action:focus-visible {
+  outline: 3px solid rgba(49, 93, 60, .30);
+  outline-offset: 4px;
+}
+
+@media (max-width: 768px) {
+  body.goc-hlv-page .ytt-callout-eyebrow {
+    margin-bottom: 17px;
+    padding: 8px 14px;
+    font-size: .69rem;
+    letter-spacing: 1.05px;
+  }
+
+  body.goc-hlv-page .ytt-callout-primary-action {
+    min-height: 54px;
+    padding: 10px 13px 10px 24px;
+    font-size: .90rem;
+  }
+
+  body.goc-hlv-page .ytt-callout-primary-action svg {
+    width: 32px;
+    height: 32px;
+    padding: 7px;
+  }
+}
+
+@media (max-width: 480px) {
+  body.goc-hlv-page .ytt-callout-eyebrow {
+    max-width: 100%;
+    padding: 8px 12px;
+    font-size: .66rem;
+    letter-spacing: .92px;
+    text-align: center;
+  }
+
+  body.goc-hlv-page .ytt-callout-primary-action {
+    width: 100%;
+    min-height: 54px;
+    padding-left: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.goc-hlv-page .ytt-callout-primary-action,
+  body.goc-hlv-page .ytt-callout-primary-action svg {
+    transition: none;
+  }
+}
