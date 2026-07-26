@@ -1,0 +1,137 @@
+/* Mây Yoga — Góc Huấn Luyện Viên mobile section introductions
+   Refines the icon, heading and summary rhythm for the three core knowledge sections.
+   Mobile only; desktop composition remains unchanged. */
+
+@media (max-width: 768px) {
+  html body :is(#giai-phau-co-sinh-hoc, #su-pham, #ca-lam-sang) .ytt-section-visual {
+    gap: 20px !important;
+    margin-bottom: 30px !important;
+  }
+
+  html body :is(#giai-phau-co-sinh-hoc, #su-pham, #ca-lam-sang) .ytt-section-visual > div:first-child {
+    width: 100%;
+    min-width: 0;
+  }
+
+  html body :is(#giai-phau-co-sinh-hoc, #su-pham, #ca-lam-sang) .ytt-section-header {
+    display: grid !important;
+    grid-template-columns: 44px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 13px;
+    row-gap: 8px;
+    align-items: start;
+    width: 100%;
+    max-width: none;
+    margin: 0 !important;
+    padding: 0 1px 2px;
+    text-align: left !important;
+  }
+
+  html body :is(#giai-phau-co-sinh-hoc, #su-pham, #ca-lam-sang) .ytt-section-header .section-icon {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin: 2px 0 0 !important;
+    border: 1px solid rgba(54, 96, 65, .13);
+    border-radius: 14px;
+    font-size: 1.16rem;
+    line-height: 1;
+    box-shadow:
+      0 8px 22px rgba(42, 79, 52, .07),
+      inset 0 1px 0 rgba(255, 255, 255, .75);
+  }
+
+  html body #giai-phau-co-sinh-hoc .ytt-section-header .section-icon {
+    background: linear-gradient(145deg, #edf5ea 0%, #f8faf3 100%);
+    border-color: rgba(74, 121, 78, .16);
+  }
+
+  html body #su-pham .ytt-section-header .section-icon {
+    background: linear-gradient(145deg, #fbf5e6 0%, #fffaf0 100%);
+    border-color: rgba(182, 148, 69, .20);
+  }
+
+  html body #ca-lam-sang .ytt-section-header .section-icon {
+    background: linear-gradient(145deg, #edf4ef 0%, #faf8ef 100%);
+    border-color: rgba(70, 112, 80, .16);
+  }
+
+  html body :is(#giai-phau-co-sinh-hoc, #su-pham, #ca-lam-sang) .ytt-section-header h2 {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    max-width: 520px;
+    margin: 0 !important;
+    color: #214a3b;
+    font-size: clamp(1.62rem, 7.1vw, 1.95rem) !important;
+    font-weight: 600;
+    line-height: 1.07 !important;
+    letter-spacing: -.024em;
+    text-wrap: balance;
+  }
+
+  html body :is(#giai-phau-co-sinh-hoc, #su-pham, #ca-lam-sang) .ytt-section-header p {
+    grid-column: 2;
+    grid-row: 2;
+    max-width: 500px !important;
+    margin: 0 !important;
+    color: #64736b;
+    font-size: .9rem !important;
+    line-height: 1.62 !important;
+    letter-spacing: -.004em;
+    text-wrap: pretty;
+  }
+}
+
+@media (max-width: 480px) {
+  html body :is(#giai-phau-co-sinh-hoc, #su-pham, #ca-lam-sang) .ytt-section-visual {
+    gap: 18px !important;
+    margin-bottom: 26px !important;
+  }
+
+  html body :is(#giai-phau-co-sinh-hoc, #su-pham, #ca-lam-sang) .ytt-section-header {
+    grid-template-columns: 40px minmax(0, 1fr);
+    column-gap: 11px;
+    row-gap: 7px;
+    padding-right: 0;
+  }
+
+  html body :is(#giai-phau-co-sinh-hoc, #su-pham, #ca-lam-sang) .ytt-section-header .section-icon {
+    width: 40px;
+    height: 40px;
+    margin-top: 1px !important;
+    border-radius: 13px;
+    font-size: 1.05rem;
+  }
+
+  html body :is(#giai-phau-co-sinh-hoc, #su-pham, #ca-lam-sang) .ytt-section-header h2 {
+    font-size: clamp(1.47rem, 7.5vw, 1.72rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -.021em;
+  }
+
+  html body :is(#giai-phau-co-sinh-hoc, #su-pham, #ca-lam-sang) .ytt-section-header p {
+    font-size: .86rem !important;
+    line-height: 1.58 !important;
+  }
+}
+
+@media (max-width: 360px) {
+  html body :is(#giai-phau-co-sinh-hoc, #su-pham, #ca-lam-sang) .ytt-section-header {
+    grid-template-columns: 38px minmax(0, 1fr);
+    column-gap: 10px;
+  }
+
+  html body :is(#giai-phau-co-sinh-hoc, #su-pham, #ca-lam-sang) .ytt-section-header .section-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  html body :is(#giai-phau-co-sinh-hoc, #su-pham, #ca-lam-sang) .ytt-section-header h2 {
+    font-size: 1.42rem !important;
+  }
+}
