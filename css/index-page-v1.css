@@ -1,9 +1,10 @@
 @import url('index-page-v1-base.css?v=20260726b');
 
-/* ===== MÂY YOGA — HOMEPAGE EDGE ALIGNMENT =====
-   The page stylesheet stays unlayered so it correctly outranks shared legacy
-   primitives loaded by css/style.css. Only the Hero geometry below changes. */
+/* ===== MÂY YOGA — HOMEPAGE FINAL HERO GEOMETRY =====
+   One page entry owns the final Hero geometry and floating-badge behavior.
+   No additional stylesheet, !important rule or JavaScript mutation is required. */
 
+/* ===== HERO EDGE ALIGNMENT ===== */
 body.home-page .home-hero .home-container {
   width: 100%;
   max-width: none;
@@ -12,6 +13,51 @@ body.home-page .home-hero .home-container {
 
 body.home-page .home-hero-grid {
   padding-left: clamp(36px, 4vw, 72px);
+}
+
+/* ===== HERO FLOATING BADGES ===== */
+body.home-page .home-hero-float.practice {
+  animation: homeHeroFloatPractice 6.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+body.home-page .home-hero-float.trust {
+  padding-left: 72px;
+  animation: homeHeroFloatTrust 7.6s ease-in-out -2.1s infinite;
+  will-change: transform;
+}
+
+body.home-page .home-hero-float .home-hero-float-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  margin-top: 0;
+  border-radius: 50%;
+  background: #eef4e7;
+  font-size: 1.28rem;
+  line-height: 1;
+}
+
+body.home-page .home-hero-float.practice .home-hero-float-icon {
+  font-size: 1.38rem;
+}
+
+body.home-page .home-hero-float.trust .home-hero-float-icon {
+  left: 16px;
+  font-size: 1.24rem;
+  line-height: 1;
+}
+
+@keyframes homeHeroFloatPractice {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -6px, 0); }
+}
+
+@keyframes homeHeroFloatTrust {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-2px, -5px, 0); }
 }
 
 @media (max-width: 1180px) and (min-width: 981px) {
@@ -52,6 +98,9 @@ body.home-page .home-hero-grid {
   }
 }
 
+/* Restore the approved pre-refactor mobile badge composition:
+   one compact Hatha caption at the image's upper-left; the trust message is
+   represented by the principles block below instead of covering the photo. */
 @media (max-width: 768px) {
   body.home-page .home-hero-copy,
   body.home-page .home-principles {
@@ -66,6 +115,54 @@ body.home-page .home-hero-grid {
   body.home-page .home-hero-picture img {
     border-radius: 23px 0 0 23px;
   }
+
+  body.home-page .home-hero-float.practice {
+    top: 14px;
+    right: auto;
+    bottom: auto;
+    left: 14px;
+    width: auto;
+    min-width: 0;
+    max-width: min(56%, 174px);
+    min-height: 0;
+    padding: 5px 8px;
+    gap: 5px;
+    border-radius: 12px;
+    border-color: rgba(255, 255, 255, .34);
+    background: rgba(255, 255, 255, .50);
+    box-shadow: 0 5px 13px rgba(35, 62, 43, .045);
+    backdrop-filter: blur(2px) saturate(102%);
+    -webkit-backdrop-filter: blur(2px) saturate(102%);
+  }
+
+  body.home-page .home-hero-float.practice .home-hero-float-icon {
+    flex-basis: 23px;
+    width: 23px;
+    height: 23px;
+    font-size: .88rem;
+  }
+
+  body.home-page .home-hero-float.practice > div {
+    min-width: 0;
+  }
+
+  body.home-page .home-hero-float.practice strong {
+    margin: 0;
+    font-size: 10.6px;
+    line-height: 1.05;
+    white-space: nowrap;
+  }
+
+  body.home-page .home-hero-float.practice span:not(.home-hero-float-icon) {
+    margin: 2px 0 0;
+    font-size: 8.6px;
+    line-height: 1.05;
+    white-space: nowrap;
+  }
+
+  body.home-page .home-hero-float.trust {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
@@ -77,5 +174,34 @@ body.home-page .home-hero-grid {
   body.home-page .home-hero-visual {
     width: calc(100% - 12px);
     margin-left: 12px;
+  }
+
+  body.home-page .home-hero-float.practice {
+    top: 12px;
+    left: 13px;
+    max-width: min(59%, 166px);
+    padding: 4px 7px;
+  }
+
+  body.home-page .home-hero-float.practice .home-hero-float-icon {
+    flex-basis: 22px;
+    width: 22px;
+    height: 22px;
+    font-size: .84rem;
+  }
+
+  body.home-page .home-hero-float.practice strong {
+    font-size: 10.2px;
+  }
+
+  body.home-page .home-hero-float.practice span:not(.home-hero-float-icon) {
+    font-size: 8.3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home-page .home-hero-float.practice,
+  body.home-page .home-hero-float.trust {
+    animation: none;
   }
 }
