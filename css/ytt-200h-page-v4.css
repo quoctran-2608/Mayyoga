@@ -1,0 +1,76 @@
+/* ===== MÂY YOGA — YTT 200H PAGE ENTRY V4 =====
+   One explicit stylesheet entry for dao-tao-huan-luyen-vien-200h.html.
+   Order is intentional: established page core first, mobile layout second,
+   then page-owned exceptions that must outrank the global breadcrumb standard. */
+
+@import url('ytt-200h-redesign-v3.css?v=20260725n');
+@import url('ytt-200h-page-mobile.css?v=20260726a') screen and (max-width: 768px);
+
+/* Dark-image breadcrumb: this page intentionally differs from light-page breadcrumbs. */
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin: 0 0 34px !important;
+  padding: 0 !important;
+  color: rgba(255, 246, 218, .90) !important;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: .82rem !important;
+  font-weight: 400 !important;
+  line-height: 1.4 !important;
+  letter-spacing: .01em !important;
+  text-align: left !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, .55) !important;
+}
+
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > a {
+  color: #f3d98f !important;
+  font: inherit !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > a:hover,
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > a:focus-visible {
+  color: #fff4d1 !important;
+}
+
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > .sep {
+  color: rgba(255, 255, 255, .52) !important;
+  font-weight: 400 !important;
+}
+
+html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] > span:last-child {
+  color: #fff7de !important;
+  font: inherit !important;
+  font-weight: 700 !important;
+}
+
+/* Replace former inline icon spacing. */
+body.ytt200-page .ytt200-hero-actions .fa-arrow-right {
+  margin-left: 8px;
+}
+
+body.ytt200-page .ytt200-trust-chip .fa-users,
+body.ytt200-page .ytt200-cta-final .ytt200-btn-primary .fa-comment-dots {
+  margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+  html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] {
+    gap: 5px 7px !important;
+    margin-bottom: 18px !important;
+    font-size: .74rem !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  html body.ytt200-page .ytt200-hero .ytt200-breadcrumb[aria-label="Breadcrumb"] {
+    gap: 4px 6px !important;
+    margin-bottom: 15px !important;
+    font-size: .70rem !important;
+  }
+}
