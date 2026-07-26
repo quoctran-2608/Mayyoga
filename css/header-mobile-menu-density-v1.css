@@ -1,11 +1,16 @@
-/* ===== MÂY YOGA — MOBILE MENU DENSITY V1 =====
-   Compact the canonical mobile navigation without reducing tap clarity. */
+/* ===== MÂY YOGA — MOBILE MENU DENSITY V2 =====
+   Balanced mobile navigation rhythm: neither loose nor cramped, with the panel
+   visually attached to the bottom edge of the shared Header. */
 
 @media (max-width: 980px) {
   html body #navbar.navbar.site-header-standard .nav-links.active {
-    gap: 0 !important;
-    padding: 6px 12px 10px !important;
+    top: calc(100% - 1px) !important;
+    margin: 0 !important;
+    gap: 2px !important;
+    padding: 8px 12px 12px !important;
+    border-top: 0 !important;
     border-radius: 0 0 16px 16px !important;
+    transform: none !important;
   }
 
   html body #navbar.navbar.site-header-standard .nav-links.active > li {
@@ -13,35 +18,37 @@
   }
 
   html body #navbar.navbar.site-header-standard .nav-links.active > li > a {
-    min-height: 40px !important;
-    padding: 8px 10px !important;
+    min-height: 43px !important;
+    padding: 9px 11px !important;
     border-radius: 10px !important;
-    line-height: 1.25 !important;
+    line-height: 1.3 !important;
   }
 
   html body #navbar.navbar.site-header-standard .nav-dropdown > .dropdown-menu {
-    margin: 1px 4px 5px !important;
-    padding: 4px !important;
+    margin: 2px 4px 7px !important;
+    padding: 5px !important;
     border-radius: 10px !important;
   }
 
   html body #navbar.navbar.site-header-standard .dropdown-menu li a {
-    min-height: 36px !important;
-    margin: 0 !important;
-    padding: 7px 9px !important;
+    min-height: 38px !important;
+    margin: 1px 0 !important;
+    padding: 8px 10px !important;
     border-radius: 8px !important;
-    font-size: .82rem !important;
-    line-height: 1.3 !important;
+    font-size: .83rem !important;
+    line-height: 1.32 !important;
   }
 }
 
 @media (max-width: 420px) {
   html body #navbar.navbar.site-header-standard .nav-links.active {
-    padding: 5px 10px 9px !important;
+    top: calc(100% - 1px) !important;
+    padding: 7px 10px 10px !important;
+    gap: 2px !important;
   }
 
   html body #navbar.navbar.site-header-standard .nav-links.active > li > a {
-    min-height: 39px !important;
-    padding: 7px 9px !important;
+    min-height: 42px !important;
+    padding: 8px 10px !important;
   }
 }
