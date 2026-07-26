@@ -1,0 +1,40 @@
+/* ===== MÂY YOGA — PAGE ENTRY MOTION OFF V1 =====
+   Show page content immediately. This disables only entrance/reveal effects,
+   while preserving hover, menu, search and other direct interaction feedback. */
+
+html body .reveal,
+html body .reveal.visible,
+html body [data-reveal],
+html body [data-reveal].visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Remove initial hero/page entrance keyframes without changing layout geometry. */
+html body .hero-content,
+html body .hero-image,
+html body .article-header,
+html body .about-founder-copy,
+html body .about-founder-portrait,
+html body .sales-hero .course-hero-copy,
+html body .sales-hero .hero-img-wrap,
+html body .ytt-page-hero .ytt-hero-content,
+html body .ytt-page-hero .hero-bg {
+  animation: none !important;
+  animation-delay: 0s !important;
+}
+
+/* Common legacy entrance class names used by older content pages. */
+html body .fade-in,
+html body .fade-in-up,
+html body .fade-in-right,
+html body .animate-in,
+html body .scroll-reveal {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+}
