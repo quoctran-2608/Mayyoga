@@ -1,4 +1,5 @@
 @import url('header-first-paint-v1.css?v=20260726a');
+@import url('header-mobile-menu-unlock-v1.css?v=20260726a');
 @import url('ytt-instructor-page-base.css?v=20260726a');
 
-/* Wrapper: stabilize the shared Header before the YTT page composition paints. */
+/* Wrapper: stabilize the shared Header while preserving the mobile menu open state. */
