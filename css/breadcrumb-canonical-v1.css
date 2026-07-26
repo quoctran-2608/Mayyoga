@@ -1,10 +1,9 @@
 @import url('shared-header-alignment-v1.css?v=20260723a');
 @import url('pose-category-nav-v2.css?v=20260722a');
-@import url('about-founder-type-balance-v1.css?v=20260723a');
 
 /* ===== MÂY YOGA — CANONICAL BREADCRUMB V1 =====
-   Shared breadcrumb treatment only. Page-specific hero spacing and backgrounds
-   belong to each page stylesheet and are intentionally excluded here. */
+   Shared breadcrumb treatment only. Page-specific hero spacing, typography and
+   backgrounds belong to each page stylesheet and are intentionally excluded here. */
 
 html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) {
   display: flex !important;
@@ -61,10 +60,6 @@ html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > [ari
 }
 
 @media (max-width: 768px) {
-  html body.about-page .about-founder-hero {
-    padding-top: 36px !important;
-  }
-
   html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) {
     gap: 7px !important;
     margin-bottom: 16px !important;
@@ -74,10 +69,6 @@ html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) > [ari
 }
 
 @media (max-width: 420px) {
-  html body.about-page .about-founder-hero {
-    padding-top: 30px !important;
-  }
-
   html body :is(.breadcrumb, .course-breadcrumb, [aria-label="Breadcrumb"]) {
     gap: 6px !important;
     margin-bottom: 14px !important;
