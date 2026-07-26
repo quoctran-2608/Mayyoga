@@ -20,8 +20,6 @@
   var siteRoot = getSiteRoot();
   function siteUrl(path) { return new URL(path, siteRoot).href; }
 
-  // Prime the static header shell before loading any optional components. This is safe
-  // even when canonical navigation is also included directly because all later steps are idempotent.
   function primeHeaderState() {
     var navbar = document.getElementById('navbar');
     if (!navbar) return;
@@ -86,10 +84,6 @@
 
     if (/\/hoc-yoga-online\.html$/i.test(path)) {
       ensureStylesheet('link[data-online-course-polish]', 'css/online-course-polish-v2.css?v=20260722a', 'data-online-course-polish');
-    }
-
-    if (/\/goc-huan-luyen-vien\.html$/i.test(path)) {
-      ensureStylesheet('link[data-ytt-callout-viewport-fix]', 'css/ytt-callout-viewport-fix-v1.css?v=20260726e', 'data-ytt-callout-viewport-fix');
     }
   }
 
