@@ -1,383 +1,209 @@
-// ===== MayYoga.health — Main JS =====
+// ===== Mây Yoga — Main Bootstrap =====
+// Header/menu ownership belongs exclusively to site-navigation-canonical-v3.js.
+(function bootstrapMayYoga() {
+  'use strict';
 
-// Prime the shared Header as soon as this parser-blocking script is reached.
-// Older pages still load main.js at the end of <body>; applying the canonical class
-// and critical styles here prevents a second legacy-header state at DOMContentLoaded.
-(function primeCanonicalHeader() {
-  const navbar = document.getElementById('navbar');
-  if (!navbar) return;
-
-  navbar.classList.add('site-header-standard', 'scrolled');
-  navbar.setAttribute('data-site-header-standard', 'true');
-
-  const ensureStylesheet = (selector, href, attribute) => {
-    if (document.querySelector(selector)) return;
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-    link.setAttribute(attribute, 'true');
-    document.head.appendChild(link);
-  };
-
-  ensureStylesheet(
-    'link[data-header-first-paint]',
-    'css/header-first-paint-v1.css?v=20260726a',
-    'data-header-first-paint'
-  );
-  ensureStylesheet(
-    'link[data-header-index-canonical]',
-    'css/header-index-canonical-v3.css?v=20260726c',
-    'data-header-index-canonical'
-  );
-  ensureStylesheet(
-    'link[data-site-navigation-canonical]',
-    'css/site-navigation-canonical-v4.css?v=20260722a',
-    'data-site-navigation-canonical'
-  );
-})();
-
-// Homepage-only assets. Keep homepage experiments isolated from shared pages.
-(function loadHomepageAssets() {
-  const isHomepage = Boolean(
-    document.getElementById('hero') &&
-    document.getElementById('hanh-trinh') &&
-    document.getElementById('categories')
-  );
-
-  if (!isHomepage) return;
-
-  const stylesheets = [
-    {
-      href: 'css/index-responsive.css?v=1',
-      selector: 'link[data-index-responsive]',
-      attribute: 'indexResponsive'
-    },
-    {
-      href: 'css/index-hero-principles.css?v=1',
-      selector: 'link[data-index-hero-principles]',
-      attribute: 'indexHeroPrinciples'
+  function resolveCurrentScript() {
+    if (document.currentScript && document.currentScript.src) return document.currentScript;
+    var scripts = document.querySelectorAll('script[src]');
+    for (var i = scripts.length - 1; i >= 0; i--) {
+      if (/\/js\/main\.js(?:\?|$)/.test(scripts[i].src)) return scripts[i];
     }
-  ];
+    return null;
+  }
 
-  stylesheets.forEach(stylesheet => {
-    if (document.querySelector(stylesheet.selector)) return;
+  var currentScript = resolveCurrentScript();
+  var siteRoot = currentScript && currentScript.src
+    ? new URL('../', currentScript.src)
+    : new URL('/', window.location.href);
 
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = stylesheet.href;
-    link.dataset[stylesheet.attribute] = 'true';
-    document.head.appendChild(link);
-  });
+  function siteUrl(path) {
+    return new URL(path, siteRoot).href;
+  }
 
-  // Explicitly load the final hero geometry layer for fresh visitors too.
-  // Versioned URL avoids stale GitHub Pages/browser cache after hero refinements.
-  if (!document.querySelector('script[data-home-hero-visual]')) {
-    const script = document.createElement('script');
-    script.src = 'js/home-hero-visual.js?v=20260721a';
-    script.dataset.homeHeroVisual = 'true';
+  window.MAY_YOGA_SITE_ROOT = siteRoot.href;
+
+  function hasCanonicalStyleEntry() {
+    return window.getComputedStyle(document.documentElement)
+      .getPropertyValue('--may-yoga-canonical-style-entry')
+      .trim() === '1';
+  }
+
+  function markSharedStyleEntry() {
+    if (!hasCanonicalStyleEntry()) return false;
+
+    var styleLink = Array.prototype.find.call(document.querySelectorAll('link[rel="stylesheet"][href]'), function(link) {
+      return /\/css\/style\.css(?:\?|$)/.test(link.href);
+    });
+    if (!styleLink) return false;
+
+    styleLink.setAttribute('data-header-first-paint', 'true');
+    styleLink.setAttribute('data-header-index-canonical', 'true');
+    styleLink.setAttribute('data-site-navigation-canonical', 'true');
+    styleLink.setAttribute('data-page-entry-motion-off', 'true');
+    return true;
+  }
+
+  function primeHeaderShell() {
+    var navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    navbar.classList.add('site-header-standard', 'scrolled');
+    navbar.setAttribute('data-site-header-standard', 'true');
+  }
+
+  function removeLegacyNavigationLoaders() {
+    document.querySelectorAll('script[src*="/js/site-navigation-canonical-v2.js"]').forEach(function(script) {
+      script.remove();
+    });
+  }
+
+  function loadCanonicalNavigation() {
+    if (document.querySelector('script[data-site-navigation-canonical-v3]')) return;
+    removeLegacyNavigationLoaders();
+
+    var script = document.createElement('script');
+    script.src = siteUrl('js/site-navigation-canonical-v3.js?v=20260726a');
+    script.async = false;
+    script.setAttribute('data-site-navigation-canonical', 'true');
+    script.setAttribute('data-site-navigation-canonical-v3', 'true');
     document.head.appendChild(script);
   }
-})();
 
-function createHeroPrinciples() {
-  const principles = document.createElement('div');
-  principles.className = 'hero-principles';
-  principles.setAttribute('aria-label', 'Ba nguyên tắc nền tảng của Mây Yoga');
-  principles.innerHTML = `
-    <div class="hero-principle">
-      <span class="hero-principle-icon" aria-hidden="true">
-        <img src="assets/images/icons/tu_the_chuan_icon.webp" alt="" width="50" height="50">
-      </span>
-      <div class="hero-principle-copy">
-        <div class="hero-principle-title">Tư thế chuẩn</div>
-        <div class="hero-principle-subtitle">Căn chỉnh an toàn</div>
-      </div>
-    </div>
+  function loadSiteChrome() {
+    if (document.querySelector('script[data-site-chrome-standard]')) return;
+    var script = document.createElement('script');
+    script.src = siteUrl('js/site-chrome.js?v=20260726d');
+    script.async = false;
+    script.setAttribute('data-site-chrome-standard', 'true');
+    document.head.appendChild(script);
+  }
 
-    <div class="hero-principle">
-      <span class="hero-principle-icon" aria-hidden="true">
-        <img src="assets/images/icons/hoi_tho_dung_icon.webp" alt="" width="50" height="50">
-      </span>
-      <div class="hero-principle-copy">
-        <div class="hero-principle-title">Hơi thở đúng</div>
-        <div class="hero-principle-subtitle">Thực hành có nền tảng</div>
-      </div>
-    </div>
+  markSharedStyleEntry();
+  primeHeaderShell();
+  loadCanonicalNavigation();
+  loadSiteChrome();
 
-    <div class="hero-principle">
-      <span class="hero-principle-icon" aria-hidden="true">
-        <img src="assets/images/icons/hieu_co_the_icon.webp" alt="" width="50" height="50">
-      </span>
-      <div class="hero-principle-copy">
-        <div class="hero-principle-title">Hiểu cơ thể</div>
-        <div class="hero-principle-subtitle">An toàn & bền vững</div>
-      </div>
-    </div>
-  `;
-  return principles;
-}
+  function onReady(callback) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback, { once: true });
+    } else {
+      callback();
+    }
+  }
 
-function createHeroTrustCard() {
-  const card = document.createElement('div');
-  card.className = 'floating-card card-2 hero-trust-card';
-  card.setAttribute('aria-label', 'Học đúng từ nền tảng: Tư thế, Hơi thở, Hiểu cơ thể');
-  card.innerHTML = `
-    <div class="card-icon hero-trust-icon" aria-hidden="true">✓</div>
-    <div class="card-text">
-      <div class="card-title">Học đúng từ nền tảng</div>
-      <div class="card-sub">Tư thế • Hơi thở • Hiểu cơ thể</div>
-    </div>
-  `;
-  return card;
-}
+  function createHeroPrinciples() {
+    var principles = document.createElement('div');
+    principles.className = 'hero-principles';
+    principles.setAttribute('aria-label', 'Ba nguyên tắc nền tảng của Mây Yoga');
+    principles.innerHTML = [
+      '<div class="hero-principle">',
+      '  <span class="hero-principle-icon" aria-hidden="true"><img src="' + siteUrl('assets/images/icons/tu_the_chuan_icon.webp') + '" alt="" width="50" height="50"></span>',
+      '  <div class="hero-principle-copy"><div class="hero-principle-title">Tư thế chuẩn</div><div class="hero-principle-subtitle">Căn chỉnh an toàn</div></div>',
+      '</div>',
+      '<div class="hero-principle">',
+      '  <span class="hero-principle-icon" aria-hidden="true"><img src="' + siteUrl('assets/images/icons/hoi_tho_dung_icon.webp') + '" alt="" width="50" height="50"></span>',
+      '  <div class="hero-principle-copy"><div class="hero-principle-title">Hơi thở đúng</div><div class="hero-principle-subtitle">Thực hành có nền tảng</div></div>',
+      '</div>',
+      '<div class="hero-principle">',
+      '  <span class="hero-principle-icon" aria-hidden="true"><img src="' + siteUrl('assets/images/icons/hieu_co_the_icon.webp') + '" alt="" width="50" height="50"></span>',
+      '  <div class="hero-principle-copy"><div class="hero-principle-title">Hiểu cơ thể</div><div class="hero-principle-subtitle">An toàn &amp; bền vững</div></div>',
+      '</div>'
+    ].join('');
+    return principles;
+  }
 
-function initHomepageHeroEnhancements() {
-  const hero = document.getElementById('hero');
-  const heroImage = hero?.querySelector('.hero-image');
-  if (!hero || !heroImage) return;
+  function createHeroTrustCard() {
+    var card = document.createElement('div');
+    card.className = 'floating-card card-2 hero-trust-card';
+    card.setAttribute('aria-label', 'Học đúng từ nền tảng: Tư thế, Hơi thở, Hiểu cơ thể');
+    card.innerHTML = [
+      '<div class="card-icon hero-trust-icon" aria-hidden="true">✓</div>',
+      '<div class="card-text"><div class="card-title">Học đúng từ nền tảng</div><div class="card-sub">Tư thế • Hơi thở • Hiểu cơ thể</div></div>'
+    ].join('');
+    return card;
+  }
 
-  // Retired numeric design: remove 90+ / 10K+ / 30+ completely from the rendered DOM.
-  hero.querySelectorAll('.hero-stats').forEach(element => element.remove());
+  function initHomepageHero() {
+    var hero = document.getElementById('hero');
+    var heroImage = hero && hero.querySelector('.hero-image');
+    if (!hero || !heroImage) return;
 
-  // Retired rating badge: remove the old 4.9/5 / 2,000+ node instead of reusing/mutating it.
-  heroImage.querySelectorAll('.floating-card.card-2').forEach(card => {
-    if (!card.classList.contains('hero-trust-card')) card.remove();
-  });
-
-  let principles = heroImage.querySelector('.hero-principles');
-  if (!principles) {
-    principles = createHeroPrinciples();
-    heroImage.appendChild(principles);
-  } else {
-    // Keep the current approved copy even if an older cached DOM/script created the row.
-    const titles = principles.querySelectorAll('.hero-principle-title');
-    const subtitles = principles.querySelectorAll('.hero-principle-subtitle');
-    const copy = [
-      ['Tư thế chuẩn', 'Căn chỉnh an toàn'],
-      ['Hơi thở đúng', 'Thực hành có nền tảng'],
-      ['Hiểu cơ thể', 'An toàn & bền vững']
-    ];
-    copy.forEach((item, index) => {
-      if (titles[index]) titles[index].textContent = item[0];
-      if (subtitles[index]) subtitles[index].textContent = item[1];
+    hero.querySelectorAll('.hero-stats').forEach(function(node) { node.remove(); });
+    heroImage.querySelectorAll('.floating-card.card-2').forEach(function(card) {
+      if (!card.classList.contains('hero-trust-card')) card.remove();
     });
+
+    var principles = heroImage.querySelector('.hero-principles');
+    if (!principles) heroImage.appendChild(createHeroPrinciples());
+    if (!heroImage.querySelector('.hero-trust-card')) heroImage.appendChild(createHeroTrustCard());
   }
 
-  if (!heroImage.querySelector('.hero-trust-card')) {
-    heroImage.appendChild(createHeroTrustCard());
-  }
-}
+  function initSmoothAnchors() {
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(event) {
+        var href = anchor.getAttribute('href');
+        if (!href || href === '#') return;
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initHomepageHeroEnhancements, { once: true });
-} else {
-  initHomepageHeroEnhancements();
-}
+        var target;
+        try {
+          target = document.querySelector(href);
+        } catch (error) {
+          return;
+        }
+        if (!target) return;
 
-document.addEventListener('DOMContentLoaded', () => {
-  const navbar = document.getElementById('navbar');
-  const mobileToggle = document.getElementById('mobileToggle');
-  const navLinks = document.getElementById('navLinks');
-  const usesCanonicalHeader = Boolean(
-    navbar && (
-      navbar.classList.contains('site-header-standard') ||
-      navbar.hasAttribute('data-site-header-standard') ||
-      document.querySelector('script[data-site-navigation-canonical], script[data-site-chrome-standard]')
-    )
-  );
-
-  // Legacy navigation is retained only for old standalone pages that have not adopted
-  // the shared canonical Header. Canonical pages are exclusively owned by
-  // site-navigation-canonical-v2.js to avoid duplicate class changes and listeners.
-  if (!usesCanonicalHeader) {
-    // ===== Navbar scroll effect =====
-    if (navbar) {
-      const handleScroll = () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 50);
-      };
-      handleScroll();
-      window.addEventListener('scroll', handleScroll, { passive: true });
-    }
-
-    // ===== Mobile menu =====
-    if (mobileToggle && navLinks) {
-      const closeMobileMenu = () => {
-        navLinks.classList.remove('active');
-        mobileToggle.classList.remove('active');
-        mobileToggle.setAttribute('aria-expanded', 'false');
-      };
-
-      mobileToggle.setAttribute('aria-expanded', 'false');
-
-      mobileToggle.addEventListener('click', () => {
-        const willOpen = !navLinks.classList.contains('active');
-        navLinks.classList.toggle('active', willOpen);
-        mobileToggle.classList.toggle('active', willOpen);
-        mobileToggle.setAttribute('aria-expanded', String(willOpen));
-      });
-
-      navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          if (link.classList.contains('dropdown-toggle')) return;
-          closeMobileMenu();
-        });
-      });
-
-      document.addEventListener('keydown', event => {
-        if (event.key === 'Escape') closeMobileMenu();
-      });
-
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) closeMobileMenu();
-      }, { passive: true });
-    }
-
-    // ===== Click-based dropdown toggle =====
-    document.querySelectorAll('.nav-dropdown .dropdown-toggle').forEach(toggle => {
-      toggle.addEventListener('click', event => {
         event.preventDefault();
-        event.stopPropagation();
-        const parent = toggle.closest('.nav-dropdown');
-        if (!parent) return;
-
-        document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
-          if (dropdown !== parent) dropdown.classList.remove('active');
-        });
-        parent.classList.toggle('active');
+        var navbar = document.getElementById('navbar');
+        var offset = (navbar ? navbar.offsetHeight : 0) + 20;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
       });
     });
+  }
 
-    document.addEventListener('click', event => {
-      if (!event.target.closest('.nav-dropdown')) {
-        document.querySelectorAll('.nav-dropdown').forEach(dropdown => dropdown.classList.remove('active'));
-      }
+  function initHoverHints() {
+    document.querySelectorAll('.category-card, .course-card, .pose-card, .blog-card').forEach(function(card) {
+      card.addEventListener('mouseenter', function() { card.style.willChange = 'transform'; });
+      card.addEventListener('mouseleave', function() { card.style.willChange = 'auto'; });
     });
   }
 
-  // ===== Smooth scroll for valid page anchors =====
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (event) {
-      const href = this.getAttribute('href');
-      if (!href || href === '#') return;
+  function initNewsletter() {
+    var form = document.querySelector('.newsletter-form');
+    if (!form) return;
 
-      let target;
-      try {
-        target = document.querySelector(href);
-      } catch (error) {
-        return;
-      }
-      if (!target) return;
-
+    form.addEventListener('submit', function(event) {
       event.preventDefault();
-      const offset = (navbar?.offsetHeight || 0) + 20;
-      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-    });
-  });
-
-  // ===== Scroll reveal =====
-  const revealElements = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && revealElements.length) {
-    const revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const siblings = entry.target.parentElement?.querySelectorAll('.reveal') || [];
-        let delay = 0;
-        siblings.forEach((sibling, index) => {
-          if (sibling === entry.target) delay = index * 100;
-        });
-        window.setTimeout(() => entry.target.classList.add('visible'), Math.min(delay, 500));
-        revealObserver.unobserve(entry.target);
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-    revealElements.forEach(element => revealObserver.observe(element));
-  } else {
-    revealElements.forEach(element => element.classList.add('visible'));
-  }
-
-  // ===== Active nav link highlight (legacy pages only) =====
-  if (!usesCanonicalHeader) {
-    const sections = document.querySelectorAll('section[id]');
-    if (sections.length) {
-      const highlightNav = () => {
-        const scrollY = window.scrollY + 100;
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
-          const sectionId = section.getAttribute('id');
-          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-            document.querySelectorAll('.nav-links a').forEach(link => {
-              link.classList.toggle('active', link.getAttribute('href') === `#${sectionId}`);
-            });
-          }
-        });
-      };
-      highlightNav();
-      window.addEventListener('scroll', highlightNav, { passive: true });
-    }
-  }
-
-  // ===== Hover performance hint =====
-  document.querySelectorAll('.category-card, .course-card, .pose-card, .blog-card').forEach(card => {
-    card.addEventListener('mouseenter', () => { card.style.willChange = 'transform'; });
-    card.addEventListener('mouseleave', () => { card.style.willChange = 'auto'; });
-  });
-
-  // ===== Newsletter =====
-  const newsletterForm = document.querySelector('.newsletter-form');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', event => {
-      event.preventDefault();
-      const input = newsletterForm.querySelector('input');
-      const button = newsletterForm.querySelector('button');
-      const email = input?.value.trim() || '';
-      if (!input || !button || !email.includes('@')) return;
+      var input = form.querySelector('input');
+      var button = form.querySelector('button');
+      var email = input ? input.value.trim() : '';
+      if (!input || !button || email.indexOf('@') === -1) return;
 
       button.textContent = '✓ Đã đăng ký!';
       button.style.background = 'var(--mint-400)';
       input.value = '';
-      window.setTimeout(() => {
+      window.setTimeout(function() {
         button.textContent = 'Đăng ký';
         button.style.background = '';
       }, 3000);
     });
   }
 
-  // ===== Desktop-only hero parallax =====
-  const heroImage = document.querySelector('.hero-image');
-  if (heroImage && window.innerWidth > 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      if (scrolled < 800) heroImage.style.transform = `translateY(${scrolled * 0.05}px)`;
+  function initHeroParallax() {
+    var heroImage = document.querySelector('.hero-image');
+    if (!heroImage || window.innerWidth <= 768 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    window.addEventListener('scroll', function() {
+      var scrolled = window.scrollY;
+      if (scrolled < 800) heroImage.style.transform = 'translateY(' + (scrolled * 0.05) + 'px)';
     }, { passive: true });
   }
 
-  console.log('🧘 MayYoga.health — Loaded successfully');
-});
-
-// Site-wide shared chrome bootstrap. It standardizes footer/contact/header and now
-// also loads the canonical article-share component for any page that has .article-share.
-(function loadCanonicalSiteChrome() {
-  if (document.querySelector('script[data-site-chrome-standard]')) return;
-
-  var current = document.currentScript;
-  if (!current || !current.src) {
-    var scripts = document.querySelectorAll('script[src]');
-    for (var i = scripts.length - 1; i >= 0; i--) {
-      if (/\/js\/main\.js(?:\?|$)/.test(scripts[i].src)) {
-        current = scripts[i];
-        break;
-      }
-    }
-  }
-
-  var src = current && current.src
-    ? new URL('site-chrome.js?v=20260726a', current.src).href
-    : 'js/site-chrome.js?v=20260726a';
-
-  var script = document.createElement('script');
-  script.src = src;
-  script.async = false;
-  script.setAttribute('data-site-chrome-standard', 'true');
-  document.head.appendChild(script);
+  onReady(function() {
+    initHomepageHero();
+    initSmoothAnchors();
+    initHoverHints();
+    initNewsletter();
+    initHeroParallax();
+  });
 })();

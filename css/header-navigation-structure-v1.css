@@ -1,0 +1,15 @@
+/* ===== MÂY YOGA — CANONICAL NAVIGATION STRUCTURE =====
+   Structural details shared by the exact menu markup generated at runtime. */
+
+html body #navbar.navbar.site-header-standard .nav-menu-divider {
+  margin-top: 4px !important;
+  padding-top: 4px !important;
+  border-top: 1px solid rgba(61, 90, 58, .10) !important;
+}
+
+@media (max-width: 980px) {
+  html body #navbar.navbar.site-header-standard .nav-menu-divider {
+    margin-top: 3px !important;
+    padding-top: 3px !important;
+  }
+}
