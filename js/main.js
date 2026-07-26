@@ -1,5 +1,41 @@
 // ===== MayYoga.health — Main JS =====
 
+// Prime the shared Header as soon as this parser-blocking script is reached.
+// Older pages still load main.js at the end of <body>; applying the canonical class
+// and critical styles here prevents a second legacy-header state at DOMContentLoaded.
+(function primeCanonicalHeader() {
+  const navbar = document.getElementById('navbar');
+  if (!navbar) return;
+
+  navbar.classList.add('site-header-standard', 'scrolled');
+  navbar.setAttribute('data-site-header-standard', 'true');
+
+  const ensureStylesheet = (selector, href, attribute) => {
+    if (document.querySelector(selector)) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    link.setAttribute(attribute, 'true');
+    document.head.appendChild(link);
+  };
+
+  ensureStylesheet(
+    'link[data-header-first-paint]',
+    'css/header-first-paint-v1.css?v=20260726a',
+    'data-header-first-paint'
+  );
+  ensureStylesheet(
+    'link[data-header-index-canonical]',
+    'css/header-index-canonical-v3.css?v=20260726c',
+    'data-header-index-canonical'
+  );
+  ensureStylesheet(
+    'link[data-site-navigation-canonical]',
+    'css/site-navigation-canonical-v4.css?v=20260722a',
+    'data-site-navigation-canonical'
+  );
+})();
+
 // Homepage-only assets. Keep homepage experiments isolated from shared pages.
 (function loadHomepageAssets() {
   const isHomepage = Boolean(
@@ -142,69 +178,81 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
   const mobileToggle = document.getElementById('mobileToggle');
   const navLinks = document.getElementById('navLinks');
+  const usesCanonicalHeader = Boolean(
+    navbar && (
+      navbar.classList.contains('site-header-standard') ||
+      navbar.hasAttribute('data-site-header-standard') ||
+      document.querySelector('script[data-site-navigation-canonical], script[data-site-chrome-standard]')
+    )
+  );
 
-  // ===== Navbar scroll effect =====
-  if (navbar) {
-    const handleScroll = () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
-    };
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-  }
-
-  // ===== Mobile menu =====
-  if (mobileToggle && navLinks) {
-    const closeMobileMenu = () => {
-      navLinks.classList.remove('active');
-      mobileToggle.classList.remove('active');
-      mobileToggle.setAttribute('aria-expanded', 'false');
-    };
-
-    mobileToggle.setAttribute('aria-expanded', 'false');
-
-    mobileToggle.addEventListener('click', () => {
-      const willOpen = !navLinks.classList.contains('active');
-      navLinks.classList.toggle('active', willOpen);
-      mobileToggle.classList.toggle('active', willOpen);
-      mobileToggle.setAttribute('aria-expanded', String(willOpen));
-    });
-
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (link.classList.contains('dropdown-toggle')) return;
-        closeMobileMenu();
-      });
-    });
-
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') closeMobileMenu();
-    });
-
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) closeMobileMenu();
-    }, { passive: true });
-  }
-
-  // ===== Click-based dropdown toggle =====
-  document.querySelectorAll('.nav-dropdown .dropdown-toggle').forEach(toggle => {
-    toggle.addEventListener('click', event => {
-      event.preventDefault();
-      event.stopPropagation();
-      const parent = toggle.closest('.nav-dropdown');
-      if (!parent) return;
-
-      document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
-        if (dropdown !== parent) dropdown.classList.remove('active');
-      });
-      parent.classList.toggle('active');
-    });
-  });
-
-  document.addEventListener('click', event => {
-    if (!event.target.closest('.nav-dropdown')) {
-      document.querySelectorAll('.nav-dropdown').forEach(dropdown => dropdown.classList.remove('active'));
+  // Legacy navigation is retained only for old standalone pages that have not adopted
+  // the shared canonical Header. Canonical pages are exclusively owned by
+  // site-navigation-canonical-v2.js to avoid duplicate class changes and listeners.
+  if (!usesCanonicalHeader) {
+    // ===== Navbar scroll effect =====
+    if (navbar) {
+      const handleScroll = () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+      };
+      handleScroll();
+      window.addEventListener('scroll', handleScroll, { passive: true });
     }
-  });
+
+    // ===== Mobile menu =====
+    if (mobileToggle && navLinks) {
+      const closeMobileMenu = () => {
+        navLinks.classList.remove('active');
+        mobileToggle.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+      };
+
+      mobileToggle.setAttribute('aria-expanded', 'false');
+
+      mobileToggle.addEventListener('click', () => {
+        const willOpen = !navLinks.classList.contains('active');
+        navLinks.classList.toggle('active', willOpen);
+        mobileToggle.classList.toggle('active', willOpen);
+        mobileToggle.setAttribute('aria-expanded', String(willOpen));
+      });
+
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (link.classList.contains('dropdown-toggle')) return;
+          closeMobileMenu();
+        });
+      });
+
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closeMobileMenu();
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) closeMobileMenu();
+      }, { passive: true });
+    }
+
+    // ===== Click-based dropdown toggle =====
+    document.querySelectorAll('.nav-dropdown .dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
+        const parent = toggle.closest('.nav-dropdown');
+        if (!parent) return;
+
+        document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+          if (dropdown !== parent) dropdown.classList.remove('active');
+        });
+        parent.classList.toggle('active');
+      });
+    });
+
+    document.addEventListener('click', event => {
+      if (!event.target.closest('.nav-dropdown')) {
+        document.querySelectorAll('.nav-dropdown').forEach(dropdown => dropdown.classList.remove('active'));
+      }
+    });
+  }
 
   // ===== Smooth scroll for valid page anchors =====
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -247,24 +295,26 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(element => element.classList.add('visible'));
   }
 
-  // ===== Active nav link highlight =====
-  const sections = document.querySelectorAll('section[id]');
-  if (sections.length) {
-    const highlightNav = () => {
-      const scrollY = window.scrollY + 100;
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-          document.querySelectorAll('.nav-links a').forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${sectionId}`);
-          });
-        }
-      });
-    };
-    highlightNav();
-    window.addEventListener('scroll', highlightNav, { passive: true });
+  // ===== Active nav link highlight (legacy pages only) =====
+  if (!usesCanonicalHeader) {
+    const sections = document.querySelectorAll('section[id]');
+    if (sections.length) {
+      const highlightNav = () => {
+        const scrollY = window.scrollY + 100;
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.getAttribute('id');
+          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            document.querySelectorAll('.nav-links a').forEach(link => {
+              link.classList.toggle('active', link.getAttribute('href') === `#${sectionId}`);
+            });
+          }
+        });
+      };
+      highlightNav();
+      window.addEventListener('scroll', highlightNav, { passive: true });
+    }
   }
 
   // ===== Hover performance hint =====
@@ -322,12 +372,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   var src = current && current.src
-    ? new URL('site-chrome.js?v=20260722a', current.src).href
-    : 'js/site-chrome.js?v=20260722a';
+    ? new URL('site-chrome.js?v=20260726a', current.src).href
+    : 'js/site-chrome.js?v=20260726a';
 
   var script = document.createElement('script');
   script.src = src;
-  script.defer = true;
+  script.async = false;
   script.setAttribute('data-site-chrome-standard', 'true');
   document.head.appendChild(script);
 })();
