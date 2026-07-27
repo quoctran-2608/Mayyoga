@@ -65,6 +65,77 @@ body.ytt200-page .ytt200-cta-final .ytt200-btn-primary .fa-comment-dots {
     line-height: 1.35 !important;
     letter-spacing: 0 !important;
   }
+
+  /* Curriculum owns its mobile gutter instead of inheriting the shared
+     container width and an additional 24px padding on each side. */
+  body.ytt200-page #chuong-trinh > .container {
+    width: min(calc(100% - 20px), 680px);
+    padding-inline: 0;
+  }
+
+  body.ytt200-page #chuong-trinh .ytt200-module-grid,
+  body.ytt200-page #chuong-trinh .ytt200-module-card {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  /* Keep both stars, but anchor them symmetrically around the complete
+     multiline heading rather than attaching them to different text lines. */
+  body.ytt200-page #chuong-trinh .ytt200-section-head {
+    width: 100%;
+    max-width: 560px;
+    margin-inline: auto;
+  }
+
+  body.ytt200-page #chuong-trinh .ytt200-section-head h2 {
+    display: block;
+    width: fit-content;
+    max-width: calc(100% - 72px);
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  body.ytt200-page #chuong-trinh .ytt200-section-head h2::before,
+  body.ytt200-page #chuong-trinh .ytt200-section-head h2::after {
+    position: absolute;
+    top: 50%;
+    margin: 0;
+    font-size: .48em;
+    line-height: 1;
+    transform: translateY(-50%);
+  }
+
+  body.ytt200-page #chuong-trinh .ytt200-section-head h2::before {
+    left: -34px;
+  }
+
+  body.ytt200-page #chuong-trinh .ytt200-section-head h2::after {
+    right: -34px;
+  }
+}
+
+@media (max-width: 460px) {
+  body.ytt200-page #chuong-trinh > .container {
+    width: calc(100% - 16px);
+  }
+
+  body.ytt200-page #chuong-trinh .ytt200-section-head h2 {
+    max-width: calc(100% - 56px);
+  }
+
+  body.ytt200-page #chuong-trinh .ytt200-section-head h2::before,
+  body.ytt200-page #chuong-trinh .ytt200-section-head h2::after {
+    font-size: .44em;
+  }
+
+  body.ytt200-page #chuong-trinh .ytt200-section-head h2::before {
+    left: -26px;
+  }
+
+  body.ytt200-page #chuong-trinh .ytt200-section-head h2::after {
+    right: -26px;
+  }
 }
 
 @media (max-width: 420px) {
