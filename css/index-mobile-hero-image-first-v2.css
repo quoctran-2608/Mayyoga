@@ -1,15 +1,68 @@
-/* ===== MÂY YOGA — MOBILE HERO LAYOUT V2 =====
-   Owns only the homepage Hero order and badge visibility/scale on phones.
-   Existing frozen mobile CSS remains responsible for the visual foundation. */
+/* ===== MÂY YOGA — MOBILE HERO FLOW V2 =====
+   Owns only the homepage Hero reading order and compact trust badge on phones.
+   Desktop and the frozen visual foundation remain unchanged. */
 
 @media (max-width: 768px) {
-  /* Reading order: copy first, visual second. */
+  /* Let the copy children participate in the mobile flow while keeping the
+     image wrapper intact so its lower-right badge remains a true overlay. */
   body.home-hero-redesign #hero .hero-content {
+    display: contents !important;
+  }
+
+  body.home-hero-redesign #hero .container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 34px 0 32px !important;
+  }
+
+  /* Reading order: intro badge, title, visual, decorative pause, description, CTA. */
+  body.home-hero-redesign #hero .hero-badge {
     order: 1 !important;
+    align-self: flex-start !important;
+    margin-left: max(22px, calc((100% - 540px) / 2)) !important;
+    margin-right: 0 !important;
+  }
+
+  body.home-hero-redesign #hero h1 {
+    order: 2 !important;
+    align-self: center !important;
+    width: calc(100% - 44px) !important;
+    max-width: 540px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   body.home-hero-redesign #hero .hero-image {
-    order: 2 !important;
+    order: 3 !important;
+    margin: 0 auto 24px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content > h1 + div {
+    order: 4 !important;
+    align-self: center !important;
+    width: calc(100% - 44px) !important;
+    max-width: 520px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content > p {
+    order: 5 !important;
+    align-self: center !important;
+    width: calc(100% - 44px) !important;
+    max-width: 520px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  body.home-hero-redesign #hero .hero-buttons {
+    order: 6 !important;
+    align-self: center !important;
+    width: calc(100% - 44px) !important;
+    max-width: 520px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   /* Remove the former upper-left Hatha caption. */
@@ -17,7 +70,7 @@
     display: none !important;
   }
 
-  /* Keep the existing lower-right trust badge, but make it quieter and more compact. */
+  /* Keep the existing lower-right trust badge, but make it quiet and compact. */
   html body.home-hero-redesign #hero.hero .hero-image .hero-trust-card {
     display: flex !important;
     width: min(70%, 220px) !important;
@@ -49,13 +102,32 @@
     line-height: 1.2 !important;
   }
 
-  /* The three-principle panel remains intentionally hidden on mobile. */
   body.home-hero-redesign #hero .hero-principles {
     display: none !important;
   }
 }
 
 @media (max-width: 420px) {
+  body.home-hero-redesign #hero .container {
+    padding-top: 34px !important;
+    padding-bottom: 28px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-badge {
+    margin-left: 20px !important;
+  }
+
+  body.home-hero-redesign #hero h1,
+  body.home-hero-redesign #hero .hero-content > h1 + div,
+  body.home-hero-redesign #hero .hero-content > p,
+  body.home-hero-redesign #hero .hero-buttons {
+    width: calc(100% - 40px) !important;
+  }
+
+  body.home-hero-redesign #hero .hero-image {
+    margin-bottom: 22px !important;
+  }
+
   html body.home-hero-redesign #hero.hero .hero-image .hero-trust-card {
     width: min(74%, 210px) !important;
     min-height: 44px !important;
