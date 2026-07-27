@@ -1,14 +1,14 @@
-/* ===== MÂY YOGA — MOBILE HERO IMAGE FIRST V2 =====
-   Owns only the homepage Hero order and visibility changes on phones.
-   Existing frozen mobile CSS remains responsible for visual styling. */
+/* ===== MÂY YOGA — MOBILE HERO LAYOUT V2 =====
+   Owns only the homepage Hero order and badge visibility/scale on phones.
+   Existing frozen mobile CSS remains responsible for the visual foundation. */
 
 @media (max-width: 768px) {
-  /* Preserve the current wrappers and simply place the visual before the copy. */
-  body.home-hero-redesign #hero .hero-image {
+  /* Reading order: copy first, visual second. */
+  body.home-hero-redesign #hero .hero-content {
     order: 1 !important;
   }
 
-  body.home-hero-redesign #hero .hero-content {
+  body.home-hero-redesign #hero .hero-image {
     order: 2 !important;
   }
 
@@ -17,14 +17,65 @@
     display: none !important;
   }
 
-  /* Restore the existing lower-right trust badge. Its text is already:
-     “Học đúng từ nền tảng / Tư thế • Hơi thở • Hiểu cơ thể”. */
+  /* Keep the existing lower-right trust badge, but make it quieter and more compact. */
   html body.home-hero-redesign #hero.hero .hero-image .hero-trust-card {
     display: flex !important;
+    width: min(70%, 220px) !important;
+    min-height: 46px !important;
+    margin: 0 8px 8px 0 !important;
+    padding: 7px 10px 7px 39px !important;
+    gap: 6px !important;
+    border-radius: 14px !important;
+    background: rgba(255, 255, 255, .62) !important;
+    box-shadow: 0 6px 16px rgba(35, 62, 43, .075) !important;
   }
 
-  /* Remove the three-principle panel from the mobile Hero. */
+  html body.home-hero-redesign #hero.hero .hero-image .hero-trust-card .card-icon {
+    left: 8px !important;
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 12px !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-image .hero-trust-card .card-title {
+    font-size: 11.2px !important;
+    line-height: 1.15 !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-image .hero-trust-card .card-sub {
+    display: block !important;
+    margin-top: 2px !important;
+    font-size: 9px !important;
+    line-height: 1.2 !important;
+  }
+
+  /* The three-principle panel remains intentionally hidden on mobile. */
   body.home-hero-redesign #hero .hero-principles {
     display: none !important;
+  }
+}
+
+@media (max-width: 420px) {
+  html body.home-hero-redesign #hero.hero .hero-image .hero-trust-card {
+    width: min(74%, 210px) !important;
+    min-height: 44px !important;
+    margin-right: 7px !important;
+    margin-bottom: 7px !important;
+    padding: 6px 9px 6px 36px !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-image .hero-trust-card .card-icon {
+    left: 7px !important;
+    width: 22px !important;
+    height: 22px !important;
+    font-size: 11px !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-image .hero-trust-card .card-title {
+    font-size: 10.6px !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-image .hero-trust-card .card-sub {
+    font-size: 8.4px !important;
   }
 }
