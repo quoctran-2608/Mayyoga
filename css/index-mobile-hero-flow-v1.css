@@ -1,0 +1,101 @@
+/* ===== MÂY YOGA — MOBILE HERO FLOW V1 =====
+   Single owner for the homepage Hero reading order on phones.
+   Desktop keeps the frozen two-column cascade unchanged. */
+
+@media (max-width: 768px) {
+  /* Flatten only the two non-semantic wrappers so the existing elements can be
+     arranged in one clear reading flow without duplicating markup or images. */
+  body.home-hero-redesign #hero .hero-content,
+  body.home-hero-redesign #hero .hero-image {
+    display: contents !important;
+  }
+
+  body.home-hero-redesign #hero .container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 18px 0 32px !important;
+  }
+
+  /* The mobile Hero no longer needs promotional badges over or above the image. */
+  body.home-hero-redesign #hero .hero-badge,
+  body.home-hero-redesign #hero .floating-card.card-1,
+  body.home-hero-redesign #hero .hero-trust-card {
+    display: none !important;
+  }
+
+  /* 1 — visual first */
+  body.home-hero-redesign #hero .hero-image > img {
+    order: 1 !important;
+    align-self: center !important;
+    width: calc(100% - 20px) !important;
+    max-width: 560px !important;
+    margin: 0 auto 30px !important;
+  }
+
+  /* Shared text axis for the remaining Hero content. */
+  body.home-hero-redesign #hero h1,
+  body.home-hero-redesign #hero .hero-content > h1 + div,
+  body.home-hero-redesign #hero .hero-content > p,
+  body.home-hero-redesign #hero .hero-principles,
+  body.home-hero-redesign #hero .hero-buttons {
+    align-self: center !important;
+    width: calc(100% - 44px) !important;
+    max-width: 520px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* 2–4 — title, decorative pause, description */
+  body.home-hero-redesign #hero h1 {
+    order: 2 !important;
+    margin-top: 0 !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content > h1 + div {
+    order: 3 !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content > p {
+    order: 4 !important;
+  }
+
+  /* 5 — principles immediately after the explanatory copy. */
+  body.home-hero-redesign #hero .hero-principles {
+    order: 5 !important;
+    position: static !important;
+    margin-top: 0 !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* 6 — actions close the Hero composition. */
+  body.home-hero-redesign #hero .hero-buttons {
+    order: 6 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body.home-hero-redesign #hero .container {
+    padding-top: 14px !important;
+    padding-bottom: 28px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-image > img {
+    width: calc(100% - 16px) !important;
+    margin-bottom: 26px !important;
+  }
+
+  body.home-hero-redesign #hero h1,
+  body.home-hero-redesign #hero .hero-content > h1 + div,
+  body.home-hero-redesign #hero .hero-content > p,
+  body.home-hero-redesign #hero .hero-principles,
+  body.home-hero-redesign #hero .hero-buttons {
+    width: calc(100% - 40px) !important;
+  }
+
+  body.home-hero-redesign #hero .hero-principles {
+    margin-bottom: 22px !important;
+  }
+}
