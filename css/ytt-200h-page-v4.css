@@ -69,7 +69,7 @@ body.ytt200-page .ytt200-cta-final .ytt200-btn-primary .fa-comment-dots {
   /* Curriculum owns its mobile gutter instead of inheriting the shared
      container width and an additional 24px padding on each side. */
   body.ytt200-page #chuong-trinh > .container {
-    width: min(calc(100% - 20px), 680px);
+    width: min(calc(100% - 28px), 680px);
     padding-inline: 0;
   }
 
@@ -117,7 +117,7 @@ body.ytt200-page .ytt200-cta-final .ytt200-btn-primary .fa-comment-dots {
 
 @media (max-width: 460px) {
   body.ytt200-page #chuong-trinh > .container {
-    width: calc(100% - 16px);
+    width: calc(100% - 24px);
   }
 
   body.ytt200-page #chuong-trinh .ytt200-section-head h2 {
