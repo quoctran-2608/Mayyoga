@@ -1,0 +1,291 @@
+/* ===== MÂY YOGA — APPROVED MOBILE HOMEPAGE V1 =====
+   Clean translation of the final mobile Hero composition at commit
+   d97c07951922c50b10945d8b95b0ac0c60fcba0b.
+   Owns only the mobile visual, floating caption and principles panel. */
+
+@media (max-width: 768px) {
+  body.home-page .home-hero {
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+    background: linear-gradient(180deg, #fbf8f2 0%, #faf8f3 72%, #f8faf6 100%);
+  }
+
+  body.home-page .home-hero::before,
+  body.home-page .home-hero::after {
+    display: none;
+  }
+
+  body.home-page .home-hero .home-container {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  body.home-page .home-hero-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+    padding-left: 0;
+    gap: 0;
+  }
+
+  body.home-page .home-hero-copy {
+    order: 1;
+  }
+
+  /* Art-directed mobile image: preserve the original asset ratio and quiet framing. */
+  body.home-page .home-hero-visual {
+    order: 2;
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: calc(100% - 20px);
+    max-width: 560px;
+    min-height: 0;
+    margin: 8px auto 8px;
+    overflow: visible;
+    isolation: isolate;
+  }
+
+  body.home-page .home-hero-picture {
+    grid-area: 1 / 1;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  body.home-page .home-hero-picture img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1091 / 768;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  /* Approved mobile caption: small, translucent and visually subordinate. */
+  body.home-page .home-hero-float.practice {
+    grid-area: 1 / 1;
+    position: relative;
+    z-index: 8;
+    align-self: start;
+    justify-self: start;
+    width: auto;
+    min-width: 0;
+    min-height: 0;
+    max-width: min(56%, 174px);
+    margin: 14px 0 0 30px;
+    padding: 5px 8px;
+    gap: 5px;
+    border: 1px solid rgba(255, 255, 255, .34);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, .50);
+    box-shadow: 0 5px 13px rgba(35, 62, 43, .045);
+    backdrop-filter: blur(2px) saturate(102%);
+    -webkit-backdrop-filter: blur(2px) saturate(102%);
+    animation: none;
+    will-change: auto;
+  }
+
+  body.home-page .home-hero-float.practice .home-hero-float-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 23px;
+    width: 23px;
+    height: 23px;
+    min-width: 23px;
+    min-height: 23px;
+    margin: 0;
+    border-radius: 50%;
+    font-size: 10.5px;
+  }
+
+  body.home-page .home-hero-float.practice > div {
+    min-width: 0;
+    line-height: 1;
+  }
+
+  body.home-page .home-hero-float.practice strong {
+    margin: 0;
+    font-size: 10.6px;
+    line-height: 1.05;
+    white-space: nowrap;
+  }
+
+  body.home-page .home-hero-float.practice span:not(.home-hero-float-icon) {
+    margin: 2px 0 0;
+    font-size: 8.6px;
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+
+  body.home-page .home-hero-float.trust {
+    display: none;
+  }
+
+  /* Approved principles panel: one heading and three readable horizontal rows. */
+  body.home-page .home-principles {
+    order: 3;
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: calc(100% - 20px);
+    max-width: 560px;
+    margin: 15px auto 7px;
+    padding: 13px 14px 5px;
+    border: 1px solid rgba(89, 126, 78, .14);
+    border-radius: 20px;
+    background: rgba(250, 251, 247, .82);
+    box-shadow: 0 8px 26px rgba(53, 79, 53, .045);
+    text-align: left;
+  }
+
+  body.home-page .home-principles::before {
+    content: 'Học đúng từ nền tảng tại Mây Yoga';
+    display: block;
+    padding: 0 2px 10px;
+    color: #587252;
+    font-family: var(--home-body);
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: .01em;
+  }
+
+  body.home-page .home-principle {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 62px;
+    gap: 12px;
+    padding: 10px 2px;
+    text-align: left;
+  }
+
+  body.home-page .home-principle + .home-principle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(73, 107, 69, .13);
+    transform: none;
+  }
+
+  body.home-page .home-principle-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  body.home-page .home-principle-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    object-fit: contain;
+    object-position: center;
+    box-shadow: none;
+  }
+
+  body.home-page .home-principle-copy {
+    min-width: 0;
+    text-align: left;
+  }
+
+  body.home-page .home-principle-title {
+    margin: 0 0 3px;
+    font-size: 18px;
+    font-weight: 550;
+    line-height: 1.05;
+    white-space: normal;
+  }
+
+  body.home-page .home-principle-subtitle {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.35;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 420px) {
+  body.home-page .home-hero-visual {
+    width: calc(100% - 16px);
+    margin-top: 10px;
+  }
+
+  body.home-page .home-hero-float.practice {
+    max-width: min(59%, 166px);
+    margin-top: 12px;
+    margin-left: 25px;
+    padding: 4px 7px;
+  }
+
+  body.home-page .home-hero-float.practice .home-hero-float-icon {
+    flex-basis: 21px;
+    width: 21px;
+    height: 21px;
+    min-width: 21px;
+    min-height: 21px;
+    font-size: 10px;
+  }
+
+  body.home-page .home-hero-float.practice strong {
+    font-size: 10.2px;
+  }
+
+  body.home-page .home-hero-float.practice span:not(.home-hero-float-icon) {
+    font-size: 8.3px;
+  }
+
+  body.home-page .home-principles {
+    width: calc(100% - 16px);
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  body.home-page .home-principle-icon {
+    flex-basis: 38px;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    min-height: 38px;
+  }
+}
+
+@media (max-width: 360px) {
+  body.home-page .home-principle-title {
+    font-size: 17px;
+  }
+
+  body.home-page .home-principle-subtitle {
+    font-size: 12px;
+  }
+}
