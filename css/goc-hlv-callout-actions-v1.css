@@ -28,6 +28,7 @@ body.goc-hlv-page .ytt-callout-primary-action {
   align-items: center;
   justify-content: center;
   gap: 12px;
+  max-width: 100%;
   min-height: 58px;
   padding: 12px 16px 12px 28px;
   border: 1px solid rgba(240, 207, 114, .56);
@@ -41,6 +42,11 @@ body.goc-hlv-page .ytt-callout-primary-action {
   line-height: 1.2;
   text-decoration: none;
   transition: transform .24s ease, box-shadow .24s ease, background .24s ease;
+}
+
+body.goc-hlv-page .ytt-callout-primary-action > span {
+  min-width: 0;
+  white-space: nowrap;
 }
 
 body.goc-hlv-page .ytt-callout-primary-action svg {
@@ -81,14 +87,15 @@ body.goc-hlv-page .ytt-callout-primary-action:focus-visible {
   }
 
   body.goc-hlv-page .ytt-callout-primary-action {
+    gap: 9px;
     min-height: 54px;
-    padding: 10px 13px 10px 24px;
-    font-size: .90rem;
+    padding: 10px 12px 10px 20px;
+    font-size: .86rem;
   }
 
   body.goc-hlv-page .ytt-callout-primary-action svg {
-    width: 32px;
-    height: 32px;
+    width: 31px;
+    height: 31px;
     padding: 7px;
   }
 }
@@ -104,8 +111,16 @@ body.goc-hlv-page .ytt-callout-primary-action:focus-visible {
 
   body.goc-hlv-page .ytt-callout-primary-action {
     width: 100%;
-    min-height: 54px;
-    padding-left: 20px;
+    min-height: 52px;
+    gap: 8px;
+    padding: 9px 10px 9px 16px;
+    font-size: .82rem;
+  }
+
+  body.goc-hlv-page .ytt-callout-primary-action svg {
+    width: 28px;
+    height: 28px;
+    padding: 6px;
   }
 }
 
