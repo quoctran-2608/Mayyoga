@@ -1,35 +1,41 @@
-@import url('index-page-v1-base.css?v=20260726c');
+@import url('index-page-v1-base.css?v=20260726d');
 
-/* ===== MÂY YOGA — HOMEPAGE FINAL HERO GEOMETRY =====
-   One page entry owns the final Hero geometry and floating-badge behavior.
+/* ===== MÂY YOGA — HOMEPAGE FINAL GEOMETRY =====
+   One page entry owns final Hero geometry, floating badges and viewport containment.
    No additional stylesheet, !important rule or JavaScript mutation is required. */
 
-/* ===== MOBILE VIEWPORT INTEGRITY =====
-   Keep the page shell at the real viewport width. Inner .home-container elements
-   may have reading gutters, but they must never shrink main or the Hero section. */
-html,
+/* ===== DOCUMENT / VIEWPORT CONTRACT =====
+   Horizontal scrolling belongs only to dedicated components such as the practice
+   track. The document, main and page sections must never grow past the viewport. */
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body.home-page {
   width: 100%;
   max-width: 100%;
-}
-
-body.home-page {
   margin: 0;
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 body.home-page main,
-body.home-page .home-hero {
+body.home-page main > section {
   display: block;
   width: 100%;
-  max-width: none;
+  max-width: 100%;
+  min-width: 0;
   margin-inline: 0;
 }
 
-@supports not (overflow: clip) {
-  body.home-page {
-    overflow-x: hidden;
-  }
+body.home-page main > section,
+body.home-page .home-container,
+body.home-page .home-hero-grid,
+body.home-page .home-practice,
+body.home-page .home-carousel,
+body.home-page .home-carousel-track {
+  min-width: 0;
 }
 
 /* ===== HERO EDGE ALIGNMENT ===== */
@@ -88,6 +94,37 @@ body.home-page .home-hero-float.trust .home-hero-float-icon {
   50% { transform: translate3d(-2px, -5px, 0); }
 }
 
+/* ===== PRACTICE CAROUSEL CONTAINMENT =====
+   The decorative curve and carousel track previously extended outside the section,
+   increasing document.scrollWidth on mobile. Keep decoration clipped by its owner;
+   retain horizontal scrolling only on the track itself. */
+body.home-page .home-practice {
+  overflow: hidden;
+}
+
+body.home-page .home-practice::before {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+body.home-page .home-practice .home-container,
+body.home-page .home-carousel {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+body.home-page .home-carousel-track {
+  width: 100%;
+  max-width: 100%;
+  margin-inline: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
 @media (max-width: 1180px) and (min-width: 981px) {
   body.home-page .home-hero .home-container {
     width: 100%;
@@ -99,14 +136,6 @@ body.home-page .home-hero-float.trust .home-hero-float-icon {
 }
 
 @media (max-width: 980px) {
-  html,
-  body.home-page,
-  body.home-page main,
-  body.home-page .home-hero {
-    width: 100%;
-    max-width: 100%;
-  }
-
   body.home-page .home-hero .home-container {
     width: 100%;
     max-width: none;
@@ -141,11 +170,10 @@ body.home-page .home-hero-float.trust .home-hero-float-icon {
    one compact Hatha caption at the image's upper-left; the trust message is
    represented by the principles block below instead of covering the photo. */
 @media (max-width: 768px) {
-  html,
-  body.home-page,
   body.home-page main,
+  body.home-page main > section,
   body.home-page .home-hero {
-    min-width: 100%;
+    min-width: 0;
     width: 100%;
     max-width: 100%;
   }
@@ -217,6 +245,22 @@ body.home-page .home-hero-float.trust .home-hero-float-icon {
 
   body.home-page .home-hero-float.trust {
     display: none;
+  }
+
+  body.home-page .home-practice::before {
+    left: 0;
+    right: 0;
+  }
+
+  body.home-page .home-carousel {
+    overflow: hidden;
+  }
+
+  body.home-page .home-carousel-track {
+    width: 100%;
+    margin-inline: 0;
+    padding: 5px 0 13px;
+    scroll-padding-left: 0;
   }
 }
 
