@@ -1,0 +1,50 @@
+/* ===== MÂY YOGA — INDEX FOOTER COMPONENT COMPAT V2 =====
+   Homepage-only bridge. The shared site-chrome footer remains the source of truth.
+   This file only neutralizes legacy homepage overrides that can still alter the
+   shared component's final geometry. */
+
+/* Never leave normal-flow space after the canonical footer on the homepage. */
+html body.home-hero-redesign {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+html body.home-hero-redesign > footer.footer,
+html body.home-hero-redesign > footer.footer .footer-bottom,
+html body.home-hero-redesign > footer.footer .footer-bottom p {
+  margin-bottom: 0 !important;
+}
+
+/* The contact component must never participate in document flow. */
+html body.home-hero-redesign > .floating-contact {
+  position: fixed !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 768px) {
+  /* Neutralize the older homepage-only footer block in index-responsive.css and
+     mirror the exact mobile geometry already defined by the shared component. */
+  html body.home-hero-redesign footer.footer .footer-grid-new {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    padding: 40px 0 28px !important;
+  }
+
+  html body.home-hero-redesign footer.footer .footer-brand-col {
+    max-width: 280px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Keep the legal identity line intact. On very narrow phones the type scales
+     only as much as necessary instead of breaking the registration number. */
+  html body.home-hero-redesign footer.footer .footer-legal {
+    width: max-content !important;
+    max-width: 100% !important;
+    white-space: nowrap !important;
+    overflow-wrap: normal !important;
+    word-break: keep-all !important;
+    font-size: min(0.78rem, 3.2vw) !important;
+    letter-spacing: -0.005em !important;
+  }
+}

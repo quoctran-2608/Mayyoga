@@ -1,0 +1,261 @@
+@import url('index-hero-principle-icons-v2.css?v=20260721a');
+
+/* ===== MÂY YOGA — MOBILE POLISH V3 =====
+   Final homepage-only refinements layered after Mobile Hero V2.
+   Keeps the mobile Hero on one clear left alignment axis and prevents
+   long section copy or decorative overflow from widening the viewport. */
+
+@media (max-width: 768px) {
+  /* ---------- Horizontal overflow hardening ----------
+     The mobile visual itself is narrower than the viewport. Real overflow came from
+     oversized decorative pseudo-elements, inherited desktop min-widths and edge-to-edge
+     scrollers. Clip only page-level overflow while preserving intentional carousel swipe. */
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: clip !important;
+  }
+
+  @supports not (overflow: clip) {
+    html,
+    body {
+      overflow-x: hidden !important;
+    }
+  }
+
+  body.home-hero-redesign,
+  body.home-hero-redesign #hero,
+  body.home-hero-redesign #hanh-trinh,
+  body.home-hero-redesign #categories,
+  body.home-hero-redesign #poses,
+  body.home-hero-redesign #blog,
+  body.home-hero-redesign #faq {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* This transition used left:-8% + right:-8%, creating a ~116%-wide box. */
+  html body.home-hero-redesign #hanh-trinh::before {
+    left: 0 !important;
+    right: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Keep carousel swiping, but contain it inside its own section and hide its native bar. */
+  body.home-hero-redesign #hanh-trinh .practice-carousel {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: clip !important;
+  }
+
+  body.home-hero-redesign #hanh-trinh .carousel-track {
+    max-width: 100% !important;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  body.home-hero-redesign #hanh-trinh .carousel-track::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* Desktop search starts at min-width:420px; reset it on phones. */
+  body.home-hero-redesign .nav-search .search-dropdown {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  body.home-hero-redesign .search-result-item,
+  body.home-hero-redesign .search-result-info,
+  body.home-hero-redesign .search-result-title,
+  body.home-hero-redesign .search-result-snippet {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-wrap: anywhere;
+  }
+
+  /* ---------- Hero text rhythm: one consistent left alignment axis ---------- */
+  body.home-hero-redesign #hero .hero-content {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  body.home-hero-redesign #hero .hero-badge {
+    align-self: flex-start !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Decorative leaf + rule below the headline belongs to the same reading axis.
+     Do not center it independently from the headline. */
+  body.home-hero-redesign #hero .hero-content > h1 + div {
+    width: 100% !important;
+    max-width: 540px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content > h1 + div img {
+    flex: 0 0 auto !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content > h1 + div span {
+    flex: 0 0 92px !important;
+    width: 92px !important;
+    max-width: 92px !important;
+  }
+
+  /* ---------- Mobile visual badge semantics ----------
+     Keep this as a small visual caption, not a card. Explicitly neutralize
+     inherited desktop min-height so the badge hugs its two text lines. */
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 {
+    grid-area: 1 / 1 !important;
+    position: relative !important;
+    z-index: 8 !important;
+    display: flex !important;
+    align-self: start !important;
+    justify-self: start !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    max-width: min(56%, 174px) !important;
+    min-width: 0 !important;
+    margin: 14px 0 0 30px !important;
+    padding: 5px 8px !important;
+    gap: 5px !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.50) !important;
+    border: 1px solid rgba(255, 255, 255, 0.34) !important;
+    box-shadow: 0 5px 13px rgba(35, 62, 43, 0.045) !important;
+    -webkit-backdrop-filter: blur(2px) saturate(102%) !important;
+    backdrop-filter: blur(2px) saturate(102%) !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 .card-icon {
+    width: 23px !important;
+    height: 23px !important;
+    min-width: 23px !important;
+    min-height: 23px !important;
+    flex: 0 0 23px !important;
+    border-radius: 50% !important;
+    font-size: 10.5px !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 .card-text {
+    min-width: 0 !important;
+    line-height: 1 !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 .card-title {
+    margin: 0 !important;
+    font-size: 10.6px !important;
+    line-height: 1.05 !important;
+    white-space: nowrap !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 .card-sub {
+    margin: 2px 0 0 !important;
+    font-size: 8.6px !important;
+    line-height: 1.05 !important;
+    white-space: nowrap !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-image .hero-trust-card {
+    display: none !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-principles::before {
+    content: 'Học đúng từ nền tảng tại Mây Yoga' !important;
+  }
+
+  /* ---------- Featured blog: never let long Vietnamese copy widen viewport ---------- */
+  body.home-hero-redesign #blog,
+  body.home-hero-redesign #blog > .container,
+  body.home-hero-redesign #blog .featured-blog-header,
+  body.home-hero-redesign #blog .featured-blog-title,
+  body.home-hero-redesign #blog .featured-blog-subtitle {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  body.home-hero-redesign #blog > .container {
+    width: 100% !important;
+  }
+
+  body.home-hero-redesign #blog .featured-blog-header {
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  body.home-hero-redesign #blog .featured-blog-subtitle {
+    display: block !important;
+    width: 100% !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+    hyphens: auto;
+  }
+
+  /* Defensive guard for any child with an inherited desktop min-width/nowrap. */
+  body.home-hero-redesign #blog .featured-blog-grid,
+  body.home-hero-redesign #blog .fb-card,
+  body.home-hero-redesign #blog .fb-card-body {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body.home-hero-redesign #hero .hero-badge {
+    max-width: 100% !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content > h1 + div span {
+    flex-basis: 82px !important;
+    width: 82px !important;
+    max-width: 82px !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 {
+    max-width: min(59%, 166px) !important;
+    margin-top: 12px !important;
+    margin-left: 25px !important;
+    padding: 4px 7px !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 .card-icon {
+    width: 21px !important;
+    height: 21px !important;
+    min-width: 21px !important;
+    min-height: 21px !important;
+    flex-basis: 21px !important;
+    font-size: 10px !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 .card-title {
+    font-size: 10.2px !important;
+  }
+
+  html body.home-hero-redesign #hero.hero .hero-image .floating-card.card-1 .card-sub {
+    font-size: 8.3px !important;
+  }
+
+  body.home-hero-redesign #blog .featured-blog-subtitle {
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+  }
+}

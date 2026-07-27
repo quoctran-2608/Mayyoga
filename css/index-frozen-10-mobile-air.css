@@ -1,0 +1,120 @@
+/* ===== MÂY YOGA — MOBILE HERO AIR V6 =====
+   Homepage-only spacing/typography refinement based on the approved mobile hero.
+   Goal: more visual breathing room without making the hero unnecessarily long. */
+
+@media (max-width: 768px) {
+  /* Give the text composition a calmer page edge and a little more vertical air. */
+  body.home-hero-redesign #hero .hero-content {
+    padding: 34px 22px 28px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-badge {
+    margin-bottom: 22px !important;
+  }
+
+  /* The previous .94 line-height made the three-line display title feel compressed.
+     Slightly smaller type + looser leading keeps the same hierarchy but reads calmer. */
+  body.home-hero-redesign #hero h1 {
+    max-width: 540px !important;
+    margin-bottom: 18px !important;
+    font-size: clamp(40px, 11.7vw, 52px) !important;
+    line-height: .99 !important;
+    letter-spacing: -.038em !important;
+  }
+
+  body.home-hero-redesign #hero h1 .highlight {
+    margin: 7px 0 5px !important;
+    line-height: .94 !important;
+  }
+
+  /* Turn the decorative leaf/rule into a deliberate pause between headline and copy. */
+  body.home-hero-redesign #hero .hero-content > h1 + div {
+    gap: 11px !important;
+    margin-top: 2px !important;
+    margin-bottom: 26px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content > h1 + div span {
+    flex-basis: 104px !important;
+    width: 104px !important;
+    max-width: 104px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content > p {
+    max-width: 520px !important;
+    margin-bottom: 30px !important;
+    font-size: 15px !important;
+    line-height: 1.74 !important;
+  }
+
+  body.home-hero-redesign #hero .hero-buttons {
+    max-width: 520px !important;
+    gap: 12px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-buttons .btn {
+    height: 49px !important;
+    min-height: 49px !important;
+  }
+
+  /* Separate the actions from the image so the image feels like the next visual beat. */
+  body.home-hero-redesign #hero .hero-image {
+    margin-top: 8px !important;
+  }
+}
+
+/* The screenshot reference is closest to this phone-width range. */
+@media (max-width: 420px) {
+  body.home-hero-redesign #hero .hero-content {
+    padding: 34px 20px 28px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-badge {
+    margin-bottom: 22px !important;
+  }
+
+  body.home-hero-redesign #hero h1 {
+    font-size: clamp(39px, 12vw, 48px) !important;
+    line-height: 1 !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content > h1 + div {
+    margin-bottom: 27px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content > p {
+    margin-bottom: 29px !important;
+    font-size: 14.5px !important;
+    line-height: 1.76 !important;
+  }
+
+  body.home-hero-redesign #hero .hero-buttons {
+    gap: 10px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-buttons .btn:first-child::before,
+  body.home-hero-redesign #hero .hero-buttons .btn:nth-child(2)::before {
+    font-size: 13px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-image {
+    margin-top: 10px !important;
+  }
+}
+
+/* On very narrow phones, preserve touch comfort without squeezing two labels too tightly. */
+@media (max-width: 350px) {
+  body.home-hero-redesign #hero .hero-content {
+    padding-left: 17px !important;
+    padding-right: 17px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-buttons {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  body.home-hero-redesign #hero .hero-buttons .btn {
+    min-height: 48px !important;
+  }
+}

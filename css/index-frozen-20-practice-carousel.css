@@ -1,0 +1,45 @@
+/* ===== MÂY YOGA — PRACTICE CAROUSEL STABILITY V2 =====
+   Prevents hover-induced vertical jitter while preserving horizontal swipe/buttons. */
+
+body.home-hero-redesign #hanh-trinh .practice-carousel {
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+body.home-hero-redesign #hanh-trinh .carousel-track {
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: auto;
+  touch-action: pan-x pan-y;
+}
+
+/* The previous translateY(-4px) hover caused a hover enter/leave feedback loop
+   while the page was being wheel-scrolled under a stationary pointer. */
+body.home-hero-redesign #hanh-trinh .carousel-card,
+body.home-hero-redesign #hanh-trinh .carousel-card:hover,
+body.home-hero-redesign #hanh-trinh .carousel-card:focus-visible {
+  transform: none !important;
+}
+
+body.home-hero-redesign #hanh-trinh .carousel-card {
+  transition: box-shadow .22s ease, border-color .22s ease, background-color .22s ease !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.home-hero-redesign #hanh-trinh .carousel-card:hover {
+    border-color: rgba(74, 116, 63, .20) !important;
+    box-shadow: 0 8px 26px rgba(61, 90, 58, .12) !important;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  body.home-hero-redesign #hanh-trinh .carousel-card:hover {
+    border-color: rgba(107, 142, 107, .10) !important;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, .05) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home-hero-redesign #hanh-trinh .carousel-card {
+    transition: none !important;
+  }
+}
