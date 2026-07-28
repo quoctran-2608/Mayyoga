@@ -22,7 +22,7 @@
   function loadNavigationP0() {
     if (document.querySelector('script[data-site-navigation-p0]')) return;
     var patch = document.createElement('script');
-    patch.src = new URL('js/site-navigation-p0-v1.js?v=20260728b', siteRoot).href;
+    patch.src = new URL('js/site-navigation-p0-v1.js?v=20260728c', siteRoot).href;
     patch.async = false;
     patch.setAttribute('data-site-navigation-p0', 'true');
     document.head.appendChild(patch);
