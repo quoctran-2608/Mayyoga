@@ -1,13 +1,16 @@
-// ===== MÂY YOGA — CANONICAL SITE NAVIGATION V5 =====
-// Single structural and behavioral source of truth for every public page.
+// ===== MÂY YOGA — CANONICAL SITE NAVIGATION V6 =====
+// The only structural and behavioral source of truth for the public site header.
 (function canonicalSiteNavigation() {
   'use strict';
+
+  if (window.__mayYogaCanonicalNavigationV6Loaded) return;
+  window.__mayYogaCanonicalNavigationV6Loaded = true;
 
   function resolveCurrentScript() {
     if (document.currentScript && document.currentScript.src) return document.currentScript;
     var scripts = document.querySelectorAll('script[src]');
-    for (var i = scripts.length - 1; i >= 0; i--) {
-      if (/\/js\/site-navigation-canonical-v(?:2|3)\.js(?:\?|$)/.test(scripts[i].src)) return scripts[i];
+    for (var index = scripts.length - 1; index >= 0; index -= 1) {
+      if (/\/js\/site-navigation-canonical-v(?:2|3)\.js(?:\?|$)/.test(scripts[index].src)) return scripts[index];
     }
     return null;
   }
@@ -31,6 +34,34 @@
     }
   }
 
+  var NAV_ITEMS = [
+    { label: 'Trang chủ', href: 'index.html' },
+    { label: 'Về Mây Yoga', href: 've-may-yoga.html' },
+    {
+      label: 'Các khoá học',
+      href: 'hoc-yoga-online.html',
+      children: [
+        { label: 'Yoga Online 1:1', href: 'hoc-yoga-online.html' },
+        { label: 'Đào tạo YTT 200H', href: 'dao-tao-huan-luyen-vien-200h.html' },
+        { label: 'Góc Huấn Luyện Viên', href: 'goc-huan-luyen-vien.html', divider: true }
+      ]
+    },
+    {
+      label: 'Kiến thức Yoga',
+      href: 'bai-viet/yoga-cho-nguoi-moi.html',
+      children: [
+        { label: 'Yoga cho người mới', href: 'bai-viet/yoga-cho-nguoi-moi.html' },
+        { label: 'Hatha Yoga', href: 'hatha-yoga.html' },
+        { label: '88 Tư thế Yoga', href: 'tu-the-yoga.html' },
+        { label: 'Pranayama', href: 'pranayama.html' },
+        { label: 'Thiền định', href: 'thien-dinh.html' },
+        { label: 'Giải phẫu Yoga', href: 'giai-phau-yoga.html' },
+        { label: 'Tự tập tại nhà', href: 'tu-tap-tai-nha.html', divider: true }
+      ]
+    },
+    { label: 'Trắc nghiệm', href: 'trac-nghiem.html' }
+  ];
+
   function hasStylesheet(filename) {
     return Array.prototype.some.call(document.querySelectorAll('link[rel="stylesheet"][href]'), function(link) {
       return link.href.indexOf('/css/' + filename) !== -1;
@@ -52,115 +83,92 @@
     ensureStylesheet('site-navigation-canonical-v4.css', '20260726b', 'data-site-navigation-canonical');
   }
 
-  function ensureNavbar() {
-    var navbar = document.getElementById('navbar');
-    if (!navbar) {
-      navbar = document.createElement('nav');
-      navbar.id = 'navbar';
-      document.body.insertBefore(navbar, document.body.firstChild);
-    }
-    navbar.className = 'navbar site-header-standard scrolled';
-    navbar.setAttribute('data-site-header-standard', 'true');
-    return navbar;
-  }
-
-  function ensureContainer(navbar) {
-    var container = navbar.querySelector(':scope > .container');
-    if (!container) {
-      container = document.createElement('div');
-      container.className = 'container';
-      navbar.replaceChildren(container);
-    }
-    container.classList.remove('nav-container');
-    return container;
-  }
-
-  function ensureLogo(container) {
-    var logo = container.querySelector('.nav-logo');
-    if (!logo) logo = document.createElement('a');
-    logo.href = siteUrl('index.html');
+  function createLogo() {
+    var logo = document.createElement('a');
     logo.className = 'nav-logo';
-    logo.removeAttribute('style');
+    logo.href = siteUrl('index.html');
+    logo.setAttribute('aria-label', 'Mây Yoga — Trang chủ');
 
-    var image = logo.querySelector('.logo-img');
-    if (!image) {
-      image = document.createElement('img');
-      logo.replaceChildren(image);
-    }
+    var image = document.createElement('img');
     image.className = 'logo-img';
     image.src = siteUrl('assets/images/logo.webp');
     image.alt = 'Mây Yoga';
     image.width = 120;
     image.height = 84;
+    logo.appendChild(image);
     return logo;
   }
 
-  function canonicalNavMarkup() {
-    return [
-      '<li><a href="' + siteUrl('index.html') + '">Trang chủ</a></li>',
-      '<li><a href="' + siteUrl('ve-may-yoga.html') + '">Về Mây Yoga</a></li>',
-      '<li class="nav-dropdown">',
-      '  <a href="' + siteUrl('hoc-yoga-online.html') + '" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Các khoá học <span class="chevron" aria-hidden="true">▾</span></a>',
-      '  <ul class="dropdown-menu">',
-      '    <li><a href="' + siteUrl('hoc-yoga-online.html') + '">🌿 Yoga Online 1:1</a></li>',
-      '    <li><a href="' + siteUrl('dao-tao-huan-luyen-vien-200h.html') + '">🎓 Đào tạo YTT 200H</a></li>',
-      '    <li class="nav-menu-divider"><a href="' + siteUrl('goc-huan-luyen-vien.html') + '">🦉 Góc Huấn Luyện Viên</a></li>',
-      '  </ul>',
-      '</li>',
-      '<li class="nav-dropdown">',
-      '  <a href="' + siteUrl('bai-viet/yoga-cho-nguoi-moi.html') + '" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Kiến thức Yoga <span class="chevron" aria-hidden="true">▾</span></a>',
-      '  <ul class="dropdown-menu">',
-      '    <li><a href="' + siteUrl('bai-viet/yoga-cho-nguoi-moi.html') + '">🌱 Yoga cho người mới</a></li>',
-      '    <li><a href="' + siteUrl('hatha-yoga.html') + '">🌿 Hatha Yoga</a></li>',
-      '    <li><a href="' + siteUrl('tu-the-yoga.html') + '">🧘 88 Tư thế Yoga</a></li>',
-      '    <li><a href="' + siteUrl('pranayama.html') + '">🌬️ Pranayama</a></li>',
-      '    <li><a href="' + siteUrl('thien-dinh.html') + '">🕊️ Thiền định</a></li>',
-      '    <li><a href="' + siteUrl('giai-phau-yoga.html') + '">🫀 Giải phẫu Yoga</a></li>',
-      '    <li class="nav-menu-divider"><a href="' + siteUrl('tu-tap-tai-nha.html') + '">🏠 Tự tập tại nhà</a></li>',
-      '  </ul>',
-      '</li>',
-      '<li><a href="' + siteUrl('trac-nghiem.html') + '">Trắc nghiệm</a></li>'
-    ].join('');
+  function createLink(config, className) {
+    var link = document.createElement('a');
+    link.href = siteUrl(config.href);
+    link.textContent = config.label;
+    if (className) link.className = className;
+    return link;
   }
 
-  function ensureNavLinks(container) {
-    var navLinks = container.querySelector('#navLinks');
-    if (!navLinks) {
-      navLinks = document.createElement('ul');
-      navLinks.id = 'navLinks';
+  function createNavItem(config) {
+    var item = document.createElement('li');
+
+    if (!config.children) {
+      item.appendChild(createLink(config));
+      return item;
     }
+
+    item.className = 'nav-dropdown';
+    var toggle = createLink(config, 'dropdown-toggle');
+    toggle.setAttribute('aria-haspopup', 'true');
+    toggle.setAttribute('aria-expanded', 'false');
+
+    var chevron = document.createElement('span');
+    chevron.className = 'chevron';
+    chevron.setAttribute('aria-hidden', 'true');
+    chevron.textContent = '▾';
+    toggle.appendChild(document.createTextNode(' '));
+    toggle.appendChild(chevron);
+
+    var submenu = document.createElement('ul');
+    submenu.className = 'dropdown-menu';
+    config.children.forEach(function(childConfig) {
+      var child = document.createElement('li');
+      if (childConfig.divider) child.className = 'nav-menu-divider';
+      child.appendChild(createLink(childConfig));
+      submenu.appendChild(child);
+    });
+
+    item.append(toggle, submenu);
+    return item;
+  }
+
+  function createNavLinks() {
+    var navLinks = document.createElement('ul');
+    navLinks.id = 'navLinks';
     navLinks.className = 'nav-links';
-    navLinks.innerHTML = canonicalNavMarkup();
-    navLinks.setAttribute('data-canonical-nav-version', '5');
+    navLinks.setAttribute('data-canonical-nav-version', '6');
+    NAV_ITEMS.forEach(function(config) {
+      navLinks.appendChild(createNavItem(config));
+    });
     return navLinks;
   }
 
-  function ensureSearch(container) {
-    var search = container.querySelector('#navSearch');
-    if (!search) {
-      search = document.createElement('div');
-      search.id = 'navSearch';
-    }
+  function createSearch() {
+    var search = document.createElement('div');
+    search.id = 'navSearch';
     search.className = 'nav-search';
     search.setAttribute('data-site-search-standard', 'true');
 
-    var input = search.querySelector('#globalSearch');
-    if (!input) {
-      input = document.createElement('input');
-      input.id = 'globalSearch';
-      input.type = 'text';
-      search.prepend(input);
-    }
-    input.placeholder = '🔍 Tìm tư thế, bài viết...';
+    var input = document.createElement('input');
+    input.id = 'globalSearch';
+    input.type = 'search';
+    input.placeholder = 'Tìm tư thế, bài viết...';
     input.autocomplete = 'off';
+    input.setAttribute('aria-label', 'Tìm kiếm trên Mây Yoga');
 
-    var dropdown = search.querySelector('#searchDropdown');
-    if (!dropdown) {
-      dropdown = document.createElement('div');
-      dropdown.id = 'searchDropdown';
-      search.appendChild(dropdown);
-    }
+    var dropdown = document.createElement('div');
+    dropdown.id = 'searchDropdown';
     dropdown.className = 'search-dropdown';
+
+    search.append(input, dropdown);
     return search;
   }
 
@@ -194,128 +202,95 @@
     };
   }
 
-  function ensureCta(container) {
-    var ctaWrap = container.querySelector('.nav-cta');
-    if (!ctaWrap) ctaWrap = document.createElement('div');
-    ctaWrap.className = 'nav-cta';
-
+  function createCta() {
     var config = pageCtaConfig();
-    var link = ctaWrap.querySelector('a');
-    if (!link) {
-      link = document.createElement('a');
-      ctaWrap.replaceChildren(link);
-    }
+    var wrap = document.createElement('div');
+    wrap.className = 'nav-cta';
+    wrap.setAttribute('data-contextual-cta', 'true');
+
+    var link = document.createElement('a');
     link.className = 'btn btn-primary btn-sm';
-    link.removeAttribute('style');
     link.href = config.href;
     link.textContent = config.label;
+    if (config.target) link.target = config.target;
+    if (config.rel) link.rel = config.rel;
+    else if (config.target === '_blank') link.rel = 'noopener';
 
-    if (config.target) link.setAttribute('target', config.target);
-    else link.removeAttribute('target');
-    if (config.rel) link.setAttribute('rel', config.rel);
-    else link.removeAttribute('rel');
-    if (config.target === '_blank' && !config.rel) link.setAttribute('rel', 'noopener');
-
-    ctaWrap.setAttribute('data-contextual-cta', 'true');
-    return ctaWrap;
+    wrap.appendChild(link);
+    return wrap;
   }
 
-  function ensureToggle(container) {
-    var oldToggle = container.querySelector('#mobileToggle');
-    var toggle = oldToggle ? oldToggle.cloneNode(false) : document.createElement('button');
+  function createToggle() {
+    var toggle = document.createElement('button');
     toggle.id = 'mobileToggle';
     toggle.className = 'mobile-toggle';
     toggle.type = 'button';
     toggle.setAttribute('aria-label', 'Mở menu chính');
     toggle.setAttribute('aria-expanded', 'false');
-    toggle.innerHTML = '<span></span><span></span><span></span>';
+    toggle.append(document.createElement('span'), document.createElement('span'), document.createElement('span'));
     return toggle;
   }
 
-  function orderHeader(container, nodes) {
-    var keep = nodes.filter(Boolean);
-    Array.prototype.slice.call(container.children).forEach(function(child) {
-      if (keep.indexOf(child) === -1) child.remove();
-    });
-    keep.forEach(function(node) { container.appendChild(node); });
+  function buildHeader() {
+    var navbar = document.getElementById('navbar');
+    if (!navbar) {
+      navbar = document.createElement('nav');
+      navbar.id = 'navbar';
+      document.body.insertBefore(navbar, document.body.firstChild);
+    }
+
+    navbar.className = 'navbar site-header-standard scrolled';
+    navbar.setAttribute('data-site-header-standard', 'true');
+
+    var container = document.createElement('div');
+    container.className = 'container';
+    container.append(createLogo(), createNavLinks(), createSearch(), createCta(), createToggle());
+
+    // Replacing the entire subtree removes every legacy menu, inline style and listener.
+    navbar.replaceChildren(container);
+    return navbar;
   }
 
-  function markActive(navLinks) {
+  function markActive(navbar) {
+    var navLinks = navbar.querySelector('#navLinks');
+    if (!navLinks) return;
+
     var current = normalizePath(window.location.href);
-    var knowledgeRoot = normalizePath(siteUrl('bai-viet/'));
+    var articleRoot = normalizePath(siteUrl('bai-viet/'));
     var poseRoot = normalizePath(siteUrl('tu-the/'));
     var quizRoot = normalizePath(siteUrl('trac-nghiem/'));
     var knowledgePages = [
-      'tu-the-yoga.html', 'hatha-yoga.html', 'thien-dinh.html', 'pranayama.html',
-      'giai-phau-yoga.html', 'tu-tap-tai-nha.html'
+      'tu-the-yoga.html',
+      'hatha-yoga.html',
+      'pranayama.html',
+      'thien-dinh.html',
+      'giai-phau-yoga.html',
+      'tu-tap-tai-nha.html'
     ].map(function(path) { return normalizePath(siteUrl(path)); });
     var coursePages = [
-      'hoc-yoga-online.html', 'goc-huan-luyen-vien.html', 'dao-tao-huan-luyen-vien-200h.html'
+      'hoc-yoga-online.html',
+      'dao-tao-huan-luyen-vien-200h.html',
+      'goc-huan-luyen-vien.html'
     ].map(function(path) { return normalizePath(siteUrl(path)); });
-
-    navLinks.querySelectorAll('a[aria-current]').forEach(function(link) { link.removeAttribute('aria-current'); });
-    navLinks.querySelectorAll('.has-current-child').forEach(function(item) { item.classList.remove('has-current-child'); });
 
     navLinks.querySelectorAll('a[href]').forEach(function(link) {
       if (link.classList.contains('dropdown-toggle')) return;
-      if (normalizePath(link.href) === current) {
-        link.setAttribute('aria-current', 'page');
-        var parent = link.closest('.nav-dropdown');
-        if (parent) parent.classList.add('has-current-child');
-      }
+      if (normalizePath(link.href) !== current) return;
+      link.setAttribute('aria-current', 'page');
+      var dropdown = link.closest('.nav-dropdown');
+      if (dropdown) dropdown.classList.add('has-current-child');
     });
 
     var dropdowns = navLinks.querySelectorAll(':scope > .nav-dropdown');
-    if (current.indexOf(knowledgeRoot) === 0 || current.indexOf(poseRoot) === 0 || knowledgePages.indexOf(current) !== -1) {
-      if (dropdowns[1]) dropdowns[1].classList.add('has-current-child');
-    }
+    var isKnowledge = current.indexOf(articleRoot) === 0 ||
+      current.indexOf(poseRoot) === 0 ||
+      knowledgePages.indexOf(current) !== -1;
+    if (isKnowledge && dropdowns[1]) dropdowns[1].classList.add('has-current-child');
     if (coursePages.indexOf(current) !== -1 && dropdowns[0]) dropdowns[0].classList.add('has-current-child');
 
     if (current.indexOf(quizRoot) === 0) {
       var quizLink = navLinks.querySelector(':scope > li:last-child > a');
       if (quizLink) quizLink.setAttribute('aria-current', 'page');
-    }
-  }
-
-  function normalizePoseCountText(value) {
-    if (!value || value.indexOf('90') === -1) return value;
-    return value
-      .replace(/\b90\+\s+([Tt]ư thế(?:\s+Yoga)?)/g, '88 $1')
-      .replace(/\b90\s+([Tt]ư thế(?:\s+Yoga)?)/g, '88 $1');
-  }
-
-  function syncPublicContentMetadata() {
-    document.title = normalizePoseCountText(document.title);
-    document.querySelectorAll('meta[content]').forEach(function(meta) {
-      var value = meta.getAttribute('content');
-      var normalized = normalizePoseCountText(value);
-      if (normalized !== value) meta.setAttribute('content', normalized);
-    });
-
-    if (document.body) {
-      var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-        acceptNode: function(node) {
-          var parent = node.parentElement;
-          if (!parent || parent.closest('script, style, noscript, textarea')) return NodeFilter.FILTER_REJECT;
-          return node.data.indexOf('90') === -1 ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
-        }
-      });
-      var nodes = [];
-      while (walker.nextNode()) nodes.push(walker.currentNode);
-      nodes.forEach(function(node) { node.data = normalizePoseCountText(node.data); });
-    }
-
-    if (normalizePath(window.location.href) === normalizePath(siteUrl('tu-the-yoga.html'))) {
-      var poseTotal = document.querySelector('.poses-hero .stat-row .stat:first-child .stat-num');
-      if (poseTotal) poseTotal.textContent = '88';
-    }
-
-    if (normalizePath(window.location.href) === normalizePath(siteUrl('trac-nghiem.html'))) {
-      var description = 'Khám phá 5 bài trắc nghiệm Yoga giúp tự đánh giá thể trạng, luân xa, sức khỏe và tiến trình Yoga trị liệu.';
-      ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]'].forEach(function(selector) {
-        var meta = document.querySelector(selector);
-        if (meta) meta.setAttribute('content', description);
-      });
     }
   }
 
@@ -372,18 +347,17 @@
         if (isCompactInteraction()) {
           event.preventDefault();
           event.stopPropagation();
-          var open = !dropdown.classList.contains('active');
+          var willExpand = !dropdown.classList.contains('active');
           navbar.querySelectorAll('#navLinks > .nav-dropdown').forEach(function(item) {
             if (item !== dropdown) closeDropdown(item);
           });
-          dropdown.classList.toggle('active', open);
-          dropdownToggle.setAttribute('aria-expanded', String(open));
+          dropdown.classList.toggle('active', willExpand);
+          dropdownToggle.setAttribute('aria-expanded', String(willExpand));
         }
         return;
       }
 
-      var navigationLink = event.target.closest('#navbar.site-header-standard #navLinks a[href]');
-      if (navigationLink) {
+      if (event.target.closest('#navbar.site-header-standard #navLinks a[href]')) {
         closeHeaderMenus(navbar);
         return;
       }
@@ -407,59 +381,58 @@
     });
   }
 
+  function loadScript(filename, version, marker, callback) {
+    var existing = Array.prototype.find.call(document.querySelectorAll('script[src]'), function(script) {
+      return script.src.indexOf('/js/' + filename) !== -1;
+    });
+
+    if (existing) {
+      if (callback) window.setTimeout(callback, 0);
+      return existing;
+    }
+
+    var script = document.createElement('script');
+    script.src = siteUrl('js/' + filename + '?v=' + version);
+    script.async = false;
+    if (marker) script.setAttribute(marker, 'true');
+    if (callback) script.addEventListener('load', callback, { once: true });
+    document.head.appendChild(script);
+    return script;
+  }
+
   function loadSearchAssets() {
     if (!document.getElementById('globalSearch') || !document.getElementById('searchDropdown')) return;
 
-    function loadSearchEngine() {
-      if (hasScript('search.js')) return;
-      var searchScript = document.createElement('script');
-      searchScript.src = siteUrl('js/search.js?v=20260726a');
-      searchScript.async = false;
-      searchScript.setAttribute('data-site-search-engine', 'true');
-      document.head.appendChild(searchScript);
+    function ensureSearchEngine() {
+      if (window.MAY_YOGA_SEARCH_VERSION || hasScript('search.js')) return;
+      loadScript('search.js', '20260728b', 'data-search-engine-v2');
     }
 
-    if (typeof window.SEARCH_INDEX !== 'undefined') {
-      loadSearchEngine();
+    function ensureSearchIndex() {
+      if (window.MAY_YOGA_SEARCH_INDEX_VERSION || hasScript('search-index.js')) {
+        ensureSearchEngine();
+        return;
+      }
+      loadScript('search-index.js', '20260728b', 'data-site-search-index', ensureSearchEngine);
+    }
+
+    if (window.MAY_YOGA_POSE_CATALOG || hasScript('pose-catalog.js')) {
+      ensureSearchIndex();
       return;
     }
 
-    var existingIndex = Array.prototype.find.call(document.querySelectorAll('script[src]'), function(script) {
-      return script.src.indexOf('/js/search-index.js') !== -1;
-    });
-    if (existingIndex) {
-      existingIndex.addEventListener('load', loadSearchEngine, { once: true });
-      window.setTimeout(function() {
-        if (typeof window.SEARCH_INDEX !== 'undefined') loadSearchEngine();
-      }, 0);
-      return;
-    }
-
-    var indexScript = document.createElement('script');
-    indexScript.src = siteUrl('js/search-index.js?v=20260721a');
-    indexScript.async = false;
-    indexScript.setAttribute('data-site-search-index', 'true');
-    indexScript.addEventListener('load', loadSearchEngine, { once: true });
-    document.head.appendChild(indexScript);
+    loadScript('pose-catalog.js', '20260728a', 'data-pose-catalog', ensureSearchIndex);
   }
 
   function applyCanonicalHeader() {
+    if (!document.body || document.body.getAttribute('data-site-navigation') === 'off') return;
     ensureStyles();
-    var navbar = ensureNavbar();
-    var container = ensureContainer(navbar);
-    var logo = ensureLogo(container);
-    var navLinks = ensureNavLinks(container);
-    var search = ensureSearch(container);
-    var cta = ensureCta(container);
-    var toggle = ensureToggle(container);
-
-    orderHeader(container, [logo, navLinks, search, cta, toggle]);
-    markActive(navLinks);
-    syncPublicContentMetadata();
+    var navbar = buildHeader();
+    markActive(navbar);
     bindInteractions();
     loadSearchAssets();
     navbar.setAttribute('data-canonical-header-applied', 'true');
-    window.MAY_YOGA_HEADER_VERSION = '5';
+    window.MAY_YOGA_HEADER_VERSION = '6';
   }
 
   ensureStyles();
