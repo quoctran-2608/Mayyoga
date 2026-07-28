@@ -1,39 +1,44 @@
-// ===== Mây Yoga — Shared Site Chrome =====
-// Owns only shared Header/Menu/Search, Footer, Floating Contact, Breadcrumb and Article Share.
+// ===== MÂY YOGA — SHARED SITE CHROME V2 =====
+// Owns shared Footer, Floating Contact and Article Share only.
 (function syncSiteChrome() {
   'use strict';
 
-  function resolveSiteRoot() {
-    var script = document.currentScript;
-    if (!script || !script.src) {
-      var scripts = document.querySelectorAll('script[src]');
-      for (var index = scripts.length - 1; index >= 0; index -= 1) {
-        if (/\/js\/site-chrome\.js(?:\?|$)/.test(scripts[index].src)) {
-          script = scripts[index];
-          break;
-        }
-      }
+  if (window.__mayYogaSiteChromeV2Loaded) return;
+  window.__mayYogaSiteChromeV2Loaded = true;
+
+  function resolveCurrentScript() {
+    if (document.currentScript && document.currentScript.src) return document.currentScript;
+    var scripts = document.querySelectorAll('script[src]');
+    for (var index = scripts.length - 1; index >= 0; index -= 1) {
+      if (/\/js\/site-chrome\.js(?:\?|$)/.test(scripts[index].src)) return scripts[index];
     }
-    return script && script.src
-      ? new URL('../', script.src)
-      : new URL(window.MAY_YOGA_SITE_ROOT || './', window.location.href);
+    return null;
   }
 
-  var siteRoot = resolveSiteRoot();
-  function siteUrl(path) { return new URL(path, siteRoot).href; }
+  var currentScript = resolveCurrentScript();
+  var siteRoot = currentScript && currentScript.src
+    ? new URL('../', currentScript.src)
+    : new URL(window.MAY_YOGA_SITE_ROOT || '/', window.location.href);
 
-  function primeHeaderState() {
-    var navbar = document.getElementById('navbar');
-    if (!navbar) return;
-    navbar.classList.add('site-header-standard', 'scrolled');
-    navbar.setAttribute('data-site-header-standard', 'true');
+  function siteUrl(path) {
+    return new URL(path, siteRoot).href;
   }
 
-  function ensureStandardStyles() {
-    if (document.getElementById('may-yoga-site-chrome-standard')) return;
+  function ensureStylesheet(selector, path, marker) {
+    if (document.querySelector(selector)) return;
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = siteUrl(path);
+    link.setAttribute(marker, 'true');
+    document.head.appendChild(link);
+  }
+
+  function ensureChromeStyles() {
+    ensureStylesheet('link[data-breadcrumb-canonical]', 'css/breadcrumb-canonical-v1.css?v=20260726b', 'data-breadcrumb-canonical');
+    if (document.getElementById('may-yoga-site-chrome-v2')) return;
 
     var style = document.createElement('style');
-    style.id = 'may-yoga-site-chrome-standard';
+    style.id = 'may-yoga-site-chrome-v2';
     style.textContent = [
       'html body .footer{padding:0!important;background:linear-gradient(180deg,#2d3b2d 0%,#243024 100%)!important;color:rgba(255,255,255,.92)!important}',
       'html body .footer .container{max-width:var(--container-width,1200px)!important}',
@@ -64,22 +69,6 @@
     document.head.appendChild(style);
   }
 
-  function ensureStylesheet(selector, href, attribute) {
-    if (document.querySelector(selector)) return;
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = siteUrl(href);
-    link.setAttribute(attribute, 'true');
-    document.head.appendChild(link);
-  }
-
-  function loadSharedStyles() {
-    ensureStylesheet('link[data-header-first-paint]', 'css/header-first-paint-v1.css?v=20260726a', 'data-header-first-paint');
-    ensureStylesheet('link[data-header-index-canonical]', 'css/header-index-canonical-v3.css?v=20260726c', 'data-header-index-canonical');
-    ensureStylesheet('link[data-site-navigation-canonical]', 'css/site-navigation-canonical-v4.css?v=20260722a', 'data-site-navigation-canonical');
-    ensureStylesheet('link[data-breadcrumb-canonical]', 'css/breadcrumb-canonical-v1.css?v=20260726b', 'data-breadcrumb-canonical');
-  }
-
   function footerMarkup() {
     return [
       '<div class="container">',
@@ -88,8 +77,8 @@
       '      <a href="' + siteUrl('index.html') + '" class="footer-logo-link"><img src="' + siteUrl('assets/images/logo.webp') + '" alt="Mây Yoga" class="footer-logo-img"></a>',
       '      <p class="footer-tagline">Nền tảng kiến thức Hatha Yoga<br>dành cho mọi người.</p>',
       '      <div class="footer-social-icons">',
-      '        <a href="https://www.facebook.com/profile.php?id=61573065832463" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>',
-      '        <a href="https://www.instagram.com/thumay2808" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>',
+      '        <a href="https://www.facebook.com/profile.php?id=61573065832463" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.063 24 12.073z"/></svg></a>',
+      '        <a href="https://www.instagram.com/thumay2808" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947C21.732 2.699 19.311.273 14.949.073 13.668.014 13.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>',
       '        <a href="https://www.tiktok.com/@my.v.yoga" target="_blank" rel="noopener" aria-label="TikTok" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>',
       '      </div>',
       '    </div>',
@@ -100,12 +89,12 @@
       '      <li><a href="' + siteUrl('chinh-sach-doi-tra.html') + '">Chính sách hoàn tiền</a></li>',
       '    </ul></div>',
       '    <div class="footer-col"><h4>Liên hệ</h4><ul>',
-      '      <li><a href="mailto:phanthumay.yoga500@gmail.com">📧 phanthumay.yoga500@gmail.com</a></li>',
-      '      <li><a href="https://zalo.me/0326808864" target="_blank" rel="noopener">📱 Hotline: 0326 808 864</a></li>',
-      '      <li>📍 Đà Lạt, Lâm Đồng, Việt Nam</li>',
+      '      <li><a href="mailto:phanthumay.yoga500@gmail.com">phanthumay.yoga500@gmail.com</a></li>',
+      '      <li><a href="https://zalo.me/0326808864" target="_blank" rel="noopener">Hotline: 0326 808 864</a></li>',
+      '      <li>Đà Lạt, Lâm Đồng, Việt Nam</li>',
       '    </ul><p class="footer-legal"><strong>Chủ quản:</strong> Phan Thu Mây&nbsp;|&nbsp;<strong>MST:</strong> 066195013103</p></div>',
       '  </div>',
-      '  <div class="footer-bottom"><p>© 2026 MâyYoga.health — All rights reserved. 🍀</p></div>',
+      '  <div class="footer-bottom"><p>© 2026 MâyYoga.health — All rights reserved.</p></div>',
       '</div>'
     ].join('');
   }
@@ -120,24 +109,18 @@
   function floatingContactMarkup() {
     return [
       '<a href="https://zalo.me/0326808864" target="_blank" rel="noopener" class="fc-zalo" data-tooltip="Chat Zalo" aria-label="Liên hệ Zalo">',
-      '<svg width="28" height="28" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">',
-      '<path fill-rule="evenodd" clip-rule="evenodd" d="M7.779 43.5892C10.1019 43.846 13.0061 43.1836 15.0682 42.1825C24.0225 47.1318 38.0197 46.8954 46.4923 41.4732C46.8209 40.9803 47.1279 40.4677 47.4128 39.9363C49.1062 36.7779 50.0004 33.22 50.0004 27.1316V22.7175C50.0004 16.629 49.1062 13.0711 47.4128 9.91273C45.7385 6.75436 43.2461 4.28093 40.0877 2.58758C36.9293 0.894239 33.3714 0 27.283 0H22.8499C17.6644 0 14.2982 0.652754 11.4699 1.89893C11.3153 2.03737 11.1636 2.17818 11.0151 2.32135C2.71734 10.3203 2.08658 27.6593 9.12279 37.0782C9.13064 37.0921 9.13933 37.1061 9.14889 37.1203C10.2334 38.7185 9.18694 41.5154 7.55068 43.1516C7.28431 43.399 7.37944 43.5512 7.779 43.5892Z" fill="white"/>',
-      '<path d="M20.5632 17H10.8382V19.0853H17.5869L10.9329 27.3317C10.7244 27.635 10.5728 27.9194 10.5728 28.5639V29.0947H19.748C20.203 29.0947 20.5822 28.7156 20.5822 28.2606V27.1421H13.4922L19.748 19.2938C19.8428 19.1807 20.0134 18.9716 20.0893 18.8768L20.1272 18.8199C20.4874 18.2891 20.5632 17.8341 20.5632 17.2844V17Z" fill="#0068FF"/>',
-      '<path d="M32.9416 29.0947H34.3255V17H32.2402V28.3933C32.2402 28.7725 32.5435 29.0947 32.9416 29.0947Z" fill="#0068FF"/>',
-      '<path d="M25.814 19.6924C23.1979 19.6924 21.0747 21.8156 21.0747 24.4317C21.0747 27.0478 23.1979 29.171 25.814 29.171C28.4301 29.171 30.5533 27.0478 30.5533 24.4317C30.5723 21.8156 28.4491 19.6924 25.814 19.6924ZM25.814 27.2184C24.2785 27.2184 23.0273 25.9672 23.0273 24.4317C23.0273 22.8962 24.2785 21.645 25.814 21.645C27.3495 21.645 28.6007 22.8962 28.6007 24.4317C28.6007 25.9672 27.3685 27.2184 25.814 27.2184Z" fill="#0068FF"/>',
-      '<path d="M40.4867 19.6162C37.8516 19.6162 35.7095 21.7584 35.7095 24.3934C35.7095 27.0285 37.8516 29.1707 40.4867 29.1707C43.1217 29.1707 45.2639 27.0285 45.2639 24.3934C45.2639 21.7584 43.1217 19.6162 40.4867 19.6162ZM40.4867 27.2181C38.9322 27.2181 37.681 25.9669 37.681 24.4124C37.681 22.8579 38.9322 21.6067 40.4867 21.6067C42.0412 21.6067 43.2924 22.8579 43.2924 24.4124C43.2924 25.9669 42.0412 27.2181 40.4867 27.2181Z" fill="#0068FF"/>',
-      '<path d="M29.4562 29.0944H30.5747V19.957H28.6221V28.2793C28.6221 28.7153 29.0012 29.0944 29.4562 29.0944Z" fill="#0068FF"/>',
+      '<svg width="28" height="28" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">',
+      '<path fill-rule="evenodd" clip-rule="evenodd" d="M7.779 43.589C10.102 43.846 13.006 43.184 15.068 42.183C24.023 47.132 38.02 46.895 46.492 41.473C48.882 37.886 50 33.721 50 27.132V22.718C50 16.629 49.106 13.071 47.413 9.913C45.739 6.754 43.246 4.281 40.088 2.588C36.929.894 33.371 0 27.283 0H22.85C17.664 0 14.298.653 11.47 1.899C2.718 10.32 2.087 27.659 9.123 37.078C10.233 38.718 9.187 41.515 7.551 43.152C7.284 43.399 7.379 43.551 7.779 43.589Z" fill="white"/>',
+      '<path d="M20.563 17h-9.725v2.085h6.749l-6.654 8.247c-.208.303-.36.587-.36 1.232v.531h9.175c.455 0 .834-.379.834-.834v-1.119h-7.09l6.256-7.848c.095-.113.266-.322.342-.417l.037-.057c.36-.531.436-.986.436-1.535V17Z" fill="#0068FF"/>',
+      '<path d="M32.942 29.095h1.384V17H32.24v11.393c0 .38.304.702.702.702ZM25.814 19.692a4.74 4.74 0 1 0 0 9.479 4.74 4.74 0 0 0 0-9.479Zm0 7.526a2.787 2.787 0 1 1 0-5.573 2.787 2.787 0 0 1 0 5.573ZM40.487 19.616a4.777 4.777 0 1 0 0 9.555 4.777 4.777 0 0 0 0-9.555Zm0 7.602a2.806 2.806 0 1 1 0-5.611 2.806 2.806 0 0 1 0 5.611Z" fill="#0068FF"/>',
       '</svg></a>',
       '<a href="https://wa.me/84326808864" target="_blank" rel="noopener" class="fc-whatsapp" data-tooltip="Chat WhatsApp" aria-label="Liên hệ WhatsApp">',
-      '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>'
+      '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></a>'
     ].join('');
   }
 
   function normalizeFloatingContact() {
-    document.querySelectorAll('.floating-contact').forEach(function removeFloating(node) {
-      node.remove();
-    });
-
+    document.querySelectorAll('.floating-contact').forEach(function(node) { node.remove(); });
     var floating = document.createElement('div');
     floating.className = 'floating-contact';
     floating.id = 'floatingContact';
@@ -146,16 +129,18 @@
     document.body.appendChild(floating);
   }
 
-  function loadCanonicalNavigation() {
-    if (document.querySelector('script[data-site-navigation-canonical]')) return;
+  function ensureCanonicalNavigation() {
+    if (document.body && document.body.getAttribute('data-site-navigation') === 'off') return;
+    if (document.querySelector('script[data-site-navigation-canonical-v3]')) return;
     var script = document.createElement('script');
-    script.src = siteUrl('js/site-navigation-canonical-v2.js?v=20260726b');
+    script.src = siteUrl('js/site-navigation-canonical-v3.js?v=20260728b');
     script.async = false;
     script.setAttribute('data-site-navigation-canonical', 'true');
+    script.setAttribute('data-site-navigation-canonical-v3', 'true');
     document.head.appendChild(script);
   }
 
-  function loadCanonicalArticleShare() {
+  function ensureArticleShare() {
     if (document.querySelector('script[data-article-share-standard]')) return;
     var script = document.createElement('script');
     script.src = siteUrl('js/article-share-standard.js?v=20260722c');
@@ -164,21 +149,16 @@
     document.head.appendChild(script);
   }
 
-  function applyStandardChrome() {
-    primeHeaderState();
-    ensureStandardStyles();
-    loadSharedStyles();
+  function apply() {
+    if (!document.body || document.body.getAttribute('data-site-chrome') === 'off') return;
+    ensureChromeStyles();
     normalizeFooter();
     normalizeFloatingContact();
-    loadCanonicalNavigation();
-    loadCanonicalArticleShare();
+    ensureArticleShare();
+    window.MAY_YOGA_SITE_CHROME_VERSION = '2';
   }
 
-  primeHeaderState();
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyStandardChrome, { once: true });
-  } else {
-    applyStandardChrome();
-  }
+  ensureCanonicalNavigation();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply, { once: true });
+  else apply();
 })();
