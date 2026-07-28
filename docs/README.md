@@ -55,5 +55,7 @@
 - Các file `.txt` dưới `assets/` là artifact dữ liệu ảnh, không phải hướng dẫn
   kỹ thuật.
 
-Không có `CLAUDE.md` hoặc `CONTRIBUTING.md` trong repository tại thời điểm kiểm
-kê. Không tài liệu nào bị xóa trong đợt này.
+Tại thời điểm kiểm kê ban đầu, repository chưa có `CLAUDE.md` hoặc
+`CONTRIBUTING.md`. `CLAUDE.md` sau đó được thêm làm redirect ngắn tới
+`../AGENTS.md`; `CONTRIBUTING.md` vẫn chưa có. Không tài liệu nào bị xóa trong
+đợt này.

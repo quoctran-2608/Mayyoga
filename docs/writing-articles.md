@@ -40,6 +40,16 @@ Breadcrumb tối thiểu:
 Article header cần một H1, chủ đề, ngày, thời gian đọc và tác giả khi các dữ
 liệu này có thật. Không dùng nhiều H1.
 
+Giữ class `meta-item` để khớp shared article CSS:
+
+```html
+<div class="article-meta">
+  <time class="meta-item" datetime="2026-07-28">28/07/2026</time>
+  <span class="meta-item">8 phút đọc</span>
+  <span class="meta-item">Phan Thu Mây</span>
+</div>
+```
+
 ## 5. Article body
 
 - Dùng `<main class="article-body">`.
@@ -55,12 +65,15 @@ Với bài dài, tạo TOC từ các H2 có `id` ổn định:
 
 ```html
 <nav class="article-toc" aria-label="Mục lục bài viết">
-  <h2>Trong bài viết này</h2>
+  <h4>Trong bài viết này</h4>
   <ol>
     <li><a href="#phan-mot">Tên phần một</a></li>
   </ol>
 </nav>
 ```
+
+H4 này là label của component TOC để khớp selector `.article-toc h4`; nó không
+thay H2/H3 trong outline nội dung bài.
 
 Mọi fragment trong TOC phải trỏ tới ID có thật và không trùng.
 

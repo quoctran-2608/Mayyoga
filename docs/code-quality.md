@@ -61,8 +61,11 @@ Audit site là read-only và kiểm tra:
 - pose count và search ownership;
 - ngoại lệ `links.html`.
 
-Audit docs kiểm tra markdown link, file reference quan trọng, placeholder còn
-sót trong public HTML, template token và relative path contract.
+Audit docs kiểm tra markdown link, file reference quan trọng, semantic guidance
+legacy, placeholder còn sót trong public HTML, template token và relative path
+contract. Semantic lint chặn các hướng dẫn quay lại pose count cũ, direct loader,
+navigation shim làm component chính hoặc menu chép vào HTML. File deprecated và
+đoạn anti-pattern có nhãn rõ được loại trừ có chủ đích.
 
 ## Syntax
 

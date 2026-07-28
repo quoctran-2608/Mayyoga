@@ -42,7 +42,7 @@ anchor, hero enhancement, hover hint và newsletter. Nó không sở hữu menu.
 |---|---|
 | `js/main.js` | Entry point và bootstrap chung |
 | `js/site-navigation-canonical-v3.js` | Header, menu, dropdown, mobile nav, active state, CTA, search shell và tải search assets |
-| `js/site-chrome.js` | Footer, floating contact, breadcrumb CSS và article-share bootstrap |
+| `js/site-chrome.js` | Footer/Floating Contact markup và runtime CSS, breadcrumb CSS và article-share bootstrap |
 | `js/article-share-standard.js` | Render và xử lý nút chia sẻ bài viết |
 | `js/search.js` | Chuẩn hóa truy vấn, scoring, render và interaction search |
 | `js/search-index.js` | `contentEntries` và pose entries sinh từ catalog |
@@ -91,6 +91,13 @@ Trang có footer dùng:
 
 `site-chrome.js` chỉ normalize footer khi shell tồn tại. Floating contact được
 runtime xóa bản cũ và tạo lại một instance canonical.
+
+Footer markup nằm trong `footerMarkup()`, Floating Contact markup nằm trong
+`floatingContactMarkup()`, còn runtime CSS của cả hai nằm trong
+`ensureChromeStyles()`. Block style runtime dùng nhiều `!important`.
+`css/style-base.css` vẫn giữ fallback/shared base styles nhưng không phải style
+owner duy nhất; khi đổi component phải sửa runtime owner trước rồi đối chiếu
+fallback để tránh drift hoặc override thứ ba.
 
 ## Bootstrap contract
 
@@ -145,7 +152,8 @@ xác định ownership.
 - `scripts/normalize-navigation-shells.mjs`: migration có side effect, chuẩn hóa
   public HTML và phải idempotent.
 - `scripts/audit-site-structure.mjs`: audit read-only cho runtime architecture.
-- `scripts/audit-docs.mjs`: audit read-only cho link, file reference và template.
+- `scripts/audit-docs.mjs`: audit read-only cho link, file reference, semantic
+  architecture guidance và template.
 
 Các template trong `docs/templates/` là source mẫu, không phải public page và
 được loại khỏi migration/audit public HTML.

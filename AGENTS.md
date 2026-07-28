@@ -64,6 +64,9 @@ Không suy luận kiến trúc từ tên version của file. Luôn đọc source
 
 - Không thêm override chỉ để che lỗi cascade.
 - Ưu tiên sửa file sở hữu component.
+- Footer/Floating Contact hiện lấy runtime CSS từ
+  `js/site-chrome.js` → `ensureChromeStyles()`. `css/style-base.css` chỉ còn
+  fallback/shared base styles, không phải style owner duy nhất.
 - CSS trang mới phải scoped theo body class hoặc component class.
 - Không sửa shared CSS nếu thay đổi chỉ dành cho một trang.
 - Không tạo chuỗi file `final`, `fix`, `new`, `v2` chồng lên cùng selector.
@@ -102,7 +105,7 @@ Không suy luận kiến trúc từ tên version của file. Luôn đọc source
 |---|---|
 | Bootstrap chung | `js/main.js` |
 | Header, menu, dropdown, mobile nav, active state, CTA, search shell | `js/site-navigation-canonical-v3.js` |
-| Footer, floating contact, article share bootstrap, breadcrumb CSS | `js/site-chrome.js` |
+| Footer/Floating Contact markup và runtime CSS, article share bootstrap, breadcrumb CSS | `js/site-chrome.js` |
 | Search behavior | `js/search.js` |
 | Search content index | `js/search-index.js` |
 | Pose data | `js/poses-data.js` |

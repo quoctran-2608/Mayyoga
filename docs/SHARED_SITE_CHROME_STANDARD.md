@@ -53,13 +53,16 @@ canonical; `main.js` là bootstrap.
 
 Các file V2, P0 và `site-header-standard.js` chỉ là shim. Không thêm logic mới.
 
-## Footer
+## Footer và Floating Contact
 
-Source of truth:
+Ownership hiện hành:
 
-```text
-js/site-chrome.js
-```
+| Phần | Owner |
+|---|---|
+| Footer markup | `js/site-chrome.js` → `footerMarkup()` |
+| Floating Contact markup | `js/site-chrome.js` → `floatingContactMarkup()` |
+| Runtime Footer/Floating Contact CSS | `js/site-chrome.js` → `ensureChromeStyles()` |
+| Fallback/shared base styles | `css/style-base.css` |
 
 Page mới dùng:
 
@@ -67,13 +70,21 @@ Page mới dùng:
 <footer class="footer"></footer>
 ```
 
-`site-chrome.js` normalize shell thành canonical footer. Khi đổi footer toàn
-site, sửa `footerMarkup()` và style owner; không đồng bộ bằng cách sửa từng HTML.
+`site-chrome.js` normalize shell thành canonical footer. `ensureChromeStyles()`
+inject block `#may-yoga-site-chrome-v2` với nhiều declaration `!important`, nên
+chỉ sửa `css/style-base.css` có thể không đổi giao diện runtime.
 
-## Floating Contact
+Khi đổi Footer hoặc Floating Contact toàn site:
 
+1. sửa markup trong `footerMarkup()` hoặc `floatingContactMarkup()`;
+2. sửa runtime CSS trong `ensureChromeStyles()`;
+3. đối chiếu fallback/shared base styles trong `css/style-base.css` để tránh hai
+   lớp drift nhau;
+4. không tạo override thứ ba và không đồng bộ bằng cách sửa từng HTML.
+
+`css/style-base.css` không phải owner duy nhất của Footer/Floating Contact.
 `site-chrome.js` xóa các instance `.floating-contact` cũ và tạo một instance
-canonical gồm Zalo và WhatsApp. Page mới không cần shell contact.
+canonical gồm Zalo và WhatsApp; page mới không cần shell contact.
 
 ## Breadcrumb
 
