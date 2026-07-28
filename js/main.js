@@ -81,7 +81,7 @@
   function loadNavigationP0() {
     if (document.querySelector('script[data-site-navigation-p0]')) return;
     var script = document.createElement('script');
-    script.src = siteUrl('js/site-navigation-p0-v1.js?v=20260728b');
+    script.src = siteUrl('js/site-navigation-p0-v1.js?v=20260728c');
     script.async = false;
     script.setAttribute('data-site-navigation-p0', 'true');
     document.head.appendChild(script);
