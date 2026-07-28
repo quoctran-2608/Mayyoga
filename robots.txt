@@ -6,8 +6,9 @@ Disallow: /.git/
 Disallow: /node_modules/
 Disallow: /.gemini/
 
-# Sitemap location
+# Sitemap locations
 Sitemap: https://mayyoga.health/sitemap.xml
+Sitemap: https://mayyoga.health/sitemap-trac-nghiem.xml
 
 # === AI / Generative Engine Crawlers ===
 # Allow AI bots to index for GEO (Generative Engine Optimization)
