@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 // One-time source migration for public HTML files.
+// Migration revision: 1.0.1
 // Replaces legacy navbar copies with a minimal canonical shell and removes
 // duplicated navigation/search loaders. Safe to run repeatedly.
 
