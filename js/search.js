@@ -3,7 +3,8 @@
 (function initGlobalSearch() {
   'use strict';
 
-  if (window.__mayYogaSearchBound) return;
+  if (window.__mayYogaSearchEngineLoaded) return;
+  window.__mayYogaSearchEngineLoaded = true;
 
   function resolveCurrentScript() {
     if (document.currentScript && document.currentScript.src) return document.currentScript;
@@ -125,8 +126,9 @@
     var input = document.getElementById('globalSearch');
     var dropdown = document.getElementById('searchDropdown');
     if (!input || !dropdown) return false;
+    if (input.dataset.mayYogaSearchBound === 'true') return true;
 
-    window.__mayYogaSearchBound = true;
+    input.dataset.mayYogaSearchBound = 'true';
     input.setAttribute('aria-label', 'Tìm kiếm trên Mây Yoga');
     input.setAttribute('aria-controls', 'searchDropdown');
     input.setAttribute('aria-autocomplete', 'list');
@@ -210,5 +212,13 @@
   }
 
   bindWhenReady();
+
+  var observer = new MutationObserver(function() {
+    if (!bind()) return;
+    var navbar = document.getElementById('navbar');
+    if (navbar && navbar.getAttribute('data-canonical-header-applied') === 'true') observer.disconnect();
+  });
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+
   window.MAY_YOGA_SEARCH_VERSION = '2';
 })();
