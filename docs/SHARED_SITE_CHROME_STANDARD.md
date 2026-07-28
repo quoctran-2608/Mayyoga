@@ -1,84 +1,59 @@
 # Mây Yoga — Shared Site Chrome Standard
 
-> **Mục tiêu:** Homepage và tất cả trang con phải dùng cùng một source cho Header/Menu/Search, Footer, Floating Contact, Breadcrumb và Article Share.
->
-> Không được duy trì một bản Header/Menu/Footer riêng cho `index.html`.
+> Tài liệu này bổ sung cho `architecture.md`. Nếu có khác biệt, source hiện tại
+> và `architecture.md` được ưu tiên.
 
----
-
-# 1. Kiến trúc canonical hiện hành
+## Kiến trúc canonical
 
 ```text
-js/site-chrome.js
-├─ load css/header-index-canonical-v3.css
-├─ load css/site-navigation-canonical-v4.css
-├─ load css/breadcrumb-canonical-v1.css
-├─ render canonical Footer
-├─ render canonical Floating Contact
-├─ load js/site-navigation-canonical-v2.js
-└─ load js/article-share-standard.js
+HTML page
+  └─ js/main.js
+      ├─ js/site-navigation-canonical-v3.js
+      │   ├─ Header/Menu/Search shell/CTA
+      │   └─ search asset loading
+      └─ js/site-chrome.js
+          ├─ breadcrumb stylesheet
+          ├─ canonical Footer
+          ├─ canonical Floating Contact
+          └─ js/article-share-standard.js
 ```
 
-`index.html` và các trang con đều đi qua chuỗi component này.
+File navigation có tên V3 nhưng implementation hiện tại là Canonical Navigation
+V6.
 
-`index.html` hiện là **standalone static HTML**, không còn là Jekyll/Liquid wrapper. Kiến trúc homepage chi tiết nằm tại:
+## Header, menu và search shell
 
-```text
-docs/HOMEPAGE_STATIC_SOURCE_STANDARD.md
-```
-
----
-
-# 2. Header/Menu/Search — một source duy nhất
-
-Structural + behavioral source of truth:
+Source of truth:
 
 ```text
-js/site-navigation-canonical-v2.js
+js/site-navigation-canonical-v3.js
 ```
 
 File này sở hữu:
 
-- cấu trúc menu level 1 và level 2;
-- URL menu;
+- `NAV_ITEMS`, URL và dropdown;
+- Header DOM;
 - active/current state;
-- dropdown desktop hover/focus;
-- dropdown mobile tap;
+- desktop/mobile interaction;
 - hamburger;
-- Search shell/self-healing;
-- CTA header;
-- logo/path normalization.
+- context CTA;
+- search input/dropdown shell;
+- thứ tự tải pose catalog, search index và search engine.
 
-Visual navigation layer:
+HTML chỉ chứa:
 
-```text
-css/site-navigation-canonical-v4.css
+```html
+<nav class="navbar site-header-standard scrolled"
+     id="navbar"
+     data-site-header-standard="true"></nav>
 ```
 
-Header geometry source of truth:
+Không sửa menu riêng trong `index.html` hoặc child page. Không tải direct file
+canonical; `main.js` là bootstrap.
 
-```text
-css/header-index-canonical-v3.css
-```
+Các file V2, P0 và `site-header-standard.js` chỉ là shim. Không thêm logic mới.
 
-## Quy tắc quan trọng
-
-Homepage là **visual reference** của Header, nhưng không phải structural/menu source riêng.
-
-Khi thêm/xóa/đổi menu item:
-
-```text
-CHỈ sửa canonical navigation component.
-KHÔNG sửa menu riêng trong index.html để tạo một implementation thứ hai.
-```
-
-`index.html` có thể chứa Header shell/fallback để giảm layout shift và giúp source HTML có cấu trúc đầy đủ, nhưng runtime canonical navigation là authoritative source cho menu structure/behavior.
-
-Không tạo lại `index-nav-*` như một hệ behavior riêng cho homepage.
-
----
-
-# 3. Footer — một canonical markup duy nhất
+## Footer
 
 Source of truth:
 
@@ -86,199 +61,59 @@ Source of truth:
 js/site-chrome.js
 ```
 
-`footerMarkup()` render cùng một Footer cho homepage và mọi trang có `<footer class="footer">`.
+Page mới dùng:
 
-Canonical Footer hiện gồm:
-
-- logo + tagline;
-- Facebook;
-- Instagram;
-- TikTok;
-- Chính sách bảo mật;
-- Điều khoản sử dụng;
-- Chính sách thanh toán;
-- Chính sách hoàn tiền;
-- email;
-- hotline/Zalo;
-- địa chỉ;
-- chủ quản + MST;
-- copyright.
-
-Khi thay đổi Footer:
-
-```text
-CHỈ sửa footerMarkup() / shared footer style.
-KHÔNG sửa Footer fallback riêng trong index.html hoặc từng page HTML để đồng bộ site-wide.
+```html
+<footer class="footer"></footer>
 ```
 
-HTML Footer hard-code còn tồn tại ở một số trang chỉ đóng vai trò shell/fallback trước runtime normalization.
+`site-chrome.js` normalize shell thành canonical footer. Khi đổi footer toàn
+site, sửa `footerMarkup()` và style owner; không đồng bộ bằng cách sửa từng HTML.
 
----
+## Floating Contact
 
-# 4. Floating Contact
+`site-chrome.js` xóa các instance `.floating-contact` cũ và tạo một instance
+canonical gồm Zalo và WhatsApp. Page mới không cần shell contact.
 
-Source of truth:
+## Breadcrumb
 
-```text
-js/site-chrome.js
+`site-chrome.js` bảo đảm load `css/breadcrumb-canonical-v1.css`. DOM contract
+nằm trong `BREADCRUMB_STANDARD.md`.
+
+## Article Share
+
+`site-chrome.js` bootstrap `js/article-share-standard.js`. Article page nên có:
+
+```html
+<div class="article-share" aria-label="Chia sẻ bài viết"></div>
 ```
 
-Canonical Floating Contact hiện gồm:
+Component cũng có thể tự tạo shell cho page nhận diện là Article. Không hard-code
+share icon hoặc URL.
 
-```text
-Zalo
-WhatsApp
-```
+## Homepage
 
-`site-chrome.js` xóa các bản `.floating-contact` cũ và render lại một bản canonical.
+`index.html` là source tĩnh duy nhất của homepage. Homepage có nội dung, Hero và
+asset riêng, nhưng không có implementation riêng cho navigation, search, footer,
+floating contact hoặc article share.
 
-Không sửa riêng từng trang.
+## `links.html`
 
----
+`links.html` là ngoại lệ độc lập:
 
-# 5. Breadcrumb
+- không navbar canonical;
+- không `main.js`;
+- không shared site chrome;
+- không shared search;
+- chỉ dùng asset riêng của link-in-bio.
 
-Visual source of truth:
+## Definition of Done
 
-```text
-css/breadcrumb-canonical-v1.css
-```
-
-Contract:
-
-```text
-docs/BREADCRUMB_STANDARD.md
-```
-
-Breadcrumb được load qua `site-chrome.js` cho toàn site.
-
----
-
-# 6. Article Share
-
-Behavior/source of truth:
-
-```text
-js/article-share-standard.js
-```
-
-Được bootstrap bởi `site-chrome.js`.
-
-Không hard-code một bộ share icon riêng cho từng bài viết.
-
----
-
-# 7. Homepage đặc biệt ở đâu?
-
-Homepage vẫn đặc biệt về **nội dung và Hero**, không đặc biệt về shared chrome.
-
-Homepage-only có thể giữ:
-
-- Hero layout;
-- carousel;
-- section homepage;
-- homepage-specific responsive polish;
-- homepage SEO/schema;
-- homepage-specific preload/performance hints.
-
-Homepage **không được** có hệ riêng cho:
-
-```text
-Header
-Menu structure
-Menu behavior
-Search shell
-Footer
-Floating Contact
-Breadcrumb standard
-Article Share standard
-```
-
-Homepage source of truth duy nhất:
-
-```text
-index.html
-```
-
-Không còn `_includes/index-source.html` hoặc Liquid wrapper làm homepage source song song.
-
----
-
-# 8. Khi sửa shared component
-
-Một thay đổi Header/Menu/Footer phải được xem là site-wide change.
-
-Checklist:
-
-- [ ] sửa canonical source duy nhất;
-- [ ] không patch riêng index;
-- [ ] không patch riêng một child page;
-- [ ] kiểm tra root page;
-- [ ] kiểm tra nested `bai-viet/` page;
-- [ ] kiểm tra homepage;
-- [ ] kiểm tra desktop/tablet/mobile;
-- [ ] kiểm tra active menu;
-- [ ] kiểm tra dropdown desktop/mobile;
-- [ ] kiểm tra Search;
-- [ ] kiểm tra Footer đủ Facebook/Instagram/TikTok;
-- [ ] kiểm tra Floating Contact chỉ có một instance;
-- [ ] bump cache key ở loader khi cần;
-- [ ] fetch lại file sau write.
-
----
-
-# 9. Quy tắc supersede tài liệu cũ
-
-Nếu một đoạn legacy nói rằng khi sửa menu phải:
-
-```text
-sửa homepage menu
-+ sửa non-homepage menu riêng
-```
-
-thì hướng dẫn đó **đã lỗi thời**.
-
-Chuẩn hiện hành là:
-
-```text
-một canonical navigation component
-→ áp dụng cho homepage
-→ áp dụng cho mọi child page
-```
-
-Tương tự, Footer không còn được duy trì như các copy độc lập theo từng trang.
-
-Nếu tài liệu cũ nói:
-
-```text
-index.html = Jekyll/Liquid wrapper
-_includes/index-source.html = homepage source
-```
-
-thì hướng dẫn đó cũng **đã lỗi thời**. Chuẩn mới:
-
-```text
-index.html = standalone static homepage source of truth
-```
-
-Xem `docs/HOMEPAGE_STATIC_SOURCE_STANDARD.md`.
-
----
-
-# 10. Definition of Done
-
-Một thay đổi shared chrome chỉ được xem là đúng kiến trúc khi:
-
-```text
-Không cần sửa index riêng để đồng bộ Header/Menu/Footer.
-Không cần sửa từng child page để đồng bộ Header/Menu/Footer.
-Canonical source quyết định runtime output toàn site.
-```
-
-Một thay đổi homepage chỉ được xem là đúng kiến trúc khi:
-
-```text
-index.html vẫn là HTML tĩnh hoàn chỉnh.
-Không táiintroduce Liquid wrapper hoặc homepage source thứ hai.
-Shared chrome vẫn đi qua canonical components.
-```
+- [ ] Header/menu thay đổi ở một canonical source.
+- [ ] Footer/contact/share thay đổi ở đúng owner.
+- [ ] Không direct-load runtime trong HTML.
+- [ ] Không có inline navigation handler.
+- [ ] Page thông thường có đúng một `main.js`.
+- [ ] `links.html` vẫn độc lập.
+- [ ] Migration lần cuối cập nhật 0 file.
+- [ ] Audit site có 0 lỗi và 0 cảnh báo.

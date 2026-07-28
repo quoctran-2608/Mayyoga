@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Thay mọi token __...__; không publish khi còn token. -->
+  <title>__PAGE_TITLE__</title>
+  <meta name="description" content="__META_DESCRIPTION__">
+  <link rel="canonical" href="https://mayyoga.health/__PUBLIC_PATH__">
+
+  <meta property="og:title" content="__OG_TITLE__">
+  <meta property="og:description" content="__OG_DESCRIPTION__">
+  <meta property="og:url" content="https://mayyoga.health/__PUBLIC_PATH__">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://mayyoga.health/__SOCIAL_IMAGE_PATH__">
+  <meta property="og:site_name" content="Mây Yoga">
+  <meta property="og:locale" content="vi_VN">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="__TWITTER_TITLE__">
+  <meta name="twitter:description" content="__TWITTER_DESCRIPTION__">
+  <meta name="twitter:image" content="https://mayyoga.health/__SOCIAL_IMAGE_PATH__">
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Nếu không cần CSS riêng, xóa dòng dưới. Nếu cần, thay token và scope CSS. -->
+  <link rel="stylesheet" href="css/__PAGE_STYLESHEET__.css">
+</head>
+<body class="__PAGE_BODY_CLASS__">
+  <nav class="navbar site-header-standard scrolled" id="navbar" data-site-header-standard="true"></nav>
+
+  <header class="__PAGE_BODY_CLASS__-hero">
+    <div class="container">
+      <div class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Trang chủ</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span class="current" aria-current="page">__BREADCRUMB_LABEL__</span>
+      </div>
+      <h1>__PAGE_HEADING__</h1>
+      <p>__PAGE_INTRODUCTION__</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="__PAGE_BODY_CLASS__-content">
+      <div class="container">
+        <!-- Thay bằng nội dung thật; giữ hierarchy H1 > H2 > H3. -->
+        <h2>__SECTION_HEADING__</h2>
+        <p>__SECTION_CONTENT__</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"></footer>
+
+  <!-- Entry point chung duy nhất; không tải navigation/search/site-chrome trực tiếp. -->
+  <script src="js/main.js?v=20260728b"></script>
+  <!-- Chỉ thêm page JS riêng sau main.js nếu thật sự cần. -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "__SCHEMA_NAME__",
+    "description": "__SCHEMA_DESCRIPTION__",
+    "url": "https://mayyoga.health/__PUBLIC_PATH__",
+    "inLanguage": "vi"
+  }
+  </script>
+</body>
+</html>

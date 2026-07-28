@@ -23,6 +23,9 @@ async function walk(directory) {
   for (const entry of entries) {
     if (entry.name === '.git' || entry.name === '.m' || entry.name === 'node_modules') continue;
     const absolute = path.join(directory, entry.name);
+    const rel = path.relative(ROOT, absolute).split(path.sep).join('/');
+    // Documentation templates describe destination pages; they are not public HTML.
+    if (entry.isDirectory() && rel === 'docs/templates') continue;
     if (entry.isDirectory()) files.push(...await walk(absolute));
     else if (entry.name.endsWith('.html')) files.push(absolute);
   }

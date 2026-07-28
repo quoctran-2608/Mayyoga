@@ -32,10 +32,14 @@ Shared components vẫn là runtime/shared CSS/JS thông thường:
 
 ```text
 js/site-chrome.js
-js/site-navigation-canonical-v2.js
+js/site-navigation-canonical-v3.js
 css/site-navigation-canonical-v4.css
 css/header-index-canonical-v3.css
 ```
+
+File canonical có tên V3 nhưng implementation hiện tại là Canonical Navigation
+V6. HTML thông thường chỉ tải `js/main.js`; không tải trực tiếp các file runtime
+trên.
 
 Kiến trúc này phải chạy được trên cả GitHub Pages trong giai đoạn test và Cloudflare Pages khi production.
 
@@ -92,4 +96,7 @@ Cloudflare Pages = intended production environment
 
 Nếu một hướng dẫn cũ nói `GitHub Pages = production`, tài liệu này được ưu tiên.
 
-Không thay đổi deployment architecture hoặc thêm `.nojekyll`, framework preset, build command, Workers/Functions hay redirect rules nếu chưa có yêu cầu cụ thể và chưa đánh giá ảnh hưởng tới Cloudflare Pages production.
+Repository hiện có `.nojekyll`. Không xóa hoặc thay đổi file này, deployment
+architecture, framework preset, build command, Workers/Functions hay redirect
+rules nếu chưa có yêu cầu cụ thể và chưa đánh giá ảnh hưởng tới Cloudflare Pages
+production.

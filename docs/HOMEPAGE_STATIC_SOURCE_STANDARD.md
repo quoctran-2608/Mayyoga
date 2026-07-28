@@ -39,11 +39,14 @@ Không thêm lại các pattern như:
 
 ## 2. GitHub Pages
 
-Website được publish bằng GitHub Pages.
+GitHub Pages là môi trường phát triển/test/preview hiện tại. Cloudflare Pages là
+môi trường production mục tiêu theo `DEPLOYMENT_ENVIRONMENT_STANDARD.md`.
 
 Homepage không cần Liquid/Jekyll để tạo nội dung cuối. `index.html` là static HTML và GitHub Pages có thể phục vụ trực tiếp tại `/`.
 
-Không thêm `.nojekyll` hoặc thay đổi cơ chế deploy chỉ để phục vụ homepage, trừ khi có một yêu cầu kiến trúc riêng và đã kiểm tra ảnh hưởng toàn repo.
+Repository hiện có `.nojekyll`. Không xóa, tạo lại hoặc thay đổi cơ chế deploy
+chỉ để phục vụ homepage, trừ khi có yêu cầu kiến trúc riêng và đã kiểm tra ảnh
+hưởng toàn repo.
 
 ---
 
@@ -84,7 +87,7 @@ Dù `index.html` là HTML tĩnh, Header/Menu/Search/Footer/Floating Contact vẫ
 Structural/behavioral navigation source of truth:
 
 ```text
-js/site-navigation-canonical-v2.js
+js/site-navigation-canonical-v3.js
 ```
 
 Shared navigation presentation:
@@ -117,7 +120,9 @@ Sửa Footer toàn site
 -> KHÔNG sửa Footer fallback riêng trong index.html để đồng bộ
 ```
 
-Markup Header/Footer có trong `index.html` chỉ cung cấp shell/fallback và giảm layout shift. Runtime canonical component vẫn quyết định shared output.
+Navbar trong `index.html` chỉ là shell tối thiểu. Footer markup hiện có là
+fallback trước khi `site-chrome.js` normalize. Runtime canonical component vẫn
+quyết định shared output.
 
 ---
 
@@ -182,7 +187,8 @@ Quy trình khuyến nghị:
 ```text
 Xem nhanh        -> mở index.html trực tiếp
 Kiểm tra đầy đủ  -> dùng local HTTP server / Live Server
-Production       -> GitHub Pages
+Preview online   -> GitHub Pages
+Production mục tiêu -> Cloudflare Pages
 ```
 
 Không được táiintroduce Liquid chỉ để phục vụ GitHub Pages.
@@ -226,7 +232,7 @@ Chuẩn hiện hành:
 index.html
 = standalone static homepage source
 
-js/site-navigation-canonical-v2.js
+js/site-navigation-canonical-v3.js
 = navigation structure/behavior toàn site
 
 css/site-navigation-canonical-v4.css

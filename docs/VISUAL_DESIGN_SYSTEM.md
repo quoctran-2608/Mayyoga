@@ -2,9 +2,10 @@
 
 > **Mục đích:** Đây là visual source of truth bắt buộc cho AI/developer khi tạo trang mới, bài viết mới hoặc thiết kế lại một section nội dung của Mây Yoga.
 >
-> Tài liệu này bổ sung cho `docs/AI_DEVELOPMENT_GUIDE.md`.
+> Tài liệu này bổ sung cho `docs/architecture.md`, `docs/creating-pages.md` và
+> tài liệu authoring theo nhiệm vụ.
 >
-> - `AI_DEVELOPMENT_GUIDE.md` = kiến trúc, shared components, paths, search, SEO, responsive kỹ thuật.
+> - `architecture.md` và tài liệu authoring = ownership, paths, search, SEO, responsive kỹ thuật.
 > - `VISUAL_DESIGN_SYSTEM.md` = ngôn ngữ thị giác, hierarchy, composition, responsive intent, anti-patterns và visual QA.
 
 ---
@@ -42,11 +43,7 @@ Các layer quan trọng hiện hành:
 
 ```text
 css/style.css
-css/online-course-polish-v3.css
-css/online-course-pricing-v4.css
-css/online-course-pricing-v5.css
-css/online-course-hero-v7.css
-css/online-course-benefits-v8.css
+css/hoc-yoga-online-page-v1.css
 ```
 
 Dùng trang này làm reference cho:
@@ -73,7 +70,7 @@ Layer quan trọng:
 
 ```text
 css/style.css
-css/about-page-polish-v4.css
+css/ve-may-yoga-page-v1.css
 ```
 
 Dùng trang này làm reference cho:
@@ -437,7 +434,8 @@ Desktop:
 
 Mobile:
 
-- có thể ẩn breadcrumb nếu nó gây nhiễu conversion hero;
+- giữ breadcrumb visible theo `BREADCRUMB_STANDARD.md`, trừ khi có yêu cầu
+  flow đặc biệt và đã đánh giá accessibility/SEO;
 - heading có line break có chủ ý;
 - proof/trust có thể tái cấu trúc thành một panel thay vì giữ nhiều pill ngang;
 - CTA phải dễ bấm nhưng không chiếm cả màn hình một cách nặng nề;
@@ -645,7 +643,8 @@ Không dùng ornament chỉ để “lấp chỗ trống”.
 
 # 17. CSS implementation rules for visual work
 
-Ngoài quy tắc trong `AI_DEVELOPMENT_GUIDE.md`:
+Ngoài quy tắc trong `architecture.md`, `creating-pages.md` và
+`code-quality.md`:
 
 1. Scope theo body/page namespace.
 2. Không sửa shared header/footer để giải quyết layout riêng một page.
@@ -676,7 +675,7 @@ Trước khi báo hoàn thành trang/bài/section mới, AI phải tự rà:
 
 ## Reference
 
-- [ ] Đã đọc `docs/AI_DEVELOPMENT_GUIDE.md`.
+- [ ] Đã đọc `AGENTS.md` và `docs/architecture.md`.
 - [ ] Đã đọc `docs/VISUAL_DESIGN_SYSTEM.md`.
 - [ ] Đã xác định approved reference page phù hợp.
 - [ ] Không copy máy móc section không liên quan.

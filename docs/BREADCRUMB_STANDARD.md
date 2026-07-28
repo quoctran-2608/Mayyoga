@@ -3,7 +3,7 @@
 > Breadcrumb chuẩn toàn site được lấy theo visual treatment đã duyệt trên `ve-may-yoga.html`.
 >
 > Source of truth về style: `css/breadcrumb-canonical-v1.css`.
-> Loader site-wide: `js/site-chrome.js`.
+> Runtime owner: `js/site-chrome.js`, được bootstrap qua `js/main.js`.
 
 ## 1. DOM contract ưu tiên
 
@@ -89,7 +89,7 @@ Nếu cần thay đổi breadcrumb toàn site, sửa canonical source:
 css/breadcrumb-canonical-v1.css
 ```
 
-và loader/cache key liên quan trong:
+và runtime/cache key liên quan trong:
 
 ```text
 js/site-chrome.js

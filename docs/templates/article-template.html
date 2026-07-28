@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Template cho bai-viet/<slug>.html; thay mọi token __...__. -->
+  <title>__ARTICLE_TITLE__</title>
+  <meta name="description" content="__ARTICLE_DESCRIPTION__">
+  <link rel="canonical" href="https://mayyoga.health/bai-viet/__ARTICLE_SLUG__.html">
+
+  <meta property="og:title" content="__ARTICLE_OG_TITLE__">
+  <meta property="og:description" content="__ARTICLE_OG_DESCRIPTION__">
+  <meta property="og:url" content="https://mayyoga.health/bai-viet/__ARTICLE_SLUG__.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://mayyoga.health/__ARTICLE_IMAGE_PATH__">
+  <meta property="og:site_name" content="Mây Yoga">
+  <meta property="og:locale" content="vi_VN">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="__ARTICLE_TWITTER_TITLE__">
+  <meta name="twitter:description" content="__ARTICLE_TWITTER_DESCRIPTION__">
+  <meta name="twitter:image" content="https://mayyoga.health/__ARTICLE_IMAGE_PATH__">
+
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- Chỉ thêm CSS article-specific khi shared article styles chưa đáp ứng. -->
+</head>
+<body class="article-page __ARTICLE_BODY_CLASS__">
+  <nav class="navbar site-header-standard scrolled" id="navbar" data-site-header-standard="true"></nav>
+
+  <header class="article-header">
+    <div class="container">
+      <div class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Trang chủ</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <a href="../index.html#blog">Kiến thức</a>
+        <span class="sep" aria-hidden="true">›</span>
+        <span class="current" aria-current="page">__ARTICLE_BREADCRUMB__</span>
+      </div>
+      <span class="article-tag">__ARTICLE_TOPIC__</span>
+      <h1>__ARTICLE_HEADING__</h1>
+      <div class="article-meta">
+        <time datetime="__DATE_PUBLISHED_ISO__">__DATE_PUBLISHED_DISPLAY__</time>
+        <span>__READ_TIME__</span>
+        <span>__AUTHOR_DISPLAY_NAME__</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="article-body">
+    <div class="container">
+      <nav class="article-toc" aria-label="Mục lục bài viết">
+        <h2>Trong bài viết này</h2>
+        <ol>
+          <li><a href="#__SECTION_ONE_ID__">__SECTION_ONE_LABEL__</a></li>
+        </ol>
+      </nav>
+
+      <p>__ARTICLE_INTRODUCTION__</p>
+
+      <h2 id="__SECTION_ONE_ID__">__SECTION_ONE_HEADING__</h2>
+      <p>__SECTION_ONE_CONTENT__</p>
+
+      <div class="article-share" aria-label="Chia sẻ bài viết"></div>
+    </div>
+  </main>
+
+  <footer class="footer"></footer>
+
+  <!-- Article sâu một cấp: dùng đúng một ../js/main.js. -->
+  <script src="../js/main.js?v=20260728b"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "__ARTICLE_SCHEMA_HEADLINE__",
+    "description": "__ARTICLE_DESCRIPTION__",
+    "url": "https://mayyoga.health/bai-viet/__ARTICLE_SLUG__.html",
+    "image": "https://mayyoga.health/__ARTICLE_IMAGE_PATH__",
+    "datePublished": "__DATE_PUBLISHED_ISO__",
+    "dateModified": "__DATE_MODIFIED_ISO__",
+    "inLanguage": "vi",
+    "author": {
+      "@type": "Person",
+      "name": "__AUTHOR_SCHEMA_NAME__"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mây Yoga",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://mayyoga.health/assets/images/logo.webp"
+      }
+    }
+  }
+  </script>
+</body>
+</html>
