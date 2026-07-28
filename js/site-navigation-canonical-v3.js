@@ -1,5 +1,5 @@
-// ===== MÂY YOGA — CANONICAL SITE NAVIGATION V3 =====
-// One structural and behavioral source of truth for every public page.
+// ===== MÂY YOGA — CANONICAL SITE NAVIGATION V5 =====
+// Single structural and behavioral source of truth for every public page.
 (function canonicalSiteNavigation() {
   'use strict';
 
@@ -7,7 +7,7 @@
     if (document.currentScript && document.currentScript.src) return document.currentScript;
     var scripts = document.querySelectorAll('script[src]');
     for (var i = scripts.length - 1; i >= 0; i--) {
-      if (/\/js\/site-navigation-canonical-v2\.js(?:\?|$)/.test(scripts[i].src)) return scripts[i];
+      if (/\/js\/site-navigation-canonical-v(?:2|3)\.js(?:\?|$)/.test(scripts[i].src)) return scripts[i];
     }
     return null;
   }
@@ -47,8 +47,6 @@
   }
 
   function ensureStyles() {
-    // style.css imports this stack on standard pages. These are strict fallbacks for
-    // standalone pages or partially migrated documents.
     ensureStylesheet('header-first-paint-v1.css', '20260726a', 'data-header-first-paint');
     ensureStylesheet('header-index-canonical-v3.css', '20260726d', 'data-header-index-canonical');
     ensureStylesheet('site-navigation-canonical-v4.css', '20260726b', 'data-site-navigation-canonical');
@@ -73,15 +71,13 @@
       container.className = 'container';
       navbar.replaceChildren(container);
     }
+    container.classList.remove('nav-container');
     return container;
   }
 
   function ensureLogo(container) {
     var logo = container.querySelector('.nav-logo');
-    if (!logo) {
-      logo = document.createElement('a');
-      logo.className = 'nav-logo';
-    }
+    if (!logo) logo = document.createElement('a');
     logo.href = siteUrl('index.html');
     logo.className = 'nav-logo';
     logo.removeAttribute('style');
@@ -107,16 +103,18 @@
       '  <a href="' + siteUrl('hoc-yoga-online.html') + '" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Các khoá học <span class="chevron" aria-hidden="true">▾</span></a>',
       '  <ul class="dropdown-menu">',
       '    <li><a href="' + siteUrl('hoc-yoga-online.html') + '">🌿 Yoga Online 1:1</a></li>',
-      '    <li><a href="' + siteUrl('goc-huan-luyen-vien.html') + '">🦉 Đào tạo YTT 200H</a></li>',
+      '    <li><a href="' + siteUrl('dao-tao-huan-luyen-vien-200h.html') + '">🎓 Đào tạo YTT 200H</a></li>',
+      '    <li class="nav-menu-divider"><a href="' + siteUrl('goc-huan-luyen-vien.html') + '">🦉 Góc Huấn Luyện Viên</a></li>',
       '  </ul>',
       '</li>',
       '<li class="nav-dropdown">',
       '  <a href="' + siteUrl('bai-viet/yoga-cho-nguoi-moi.html') + '" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Kiến thức Yoga <span class="chevron" aria-hidden="true">▾</span></a>',
       '  <ul class="dropdown-menu">',
       '    <li><a href="' + siteUrl('bai-viet/yoga-cho-nguoi-moi.html') + '">🌱 Yoga cho người mới</a></li>',
-      '    <li><a href="' + siteUrl('tu-the-yoga.html') + '">🧘 90 Tư thế Yoga</a></li>',
-      '    <li><a href="' + siteUrl('bai-viet/pranayama-ky-thuat-tho.html') + '">🌬️ Pranayama</a></li>',
-      '    <li><a href="' + siteUrl('bai-viet/thien-cho-nguoi-moi.html') + '">🕊️ Thiền định</a></li>',
+      '    <li><a href="' + siteUrl('hatha-yoga.html') + '">🌿 Hatha Yoga</a></li>',
+      '    <li><a href="' + siteUrl('tu-the-yoga.html') + '">🧘 88 Tư thế Yoga</a></li>',
+      '    <li><a href="' + siteUrl('pranayama.html') + '">🌬️ Pranayama</a></li>',
+      '    <li><a href="' + siteUrl('thien-dinh.html') + '">🕊️ Thiền định</a></li>',
       '    <li><a href="' + siteUrl('giai-phau-yoga.html') + '">🫀 Giải phẫu Yoga</a></li>',
       '    <li class="nav-menu-divider"><a href="' + siteUrl('tu-tap-tai-nha.html') + '">🏠 Tự tập tại nhà</a></li>',
       '  </ul>',
@@ -133,7 +131,7 @@
     }
     navLinks.className = 'nav-links';
     navLinks.innerHTML = canonicalNavMarkup();
-    navLinks.setAttribute('data-canonical-nav-version', '3');
+    navLinks.setAttribute('data-canonical-nav-version', '5');
     return navLinks;
   }
 
@@ -166,11 +164,59 @@
     return search;
   }
 
+  function pageCtaConfig() {
+    var body = document.body;
+    var explicitLabel = body && body.getAttribute('data-nav-cta-label');
+    var explicitHref = body && body.getAttribute('data-nav-cta-href');
+    var explicitTarget = body && body.getAttribute('data-nav-cta-target');
+    var explicitRel = body && body.getAttribute('data-nav-cta-rel');
+
+    if (explicitLabel || explicitHref) {
+      return {
+        label: explicitLabel || 'Khám phá ngay',
+        href: explicitHref || siteUrl('index.html#categories'),
+        target: explicitTarget || '',
+        rel: explicitRel || ''
+      };
+    }
+
+    var current = normalizePath(window.location.href);
+    var routes = {};
+    routes[normalizePath(siteUrl('hoc-yoga-online.html'))] = { label: 'Xem bảng giá', href: '#bang-gia' };
+    routes[normalizePath(siteUrl('dao-tao-huan-luyen-vien-200h.html'))] = { label: 'Nhận tư vấn', href: '#lien-he' };
+    routes[normalizePath(siteUrl('goc-huan-luyen-vien.html'))] = { label: 'Nhận tư vấn', href: '#ytt-register' };
+
+    return routes[current] || {
+      label: 'Khám phá ngay',
+      href: siteUrl('index.html#categories'),
+      target: '',
+      rel: ''
+    };
+  }
+
   function ensureCta(container) {
     var ctaWrap = container.querySelector('.nav-cta');
     if (!ctaWrap) ctaWrap = document.createElement('div');
     ctaWrap.className = 'nav-cta';
-    ctaWrap.innerHTML = '<a href="' + siteUrl('index.html#categories') + '" class="btn btn-primary btn-sm">Khám phá ngay</a>';
+
+    var config = pageCtaConfig();
+    var link = ctaWrap.querySelector('a');
+    if (!link) {
+      link = document.createElement('a');
+      ctaWrap.replaceChildren(link);
+    }
+    link.className = 'btn btn-primary btn-sm';
+    link.removeAttribute('style');
+    link.href = config.href;
+    link.textContent = config.label;
+
+    if (config.target) link.setAttribute('target', config.target);
+    else link.removeAttribute('target');
+    if (config.rel) link.setAttribute('rel', config.rel);
+    else link.removeAttribute('rel');
+    if (config.target === '_blank' && !config.rel) link.setAttribute('rel', 'noopener');
+
+    ctaWrap.setAttribute('data-contextual-cta', 'true');
     return ctaWrap;
   }
 
@@ -228,6 +274,48 @@
     if (current.indexOf(quizRoot) === 0) {
       var quizLink = navLinks.querySelector(':scope > li:last-child > a');
       if (quizLink) quizLink.setAttribute('aria-current', 'page');
+    }
+  }
+
+  function normalizePoseCountText(value) {
+    if (!value || value.indexOf('90') === -1) return value;
+    return value
+      .replace(/\b90\+\s+([Tt]ư thế(?:\s+Yoga)?)/g, '88 $1')
+      .replace(/\b90\s+([Tt]ư thế(?:\s+Yoga)?)/g, '88 $1');
+  }
+
+  function syncPublicContentMetadata() {
+    document.title = normalizePoseCountText(document.title);
+    document.querySelectorAll('meta[content]').forEach(function(meta) {
+      var value = meta.getAttribute('content');
+      var normalized = normalizePoseCountText(value);
+      if (normalized !== value) meta.setAttribute('content', normalized);
+    });
+
+    if (document.body) {
+      var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+        acceptNode: function(node) {
+          var parent = node.parentElement;
+          if (!parent || parent.closest('script, style, noscript, textarea')) return NodeFilter.FILTER_REJECT;
+          return node.data.indexOf('90') === -1 ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      var nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach(function(node) { node.data = normalizePoseCountText(node.data); });
+    }
+
+    if (normalizePath(window.location.href) === normalizePath(siteUrl('tu-the-yoga.html'))) {
+      var poseTotal = document.querySelector('.poses-hero .stat-row .stat:first-child .stat-num');
+      if (poseTotal) poseTotal.textContent = '88';
+    }
+
+    if (normalizePath(window.location.href) === normalizePath(siteUrl('trac-nghiem.html'))) {
+      var description = 'Khám phá 5 bài trắc nghiệm Yoga giúp tự đánh giá thể trạng, luân xa, sức khỏe và tiến trình Yoga trị liệu.';
+      ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]'].forEach(function(selector) {
+        var meta = document.querySelector(selector);
+        if (meta) meta.setAttribute('content', description);
+      });
     }
   }
 
@@ -300,9 +388,7 @@
         return;
       }
 
-      if (!navbar) {
-        document.querySelectorAll('#navbar.site-header-standard').forEach(closeHeaderMenus);
-      }
+      if (!navbar) document.querySelectorAll('#navbar.site-header-standard').forEach(closeHeaderMenus);
     }, true);
 
     document.addEventListener('keydown', function(event) {
@@ -369,14 +455,13 @@
 
     orderHeader(container, [logo, navLinks, search, cta, toggle]);
     markActive(navLinks);
+    syncPublicContentMetadata();
     bindInteractions();
     loadSearchAssets();
     navbar.setAttribute('data-canonical-header-applied', 'true');
-    window.MAY_YOGA_HEADER_VERSION = '3';
+    window.MAY_YOGA_HEADER_VERSION = '5';
   }
 
-  // Prime geometry immediately, then replace legacy interactive nodes only after all
-  // synchronous page scripts have had a chance to run. This removes their direct listeners.
   ensureStyles();
   var initialNavbar = document.getElementById('navbar');
   if (initialNavbar) {
