@@ -62,7 +62,7 @@
     removeLegacyNavigationLoaders();
 
     var script = document.createElement('script');
-    script.src = siteUrl('js/site-navigation-canonical-v3.js?v=20260728a');
+    script.src = siteUrl('js/site-navigation-canonical-v3.js?v=20260728b');
     script.async = false;
     script.setAttribute('data-site-navigation-canonical', 'true');
     script.setAttribute('data-site-navigation-canonical-v3', 'true');
@@ -72,7 +72,7 @@
   function loadSiteChrome() {
     if (document.querySelector('script[data-site-chrome-standard]')) return;
     var script = document.createElement('script');
-    script.src = siteUrl('js/site-chrome.js?v=20260726f');
+    script.src = siteUrl('js/site-chrome.js?v=20260728a');
     script.async = false;
     script.setAttribute('data-site-chrome-standard', 'true');
     document.head.appendChild(script);
