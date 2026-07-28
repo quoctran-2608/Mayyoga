@@ -44,7 +44,7 @@
   }
 
   function updateCourseMenu(navbar) {
-    var courseDropdown = navbar.querySelector('#navLinks > .nav-dropdown:first-of-type');
+    var courseDropdown = navbar.querySelector('#navLinks > .nav-dropdown');
     var menu = courseDropdown && courseDropdown.querySelector(':scope > .dropdown-menu');
     if (!courseDropdown || !menu) return;
 
