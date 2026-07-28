@@ -149,6 +149,11 @@
         if (normalized !== value) element.setAttribute(attribute, normalized);
       });
     });
+
+    if (normalizePath(window.location.href) === normalizePath(siteUrl('tu-the-yoga.html'))) {
+      var poseTotal = document.querySelector('.poses-hero .stat-row .stat:first-child .stat-num');
+      if (poseTotal) poseTotal.textContent = '88';
+    }
   }
 
   function syncQuizMetadata() {
