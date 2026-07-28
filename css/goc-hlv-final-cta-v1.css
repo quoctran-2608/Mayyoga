@@ -1,0 +1,155 @@
+/* ===== MÂY YOGA — GÓC HLV DIRECT CONSULTATION CTA =====
+   Owns only the final contact actions in #ytt-register.
+   The section background and typography foundation remain page-owned. */
+
+body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-direct-cta-inner {
+  width: min(100%, 720px);
+  margin-inline: auto;
+}
+
+body.goc-hlv-page #ytt-register.ytt-direct-cta h2::before {
+  content: '✦  ✦  ✦';
+  display: block;
+  margin-bottom: 18px;
+  color: rgba(216, 182, 82, .42);
+  font-family: var(--goc-body);
+  font-size: .68rem;
+  font-weight: 400;
+  letter-spacing: 6px;
+}
+
+body.goc-hlv-page #ytt-register.ytt-direct-cta .cta-desc {
+  max-width: 620px;
+  margin-inline: auto;
+}
+
+body.goc-hlv-page #ytt-register.ytt-direct-cta .cta-desc::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 2px;
+  margin: 28px auto 0;
+  background: linear-gradient(90deg, transparent, var(--goc-gold), transparent);
+  box-shadow: 0 0 14px rgba(216, 182, 82, .18);
+}
+
+body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-cta-trust {
+  gap: 10px;
+  margin: 30px 0 32px;
+}
+
+body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-cta-trust span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 8px 15px;
+  border: 1px solid rgba(216, 182, 82, .17);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .055);
+  color: rgba(255, 255, 255, .84);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: .80rem;
+  font-weight: 600;
+}
+
+body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-direct-cta-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-direct-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 0 34px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #d8b652 0%, #c99d3c 100%);
+  color: #17271d;
+  box-shadow: 0 14px 36px rgba(201, 157, 60, .28);
+  font-family: var(--goc-body);
+  font-size: .98rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-direct-cta-primary:hover,
+body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-direct-cta-primary:focus-visible {
+  background: linear-gradient(135deg, #e4c467 0%, #d4aa49 100%);
+  box-shadow: 0 18px 44px rgba(201, 157, 60, .34);
+  transform: translateY(-2px);
+}
+
+body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-direct-cta-primary svg,
+body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-direct-cta-phone svg {
+  flex: 0 0 auto;
+}
+
+body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-direct-cta-phone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 19px;
+  color: rgba(255, 255, 255, .65);
+  font-family: var(--goc-body);
+  font-size: .92rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-direct-cta-phone:hover,
+body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-direct-cta-phone:focus-visible {
+  color: #f0cf72;
+}
+
+@media (max-width: 768px) {
+  body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-direct-cta-primary {
+    width: min(100%, 360px);
+    min-height: 52px;
+    padding-inline: 22px;
+    font-size: .91rem;
+  }
+
+  body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-cta-trust {
+    gap: 8px;
+    margin-block: 26px 29px;
+  }
+}
+
+@media (max-width: 480px) {
+  body.goc-hlv-page #ytt-register.ytt-direct-cta h2::before {
+    margin-bottom: 15px;
+  }
+
+  body.goc-hlv-page #ytt-register.ytt-direct-cta .cta-desc::after {
+    margin-top: 23px;
+  }
+
+  body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-cta-trust span {
+    min-height: 34px;
+    padding: 7px 12px;
+    font-size: .74rem;
+  }
+
+  body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-direct-cta-primary {
+    width: 100%;
+    min-height: 50px;
+    padding-inline: 16px;
+    font-size: .86rem;
+  }
+
+  body.goc-hlv-page #ytt-register.ytt-direct-cta .ytt-direct-cta-phone {
+    margin-top: 17px;
+    font-size: .84rem;
+  }
+}
