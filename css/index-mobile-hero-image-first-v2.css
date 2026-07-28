@@ -24,27 +24,34 @@
     margin-right: 0 !important;
   }
 
+  /* Three deliberate lines with a restrained highlight scale. */
   body.home-hero-redesign #hero h1 {
     order: 2 !important;
     align-self: center !important;
-    width: calc(100% - 24px) !important;
-    max-width: 560px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    font-size: clamp(34px, 10.2vw, 44px) !important;
-    line-height: 1.01 !important;
-    letter-spacing: -.034em !important;
+    width: calc(100% - 36px) !important;
+    max-width: 540px !important;
+    margin: 0 auto 12px !important;
+    font-size: clamp(35px, 9.5vw, 41px) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -.028em !important;
     white-space: nowrap !important;
   }
 
-  /* Keep the leaf and rule directly under the headline. */
+  body.home-hero-redesign #hero h1 .highlight {
+    display: inline-block !important;
+    margin: 4px 0 3px !important;
+    font-size: 1.08em !important;
+    line-height: .98 !important;
+    letter-spacing: -.024em !important;
+  }
+
+  /* Keep the leaf and rule close to the headline so both read as one unit. */
   body.home-hero-redesign #hero .hero-content > h1 + div {
     order: 3 !important;
     align-self: center !important;
-    width: calc(100% - 44px) !important;
+    width: calc(100% - 40px) !important;
     max-width: 520px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin: 0 auto 18px !important;
   }
 
   body.home-hero-redesign #hero .hero-image {
@@ -123,10 +130,19 @@
   }
 
   body.home-hero-redesign #hero h1 {
-    width: calc(100% - 24px) !important;
+    width: calc(100% - 32px) !important;
+    font-size: clamp(34px, 9.5vw, 39px) !important;
   }
 
-  body.home-hero-redesign #hero .hero-content > h1 + div,
+  body.home-hero-redesign #hero h1 .highlight {
+    font-size: 1.07em !important;
+  }
+
+  body.home-hero-redesign #hero .hero-content > h1 + div {
+    width: calc(100% - 40px) !important;
+    margin-bottom: 16px !important;
+  }
+
   body.home-hero-redesign #hero .hero-content > p,
   body.home-hero-redesign #hero .hero-buttons {
     width: calc(100% - 40px) !important;
@@ -162,7 +178,11 @@
 
 @media (max-width: 340px) {
   body.home-hero-redesign #hero h1 {
-    width: calc(100% - 20px) !important;
+    width: calc(100% - 24px) !important;
     font-size: 32px !important;
+  }
+
+  body.home-hero-redesign #hero h1 .highlight {
+    font-size: 1.06em !important;
   }
 }
