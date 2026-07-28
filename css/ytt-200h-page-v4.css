@@ -66,6 +66,17 @@ body.ytt200-page .ytt200-cta-final .ytt200-btn-primary .fa-comment-dots {
     letter-spacing: 0 !important;
   }
 
+  /* Keep the closing question balanced across two lines instead of leaving
+     “đổi?” alone on a third line at phone widths. */
+  body.ytt200-page .ytt200-cta-final h2 {
+    width: min(100%, 430px);
+    margin-inline: auto;
+    font-size: clamp(2.15rem, 9.3vw, 2.75rem);
+    line-height: 1.04;
+    letter-spacing: -.02em;
+    text-wrap: balance;
+  }
+
   /* Curriculum owns its mobile gutter instead of inheriting the shared
      container width and an additional 24px padding on each side. */
   body.ytt200-page #chuong-trinh > .container {
@@ -116,6 +127,14 @@ body.ytt200-page .ytt200-cta-final .ytt200-btn-primary .fa-comment-dots {
 }
 
 @media (max-width: 460px) {
+  body.ytt200-page .ytt200-cta-final h2 {
+    width: calc(100% + 8px);
+    max-width: 370px;
+    margin-left: -4px;
+    margin-right: -4px;
+    font-size: clamp(2rem, 9.1vw, 2.35rem);
+  }
+
   body.ytt200-page #chuong-trinh > .container {
     width: calc(100% - 24px);
   }
