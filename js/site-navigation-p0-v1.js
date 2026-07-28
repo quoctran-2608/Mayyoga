@@ -1,7 +1,5 @@
 // ===== MÂY YOGA — RETIRED NAVIGATION PATCH SHIM =====
-// Kept only for browsers or legacy HTML that still request this filename.
-// All menu markup, active state, CTA logic and content normalization now live in
-// site-navigation-canonical-v3.js.
+// Kept only for cached or legacy HTML. All navigation logic lives in the V6 canonical component.
 (function forwardLegacyNavigationPatch() {
   'use strict';
 
@@ -13,7 +11,7 @@
     : new URL(window.MAY_YOGA_SITE_ROOT || '/', window.location.href);
 
   var script = document.createElement('script');
-  script.src = new URL('js/site-navigation-canonical-v3.js?v=20260728a', siteRoot).href;
+  script.src = new URL('js/site-navigation-canonical-v3.js?v=20260728b', siteRoot).href;
   script.async = false;
   script.setAttribute('data-site-navigation-canonical', 'true');
   script.setAttribute('data-site-navigation-canonical-v3', 'true');
