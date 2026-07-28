@@ -128,10 +128,8 @@ body.ytt200-page .ytt200-cta-final .ytt200-btn-primary .fa-comment-dots {
 
 @media (max-width: 460px) {
   body.ytt200-page .ytt200-cta-final h2 {
-    width: calc(100% + 8px);
+    width: 100%;
     max-width: 370px;
-    margin-left: -4px;
-    margin-right: -4px;
     font-size: clamp(2rem, 9.1vw, 2.35rem);
   }
 
