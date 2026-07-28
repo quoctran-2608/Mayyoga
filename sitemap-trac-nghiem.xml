@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Trang tổng hợp trắc nghiệm -->
+  <url>
+    <loc>https://mayyoga.health/trac-nghiem.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 5 bài trắc nghiệm hiện có -->
+  <url>
+    <loc>https://mayyoga.health/trac-nghiem/kiem-tra-dosha.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mayyoga.health/trac-nghiem/kiem-tra-luan-xa.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mayyoga.health/trac-nghiem/danh-gia-suc-khoe.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mayyoga.health/trac-nghiem/danh-gia-sau-buoi-tap.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mayyoga.health/trac-nghiem/danh-gia-snaps.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
