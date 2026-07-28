@@ -1,6 +1,6 @@
 // ===== MÂY YOGA — NAVIGATION V2 COMPATIBILITY SHIM =====
 // Legacy HTML may still request this filename. Forward it to the single v3 runtime
-// and load the small P0 information-architecture patch after canonical navigation.
+// and load the approved priority patch after canonical navigation.
 (function forwardToCanonicalNavigationV3() {
   'use strict';
 
@@ -22,7 +22,7 @@
   function loadNavigationP0() {
     if (document.querySelector('script[data-site-navigation-p0]')) return;
     var patch = document.createElement('script');
-    patch.src = new URL('js/site-navigation-p0-v1.js?v=20260728a', siteRoot).href;
+    patch.src = new URL('js/site-navigation-p0-v1.js?v=20260728b', siteRoot).href;
     patch.async = false;
     patch.setAttribute('data-site-navigation-p0', 'true');
     document.head.appendChild(patch);
