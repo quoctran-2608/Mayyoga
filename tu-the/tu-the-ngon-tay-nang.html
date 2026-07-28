@@ -299,10 +299,6 @@
         if (a.getAttribute('href') === '#' + current) a.classList.add('active');
       });
     });
-    const mt = document.getElementById('mobileToggle');
-    const nl = document.getElementById('navLinks');
-    if (mt) mt.addEventListener('click', () => { nl.classList.toggle('active'); mt.classList.toggle('active'); });
-    window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50); });
   </script>
 
   <script type="application/ld+json">

@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 // One-time source migration for public HTML files.
-// Migration revision: 1.0.1
+// Migration revision: 1.1.0
 // Replaces legacy navbar copies with a minimal canonical shell and removes
-// duplicated navigation/search loaders. Safe to run repeatedly.
+// duplicated navigation/search loaders and inline navigation handlers.
+// Safe to run repeatedly.
 
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
@@ -12,13 +13,15 @@ import process from 'node:process';
 const ROOT = process.cwd();
 const NAV_SHELL = '<nav class="navbar site-header-standard scrolled" id="navbar" data-site-header-standard="true"></nav>';
 const MAIN_VERSION = '20260728b';
+const LEGACY_DIRECT_LOADER_RE = /(?:^|\/)js\/(?:site-navigation-canonical-v2|site-navigation-canonical-v3|site-navigation-p0-v1|site-header-standard|site-chrome|search-index|search|search-base)\.js(?:[?#]|$)/i;
+const SCRIPT_BLOCK_RE = /<script\b([^>]*)>([\s\S]*?)<\/script>/gi;
 
 async function walk(directory) {
   const entries = await fs.readdir(directory, { withFileTypes: true });
   const files = [];
 
   for (const entry of entries) {
-    if (entry.name === '.git' || entry.name === 'node_modules') continue;
+    if (entry.name === '.git' || entry.name === '.m' || entry.name === 'node_modules') continue;
     const absolute = path.join(directory, entry.name);
     if (entry.isDirectory()) files.push(...await walk(absolute));
     else if (entry.name.endsWith('.html')) files.push(absolute);
@@ -42,12 +45,93 @@ function sitePrefix(file) {
   return '../'.repeat(directory.split('/').length);
 }
 
-function removeScript(html, filenamePattern) {
-  const pattern = new RegExp(
-    '<script\\b[^>]*src=["\'][^"\']*' + filenamePattern + '[^"\']*["\'][^>]*>\\s*<\\/script>\\s*',
-    'gi'
+function scriptSource(attributes) {
+  const match = attributes.match(/\bsrc\s*=\s*["']([^"']+)["']/i);
+  return match ? match[1] : '';
+}
+
+function isJsonLdScript(attributes) {
+  return /\btype\s*=\s*["']application\/ld\+json["']/i.test(attributes);
+}
+
+function removeLegacyDirectLoaders(html) {
+  html = html.replace(
+    /^[ \t]*<script\b([^>]*)>\s*<\/script>[ \t]*(?:\n|$)/gim,
+    (script, attributes) => {
+      const source = scriptSource(attributes);
+      return source && LEGACY_DIRECT_LOADER_RE.test(source) ? '' : script;
+    }
   );
-  return html.replace(pattern, '');
+
+  return html.replace(SCRIPT_BLOCK_RE, (script, attributes) => {
+    const source = scriptSource(attributes);
+    return source && LEGACY_DIRECT_LOADER_RE.test(source) ? '' : script;
+  });
+}
+
+function elementAliases(source, elementId) {
+  const aliases = new Set([elementId]);
+  const pattern = new RegExp(
+    `(?:const|let|var)\\s+([A-Za-z_$][\\w$]*)\\s*=\\s*document\\.getElementById\\s*\\(\\s*["']${elementId}["']\\s*\\)`,
+    'g'
+  );
+
+  for (const match of source.matchAll(pattern)) aliases.add(match[1]);
+  return aliases;
+}
+
+function referencesAnyIdentifier(source, identifiers) {
+  return Array.from(identifiers).some((identifier) => (
+    new RegExp(`\\b${identifier}\\b`).test(source)
+  ));
+}
+
+function removeLegacyInlineNavigation(html) {
+  return html.replace(SCRIPT_BLOCK_RE, (script, attributes, source) => {
+    if (scriptSource(attributes) || isJsonLdScript(attributes)) return script;
+
+    let updated = source;
+    const mobileToggleAliases = elementAliases(source, 'mobileToggle');
+    const navLinksAliases = elementAliases(source, 'navLinks');
+
+    // Remove legacy mobile menu listeners while preserving unrelated page logic.
+    updated = updated.replace(
+      /^[ \t]*(?:if\s*\([^;\n]*\)\s*)?[A-Za-z_$][\w$]*\.addEventListener\s*\(\s*["']click["']\s*,[\s\S]*?\}\s*\)\s*;?[ \t]*$/gm,
+      (statement) => (
+        /\bclassList\s*\.\s*(?:toggle|add|remove)\s*\(\s*["'](?:active|open)["']/i.test(statement)
+        && referencesAnyIdentifier(statement, mobileToggleAliases)
+        && referencesAnyIdentifier(statement, navLinksAliases)
+          ? ''
+          : statement
+      )
+    );
+
+    // Remove legacy navbar scroll-state listeners or direct state mutations.
+    updated = updated.replace(
+      /^[ \t]*(?:window\.)?addEventListener\s*\(\s*["']scroll["']\s*,[\s\S]*?\}\s*\)\s*;?[ \t]*$/gm,
+      (statement) => (
+        /(?:getElementById\s*\(\s*["']navbar["']|querySelector\s*\(\s*["']#navbar["']|\bnavbar\b)[\s\S]*?\bclassList\s*\.\s*(?:toggle|add|remove)\s*\([\s\S]*?["']scrolled["']/i.test(statement)
+          ? ''
+          : statement
+      )
+    );
+    updated = updated.replace(
+      /^[ \t]*(?:document\.)?(?:getElementById\s*\(\s*["']navbar["']\s*\)|querySelector\s*\(\s*["']#navbar["']\s*\)|navbar)\.classList\s*\.\s*(?:toggle|add|remove)\s*\([^;\n]*["']scrolled["'][^;\n]*\)\s*;?[ \t]*$/gm,
+      ''
+    );
+
+    // Remove element aliases only when the removed handlers were their sole use.
+    updated = updated.replace(
+      /^[ \t]*(?:const|let|var)\s+([A-Za-z_$][\w$]*)\s*=\s*document\.getElementById\s*\(\s*["'](?:mobileToggle|navLinks)["']\s*\)\s*;?[ \t]*$/gm,
+      (declaration, name) => {
+        const references = updated.match(new RegExp(`\\b${name}\\b`, 'g')) || [];
+        return references.length === 1 ? '' : declaration;
+      }
+    );
+    updated = updated.replace(/\n(?:[ \t]*\n){2,}([ \t]*)$/, '\n$1');
+
+    return `<script${attributes}>${updated}</script>`;
+  });
 }
 
 function normalizeNavbar(html) {
@@ -102,10 +186,8 @@ async function normalizeFile(file) {
 
   html = normalizeLineEndings(html);
   html = normalizeNavbar(html);
-  html = removeScript(html, 'js\\/search-index\\.js');
-  html = removeScript(html, 'js\\/search\\.js');
-  html = removeScript(html, 'js\\/search-base\\.js');
-  html = removeScript(html, 'js\\/site-navigation-p0-v1\\.js');
+  html = removeLegacyDirectLoaders(html);
+  html = removeLegacyInlineNavigation(html);
   html = normalizeMainLoader(html, file);
   html = normalizePoseCount(html);
   html = normalizeTrailingWhitespace(html);

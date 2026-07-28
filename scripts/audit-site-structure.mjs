@@ -11,13 +11,17 @@ const ROOT = process.cwd();
 const errors = [];
 const warnings = [];
 const LEGACY_POSE_COUNT_RE = new RegExp('\\b9' + '0\\s+Tư thế Yoga\\b', 'i');
+const NAV_SHELL = '<nav class="navbar site-header-standard scrolled" id="navbar" data-site-header-standard="true"></nav>';
+const LEGACY_DIRECT_LOADER_RE = /(?:^|\/)js\/(?:site-navigation-canonical-v2|site-navigation-canonical-v3|site-navigation-p0-v1|site-header-standard|site-chrome|search-index|search|search-base)\.js(?:[?#]|$)/i;
+const MAIN_LOADER_RE = /(?:^|\/)js\/main\.js(?:[?#]|$)/i;
+const SCRIPT_BLOCK_RE = /<script\b([^>]*)>([\s\S]*?)<\/script>/gi;
 
 async function walk(directory) {
   const entries = await fs.readdir(directory, { withFileTypes: true });
   const files = [];
 
   for (const entry of entries) {
-    if (entry.name === '.git' || entry.name === 'node_modules') continue;
+    if (entry.name === '.git' || entry.name === '.m' || entry.name === 'node_modules') continue;
     const absolute = path.join(directory, entry.name);
     if (entry.isDirectory()) files.push(...await walk(absolute));
     else files.push(absolute);
@@ -39,6 +43,53 @@ function navbarSource(html) {
   return match ? match[0] : '';
 }
 
+function scriptSource(attributes) {
+  const match = attributes.match(/\bsrc\s*=\s*["']([^"']+)["']/i);
+  return match ? match[1] : '';
+}
+
+function scriptBlocks(html) {
+  return Array.from(html.matchAll(SCRIPT_BLOCK_RE), (match) => ({
+    attributes: match[1],
+    source: match[2],
+    src: scriptSource(match[1])
+  }));
+}
+
+function isJsonLdScript(attributes) {
+  return /\btype\s*=\s*["']application\/ld\+json["']/i.test(attributes);
+}
+
+function auditInlineNavigation(file, scripts) {
+  const inlineScripts = scripts.filter((script) => !script.src && !isJsonLdScript(script.attributes));
+
+  for (const script of inlineScripts) {
+    if (/\bmobileToggle\b/.test(script.source)) {
+      report(errors, file, 'inline JavaScript còn tham chiếu mobileToggle.');
+      break;
+    }
+  }
+
+  for (const script of inlineScripts) {
+    if (
+      /\bnavLinks\b[\s\S]{0,600}\bclassList\s*\.\s*(?:toggle|add|remove)\s*\(\s*["'](?:active|open)["']/i.test(script.source)
+      || /\bclassList\s*\.\s*(?:toggle|add|remove)\s*\(\s*["'](?:active|open)["'][\s\S]{0,600}\bnavLinks\b/i.test(script.source)
+    ) {
+      report(errors, file, 'inline JavaScript còn tự mở hoặc đóng navLinks.');
+      break;
+    }
+  }
+
+  for (const script of inlineScripts) {
+    if (
+      /(?:getElementById\s*\(\s*["']navbar["']|querySelector\s*\(\s*["']#navbar["']|\bnavbar\b)[\s\S]{0,600}\bclassList\s*\.\s*(?:toggle|add|remove)\s*\([\s\S]{0,200}["']scrolled["']/i.test(script.source)
+    ) {
+      report(errors, file, 'inline JavaScript còn tự điều khiển trạng thái scrolled của #navbar.');
+      break;
+    }
+  }
+}
+
 function isGoogleVerificationArtifact(rel, html) {
   return /^google[a-z0-9]+\.html$/i.test(rel)
     && new RegExp(`^google-site-verification:\\s+${rel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`, 'i').test(html);
@@ -57,29 +108,31 @@ async function auditHtml(file) {
   if (rel === 'links.html') {
     if (/\bid=["']navbar["']/i.test(html)) report(errors, file, 'link-in-bio không được chứa full navbar.');
     if (/css\/style\.css/i.test(html)) report(errors, file, 'link-in-bio không được tải stylesheet website chung.');
-    if (/js\/main\.js|site-navigation-canonical|site-chrome\.js/i.test(html)) {
+    if (/js\/main\.js|site-navigation-canonical|site-header-standard|site-chrome\.js|js\/search(?:-index|-base)?\.js/i.test(html)) {
       report(errors, file, 'link-in-bio không được tải full site chrome/navigation.');
     }
     return;
   }
 
-  const hasBootstrap = /js\/main\.js|site-navigation-canonical-v(?:2|3)\.js|js\/site-chrome\.js/i.test(html);
-  if (!hasBootstrap) report(errors, file, 'thiếu bootstrap dẫn tới canonical navigation V6.');
+  const scripts = scriptBlocks(html);
+  const mainLoaders = scripts.filter((script) => MAIN_LOADER_RE.test(script.src));
+  const legacyLoaders = scripts.filter((script) => LEGACY_DIRECT_LOADER_RE.test(script.src));
 
-  const nav = navbarSource(html);
-  if (!nav) {
-    report(warnings, file, 'không có navbar shell trong source; canonical sẽ tự tạo khi JavaScript chạy.');
-    return;
+  if (mainLoaders.length !== 1) {
+    report(errors, file, `phải tải đúng một main.js; tìm thấy ${mainLoaders.length}.`);
+  }
+  if (legacyLoaders.length) {
+    report(errors, file, `còn ${legacyLoaders.length} direct loader navigation/search cũ.`);
   }
 
-  if (/dropdown-toggle/i.test(nav) || /\bnav-links\b/i.test(nav)) {
-    report(warnings, file, 'còn fallback menu legacy trong source; runtime V6 sẽ thay toàn bộ subtree.');
+  auditInlineNavigation(file, scripts);
+
+  const navMatches = html.match(/<nav\b[^>]*\bid=["']navbar["'][^>]*>[\s\S]*?<\/nav>/gi) || [];
+  if (navMatches.length !== 1) {
+    report(errors, file, `phải có đúng một navbar shell; tìm thấy ${navMatches.length}.`);
+  } else if (navbarSource(html).trim() !== NAV_SHELL) {
+    report(errors, file, 'navbar không phải shell tối thiểu canonical.');
   }
-  if (/class=["'][^"']*dropdown-toggle[^"']*["'][^>]*href=["']#["']|href=["']#["'][^>]*class=["'][^"']*dropdown-toggle/i.test(nav)) {
-    report(warnings, file, 'fallback dropdown còn href="#".');
-  }
-  if (/\sstyle=["']/i.test(nav)) report(warnings, file, 'fallback navbar còn inline style.');
-  if (/[🌿🎓🦉🌱🧘🌬🕊🫀🏠]/u.test(nav)) report(warnings, file, 'fallback navbar còn emoji.');
 }
 
 async function auditCanonicalNavigation(file) {
