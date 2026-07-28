@@ -10,6 +10,7 @@ import process from 'node:process';
 const ROOT = process.cwd();
 const errors = [];
 const warnings = [];
+const LEGACY_POSE_COUNT_RE = new RegExp('\\b9' + '0\\s+Tư thế Yoga\\b', 'i');
 
 async function walk(directory) {
   const entries = await fs.readdir(directory, { withFileTypes: true });
@@ -38,13 +39,20 @@ function navbarSource(html) {
   return match ? match[0] : '';
 }
 
+function isGoogleVerificationArtifact(rel, html) {
+  return /^google[a-z0-9]+\.html$/i.test(rel)
+    && new RegExp(`^google-site-verification:\\s+${rel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`, 'i').test(html);
+}
+
 async function auditHtml(file) {
   const html = await fs.readFile(file, 'utf8');
   const rel = relative(file);
 
-  if (/\b90\s+Tư thế Yoga\b/i.test(html)) {
-    report(errors, file, 'còn chuỗi “90 Tư thế Yoga”; dữ liệu chuẩn hiện là 88.');
+  if (LEGACY_POSE_COUNT_RE.test(html)) {
+    report(errors, file, 'còn cụm đếm tư thế cũ; dữ liệu chuẩn hiện là 88.');
   }
+
+  if (isGoogleVerificationArtifact(rel, html)) return;
 
   if (rel === 'links.html') {
     if (/\bid=["']navbar["']/i.test(html)) report(errors, file, 'link-in-bio không được chứa full navbar.');
@@ -115,11 +123,23 @@ async function auditSearch() {
   }
 }
 
+async function auditPoseCountCopy(files) {
+  const sourceFiles = files.filter((file) => /\.(?:js|mjs)$/i.test(file));
+
+  await Promise.all(sourceFiles.map(async (file) => {
+    const source = await fs.readFile(file, 'utf8');
+    if (LEGACY_POSE_COUNT_RE.test(source)) {
+      report(errors, file, 'còn cụm đếm tư thế cũ; dữ liệu chuẩn hiện là 88.');
+    }
+  }));
+}
+
 async function main() {
   const files = await walk(ROOT);
   const htmlFiles = files.filter((file) => file.endsWith('.html'));
 
   await Promise.all(htmlFiles.map(auditHtml));
+  await auditPoseCountCopy(files);
   await auditCanonicalNavigation(path.join(ROOT, 'js/site-navigation-canonical-v3.js'));
   await auditSearch();
 

@@ -31,6 +31,11 @@ function relative(file) {
   return path.relative(ROOT, file).split(path.sep).join('/');
 }
 
+function isGoogleVerificationArtifact(rel, html) {
+  return /^google[a-z0-9]+\.html$/i.test(rel)
+    && new RegExp(`^google-site-verification:\\s+${rel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`, 'i').test(html);
+}
+
 function sitePrefix(file) {
   const directory = path.dirname(relative(file));
   if (directory === '.') return '';
@@ -78,13 +83,24 @@ function normalizePoseCount(html) {
     .replace(/\b90\s+tư thế Yoga\b/g, '88 tư thế Yoga');
 }
 
+function normalizeLineEndings(html) {
+  return html.replace(/\r\n?/g, '\n');
+}
+
+function normalizeTrailingWhitespace(html) {
+  return html.replace(/[ \t]+$/gm, '');
+}
+
 async function normalizeFile(file) {
   const rel = relative(file);
   if (rel === 'links.html') return false;
 
   const original = await fs.readFile(file, 'utf8');
+  if (isGoogleVerificationArtifact(rel, original)) return false;
+
   let html = original;
 
+  html = normalizeLineEndings(html);
   html = normalizeNavbar(html);
   html = removeScript(html, 'js\\/search-index\\.js');
   html = removeScript(html, 'js\\/search\\.js');
@@ -92,6 +108,7 @@ async function normalizeFile(file) {
   html = removeScript(html, 'js\\/site-navigation-p0-v1\\.js');
   html = normalizeMainLoader(html, file);
   html = normalizePoseCount(html);
+  html = normalizeTrailingWhitespace(html);
 
   if (html === original) return false;
   await fs.writeFile(file, html, 'utf8');
